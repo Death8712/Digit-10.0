@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, Filter, Trophy, Gamepad2, Clapperboard, MonitorPlay, Brush, ImageIcon, Lightbulb, ShoppingBag, Bug } from 'lucide-react';
+import { Search, Filter, Trophy, Gamepad2, Clapperboard, MonitorPlay, Brush, ImageIcon, Lightbulb, ShoppingBag, Bug, Video, Bot, Eye } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 // Mock Data for Results
@@ -9,108 +9,154 @@ const RESULTS_DATA = [
     id: 'digimagic-2025',
     eventName: 'Digi Magic',
     category: 'Preparatory Stage',
+    genre: 'Creative',
     icon: Brush,
+    image: '/digi-magic.png',
     winners: [
-      { position: '1ST', name: 'Pixel Painters', grade: 'Class 3' },
-      { position: '2ND', name: 'Creative Kids', grade: 'Class 3' },
-      { position: '3RD', name: 'Little Innovators', grade: 'Class 3' },
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
     ]
   },
   {
     id: 'digiposter-2025',
     eventName: 'Digi Poster',
     category: 'Preparatory Stage',
+    genre: 'Design',
     icon: ImageIcon,
+    image: '/digi-poster.png',
     winners: [
-      { position: '1ST', name: 'Design Wizards', grade: 'Class 4' },
-      { position: '2ND', name: 'Visual Pros', grade: 'Class 4' },
-      { position: '3RD', name: 'Artistic Minds', grade: 'Class 4' },
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
     ]
   },
   {
     id: 'digislides-2025',
     eventName: 'Digi Slides',
     category: 'Preparatory Stage',
+    genre: 'Creative',
     icon: MonitorPlay,
+    image: '/digi-slides.png',
     winners: [
-      { position: '1ST', name: 'Slide Masters', grade: 'Class 5' },
-      { position: '2ND', name: 'Future Presenters', grade: 'Class 5' },
-      { position: '3RD', name: 'Deck Geniuses', grade: 'Class 5' },
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
     ]
   },
   {
     id: 'digitales-2025',
     eventName: 'Digi Tales',
     category: 'Middle Stage',
+    genre: 'Creative',
     icon: Clapperboard,
+    image: '/digi-tales.png',
     winners: [
-      { position: '1ST', name: 'Narrative Bytes', grade: 'Class 6' },
-      { position: '2ND', name: 'Story Spinners', grade: 'Class 6' },
-      { position: '3RD', name: 'Pixel Pages', grade: 'Class 6' },
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
+    ]
+  },
+  {
+    id: 'digifilm-2025',
+    eventName: 'Digi Film',
+    category: 'Middle Stage',
+    genre: 'Creative',
+    icon: Video,
+    image: '/digi-tales.png',
+    winners: [
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
     ]
   },
   {
     id: 'digiquiz-2025',
     eventName: 'Digi Quiz',
     category: 'Middle Stage',
+    genre: 'Tech',
     icon: Lightbulb,
+    image: '/digi-quiz.png',
     winners: [
-      { position: '1ST', name: 'Tech Titans', grade: 'Class 8' },
-      { position: '2ND', name: 'Quiz Masters', grade: 'Class 8' },
-      { position: '3RD', name: 'Mind Hackers', grade: 'Class 7' },
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
+    ]
+  },
+  {
+    id: 'digibuild-2025',
+    eventName: 'Digi Build',
+    category: 'Middle Stage',
+    genre: 'Tech',
+    icon: Bot,
+    image: '/digi-tales.png',
+    winners: [
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
     ]
   },
   {
     id: 'digitote-2025',
     eventName: 'Digi Tote',
     category: 'Seniors Stage',
+    genre: 'Design',
     icon: ShoppingBag,
+    image: '/digi-tote.png',
     winners: [
-      { position: '1ST', name: 'Eco Creators', grade: 'Class 11' },
-      { position: '2ND', name: 'Artisan Hub', grade: 'Class 10' },
-      { position: '3RD', name: 'Sustainable Designs', grade: 'Class 12' },
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
     ]
   },
   {
     id: 'digibug-2025',
-    eventName: 'Digi Bug',
+    eventName: 'DIGICT-AI',
     category: 'Seniors Stage',
+    genre: 'Coding',
     icon: Bug,
+    image: '/digi-bug.png',
     winners: [
-      { position: '1ST', name: 'Null Pointers', grade: 'Class 12' },
-      { position: '2ND', name: 'Syntax Squad', grade: 'Class 11' },
-      { position: '3RD', name: 'Code Crackers', grade: 'Class 12' },
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
+    ]
+  },
+  {
+    id: 'digireport-2025',
+    eventName: 'Digi Report',
+    category: 'Seniors Stage',
+    genre: 'Creative',
+    icon: Eye,
+    image: '/digi-tales.png',
+    winners: [
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
     ]
   },
   {
     id: 'digibattles-2025',
     eventName: 'Digi Battles',
     category: 'Blockbuster Events',
+    genre: 'Gaming',
     icon: Gamepad2,
+    image: '/digi-battles.png',
     winners: [
-      { position: '1ST', name: 'Team Alpha', grade: 'Class 12' },
-      { position: '2ND', name: 'Nexus Core', grade: 'Class 11' },
-      { position: '3RD', name: 'Phantom Strikers', grade: 'Class 10' },
-    ]
-  },
-  {
-    id: 'digiarena-2025',
-    eventName: 'Digi Arena',
-    category: 'Blockbuster Events',
-    icon: Gamepad2,
-    winners: [
-      { position: '1ST', name: 'Cyber Legends', grade: 'Class 12' },
-      { position: '2ND', name: 'Elite Force', grade: 'Class 11' },
-      { position: '3RD', name: 'Vortex Vanguard', grade: 'Class 9' },
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
     ]
   }
 ];
 
 const CATEGORIES = ['All', 'Preparatory Stage', 'Middle Stage', 'Seniors Stage', 'Blockbuster Events'];
+const GENRES = ['All', 'Creative', 'Design', 'Tech', 'Coding', 'Gaming'];
 
 export default function EventResults() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedGenre, setSelectedGenre] = useState('All');
 
   const filteredResults = useMemo(() => {
     return RESULTS_DATA.filter((item) => {
@@ -118,10 +164,11 @@ export default function EventResults() {
                             item.winners.some(w => w.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                                                    w.grade.toLowerCase().includes(searchQuery.toLowerCase()));
       const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
+      const matchesGenre = selectedGenre === 'All' || item.genre === selectedGenre;
       
-      return matchesSearch && matchesCategory;
+      return matchesSearch && matchesCategory && matchesGenre;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [searchQuery, selectedCategory, selectedGenre]);
 
   return (
     <section id="results" className="py-20 relative bg-cyber-black overflow-hidden z-10 border-t border-white/5">
@@ -158,7 +205,7 @@ export default function EventResults() {
 
         {/* Filters */}
         <div className="flex flex-col md:flex-row gap-4 mb-16 justify-between items-center bg-white/5 backdrop-blur-md p-4 rounded-2xl border border-neon-cyan/30 shadow-[0_0_15px_rgba(0,255,255,0.1)]">
-          <div className="relative w-full md:w-96 group">
+          <div className="relative w-full md:flex-grow md:max-w-md group">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neon-cyan/70 group-focus-within:text-neon-cyan transition-colors" />
             <input 
               type="text" 
@@ -169,20 +216,40 @@ export default function EventResults() {
             />
           </div>
 
-          <div className="relative w-full md:w-64 flex items-center gap-3">
-            <Filter className="w-5 h-5 text-neon-cyan/70" />
-            <div className="relative w-full">
-              <select 
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full appearance-none bg-cyber-black/50 border border-neon-cyan/30 rounded-xl py-3 px-4 text-white font-sans focus:outline-none focus:border-neon-cyan transition-all cursor-pointer"
-              >
-                {CATEGORIES.map(cat => (
-                  <option key={cat} value={cat} className="bg-cyber-black text-white">{cat}</option>
-                ))}
-              </select>
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-neon-cyan/70" />
+          <div className="flex flex-col sm:flex-row w-full md:w-auto gap-4">
+            <div className="relative w-full sm:w-56 flex items-center gap-3">
+              <Filter className="w-5 h-5 text-neon-cyan/70" />
+              <div className="relative w-full">
+                <select 
+                  value={selectedGenre}
+                  onChange={(e) => setSelectedGenre(e.target.value)}
+                  className="w-full appearance-none bg-cyber-black/50 border border-neon-cyan/30 rounded-xl py-3 px-4 text-white font-sans focus:outline-none focus:border-neon-cyan transition-all cursor-pointer"
+                >
+                  {GENRES.map(cat => (
+                    <option key={cat} value={cat} className="bg-cyber-black text-white">{cat}</option>
+                  ))}
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-neon-cyan/70" />
+                </div>
+              </div>
+            </div>
+
+            <div className="relative w-full sm:w-56 flex items-center gap-3">
+              <Filter className="w-5 h-5 text-neon-cyan/70" />
+              <div className="relative w-full">
+                <select 
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="w-full appearance-none bg-cyber-black/50 border border-neon-cyan/30 rounded-xl py-3 px-4 text-white font-sans focus:outline-none focus:border-neon-cyan transition-all cursor-pointer"
+                >
+                  {CATEGORIES.map(cat => (
+                    <option key={cat} value={cat} className="bg-cyber-black text-white">{cat}</option>
+                  ))}
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-neon-cyan/70" />
+                </div>
               </div>
             </div>
           </div>
@@ -206,6 +273,14 @@ export default function EventResults() {
                   {/* Glowing edge effect on hover */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-neon-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
+                  {/* Event Image */}
+                  {result.image && (
+                    <div className="h-32 -mx-6 -mt-6 mb-6 overflow-hidden relative">
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#020813] to-transparent z-10 opacity-90" />
+                      <img src={result.image} alt={result.eventName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60 group-hover:opacity-80 mix-blend-screen" />
+                    </div>
+                  )}
+                  
                   {/* Event Header */}
                   <div className="flex items-center justify-between mb-8 border-b border-neon-cyan/20 pb-4">
                     <div className="flex items-center gap-3">
@@ -214,7 +289,7 @@ export default function EventResults() {
                       </div>
                       <div>
                         <h3 className="font-display font-bold text-white uppercase tracking-wider text-lg group-hover:text-neon-cyan transition-colors">{result.eventName}</h3>
-                        <p className="text-xs font-mono text-neon-cyan/70 uppercase tracking-widest">{result.category}</p>
+                        <p className="text-xs font-mono text-neon-cyan/70 uppercase tracking-widest">{result.category} • {result.genre}</p>
                       </div>
                     </div>
                   </div>

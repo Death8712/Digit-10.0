@@ -8,6 +8,8 @@ import Countdown from './components/Countdown';
 import CountdownHero from './components/CountdownHero';
 import CustomCursor from './components/CustomCursor';
 import Timeline from './components/Timeline';
+import EventModal from './components/EventModal';
+import { categories, EventItem } from './data/events';
 import Gallery from './components/Gallery';
 import EventResults from './components/EventResults';
 import RegistrationForm from './components/RegistrationForm';
@@ -16,6 +18,7 @@ import StarryBackground from './components/StarryBackground';
 
 export default function App() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [selectedTimelineEvent, setSelectedTimelineEvent] = useState<{event: EventItem, categoryAccent: string} | null>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"]
@@ -45,46 +48,58 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-cyber-black selection:bg-neon-cyan/30">
+    <div className="relative min-h-screen bg-cyber-black bg-blobs selection:bg-neon-cyan/30">
       <StarryBackground />
       <CustomCursor />
       <Navbar />
+      <EventModal 
+        isOpen={!!selectedTimelineEvent} 
+        onClose={() => setSelectedTimelineEvent(null)} 
+        event={selectedTimelineEvent?.event || null}
+        categoryAccent={selectedTimelineEvent?.categoryAccent || 'from-neon-cyan/20 to-transparent'}
+      />
       
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-grid">
         <Hero3D />
         
-        <div className="max-w-[1400px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 items-center gap-12 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 relative z-10">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col items-start"
+            className="flex flex-col items-start lg:col-span-7 xl:col-span-8"
           >
             {/* Date Tag */}
-            <div className="border border-neon-cyan px-4 py-1.5 mb-12 inline-block">
+            <div className="border border-neon-cyan px-4 py-1.5 mb-6 inline-block">
               <span className="text-sm font-sans font-bold tracking-[0.2em] text-neon-cyan uppercase">
-                08 AUGUST 2026
+                21 AUGUST 2026
               </span>
             </div>
             
             {/* Main Heading */}
-            <h1 className="text-[60px] sm:text-[80px] md:text-[100px] lg:text-[120px] font-display font-black leading-[0.85] tracking-tighter text-white mb-4 relative whitespace-nowrap">
+            <h1 className="text-[50px] sm:text-[70px] md:text-[80px] lg:text-[100px] font-display font-black leading-[0.85] tracking-tighter text-white mb-2 relative whitespace-nowrap">
               DIGIT <span className="text-neon-cyan drop-shadow-[0_0_15px_rgba(0,255,255,0.8)]">10.0</span>
             </h1>
             
             {/* Subheading */}
-            <h2 className="text-xl md:text-2xl font-sans font-bold tracking-[0.6em] text-neon-cyan mb-8 uppercase">
+            <h2 className="text-xl md:text-2xl font-sans font-bold tracking-[0.6em] text-neon-cyan mb-4 uppercase">
               TECH EVENT
             </h2>
             
             {/* Description */}
-            <p className="max-w-xl text-white/80 text-lg leading-relaxed mb-16 font-sans">
-              Ahlcon International School proudly presents DIGIT 10.0, marking a decade of innovation and excellence. Celebrating ten years of technological creativity, this landmark edition brings together bright minds to compete, collaborate, and explore emerging ideas.
-            </p>
+            <div className="max-w-full text-white/80 text-sm md:text-base leading-relaxed mb-8 font-sans flex flex-col gap-3">
+              <p className="font-bold text-white uppercase tracking-wider">WELCOME TO DIGIT 10.0</p>
+              <p>
+                AHLCON INTERNATIONAL SCHOOL proudly presents the 10th Edition of DIGIT. Get ready to dive into the energy and innovation of Digit 10.0, our annual tech fest that unites inquisitive minds, creative innovators, and future tech leaders. Whether you're passionate about coding, designing, or exploring the latest technology trends, Digit 10.0 has something exciting for everyone.
+              </p>
+              <p>
+                Join us for a series of engaging events and thrilling competitions :- all crafted to challenge your skills and ignite your creativity. This is your opportunity to showcase your talent, discover new knowledge, and connect with a vibrant community that shares your enthusiasm for technology.
+              </p>
+            </div>
             
             {/* Stats Row */}
-            <div className="flex flex-wrap items-center gap-10 mb-16">
+            <div className="flex flex-wrap items-center gap-8 mb-8">
               {[
                 { value: "100+", label: "PARTICIPANTS" },
                 { value: "10+", label: "EVENTS" },
@@ -113,7 +128,7 @@ export default function App() {
           </motion.div>
           
           {/* Right side is handled by Hero3D (absolute positioned container) */}
-          <div className="hidden lg:block relative h-[600px] pointer-events-none">
+          <div className="hidden lg:block relative h-[500px] pointer-events-none lg:col-span-5 xl:col-span-4">
             {/* This space is visually filled by the absolute Hero3D component */}
             <div className="absolute bottom-0 right-0 w-full h-full border-b border-r border-neon-cyan/20 pointer-events-none">
                <div className="hud-corner -bottom-1 -right-1" />
@@ -165,7 +180,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="reveal-left">
             <span className="text-neon-cyan font-black uppercase tracking-widest text-xs mb-4 block">The Main Stage</span>
-            <h2 className="text-4xl md:text-6xl font-display font-black">Flagship Events</h2>
+            <h2 className="text-4xl md:text-6xl font-display font-black">Signature Events</h2>
           </div>
           <p className="max-w-md text-white/80 font-display font-medium text-sm tracking-widest uppercase leading-relaxed reveal-right">
             Master the logic. Own the canvas. Claim the throne. High-stakes challenges for those who refuse to play it safe.
@@ -186,7 +201,7 @@ export default function App() {
             <div className="glass p-8 md:p-12 rounded-[2rem] border-white/5 reveal">
               <div className="flex items-center justify-between mb-12">
                 <h3 className="text-3xl font-display font-black">Full Schedule</h3>
-                <span className="text-neon-cyan font-black uppercase tracking-widest text-xs">Aug 08, 2026</span>
+                <span className="text-neon-cyan font-black uppercase tracking-widest text-xs">Aug 21, 2026</span>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
@@ -199,12 +214,28 @@ export default function App() {
                   { time: "10:00AM - 12:00PM", event: "DigiTales", type: "Class 6" },
                   { time: "10:00AM - 12:00PM", event: "DigiFilm", type: "Class 7" },
                   { time: "10:00AM - 12:00PM", event: "DigiQuiz", type: "Class 8" },
-                  { time: "10:00AM - 10:30AM", event: "DigiBug", type: "Class 9-12" },
-                  { time: "10:30AM - 11:30AM", event: "DigiBot", type: "Class 9-12" },
+                  { time: "10:00AM - 10:30AM", event: "DIGICT-AI", type: "Class 9-12" },
+                  { time: "10:30AM - 11:30AM", event: "DigiBuild", type: "Class 9-12" },
                   { time: "11:30AM - 12:30PM", event: "DigiBattles Prelims", type: "Class 9-12" },
                   { time: "12:30PM - 1:00PM", event: "DigiBattles Finals", type: "Class 9-12" }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-2 group">
+                ].map((item, i) => {
+                  const matchingCategory = categories.find(cat => cat.events.some(e => e.title.toLowerCase() === item.event.toLowerCase() || item.event.toLowerCase().includes(e.title.toLowerCase())));
+                  const matchingEvent = matchingCategory?.events.find(e => e.title.toLowerCase() === item.event.toLowerCase() || item.event.toLowerCase().includes(e.title.toLowerCase()));
+                  const isClickable = !!matchingEvent;
+
+                  return (
+                  <div 
+                    key={i} 
+                    className={`flex gap-2 group ${isClickable ? 'cursor-pointer' : ''}`}
+                    onClick={() => {
+                      if (matchingEvent && matchingCategory) {
+                        setSelectedTimelineEvent({
+                          event: matchingEvent,
+                          categoryAccent: matchingCategory.accentCode
+                        });
+                      }
+                    }}
+                  >
                     <div className="text-white/40 font-mono text-[11px] md:text-sm pt-1 w-36 shrink-0">{item.time}</div>
                     <div className="flex-1 pb-4 border-l border-white/10 pl-6 relative">
                       <div className="absolute top-2 -left-[5px] w-2 h-2 rounded-full bg-white/20 group-hover:bg-neon-cyan transition-colors" />
@@ -212,7 +243,8 @@ export default function App() {
                       <span className="text-[10px] uppercase tracking-widest font-black text-white/20">{item.type}</span>
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -250,7 +282,7 @@ export default function App() {
                 <span className="font-display font-black tracking-tighter text-2xl">DIGIT <span className="text-neon-cyan">10.0</span></span>
               </div>
               <p className="text-white/40 max-w-sm mb-8 leading-relaxed">
-                The premier technology festival pushing the boundaries of human potential and digital innovation since 2016.
+                The premier technology festival pushing the boundaries of human potential and digital innovation since 2012.
               </p>
               <div className="flex gap-4">
                 {[Mail, Phone, Globe].map((Icon, i) => (

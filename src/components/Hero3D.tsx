@@ -4,18 +4,32 @@ import { Float, Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
 function DataNodes({ radius = 1.9, count = 120 }) {
-  const nodes = useMemo(() => {
-    const pts = [];
+  const meshRef = useRef<THREE.InstancedMesh>(null);
+  
+  const dummy = useMemo(() => new THREE.Object3D(), []);
+
+  useMemo(() => {
+    // We defer setting matrices to useEffect/useLayoutEffect, 
+    // but we can also just do it once if we have ref ready.
+  }, []);
+
+  useEffect(() => {
+    if (!meshRef.current) return;
     for (let i = 0; i < count; i++) {
       const u = Math.random();
       const v = Math.random();
       const theta = u * 2.0 * Math.PI;
       const phi = Math.acos(2.0 * v - 1.0);
       const r = Math.cbrt(Math.random()) * radius;
-      pts.push(new THREE.Vector3(r * Math.sin(phi) * Math.cos(theta), r * Math.sin(phi) * Math.sin(theta), r * Math.cos(phi)));
+      
+      dummy.position.set(r * Math.sin(phi) * Math.cos(theta), r * Math.sin(phi) * Math.sin(theta), r * Math.cos(phi));
+      const scale = Math.random() * 0.5 + 0.2; // roughly scales the radius of 0.1 to 0.02-0.07
+      dummy.scale.set(scale, scale, scale);
+      dummy.updateMatrix();
+      meshRef.current.setMatrixAt(i, dummy.matrix);
     }
-    return pts;
-  }, [count, radius]);
+    meshRef.current.instanceMatrix.needsUpdate = true;
+  }, [count, radius, dummy]);
 
   const groupRef = useRef<THREE.Group>(null);
   
@@ -28,12 +42,10 @@ function DataNodes({ radius = 1.9, count = 120 }) {
 
   return (
     <group ref={groupRef}>
-      {nodes.map((p, i) => (
-        <mesh key={i} position={p}>
-          <octahedronGeometry args={[Math.random() * 0.05 + 0.02, 0]} />
-          <meshStandardMaterial color="#00FFFF" emissive="#00FFFF" emissiveIntensity={5} />
-        </mesh>
-      ))}
+      <instancedMesh ref={meshRef} args={[null, null, count]}>
+        <octahedronGeometry args={[0.1, 0]} />
+        <meshStandardMaterial color="#00FFFF" emissive="#00FFFF" emissiveIntensity={5} />
+      </instancedMesh>
       <pointLight color="#00FFFF" intensity={4} distance={6} decay={2} />
     </group>
   );
@@ -130,7 +142,7 @@ function ComplexWireframe() {
   );
 }
 
-function FloatingParticles({ count = 400 }) {
+function FloatingParticles({ count = 200 }) {
   const points = useMemo(() => {
     const p = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
@@ -165,6 +177,65 @@ function FloatingParticles({ count = 400 }) {
   );
 }
 
+function FloatingGeometries() {
+  const groupRef = useRef<THREE.Group>(null);
+  
+  const shapes = useMemo(() => {
+    return new Array(8).fill(0).map(() => ({
+      position: new THREE.Vector3(
+        (Math.random() - 0.5) * 15,
+        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 15 - 5
+      ),
+      rotation: new THREE.Vector3(
+        Math.random() * Math.PI,
+        Math.random() * Math.PI,
+        Math.random() * Math.PI
+      ),
+      scale: Math.random() * 0.5 + 0.2,
+      type: Math.random() > 0.5 ? 'orb' : 'monolith',
+      speed: Math.random() * 0.2 + 0.1
+    }));
+  }, []);
+
+  useFrame((state) => {
+    if (groupRef.current) {
+      groupRef.current.children.forEach((child, i) => {
+        const shape = shapes[i];
+        child.position.y = shape.position.y + Math.sin(state.clock.elapsedTime * shape.speed) * 1.5;
+        child.rotation.x += 0.001 * shape.speed;
+        child.rotation.y += 0.002 * shape.speed;
+      });
+    }
+  });
+
+  const orbGeom = useMemo(() => new THREE.SphereGeometry(1, 32, 32), []);
+  const boxGeom = useMemo(() => new THREE.BoxGeometry(1, 4, 1), []);
+  const sharedMat = useMemo(() => new THREE.MeshPhysicalMaterial({
+    color: "#050505", 
+    metalness: 0.9, 
+    roughness: 0.1,
+    clearcoat: 1,
+    clearcoatRoughness: 0.2,
+    envMapIntensity: 2
+  }), []);
+
+  return (
+    <group ref={groupRef}>
+      {shapes.map((shape, i) => (
+        <mesh 
+          key={i} 
+          position={shape.position} 
+          rotation={[shape.rotation.x, shape.rotation.y, shape.rotation.z]} 
+          scale={shape.scale}
+          geometry={shape.type === 'orb' ? orbGeom : boxGeom}
+          material={sharedMat}
+        />
+      ))}
+    </group>
+  );
+}
+
 function CyberTechArtifact() {
   const { viewport } = useThree();
   const xOffset = Math.min(viewport.width * 0.25, 4.5);
@@ -179,9 +250,11 @@ function CyberTechArtifact() {
     if (groupRef.current) {
       const targetScale = hovered ? mobileScale * 1.15 : mobileScale;
       groupRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.1);
+      groupRef.current.position.lerp(new THREE.Vector3(xOffset, 0, 0), 0.1);
     }
   });
 
+  // Change cursor on hover
   useEffect(() => {
     document.body.style.cursor = hovered ? 'pointer' : 'auto';
     return () => {
@@ -191,14 +264,12 @@ function CyberTechArtifact() {
 
   return (
     <group 
-      position={[xOffset, 0, 0]} 
       ref={groupRef}
       onPointerOver={(e) => {
         e.stopPropagation();
         setHovered(true);
       }}
-      onPointerOut={(e) => {
-        e.stopPropagation();
+      onPointerOut={() => {
         setHovered(false);
       }}
     >
@@ -216,15 +287,16 @@ export default function Hero3D() {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden">
       <Canvas 
-        dpr={[1, 2]} 
-        gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, alpha: true }} 
-        camera={{ position: [12, 10, 12], fov: 25 }}
+        dpr={1} 
+        gl={{ antialias: false, toneMapping: THREE.ACESFilmicToneMapping, alpha: true, powerPreference: "high-performance" }} 
+        camera={{ position: [14, 11, 14], fov: 28 }}
       >
         <ambientLight intensity={0.4} color="#00FFFF" />
         <spotLight position={[10, 15, 10]} intensity={150} color="#00FFFF" penumbra={0.5} distance={50} angle={0.8} />
         <spotLight position={[-15, -10, -15]} intensity={100} color="#00FFFF" penumbra={1} distance={50} />
         <directionalLight position={[6, -2, 10]} intensity={2.5} color="#ffffff" />
         
+        <FloatingGeometries />
         <CyberTechArtifact />
       </Canvas>
       

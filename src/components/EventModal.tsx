@@ -1,7 +1,8 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Calendar, MapPin, Info } from 'lucide-react';
+import { X, Calendar, MapPin, Info, Monitor, Phone, User } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 interface EventModalProps {
   isOpen: boolean;
@@ -12,6 +13,12 @@ interface EventModalProps {
     about?: string;
     venue?: string;
     image?: string;
+    mode?: string;
+    classGroup?: string;
+    software?: string;
+    eventHead?: string;
+    eventHeadNumber?: string;
+    teamSize?: string;
   } | null;
   categoryAccent?: string;
 }
@@ -30,9 +37,10 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
   }, [isOpen]);
 
   return (
-    <AnimatePresence>
-      {isOpen && event && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+    typeof document !== 'undefined' ? createPortal(
+      <AnimatePresence>
+        {isOpen && event && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
           {/* Heavily Blurred Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -89,14 +97,14 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
                       <Info size={18} className={categoryAccent} />
                       <h3 className="font-display font-bold uppercase tracking-wider text-sm">About the Event</h3>
                     </div>
-                    <p className="text-white/60 leading-relaxed text-sm md:text-base font-sans">
+                    <p className="text-white/60 leading-relaxed text-sm md:text-base font-sans mt-2">
                       {event.about || "Join us for an exciting technology competition where students showcase their innovation, creativity, and technical prowess. Push your limits and discover the digital frontier."}
                     </p>
                   </div>
 
                   {/* Venue Section */}
                   <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
-                    <div className="flex items-center gap-3 mb-2 text-white/80">
+                    <div className="flex items-center gap-3 mb-3 text-white/80">
                       <MapPin size={18} className={categoryAccent} />
                       <h3 className="font-display font-bold uppercase tracking-wider text-sm">Venue</h3>
                     </div>
@@ -105,25 +113,78 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
                     </p>
                   </div>
 
-                  {/* Date & Time Section */}
+                  {/* Mode Section */}
                   <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
-                    <div className="flex items-center gap-3 mb-2 text-white/80">
+                    <div className="flex items-center gap-3 mb-3 text-white/80">
                       <Calendar size={18} className={categoryAccent} />
-                      <h3 className="font-display font-bold uppercase tracking-wider text-sm">Date & Time</h3>
+                      <h3 className="font-display font-bold uppercase tracking-wider text-sm">Mode</h3>
                     </div>
                     <p className="text-white/60 font-medium whitespace-nowrap">
-                      August 8, 2026
+                      {event.mode || "Online + Offline"}
                     </p>
                   </div>
+                  
+                  {/* Team Size Section */}
+                  {event.teamSize && (
+                    <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
+                      <div className="flex items-center gap-3 mb-3 text-white/80">
+                        <User size={18} className={categoryAccent} />
+                        <h3 className="font-display font-bold uppercase tracking-wider text-sm">Team Size</h3>
+                      </div>
+                      <p className="text-white/60 font-medium">
+                        {event.teamSize}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Class Section */}
+                  <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
+                    <div className="flex items-center gap-3 mb-3 text-white/80">
+                      <Info size={18} className={categoryAccent} />
+                      <h3 className="font-display font-bold uppercase tracking-wider text-sm">Class</h3>
+                    </div>
+                    <p className="text-white/60 font-medium">
+                      {event.classGroup || "Class 3-12"}
+                    </p>
+                  </div>
+
+                  {/* Software Section */}
+                  <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
+                    <div className="flex items-center gap-3 mb-3 text-white/80">
+                      <Monitor size={18} className={categoryAccent} />
+                      <h3 className="font-display font-bold uppercase tracking-wider text-sm">Software Used</h3>
+                    </div>
+                    <p className="text-white/60 font-medium">
+                      {event.software || "Not specified"}
+                    </p>
+                  </div>
+                  {/* Event Head Section */}
+                  {event.eventHead && (
+                    <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
+                      <div className="flex items-center gap-3 mb-3 text-white/80">
+                        <User size={18} className={categoryAccent} />
+                        <h3 className="font-display font-bold uppercase tracking-wider text-sm">Event Head</h3>
+                      </div>
+                      <p className="text-white/60 font-medium">
+                        {event.eventHead}
+                      </p>
+                      {event.eventHeadNumber && (
+                        <div className="flex items-center gap-2 mt-2 text-white/50">
+                          <Phone size={14} className={categoryAccent} />
+                          <span className="font-mono text-sm">{event.eventHeadNumber}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
 
-                {/* Optional Image Section on the Right */}
+                {/* Image Section on the Right */}
                 {event.image && (
-                  <div className="w-full md:w-1/3 shrink-0 bg-white/5 rounded-2xl border border-white/5 overflow-hidden flex items-center justify-center p-2">
+                  <div className="w-full md:w-5/12 shrink-0 bg-white/5 rounded-2xl border border-white/5 overflow-hidden flex items-center justify-center p-4">
                     <img 
                       src={event.image} 
                       alt={event.title} 
-                      className="w-full h-full object-contain max-h-[300px] rounded-xl mix-blend-screen" 
+                      className="w-full h-auto object-contain rounded-xl mix-blend-screen max-h-[500px]" 
                     />
                   </div>
                 )}
@@ -133,6 +194,8 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
+    ) : null
   );
 }

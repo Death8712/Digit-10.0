@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 
-export default function StarryBackground() {
+export default function StarryBackground({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -20,9 +20,18 @@ export default function StarryBackground() {
       initStars();
     };
 
+    let cachedGradient: CanvasGradient | null = null;
     const initStars = () => {
+      cachedGradient = ctx.createRadialGradient(
+        canvas.width / 2, canvas.height / 2, 0,
+        canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height)
+      );
+      cachedGradient.addColorStop(0, 'rgba(0, 255, 255, 0.03)');
+      cachedGradient.addColorStop(0.5, 'rgba(128, 0, 128, 0.02)');
+      cachedGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
       stars = [];
-      const numStars = Math.floor((canvas.width * canvas.height) / 3000); // Adjust density here
+      const numStars = Math.floor((canvas.width * canvas.height) / 10000); // Adjust density here
       
       for (let i = 0; i < numStars; i++) {
         // Randomly pick a color index: 0=cyan, 1=magenta, 2=white
@@ -53,17 +62,11 @@ export default function StarryBackground() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Optional subtle nebula effect
-      const gradient = ctx.createRadialGradient(
-        canvas.width / 2, canvas.height / 2, 0,
-        canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height)
-      );
-      gradient.addColorStop(0, 'rgba(0, 255, 255, 0.03)');
-      gradient.addColorStop(0.5, 'rgba(128, 0, 128, 0.02)');
-      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Use cached gradient
+      if (cachedGradient) {
+        ctx.fillStyle = cachedGradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
 
       stars.forEach(star => {
         ctx.beginPath();
@@ -104,7 +107,7 @@ export default function StarryBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-60"
+      className={className || "fixed inset-0 pointer-events-none z-0 opacity-60"}
       style={{ mixBlendMode: 'screen' }}
     />
   );
