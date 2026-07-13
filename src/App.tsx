@@ -60,7 +60,7 @@ export default function App() {
       />
       
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-grid">
+      <section id="home" ref={heroRef} className="relative min-h-[100dvh] flex items-center pt-32 pb-16 overflow-hidden bg-grid">
         <Hero3D />
         
         <div className="max-w-[1400px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 relative z-10">
@@ -71,8 +71,8 @@ export default function App() {
             className="flex flex-col items-start lg:col-span-7 xl:col-span-8"
           >
             {/* Date Tag */}
-            <div className="border border-neon-cyan px-4 py-1.5 mb-6 inline-block">
-              <span className="text-sm font-sans font-bold tracking-[0.2em] text-neon-cyan uppercase">
+            <div className="border border-neon-cyan px-5 py-2 mb-6 inline-flex items-center justify-center whitespace-nowrap">
+              <span className="text-sm md:text-base font-sans font-bold tracking-[0.2em] text-neon-cyan uppercase mt-0.5">
                 21 AUGUST 2026
               </span>
             </div>
@@ -153,26 +153,13 @@ export default function App() {
         </div>
       </section>
 
-      {/* Trailer Video Section */}
-      <section className="py-12 md:py-20 relative z-10">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12 reveal">
-            <span className="text-neon-cyan font-black uppercase tracking-widest text-xs mb-4 block">Sneak Peek</span>
-            <h2 className="text-3xl md:text-5xl font-display font-black">Official Trailer</h2>
-          </div>
-          <div className="relative mx-auto aspect-video w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] reveal">
-            <div className="absolute inset-0 bg-gradient-to-tr from-neon-cyan/20 to-purple-500/10 mix-blend-overlay pointer-events-none" />
-            <video 
-              className="w-full h-full object-cover bg-black"
-              controls
-              preload="none"
-              poster="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&q=80"
-            >
-              <source src="/trailer.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+      {/* Legacy Section */}
+      <section id="legacy" className="py-20 relative z-10 bg-white/[0.02]">
+        <div className="max-w-7xl mx-auto px-4 text-center mb-16 reveal">
+          <h2 className="text-4xl md:text-6xl font-display font-black mb-6">A Decade of Innovation</h2>
+          <p className="text-white/40 max-w-2xl mx-auto">Explore the evolution of DIGIT from its humble beginnings to the global phenomenon it is today.</p>
         </div>
+        <Timeline />
       </section>
 
       {/* Events Section */}
@@ -189,88 +176,17 @@ export default function App() {
         <BentoGrid />
       </section>
 
-      {/* Schedule Section */}
-      <section id="schedule" className="py-20 relative z-10 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-20 reveal">
-            <h2 className="text-4xl md:text-6xl font-display font-black mb-6">Event Timeline</h2>
-            <div className="w-24 h-1 bg-neon-cyan mx-auto rounded-full" />
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <div className="glass p-8 md:p-12 rounded-[2rem] border-white/5 reveal">
-              <div className="flex items-center justify-between mb-12">
-                <h3 className="text-3xl font-display font-black">Full Schedule</h3>
-                <span className="text-neon-cyan font-black uppercase tracking-widest text-xs">Aug 21, 2026</span>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                {[
-                  { time: "8:30AM - 9:30AM", event: "Opening Ceremony", type: "Main" },
-                  { time: "9:30AM - 10:00AM", event: "DigiTote", type: "Class 9-12" },
-                  { time: "10:00AM - 12:00PM", event: "DigiMagic", type: "Class 3" },
-                  { time: "10:00AM - 12:00PM", event: "DigiPoster", type: "Class 4" },
-                  { time: "10:00AM - 12:00PM", event: "DigiSlides", type: "Class 5" },
-                  { time: "10:00AM - 12:00PM", event: "DigiTales", type: "Class 6" },
-                  { time: "10:00AM - 12:00PM", event: "DigiFilm", type: "Class 7" },
-                  { time: "10:00AM - 12:00PM", event: "DigiQuiz", type: "Class 8" },
-                  { time: "10:00AM - 10:30AM", event: "DIGICT-AI", type: "Class 9-12" },
-                  { time: "10:30AM - 11:30AM", event: "DigiBuild", type: "Class 9-12" },
-                  { time: "11:30AM - 12:30PM", event: "DigiBattles Prelims", type: "Class 9-12" },
-                  { time: "12:30PM - 1:00PM", event: "DigiBattles Finals", type: "Class 9-12" }
-                ].map((item, i) => {
-                  const matchingCategory = categories.find(cat => cat.events.some(e => e.title.toLowerCase() === item.event.toLowerCase() || item.event.toLowerCase().includes(e.title.toLowerCase())));
-                  const matchingEvent = matchingCategory?.events.find(e => e.title.toLowerCase() === item.event.toLowerCase() || item.event.toLowerCase().includes(e.title.toLowerCase()));
-                  const isClickable = !!matchingEvent;
-
-                  return (
-                  <div 
-                    key={i} 
-                    className={`flex gap-2 group ${isClickable ? 'cursor-pointer' : ''}`}
-                    onClick={() => {
-                      if (matchingEvent && matchingCategory) {
-                        setSelectedTimelineEvent({
-                          event: matchingEvent,
-                          categoryAccent: matchingCategory.accentCode
-                        });
-                      }
-                    }}
-                  >
-                    <div className="text-white/40 font-mono text-[11px] md:text-sm pt-1 w-36 shrink-0">{item.time}</div>
-                    <div className="flex-1 pb-4 border-l border-white/10 pl-6 relative">
-                      <div className="absolute top-2 -left-[5px] w-2 h-2 rounded-full bg-white/20 group-hover:bg-neon-cyan transition-colors" />
-                      <h4 className="text-lg font-bold mb-1 group-hover:text-neon-cyan transition-colors">{item.event}</h4>
-                      <span className="text-[10px] uppercase tracking-widest font-black text-white/20">{item.type}</span>
-                    </div>
-                  </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Speakers Section */}
       <Visionaries />
-
-      {/* Legacy Section */}
-      <section id="legacy" className="py-20 relative z-10 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto px-4 text-center mb-16 reveal">
-          <h2 className="text-4xl md:text-6xl font-display font-black mb-6">A Decade of Innovation</h2>
-          <p className="text-white/40 max-w-2xl mx-auto">Explore the evolution of DIGIT from its humble beginnings to the global phenomenon it is today.</p>
-        </div>
-        <Timeline />
-      </section>
 
       {/* Gallery Section */}
       <Gallery />
 
-      {/* Results Section */}
-      <EventResults />
-
       {/* Registration Section */}
       <RegistrationForm />
+
+      {/* Results Section */}
+      <EventResults />
 
       {/* Footer */}
       <footer className="py-20 border-t border-white/5 relative z-10">

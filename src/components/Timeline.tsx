@@ -47,13 +47,13 @@ const timelineData = [
     year: "2024",
     title: "DIGIT 8.0",
     description: "The biggest school turnout yet — every department competed, collaborated, and left a mark on the fest.",
-    link: ""
+    link: "https://aisdigit8.wixsite.com/home"
   },
   {
     year: "2025",
     title: "DIGIT 9.0",
     description: "With one edition to go, excitement built across the school as a historic milestone drew near.",
-    link: ""
+    link: "https://aisdigit9.wixsite.com/home"
   },
   {
     year: "2026",

@@ -6,8 +6,8 @@ import { cn } from '../lib/utils';
 // Mock Data for Results
 const RESULTS_DATA = [
   {
-    id: 'digimagic-2025',
-    eventName: 'Digi Magic',
+    id: 'digimagic-2026',
+    eventName: 'DigiMagic',
     category: 'Preparatory Stage',
     genre: 'Creative',
     icon: Brush,
@@ -19,8 +19,8 @@ const RESULTS_DATA = [
     ]
   },
   {
-    id: 'digiposter-2025',
-    eventName: 'Digi Poster',
+    id: 'digiposter-2026',
+    eventName: 'DigiPoster',
     category: 'Preparatory Stage',
     genre: 'Design',
     icon: ImageIcon,
@@ -32,10 +32,10 @@ const RESULTS_DATA = [
     ]
   },
   {
-    id: 'digislides-2025',
-    eventName: 'Digi Slides',
+    id: 'digislides-2026',
+    eventName: 'DigiSlides',
     category: 'Preparatory Stage',
-    genre: 'Creative',
+    genre: 'Presentation',
     icon: MonitorPlay,
     image: '/digi-slides.png',
     winners: [
@@ -45,10 +45,10 @@ const RESULTS_DATA = [
     ]
   },
   {
-    id: 'digitales-2025',
-    eventName: 'Digi Tales',
+    id: 'digitales-2026',
+    eventName: 'DigiTales',
     category: 'Middle Stage',
-    genre: 'Creative',
+    genre: 'Storytelling',
     icon: Clapperboard,
     image: '/digi-tales.png',
     winners: [
@@ -58,23 +58,10 @@ const RESULTS_DATA = [
     ]
   },
   {
-    id: 'digifilm-2025',
-    eventName: 'Digi Film',
+    id: 'digiquiz-2026',
+    eventName: 'DigiQuiz',
     category: 'Middle Stage',
-    genre: 'Creative',
-    icon: Video,
-    image: '/digi-tales.png',
-    winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
-    ]
-  },
-  {
-    id: 'digiquiz-2025',
-    eventName: 'Digi Quiz',
-    category: 'Middle Stage',
-    genre: 'Tech',
+    genre: 'Knowledge',
     icon: Lightbulb,
     image: '/digi-quiz.png',
     winners: [
@@ -84,10 +71,10 @@ const RESULTS_DATA = [
     ]
   },
   {
-    id: 'digibuild-2025',
-    eventName: 'Digi Build',
+    id: 'digibuild-2026',
+    eventName: 'DigiBuild',
     category: 'Middle Stage',
-    genre: 'Tech',
+    genre: 'Technical',
     icon: Bot,
     image: '/digi-tales.png',
     winners: [
@@ -97,9 +84,9 @@ const RESULTS_DATA = [
     ]
   },
   {
-    id: 'digitote-2025',
-    eventName: 'Digi Tote',
-    category: 'Seniors Stage',
+    id: 'digitote-2026',
+    eventName: 'DigiTote',
+    category: 'Senior Stage',
     genre: 'Design',
     icon: ShoppingBag,
     image: '/digi-tote.png',
@@ -110,11 +97,11 @@ const RESULTS_DATA = [
     ]
   },
   {
-    id: 'digibug-2025',
-    eventName: 'DIGICT-AI',
-    category: 'Seniors Stage',
-    genre: 'Coding',
-    icon: Bug,
+    id: 'digict-ai-2026',
+    eventName: 'DigiCT-AI',
+    category: 'Senior Stage',
+    genre: 'Technical',
+    icon: Bot,
     image: '/digi-bug.png',
     winners: [
       { position: '1ST', name: 'No Result', grade: 'TBD' },
@@ -123,22 +110,9 @@ const RESULTS_DATA = [
     ]
   },
   {
-    id: 'digireport-2025',
-    eventName: 'Digi Report',
-    category: 'Seniors Stage',
-    genre: 'Creative',
-    icon: Eye,
-    image: '/digi-tales.png',
-    winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
-    ]
-  },
-  {
-    id: 'digibattles-2025',
-    eventName: 'Digi Battles',
-    category: 'Blockbuster Events',
+    id: 'digibattles-2026',
+    eventName: 'DigiBattles',
+    category: 'Senior Stage',
     genre: 'Gaming',
     icon: Gamepad2,
     image: '/digi-battles.png',
@@ -147,10 +121,36 @@ const RESULTS_DATA = [
       { position: '2ND', name: 'No Result', grade: 'TBD' },
       { position: '3RD', name: 'No Result', grade: 'TBD' },
     ]
+  },
+  {
+    id: 'digimeme-2026',
+    eventName: 'DIGIMEME',
+    category: 'Senior Stage',
+    genre: 'Meme',
+    icon: ImageIcon,
+    image: '/digi-tales.png',
+    winners: [
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
+    ]
+  },
+  {
+    id: 'digicipher-2026',
+    eventName: 'DigiCipher',
+    category: 'Senior Stage',
+    genre: 'Cryptography',
+    icon: Bug,
+    image: '/digi-tales.png',
+    winners: [
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
+    ]
   }
 ];
 
-const CATEGORIES = ['All', 'Preparatory Stage', 'Middle Stage', 'Seniors Stage', 'Blockbuster Events'];
+const CATEGORIES = ['All', 'Preparatory Stage', 'Middle Stage', 'Seniors Stage'];
 const GENRES = ['All', 'Creative', 'Design', 'Tech', 'Coding', 'Gaming'];
 
 export default function EventResults() {
@@ -217,23 +217,7 @@ export default function EventResults() {
           </div>
 
           <div className="flex flex-col sm:flex-row w-full md:w-auto gap-4">
-            <div className="relative w-full sm:w-56 flex items-center gap-3">
-              <Filter className="w-5 h-5 text-neon-cyan/70" />
-              <div className="relative w-full">
-                <select 
-                  value={selectedGenre}
-                  onChange={(e) => setSelectedGenre(e.target.value)}
-                  className="w-full appearance-none bg-cyber-black/50 border border-neon-cyan/30 rounded-xl py-3 px-4 text-white font-sans focus:outline-none focus:border-neon-cyan transition-all cursor-pointer"
-                >
-                  {GENRES.map(cat => (
-                    <option key={cat} value={cat} className="bg-cyber-black text-white">{cat}</option>
-                  ))}
-                </select>
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-neon-cyan/70" />
-                </div>
-              </div>
-            </div>
+
 
             <div className="relative w-full sm:w-56 flex items-center gap-3">
               <Filter className="w-5 h-5 text-neon-cyan/70" />

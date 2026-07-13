@@ -240,7 +240,7 @@ function CyberTechArtifact() {
   const { viewport } = useThree();
   const xOffset = Math.min(viewport.width * 0.25, 4.5);
   // Reduce base scale to make it more compact
-  const mobileScale = Math.min(viewport.width / 14, 1) * 0.85;
+  const mobileScale = Math.min(viewport.width / 14, 1) * 1.05;
 
   const [hovered, setHovered] = useState(false);
   const groupRef = useRef<THREE.Group>(null);
@@ -250,7 +250,7 @@ function CyberTechArtifact() {
     if (groupRef.current) {
       const targetScale = hovered ? mobileScale * 1.15 : mobileScale;
       groupRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.1);
-      groupRef.current.position.lerp(new THREE.Vector3(xOffset, 0, 0), 0.1);
+      groupRef.current.position.lerp(new THREE.Vector3(xOffset, 1.2, 0), 0.1);
     }
   });
 

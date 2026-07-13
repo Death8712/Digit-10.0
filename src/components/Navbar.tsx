@@ -1,6 +1,47 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 
+const NAV_ITEMS = ['JOURNEY', 'EVENTS', 'OUR TEAM', 'GALLERY', 'REGISTRATIONS', 'RESULTS'];
+
 export default function Navbar() {
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = NAV_ITEMS.map(item => {
+        if (item === 'GALLERY') return 'gallery';
+        if (item === 'JOURNEY') return 'legacy';
+        if (item === 'REGISTRATIONS') return 'register';
+        if (item === 'OUR TEAM') return 'visionaries';
+        return item.toLowerCase();
+      });
+      
+      let current = '';
+      // We check from bottom to top to find the most specific section in view
+      // Actually top-down with a specific threshold is fine
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Check if element is mostly in view
+          if (rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3) {
+            current = section;
+          }
+        }
+      }
+      
+      if (current) {
+        setActiveSection(current);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Also run on mount after a slight delay to allow layout
+    setTimeout(handleScroll, 100);
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
@@ -9,7 +50,10 @@ export default function Navbar() {
     >
       <div className="max-w-[1400px] mx-auto flex items-center justify-between">
         {/* Logo and Image */}
-        <div className="flex items-center gap-4 group cursor-pointer">
+        <div 
+          className="flex items-center gap-4 group cursor-pointer" 
+          onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setActiveSection(''); }}
+        >
           <div className="relative w-12 h-12 border border-neon-cyan/50 flex items-center justify-center rounded-sm bg-neon-cyan/5 shadow-[0_0_15px_rgba(0,255,255,0.2)] group-hover:shadow-[0_0_25px_rgba(0,255,255,0.4)] transition-all duration-300 overflow-hidden">
             <img 
               src="/digit-logo.png" 
@@ -21,16 +65,30 @@ export default function Navbar() {
         </div>
         
         {/* Navigation Links */}
-        <div className="hidden md:flex items-center gap-12">
-          {['EVENTS', 'SCHEDULE', 'VISIONARIES', 'GALLERY', 'RESULTS'].map((item) => (
-            <a
-              key={item}
-              href={item === 'GALLERY' ? '#gallery' : `#${item.toLowerCase()}`}
-              className="text-sm font-bold tracking-[0.1em] text-white/70 hover:text-neon-cyan transition-colors"
-            >
-              {item}
-            </a>
-          ))}
+        <div className="hidden lg:flex items-center gap-3 xl:gap-5">
+          {NAV_ITEMS.map((item, index) => {
+            const id = item === 'GALLERY' ? 'gallery' : item === 'JOURNEY' ? 'legacy' : item === 'REGISTRATIONS' ? 'register' : item === 'OUR TEAM' ? 'visionaries' : item.toLowerCase();
+            const isActive = activeSection === id;
+            
+            return (
+              <div key={item} className="flex items-center gap-3 xl:gap-5">
+                <a
+                  href={`#${id}`}
+                  onClick={() => setActiveSection(id)}
+                  className={`text-xs xl:text-sm font-bold tracking-[0.1em] transition-all duration-300 transform inline-block hover:scale-125 hover:mx-2 origin-center ${
+                    isActive 
+                      ? 'text-neon-cyan drop-shadow-[0_0_8px_rgba(0,255,255,0.8)] border-b-2 border-neon-cyan pb-1' 
+                      : 'text-white/70 hover:text-neon-cyan hover:drop-shadow-[0_0_5px_rgba(0,255,255,0.5)]'
+                  }`}
+                >
+                  {item}
+                </a>
+                {index < NAV_ITEMS.length - 1 && (
+                  <span className="text-neon-cyan/40 text-[11px] select-none">/</span>
+                )}
+              </div>
+            );
+          })}
         </div>
         
         {/* Action Button */}

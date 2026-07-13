@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Calendar, MapPin, Info, Monitor, Phone, User } from 'lucide-react';
+import { X, Calendar, MapPin, Info, Monitor, Phone, User, ClipboardList, Lightbulb, Star, Target } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
@@ -19,6 +19,11 @@ interface EventModalProps {
     eventHead?: string;
     eventHeadNumber?: string;
     teamSize?: string;
+    themes?: string[];
+    submissionFormat?: string;
+    judgementCriteria?: string[];
+    requirements?: string;
+    objectives?: string[];
   } | null;
   categoryAccent?: string;
 }
@@ -88,19 +93,72 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
               </div>
 
               {/* Bento-style Layout for Details */}
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+              <div className="flex flex-col md:flex-row gap-4 lg:gap-6">
+                <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 h-full">
                   
                   {/* About Section */}
-                  <div className="col-span-1 md:col-span-2 bg-white/5 rounded-2xl p-6 border border-white/5">
+                  <div className="col-span-1 sm:col-span-2 lg:col-span-3 bg-white/5 rounded-2xl p-6 border border-white/5">
                     <div className="flex items-center gap-3 mb-3 text-white/80">
                       <Info size={18} className={categoryAccent} />
                       <h3 className="font-display font-bold uppercase tracking-wider text-sm">About the Event</h3>
                     </div>
-                    <p className="text-white/60 leading-relaxed text-sm md:text-base font-sans mt-2">
+                    <p className="text-white/60 leading-relaxed text-sm md:text-base font-sans mt-2 whitespace-pre-wrap">
                       {event.about || "Join us for an exciting technology competition where students showcase their innovation, creativity, and technical prowess. Push your limits and discover the digital frontier."}
                     </p>
+                    
                   </div>
+
+                  {event.objectives && event.objectives.length > 0 && (
+                    <div className="col-span-1 sm:col-span-2 lg:col-span-3 bg-white/5 rounded-2xl p-6 border border-white/5">
+                      <div className="flex items-center gap-3 mb-3 text-white/80">
+                        <Target size={18} className={categoryAccent} />
+                        <h3 className="font-display font-bold uppercase tracking-wider text-sm">Objectives</h3>
+                      </div>
+                      <ul className="list-disc list-inside text-white/60 text-sm md:text-base space-y-1">
+                        {event.objectives.map((objective, idx) => (
+                          <li key={idx}>{objective}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {event.requirements && (
+                    <div className="col-span-1 sm:col-span-2 lg:col-span-3 bg-white/5 rounded-2xl p-6 border border-white/5">
+                      <div className="flex items-center gap-3 mb-3 text-white/80">
+                        <ClipboardList size={18} className={categoryAccent} />
+                        <h3 className="font-display font-bold uppercase tracking-wider text-sm">Requirements</h3>
+                      </div>
+                      <div className="text-white/60 text-sm md:text-base whitespace-pre-wrap">{event.requirements}</div>
+                    </div>
+                  )}
+
+                  {event.themes && event.themes.length > 0 && (
+                    <div className="col-span-1 sm:col-span-2 lg:col-span-3 bg-white/5 rounded-2xl p-6 border border-white/5">
+                      <div className="flex items-center gap-3 mb-3 text-white/80">
+                        <Lightbulb size={18} className={categoryAccent} />
+                        <h3 className="font-display font-bold uppercase tracking-wider text-sm">Themes</h3>
+                      </div>
+                      <ul className="list-disc list-inside text-white/60 text-sm md:text-base space-y-1">
+                        {event.themes.map((theme, idx) => (
+                          <li key={idx}>{theme}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {event.judgementCriteria && event.judgementCriteria.length > 0 && (
+                    <div className="col-span-1 sm:col-span-2 lg:col-span-3 bg-white/5 rounded-2xl p-6 border border-white/5">
+                      <div className="flex items-center gap-3 mb-3 text-white/80">
+                        <Star size={18} className={categoryAccent} />
+                        <h3 className="font-display font-bold uppercase tracking-wider text-sm">Judgement Criteria</h3>
+                      </div>
+                      <ul className="list-disc list-inside text-white/60 text-sm md:text-base space-y-1">
+                        {event.judgementCriteria.map((criteria, idx) => (
+                          <li key={idx}>{criteria}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
 
                   {/* Venue Section */}
                   <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
@@ -119,7 +177,7 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
                       <Calendar size={18} className={categoryAccent} />
                       <h3 className="font-display font-bold uppercase tracking-wider text-sm">Mode</h3>
                     </div>
-                    <p className="text-white/60 font-medium whitespace-nowrap">
+                    <p className="text-white/60 font-medium text-sm break-words">
                       {event.mode || "Online + Offline"}
                     </p>
                   </div>
@@ -158,6 +216,19 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
                       {event.software || "Not specified"}
                     </p>
                   </div>
+
+                  {/* Submission Format */}
+                  {event.submissionFormat && (
+                    <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
+                      <div className="flex items-center gap-3 mb-3 text-white/80">
+                        <Info size={18} className={categoryAccent} />
+                        <h3 className="font-display font-bold uppercase tracking-wider text-sm">Format</h3>
+                      </div>
+                      <p className="text-white/60 font-medium">
+                        {event.submissionFormat}
+                      </p>
+                    </div>
+                  )}
                   {/* Event Head Section */}
                   {event.eventHead && (
                     <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
@@ -180,11 +251,11 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
 
                 {/* Image Section on the Right */}
                 {event.image && (
-                  <div className="w-full md:w-5/12 shrink-0 bg-white/5 rounded-2xl border border-white/5 overflow-hidden flex items-center justify-center p-4">
+                  <div className="w-full md:w-1/3 lg:w-1/4 shrink-0 bg-white/5 rounded-2xl border border-white/5 overflow-hidden flex items-center justify-center p-6 self-start sticky top-4">
                     <img 
                       src={event.image} 
                       alt={event.title} 
-                      className="w-full h-auto object-contain rounded-xl mix-blend-screen max-h-[500px]" 
+                      className="w-[120px] md:w-[150px] h-auto object-contain mix-blend-screen opacity-90 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" 
                     />
                   </div>
                 )}
