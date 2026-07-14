@@ -10,7 +10,7 @@ import CustomCursor from './components/CustomCursor';
 import Timeline from './components/Timeline';
 import EventModal from './components/EventModal';
 import { categories, EventItem } from './data/events';
-import Gallery from './components/Gallery';
+import { Trailer } from './components/Trailer';
 import EventResults from './components/EventResults';
 import RegistrationForm from './components/RegistrationForm';
 import Visionaries from './components/Visionaries';
@@ -177,6 +177,7 @@ export default function App() {
         </div>
       </section>
 
+
       {/* Countdown Section */}
       <section className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 text-center">
@@ -211,8 +212,8 @@ export default function App() {
       {/* Speakers Section */}
       <Visionaries />
 
-      {/* Gallery Section */}
-      <Gallery />
+      {/* Trailer Section */}
+      <Trailer />
 
       {/* Registration Section */}
       <RegistrationForm />

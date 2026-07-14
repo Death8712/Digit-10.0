@@ -73,7 +73,7 @@ export default function RegistrationForm() {
               SECURE YOUR <span className="text-neon-cyan">SLOT</span>
             </h2>
             <p className="text-white/40 max-w-2xl mx-auto font-sans leading-relaxed">
-              Join the elite circle of innovators. Select your event below to open the official Google Form registration portal.
+              Register for your selected event below to join our event of innovators. Clicking the link will direct you to the official registration form.
             </p>
           </motion.div>
         </div>
