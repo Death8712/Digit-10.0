@@ -1,0 +1,3 @@
+sed -i -E 's/eventHead: "Granth Shandilya", eventHeadNumber: "\+91 9958468859",/eventHead: "Prajanay Chandra", eventHeadNumber: "+91 8010984447",/g' src/data/events.ts
+sed -i -E 's/eventHead: "Rudransh Kandpal", eventHeadNumber: "\+91 9910663253",/eventHead: "Granth Shandilya", eventHeadNumber: "+91 9958468859",/g' src/data/events.ts
+sed -i -E 's/eventHead: "Prajanay Chandra", eventHeadNumber: "\+91 8010984447" , teamSize: "Team of 2", themes: \["Think Before You Meme: Technology with a Purpose"\]/eventHead: "Aditya Pandey", eventHeadNumber: "+91 7654321098" , teamSize: "Team of 2", themes: ["Think Before You Meme: Technology with a Purpose"]/g' src/data/events.ts
