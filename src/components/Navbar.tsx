@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 
-const NAV_ITEMS = ['JOURNEY', 'EVENTS', 'OUR TEAM', 'GALLERY', 'REGISTRATIONS', 'RESULTS'];
+const NAV_ITEMS = ['JOURNEY', 'EVENTS', 'OUR TEAM', 'GALLERY', 'RESULTS'];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('');
@@ -11,7 +11,6 @@ export default function Navbar() {
       const sections = NAV_ITEMS.map(item => {
         if (item === 'GALLERY') return 'gallery';
         if (item === 'JOURNEY') return 'legacy';
-        if (item === 'REGISTRATIONS') return 'register';
         if (item === 'OUR TEAM') return 'visionaries';
         return item.toLowerCase();
       });
@@ -67,7 +66,7 @@ export default function Navbar() {
         {/* Navigation Links */}
         <div className="hidden lg:flex items-center gap-3 xl:gap-5">
           {NAV_ITEMS.map((item, index) => {
-            const id = item === 'GALLERY' ? 'gallery' : item === 'JOURNEY' ? 'legacy' : item === 'REGISTRATIONS' ? 'register' : item === 'OUR TEAM' ? 'visionaries' : item.toLowerCase();
+            const id = item === 'GALLERY' ? 'gallery' : item === 'JOURNEY' ? 'legacy' : item === 'OUR TEAM' ? 'visionaries' : item.toLowerCase();
             const isActive = activeSection === id;
             
             return (

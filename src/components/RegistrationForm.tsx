@@ -34,11 +34,20 @@ const REGISTRATION_LINKS = [
     bg: "bg-neon-cyan/5",
     hoverBg: "hover:bg-neon-cyan/10",
     events: [
-      { name: "DigiTote", link: "#" },
-      { name: "DigiCT-AI", link: "#" },
-      { name: "DigiBattles", link: "#" },
-      { name: "DIGIMEME", link: "#" },
-      { name: "DigiCipher", link: "#" }
+      { name: "DigiTote", link: "https://forms.gle/vpnQUDbj6f48i1hH9" },
+      { name: "DigiBattles", link: "https://forms.gle/amXKvuL2Ug6Egs4N6" },
+      { name: "DigiMeme", link: "https://forms.gle/8YgKyHoiMQwPruwv5" },
+      { name: "DigiCipher", link: "https://forms.gle/VpNCtkyw8L2EeFf37" }
+    ]
+  },
+  {
+    category: "Inter School Events",
+    accent: "text-emerald-400",
+    border: "border-emerald-400/20",
+    bg: "bg-emerald-400/5",
+    hoverBg: "hover:bg-emerald-400/10",
+    events: [
+      { name: "DigiThon", link: "https://forms.gle/yqvhAApcUWGkr3qi6" }
     ]
   }
 ];

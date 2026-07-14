@@ -97,9 +97,9 @@ const RESULTS_DATA = [
     ]
   },
   {
-    id: 'digict-ai-2026',
-    eventName: 'DigiCT-AI',
-    category: 'Senior Stage',
+    id: 'digithon-2026',
+    eventName: 'DigiThon',
+    category: 'Inter School Events',
     genre: 'Technical',
     icon: Bot,
     image: '/digi-bug.png',
@@ -124,7 +124,7 @@ const RESULTS_DATA = [
   },
   {
     id: 'digimeme-2026',
-    eventName: 'DIGIMEME',
+    eventName: 'DigiMeme',
     category: 'Senior Stage',
     genre: 'Meme',
     icon: ImageIcon,

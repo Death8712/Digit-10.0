@@ -4,20 +4,7 @@ import { cn } from '../lib/utils';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 const ITEMS = [
-  { id: 0, title: 'OFFICIAL TRAILER', subtitle: 'DIGIT 9.0', video: '/trailer.mp4' },
-
-  { id: 1, title: 'DIGI MAGIC', subtitle: 'CLASS 3', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800' },
-  { id: 2, title: 'DIGI POSTER', subtitle: 'CLASS 4', image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800' },
-  { id: 3, title: 'DIGI SLIDES', subtitle: 'CLASS 5', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800' },
-  { id: 4, title: 'DIGI TALES', subtitle: 'CLASS 6', image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800' },
-  { id: 5, title: 'DIGI QUIZ', subtitle: 'CLASS 7', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800' },
-  { id: 6, title: 'DIGI BUILD', subtitle: 'CLASS 8', image: 'https://images.unsplash.com/photo-1451187580459-434902bd0c0e?auto=format&fit=crop&q=80&w=800' },
-  { id: 7, title: 'DIGI TOTE', subtitle: 'CLASS 9', image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800' },
-  { id: 8, title: 'DIGI CT-AI', subtitle: 'CLASS 10', image: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&q=80&w=800' },
-  { id: 9, title: 'DIGI BATTLES', subtitle: 'CLASS 11', image: 'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&q=80&w=800' },
-  { id: 10, title: 'DIGIMEME', subtitle: 'CLASS 12', image: 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&q=80&w=800' },
-  { id: 11, title: 'DIGI CIPHER', subtitle: 'CLASS 12', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800' },
-  { id: 12, title: 'INNOVATION', subtitle: 'ALL CLASSES', image: 'https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=800' }
+  { id: 0, title: 'OFFICIAL TRAILER', subtitle: 'DIGIT 10.0', video: '/trailer.mp4' },
 ];
 
 function ParallaxCard({ item, onTrailerEnd }: { item: typeof ITEMS[0], onTrailerEnd?: () => void }) {

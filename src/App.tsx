@@ -16,6 +16,35 @@ import RegistrationForm from './components/RegistrationForm';
 import Visionaries from './components/Visionaries';
 import StarryBackground from './components/StarryBackground';
 
+const TypewriterText = ({ text, className = "", delay = 0 }: { text: string, className?: string, delay?: number }) => (
+  <motion.span
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-10px" }}
+    variants={{
+      hidden: { opacity: 0 },
+      visible: { 
+        opacity: 1,
+        transition: { delay, staggerChildren: 0.04 } 
+      }
+    }}
+    className={className}
+  >
+    {text.split('').map((char, index) => (
+      <motion.span
+        key={index}
+        variants={{
+          hidden: { opacity: 0, y: 10, filter: 'blur(4px)' },
+          visible: { opacity: 1, y: 0, filter: 'blur(0px)' }
+        }}
+        style={{ display: 'inline-block', whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+      >
+        {char}
+      </motion.span>
+    ))}
+  </motion.span>
+);
+
 export default function App() {
   const heroRef = useRef<HTMLDivElement>(null);
   const [selectedTimelineEvent, setSelectedTimelineEvent] = useState<{event: EventItem, categoryAccent: string} | null>(null);
@@ -73,7 +102,7 @@ export default function App() {
             {/* Date Tag */}
             <div className="border border-neon-cyan px-5 py-2 mb-6 inline-flex items-center justify-center whitespace-nowrap">
               <span className="text-sm md:text-base font-sans font-bold tracking-[0.2em] text-neon-cyan uppercase mt-0.5">
-                21 AUGUST 2026
+                21ST AUGUST 2026
               </span>
             </div>
             
@@ -91,10 +120,13 @@ export default function App() {
             <div className="max-w-full text-white/80 text-sm md:text-base leading-relaxed mb-8 font-sans flex flex-col gap-3">
               <p className="font-bold text-white uppercase tracking-wider">WELCOME TO DIGIT 10.0</p>
               <p>
-                AHLCON INTERNATIONAL SCHOOL proudly presents the 10th Edition of DIGIT. Get ready to dive into the energy and innovation of Digit 10.0, our annual tech fest that unites inquisitive minds, creative innovators, and future tech leaders. Whether you're passionate about coding, designing, or exploring the latest technology trends, Digit 10.0 has something exciting for everyone.
+                AHLCON INTERNATIONAL SCHOOL proudly presents the 10th Edition of DIGIT. For the very first time, DIGIT transcends internal boundaries to become an interschool event (DigiThon).
               </p>
               <p>
-                Join us for a series of engaging events and thrilling competitions :- all crafted to challenge your skills and ignite your creativity. This is your opportunity to showcase your talent, discover new knowledge, and connect with a vibrant community that shares your enthusiasm for technology.
+                This year, we invite the finest minds and aspiring technologists from across the region to convene and compete. This expanded platform will foster unprecedented collaboration, rigorous competition, and high-caliber execution across diverse digital disciplines.
+              </p>
+              <p>
+                The rich legacy of the past decade culminates here, creating a definitive arena for the leaders of tomorrow. Join us to showcase your talent, discover new knowledge, and connect with a vibrant community that shares your enthusiasm for technology.
               </p>
             </div>
             
@@ -234,15 +266,25 @@ export default function App() {
           </div>
           
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-white/5">
-            <p className="text-[10px] uppercase tracking-[0.3em] font-black text-white/30 hover:text-neon-cyan transition-colors cursor-default">
-              © 2026 DIGIT 10.0. SIMULATION RUNNING.
-            </p>
-            <div className="flex flex-col items-center md:items-end gap-2">
-              <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-black text-white/30 cursor-default">
-                INITIALIZED WITH <span className="text-neon-magenta animate-pulse">⚡</span> AND COFFEE BY DIGIT TEAM
+            <div className="text-[10px] uppercase tracking-[0.3em] font-black text-white/40 hover:text-neon-cyan transition-colors cursor-default hover:drop-shadow-[0_0_12px_rgba(0,255,255,0.5)]">
+              <TypewriterText text="© 2026 DIGIT 10.0. SIMULATION RUNNING." delay={0.2} />
+            </div>
+            <div className="flex flex-col items-center md:items-end gap-3">
+              <div className="flex flex-wrap justify-center md:justify-end items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-black text-white/40 cursor-default hover:text-white transition-colors duration-300">
+                <TypewriterText text="INITIALIZED WITH " delay={1.4} />
+                <motion.span 
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 2.2, type: "spring" }}
+                  className="text-neon-magenta animate-pulse drop-shadow-[0_0_10px_rgba(255,0,255,0.8)] mx-1 text-sm"
+                >
+                  ⚡
+                </motion.span>
+                <TypewriterText text=" AND COFFEE BY DIGIT TEAM" delay={2.4} />
               </div>
-              <div className="text-[10px] uppercase tracking-[0.3em] font-black text-white/30 hover:text-neon-cyan transition-colors cursor-default">
-                DESIGNED BY RUDRANSH KANDPAL
+              <div className="text-[11px] uppercase tracking-[0.4em] font-black text-neon-cyan/80 cursor-default border border-neon-cyan/20 bg-neon-cyan/5 px-4 py-2 rounded-full hover:bg-neon-cyan/10 hover:border-neon-cyan/50 hover:shadow-[0_0_15px_rgba(0,255,255,0.3)] transition-all duration-300 group">
+                <TypewriterText text="DESIGNED BY RUDRANSH KANDPAL" delay={3.4} className="group-hover:text-white transition-colors duration-300" />
               </div>
             </div>
           </div>

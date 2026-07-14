@@ -17,24 +17,25 @@ interface Speaker {
   initial: string;
   image?: string;
   bio?: string;
+  imagePosition?: string;
 }
 
 const fullSpeakers: Speaker[] = [
-  { name: "Ms Urvashi Singhal", role: "HOD Computer Science", company: "Digit Crew", initial: "US", image: "/Ms Uravshi Singhal.jpg", bio: "A visionary mentor guiding the next generation of tech leaders with over two decades of industry experience." },
-  { name: "Ms Nitika Wadhwa", role: "TGT Computer", company: "Digit Crew", initial: "NW", image: "/Ms Nitika Wadhwa.jpg", bio: "An inspiring educator fostering technical brilliance in young minds." },
-  { name: "Ms Deepti Chopra", role: "TGT Computer", company: "Digit Crew", initial: "DC", bio: "A dedicated mentor shaping the foundational coding skills of students." },
-  { name: "Ms Garima Mehra", role: "PRT Computer", company: "Digit Crew", initial: "GM", bio: "A passionate teacher introducing creative tech concepts to beginners." },
-  { name: "Rudransh Kandpal", role: "Web Developer", company: "Digit Crew", initial: "RK", image: "/Rudransh Kandpal.jpg", bio: "A technical innovator who excels at building and maintaining the event’s central digital hub." },
-  { name: "Aarav Tuteja", role: "Artistic expert", company: "Digit Crew", initial: "AT", image: "/Aarav Tuteja.jpg", bio: "An artistic leader who brings creative precision to both visual design and event operations." },
-  { name: "Ishika Mittal", role: "Graphic Designer", company: "Digit Crew", initial: "IM", image: "/Ishika Mittal.jpg", bio: "A versatile director who masterfully balances digital branding, design aesthetics, and event management." },
-  { name: "Sheza Khan", role: "Creative Head", company: "Digit Crew", initial: "SK", image: "/Sheza Khan.jpg", bio: "A meticulous coordinator who ensures data accuracy and oversees complex coding competitions." },
-  { name: "Prajanay Chandra", role: "Video Director", company: "Digit Crew", initial: "PC", image: "/Prajanay Chandra.jpg", bio: "A cinematic expert dedicated to crafting engaging trailers and promotional storytelling." },
-  { name: "Granth Shandilya", role: "Video Director", company: "Digit Crew", initial: "GS", image: "/Granth.jpg", bio: "A creative visionary who specializes in producing high-impact video content and teasers." },
-  { name: "Divyansh Rathore", role: "Event Head", company: "Digit Crew", initial: "DR", image: "/Divyansh Rathore.jpg", bio: "A strategic event head managing competitive operations and team dynamics." },
-  { name: "Hanisha Nagi", role: "Member", company: "Digit Crew", initial: "HN", bio: "A dedicated member contributing to the success of the event." },
-  { name: "Aaradhya Yadav", role: "Member", company: "Digit Crew", initial: "AY", bio: "An active team player involved in event operations." },
-  { name: "Navya Ahuja", role: "Member", company: "Digit Crew", initial: "NA", bio: "An enthusiastic team member bringing creative ideas to life." },
-  { name: "Ananya Gahlot", role: "Member", company: "Digit Crew", initial: "AG", bio: "A passionate contributor driving teamwork and execution." }
+  { name: "Ms Urvashi Singhal", role: "HOD Computer Science", company: "Digit Crew", initial: "US", image: "/Ms Uravshi Singhal.jpg", bio: "Leading the department with a strategic vision, she steers the team toward technological excellence and mentors the next generation of innovators." },
+  { name: "Ms Nitika Wadhwa", role: "TGT Computer", company: "Digit Crew", initial: "NW", image: "/Ms Nitika Wadhwa.jpg", imagePosition: "center top", bio: "Empowering students with essential coding foundations, she blends technical skill-building with engaging, future-ready classroom learning." },
+  { name: "Ms Deepti Chopra", role: "TGT Computer", company: "Digit Crew", initial: "DC", image: "/Ms Deepti Chopra.png", bio: "Inspiring digital curiosity, she guides students through complex computing concepts with patience, clarity, and dedicated mentorship." },
+  { name: "Ms Garima Mehra", role: "PRT Computer", company: "Digit Crew", initial: "GM", image: "/Ms Garima Mehra.png", bio: "Sparking an early love for technology, she introduces young minds to the fundamentals of digital literacy and creative computing." },
+  { name: "Rudransh Kandpal", role: "President", company: "Digit Crew", initial: "RK", image: "/Rudransh Kandpal.jpg", bio: "The driving force behind the team, he coordinates strategies, inspires collaboration, and leads everyone toward achieving their grandest collective goals." },
+  { name: "Ishika Mittal", role: "Vice President", company: "Digit Crew", initial: "IM", image: "/Ishika Mittal.jpg", bio: "A pillar of strategic support, she works closely with leadership to manage operations, resolve challenges, and keep the team unified." },
+  { name: "Prajanay Chandra", role: "Director", company: "Digit Crew", initial: "PC", image: "/Prajanay Chandra.jpg", bio: "The mastermind behind execution, he seamlessly orchestrates event workflows and ensures every project hits its creative mark perfectly." },
+  { name: "Granth Shandilya", role: "Cinematic Visionary", company: "Digit Crew", initial: "GS", image: "/Granth.jpg", bio: "Capturing the team's essence through a creative lens, he turns concepts into stunning visual narratives that engage and inspire." },
+  { name: "Sheza Khan", role: "Data Custodian", company: "Digit Crew", initial: "SK", image: "/Sheza Khan.jpg", bio: "The guardian of information, she meticulously manages critical backend data, ensuring seamless organization and high operational efficiency." },
+  { name: "Aarav Tuteja", role: "Social Media Manager", company: "Digit Crew", initial: "AT", image: "/Aarav Tuteja.jpg", bio: "Amplifying the team’s voice online, he crafts compelling content and strategy to maximize engagement across all digital platforms." },
+  { name: "Divyansh Rathore", role: "Event Head", company: "Digit Crew", initial: "DR", image: "/Divyansh Rathore.jpg", bio: "Turning ambitious blueprints into flawless realities, he coordinates logistics and ensures on-ground event operations run perfectly." },
+  { name: "Hanisha Nagi", role: "Event Head", company: "Digit Crew", initial: "HN", image: "/Hanisha Nagi.jpg", bio: "Bringing energy and precision to the core team, she thrives in fast-paced environments to deliver unforgettable event experiences." },
+  { name: "Aaradhya Yadav", role: "Event Head", company: "Digit Crew", initial: "AY", image: "/Aaradhya Yadav.jpg", bio: "Dedicated and detail-oriented, she manages scheduling, team coordination, and logistics to keep complex events moving flawlessly forward." },
+  { name: "Navya Ahuja", role: "Event Head", company: "Digit Crew", initial: "NA", image: "/Navya Ahuja.jpg", bio: "Focused on impactful execution, she channels creativity and structure into planning, ensuring every event leaves a lasting impression." },
+  { name: "Ananya Gahlot", role: "Event Head", company: "Digit Crew", initial: "AG", image: "/Ananya Gahlot.jpg", bio: "A natural coordinator, she brings people and resources together efficiently, transforming vision boards into highly successful live productions." }
 ];
 
 const initialSpeakers = fullSpeakers.slice(0, 4);
@@ -78,7 +79,7 @@ export default function Visionaries() {
         trigger: containerRef.current,
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 1, // Smooth scrubbing
+        scrub: 0.5, // Tighter scrubbing so it feels less viscous but still smooth
         invalidateOnRefresh: true,
       }
     });
@@ -93,7 +94,8 @@ export default function Visionaries() {
         scale: 0.2,
         opacity: 0,
         ease: 'power2.inOut',
-        duration: 1
+        duration: 1,
+        force3D: true
       }, 0);
     });
 
@@ -102,7 +104,8 @@ export default function Visionaries() {
       opacity: 0,
       y: -20,
       ease: 'power2.inOut',
-      duration: 0.5
+      duration: 0.5,
+      force3D: true
     }, 0);
 
     // Animate Logo: scale up to 1 and fade in
@@ -110,7 +113,8 @@ export default function Visionaries() {
       opacity: 1,
       scale: 1,
       ease: 'power2.inOut',
-      duration: 1
+      duration: 1,
+      force3D: true
     }, 0.2);
 
     // --- PHASE 2 ---
@@ -119,7 +123,8 @@ export default function Visionaries() {
       opacity: 1,
       scale: 3,
       ease: 'power2.in',
-      duration: 1.5
+      duration: 1.5,
+      force3D: true
     }, 1.5);
     
     // Logo zooms past camera and fades out
@@ -127,7 +132,8 @@ export default function Visionaries() {
       scale: 30, // massive zoom
       opacity: 0,
       ease: 'power3.in',
-      duration: 1.5
+      duration: 1.5,
+      force3D: true
     }, 1.5);
     
     // --- PHASE 3 ---
@@ -146,14 +152,16 @@ export default function Visionaries() {
           y: () => getDistanceToCenter(card).y,
           scale: 0,
           opacity: 0,
+          force3D: true
         },
         {
           x: 0,
           y: 0,
           scale: 1,
           opacity: 1,
-          ease: 'power4.out', // elastic feel
+          ease: 'power2.out', // smoother, less snappy
           duration: 1.5,
+          force3D: true
         },
         2.0 + (dist * 0.1) // Stagger outward from center
       );
@@ -170,8 +178,9 @@ export default function Visionaries() {
           const scrollDistance = Math.max(0, wrapperHeight - containerHeight + 80);
           return -scrollDistance;
         },
-        ease: 'none',
-        duration: 8 // Give plenty of scrolling duration for the increased length
+        ease: 'none', // linear scroll feels more like native scrolling
+        duration: 8, // Give plenty of scrolling duration for the increased length
+        force3D: true
       }, 3.5); // Starts right when cards finish exploding so it's one seamless motion
     }
 
@@ -182,7 +191,7 @@ export default function Visionaries() {
       ref={containerRef} 
       id="visionaries" 
       className="relative z-10 w-full"
-      style={{ height: '800vh' }}
+      style={{ height: '600vh' }}
     >
       <div 
         ref={stickyRef} 
@@ -212,7 +221,7 @@ export default function Visionaries() {
                     <img 
                       src={speaker.image} 
                       alt={speaker.name} 
-                      className="w-full h-full object-cover object-center"
+                      className="w-full h-full object-cover" style={{ objectPosition: speaker.imagePosition || 'center' }}
                       onError={(e) => {
                         (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=300';
                       }}
@@ -274,7 +283,7 @@ export default function Visionaries() {
                        <img 
                          src={speaker.image} 
                          alt={speaker.name} 
-                         className="w-full h-full object-cover object-center"
+                         className="w-full h-full object-cover" style={{ objectPosition: speaker.imagePosition || 'center' }}
                          onError={(e) => {
                            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=300';
                          }}
@@ -324,7 +333,7 @@ export default function Visionaries() {
                   <img
                     src={activeSpeaker.image}
                     alt={activeSpeaker.name}
-                    className="object-contain object-center max-h-full max-w-full relative z-10"
+                    className="object-contain max-h-full max-w-full relative z-10" style={{ objectPosition: activeSpeaker.imagePosition || 'center' }}
                   />
                 ) : (
                   <div className="flex items-center justify-center w-full h-full text-6xl font-black text-neon-cyan/50 font-display">
