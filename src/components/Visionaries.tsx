@@ -21,7 +21,7 @@ interface Speaker {
 }
 
 const fullSpeakers: Speaker[] = [
-  { name: "Ms Urvashi Singhal", role: "HOD Computer Science", company: "Digit Crew", initial: "US", image: "/Ms Uravshi Singhal.jpg", bio: "Leads the computer science department, guiding the team and mentoring students in technology." },
+  { name: "Ms Urvashi Singhal", role: "HOD Computer Science", company: "Digit Crew", initial: "US", image: "/Ms Uravshi Singhal.jpg", imagePosition: "center top", bio: "Leads the computer science department, guiding the team and mentoring students in technology." },
   { name: "Ms Nitika Wadhwa", role: "TGT Computer", company: "Digit Crew", initial: "NW", image: "/Ms Nitika Wadhwa.jpg", imagePosition: "center top", bio: "Teaches coding foundations to students, making classroom learning technical and engaging." },
   { name: "Ms Deepti Chopra", role: "TGT Computer", company: "Digit Crew", initial: "DC", image: "/Ms Deepti Chopra.png", bio: "Guides students through computing concepts with patience and mentorship, inspiring their interest in technology." },
   { name: "Ms Garima Mehra", role: "PRT Computer", company: "Digit Crew", initial: "GM", image: "/Ms Garima Mehra.png", bio: "Introduces young students to the basics of computers and digital literacy, building their tech skills early." },
@@ -208,16 +208,16 @@ export default function Visionaries() {
           </div>
           
           {/* 4 Initial Cards - Phase 1 */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl px-4 grid grid-cols-2 md:grid-cols-4 gap-6 pointer-events-none">
             {initialSpeakers.map((speaker, i) => (
               <div
                 key={speaker.name}
                 ref={(el) => { cardsRef.current[i] = el; }}
                 onClick={() => setActiveSpeaker(speaker)}
                 style={{ willChange: 'transform, opacity' }}
-                className="bg-white/5 backdrop-blur-md p-8 rounded-[24px] border border-white/5 text-center transition-shadow duration-300 pointer-events-auto shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer"
+                className="bg-white/5 backdrop-blur-md p-4 md:p-8 rounded-[16px] md:rounded-[24px] border border-white/5 text-center transition-shadow duration-300 pointer-events-auto shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer"
               >
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-gray-700 to-purple-900 mx-auto mb-6 flex items-center justify-center text-2xl font-display font-black text-white overflow-hidden relative shadow-inner shadow-black/50">
+                <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-gray-700 to-purple-900 mx-auto mb-6 flex items-center justify-center text-2xl font-display font-black text-white overflow-hidden relative shadow-inner shadow-black/50">
                   {speaker.image ? (
                     <img 
                       src={speaker.image} 
@@ -231,8 +231,8 @@ export default function Visionaries() {
                     speaker.initial
                   )}
                 </div>
-                <h3 className="text-xl font-bold mb-1 text-white">{speaker.name}</h3>
-                <p className="text-sm font-bold text-neon-cyan mb-4 font-mono uppercase tracking-wider drop-shadow-[0_0_5px_rgba(0,255,255,0.4)]">{speaker.role}</p>
+                <h3 className="text-sm md:text-xl font-bold mb-1 text-white">{speaker.name}</h3>
+                <p className="text-xs md:text-sm font-bold text-neon-cyan mb-4 font-mono uppercase tracking-wider drop-shadow-[0_0_5px_rgba(0,255,255,0.4)]">{speaker.role}</p>
                 <div className="flex justify-center gap-4 mt-auto">
                   <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/40 hover:text-neon-cyan hover:bg-neon-cyan/10 transition-colors cursor-pointer border border-white/5">
                     <Globe size={14} />
