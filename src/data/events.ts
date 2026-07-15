@@ -59,7 +59,6 @@ export const categories: Category[] = [
         venue: "Primary Computer Lab (basement)", 
         image: "/digi-magic.png", 
         eventHead: "Ananya Gahlot", eventHeadNumber: "+91 9810743364",
-        eventHeadNumber: "9810743364",
         teamSize: "Individual",
         themes: ["SDG 3: Good Health and Well-Being", "SDG 13: Climate Action"],
         submissionFormat: ".png or .jpg format",

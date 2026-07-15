@@ -3,11 +3,12 @@ import { motion } from 'motion/react';
 import { cn } from '../lib/utils';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 
-const ITEMS = [
+type Item = { id: number, title: string, subtitle: string, video?: string, image?: string };
+const ITEMS: Item[] = [
   { id: 0, title: 'OFFICIAL TRAILER', subtitle: 'DIGIT 10.0', video: '/trailer.mp4' },
 ];
 
-function ParallaxCard({ item, onTrailerEnd }: { item: typeof ITEMS[0], onTrailerEnd?: () => void }) {
+function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
