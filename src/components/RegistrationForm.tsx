@@ -10,9 +10,9 @@ const REGISTRATION_LINKS = [
     bg: "bg-amber-400/5",
     hoverBg: "hover:bg-amber-400/10",
     events: [
-      { name: "DigiMagic", link: "#" },
-      { name: "DigiPoster", link: "#" },
-      { name: "DigiSlides", link: "#" },
+      { name: "DigiMagic", link: "https://docs.google.com/forms/d/e/1FAIpQLSc8EG57o4A2Pw7kOJuPL9gJggOoGHZgBqYmbieBBAfdogFGvg/viewform?usp=header" },
+      { name: "DigiPoster", link: "https://docs.google.com/forms/d/e/1FAIpQLSczZFpFJKOMVQr3VOJb6yuyzJYoLjSE_3nQ4BseSftSD_0kEg/viewform?usp=publish-editor" },
+      { name: "DigiSlides", link: "https://docs.google.com/forms/d/e/1FAIpQLSc0MgJPoUwAOcSG_UtGBAzvPlr-O7FCDNOJc7YcE3r5vLptTA/viewform?usp=publish-editor" },
     ]
   },
   {
@@ -47,7 +47,9 @@ const REGISTRATION_LINKS = [
     bg: "bg-emerald-400/5",
     hoverBg: "hover:bg-emerald-400/10",
     events: [
-      { name: "DigiThon", link: "https://forms.gle/yqvhAApcUWGkr3qi6" }
+      { name: "DigiThon", link: "https://forms.gle/yqvhAApcUWGkr3qi6" },
+      { name: "DigiScratch", link: "https://forms.gle/yqvhAApcUWGkr3qi6" },
+      { name: "DigiInterSchool", link: "https://forms.gle/yqvhAApcUWGkr3qi6" }
     ]
   }
 ];

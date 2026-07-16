@@ -1,0 +1,1 @@
+sed -i 's/import { cn } from "..\/lib\/utils";/import { cn } from "..\/lib\/utils";\nimport { Bot } from "lucide-react";\nimport EventModal from ".\/EventModal";\nimport { EventItem } from "..\/data\/events";/g' src/components/InterschoolSpecial.tsx

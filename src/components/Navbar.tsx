@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 
-const NAV_ITEMS = ['JOURNEY', 'EVENTS', 'OUR TEAM', 'TEASER', 'RESULTS'];
+const NAV_ITEMS = ['JOURNEY', 'INTRASCHOOL', 'INTERSCHOOL', 'OUR TEAM', 'RESULTS'];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('');
@@ -9,8 +9,9 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = NAV_ITEMS.map(item => {
-        if (item === 'TEASER') return 'teaser';
         if (item === 'JOURNEY') return 'legacy';
+        if (item === 'INTRASCHOOL') return 'events';
+        if (item === 'INTERSCHOOL') return 'interschool';
         if (item === 'OUR TEAM') return 'visionaries';
         return item.toLowerCase();
       });
@@ -66,7 +67,7 @@ export default function Navbar() {
         {/* Navigation Links */}
         <div className="hidden lg:flex items-center gap-3 xl:gap-5">
           {NAV_ITEMS.map((item, index) => {
-            const id = item === 'TEASER' ? 'teaser' : item === 'JOURNEY' ? 'legacy' : item === 'OUR TEAM' ? 'visionaries' : item.toLowerCase();
+            const id = item === 'JOURNEY' ? 'legacy' : item === 'INTRASCHOOL' ? 'events' : item === 'INTERSCHOOL' ? 'interschool' : item === 'OUR TEAM' ? 'visionaries' : item.toLowerCase();
             const isActive = activeSection === id;
             
             return (

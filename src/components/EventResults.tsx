@@ -8,7 +8,7 @@ const RESULTS_DATA = [
   {
     id: 'digimagic-2026',
     eventName: 'DigiMagic',
-    category: 'Preparatory Stage',
+    category: 'Intra-School: Preparatory Stage',
     genre: 'Creative',
     icon: Brush,
     image: '/digi-magic.png',
@@ -21,7 +21,7 @@ const RESULTS_DATA = [
   {
     id: 'digiposter-2026',
     eventName: 'DigiPoster',
-    category: 'Preparatory Stage',
+    category: 'Intra-School: Preparatory Stage',
     genre: 'Design',
     icon: ImageIcon,
     image: '/digi-poster.png',
@@ -34,7 +34,7 @@ const RESULTS_DATA = [
   {
     id: 'digislides-2026',
     eventName: 'DigiSlides',
-    category: 'Preparatory Stage',
+    category: 'Intra-School: Preparatory Stage',
     genre: 'Presentation',
     icon: MonitorPlay,
     image: '/digi-slides.png',
@@ -47,7 +47,7 @@ const RESULTS_DATA = [
   {
     id: 'digitales-2026',
     eventName: 'DigiTales',
-    category: 'Middle Stage',
+    category: 'Intra-School: Middle Stage',
     genre: 'Storytelling',
     icon: Clapperboard,
     image: '/digi-tales.png',
@@ -60,7 +60,7 @@ const RESULTS_DATA = [
   {
     id: 'digiquiz-2026',
     eventName: 'DigiQuiz',
-    category: 'Middle Stage',
+    category: 'Intra-School: Middle Stage',
     genre: 'Knowledge',
     icon: Lightbulb,
     image: '/digi-quiz.png',
@@ -73,10 +73,10 @@ const RESULTS_DATA = [
   {
     id: 'digibuild-2026',
     eventName: 'DigiBuild',
-    category: 'Middle Stage',
+    category: 'Intra-School: Middle Stage',
     genre: 'Technical',
     icon: Bot,
-    image: '/digi-tales.png',
+    image: '/digi-build.png',
     winners: [
       { position: '1ST', name: 'No Result', grade: 'TBD' },
       { position: '2ND', name: 'No Result', grade: 'TBD' },
@@ -86,7 +86,7 @@ const RESULTS_DATA = [
   {
     id: 'digitote-2026',
     eventName: 'DigiTote',
-    category: 'Senior Stage',
+    category: 'Intra-School: Senior Stage',
     genre: 'Design',
     icon: ShoppingBag,
     image: '/digi-tote.png',
@@ -102,7 +102,33 @@ const RESULTS_DATA = [
     category: 'Inter School Events',
     genre: 'Technical',
     icon: Bot,
+    image: '/digi-thon.png',
+    winners: [
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
+    ]
+  },
+  {
+    id: 'digiscratch-2026',
+    eventName: 'DigiScratch',
+    category: 'Inter School Events',
+    genre: 'Creative',
+    icon: Bot,
     image: '/digi-bug.png',
+    winners: [
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
+    ]
+  },
+  {
+    id: 'digiinterschool-2026',
+    eventName: 'DigiInterSchool',
+    category: 'Inter School Events',
+    genre: 'Technical',
+    icon: Eye,
+    image: '/digi-arena.png',
     winners: [
       { position: '1ST', name: 'No Result', grade: 'TBD' },
       { position: '2ND', name: 'No Result', grade: 'TBD' },
@@ -112,7 +138,7 @@ const RESULTS_DATA = [
   {
     id: 'digibattles-2026',
     eventName: 'DigiBattles',
-    category: 'Senior Stage',
+    category: 'Intra-School: Senior Stage',
     genre: 'Gaming',
     icon: Gamepad2,
     image: '/digi-battles.png',
@@ -125,10 +151,10 @@ const RESULTS_DATA = [
   {
     id: 'digimeme-2026',
     eventName: 'DigiMeme',
-    category: 'Senior Stage',
+    category: 'Intra-School: Senior Stage',
     genre: 'Meme',
     icon: ImageIcon,
-    image: '/digi-tales.png',
+    image: '/digi-meme.png',
     winners: [
       { position: '1ST', name: 'No Result', grade: 'TBD' },
       { position: '2ND', name: 'No Result', grade: 'TBD' },
@@ -138,10 +164,10 @@ const RESULTS_DATA = [
   {
     id: 'digicipher-2026',
     eventName: 'DigiCipher',
-    category: 'Senior Stage',
+    category: 'Intra-School: Senior Stage',
     genre: 'Cryptography',
     icon: Bug,
-    image: '/digi-tales.png',
+    image: '/digi-cipher.png',
     winners: [
       { position: '1ST', name: 'No Result', grade: 'TBD' },
       { position: '2ND', name: 'No Result', grade: 'TBD' },
@@ -150,7 +176,7 @@ const RESULTS_DATA = [
   }
 ];
 
-const CATEGORIES = ['All', 'Preparatory Stage', 'Middle Stage', 'Seniors Stage'];
+const CATEGORIES = ['All', 'Intra-School: Preparatory Stage', 'Intra-School: Middle Stage', 'Intra-School: Senior Stage', 'Inter School Events'];
 const GENRES = ['All', 'Creative', 'Design', 'Tech', 'Coding', 'Gaming'];
 
 export default function EventResults() {

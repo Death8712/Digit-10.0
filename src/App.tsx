@@ -10,9 +10,9 @@ import CustomCursor from './components/CustomCursor';
 import Timeline from './components/Timeline';
 import EventModal from './components/EventModal';
 import { categories, EventItem } from './data/events';
-import { Trailer } from './components/Trailer';
 import EventResults from './components/EventResults';
 import RegistrationForm from './components/RegistrationForm';
+import InterschoolSpecial from "./components/InterschoolSpecial";
 import Visionaries from './components/Visionaries';
 import StarryBackground from './components/StarryBackground';
 
@@ -200,7 +200,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="reveal-left">
             <span className="text-neon-cyan font-black uppercase tracking-widest text-xs mb-4 block">The Main Stage</span>
-            <h2 className="text-4xl md:text-6xl font-display font-black">Signature Events</h2>
+            <h2 className="text-4xl md:text-6xl font-display font-black">Intra-School Events</h2>
           </div>
           <p className="max-w-md text-white/80 font-display font-medium text-sm tracking-widest uppercase leading-relaxed reveal-right">
             Master the logic. Own the canvas. Claim the throne. High-stakes challenges for those who refuse to play it safe.
@@ -209,11 +209,10 @@ export default function App() {
         <BentoGrid />
       </section>
 
+      <InterschoolSpecial />
+
       {/* Speakers Section */}
       <Visionaries />
-
-      {/* Trailer Section */}
-      <Trailer />
 
       {/* Registration Section */}
       <RegistrationForm />

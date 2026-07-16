@@ -1,0 +1,1 @@
+sed -i 's/The ultimate hackathon testing endurance, creativity, and coding prowess. Build a solution that changes the world./Build an AI-powered tool that helps process complexity, understand tradeoffs, and move from uncertainty to meaningful action — while preserving privacy, minimizing harm, and supporting human judgment./g' src/components/InterschoolSpecial.tsx
