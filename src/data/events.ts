@@ -83,7 +83,7 @@ export const categories: Category[] = [
         themes: ["SDG 4: Quality Education", "OR", "SDG 15: Life on Land"],
         submissionFormat: ".png format",
         judgementCriteria: ["Originality", "Presentation", "Smart use of tools", "Creativity", "Relevance to the topic"],
-        requirements: "- Design a poster in Canva.\n- Students should make creative pictures, templates, backgrounds, etc.\n- File Naming Convention: Eventname_Studentname\n- Send your entries latest by 10th August, 2026."
+        requirements: "- Design a poster in Canva.\n- Students should apply creative pictures, templates, backgrounds, etc.\n- File Naming Convention: Eventname_Studentname\n- Send your entries latest by 10th August, 2026."
       },
       { 
         title: "DigiSlides", registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSc0MgJPoUwAOcSG_UtGBAzvPlr-O7FCDNOJc7YcE3r5vLptTA/viewform?usp=publish-editor", 
