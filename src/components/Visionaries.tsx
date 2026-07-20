@@ -27,10 +27,10 @@ const fullSpeakers: Speaker[] = [
   { name: "Ms Garima Mehra", role: "Computer Visionary", company: "Digit Crew", initial: "GM", image: "/Ms Garima Mehra.png", bio: "Introduces young students to the basics of computers and digital literacy, building their tech skills early." },
   { name: "Rudransh Kandpal", role: "President", company: "Digit Crew", initial: "RK", image: "/Rudransh Kandpal.jpg", bio: "Leads the team, plans strategies, and makes sure everyone works together to achieve our goals." },
   { name: "Ishika Mittal", role: "Vice President", company: "Digit Crew", initial: "IM", image: "/Ishika Mittal.jpg", bio: "Helps in managing team operations, solving problems, and keeping the team organized." },
-  { name: "Prajanay Chandra", role: "Video Director", company: "Digit Crew", initial: "PC", image: "/Prajanay Chandra.jpg", bio: "Creates and directs videos, making sure our digital content looks great." },
-  { name: "Granth Shandilya", role: "Cinematic Visionary", company: "Digit Crew", initial: "GS", image: "/Granth.jpg", bio: "Captures the team's work on camera and turns ideas into amazing visual stories." },
-  { name: "Sheza Khan", role: "Content Director", company: "Digit Crew", initial: "SK", image: "/Sheza Khan.jpg", bio: "Manages our content and information, keeping everything well-organized and running smoothly." },
-  { name: "Aarav Tuteja", role: "Media Manager", company: "Digit Crew", initial: "AT", image: "/Aarav Tuteja.jpg", bio: "Handles our online presence by creating posts and strategies to grow our social media accounts." },
+  { name: "Sheza Khan", role: "Director", company: "Digit Crew", initial: "SK", image: "/Sheza Khan.jpg", bio: "Manages our content and information, keeping everything well-organized and running smoothly." },
+  { name: "Aarav Tuteja", role: "Media Lead", company: "Digit Crew", initial: "AT", image: "/Aarav Tuteja.jpg", bio: "Handles our online presence by creating posts and strategies to grow our social media accounts." },
+  { name: "Granth Shandilya", role: "Video Visionary", company: "Digit Crew", initial: "GS", image: "/Granth.jpg", bio: "Captures the team's work on camera and turns ideas into amazing visual stories." },
+  { name: "Prajanay Chandra", role: "Video Visionary", company: "Digit Crew", initial: "PC", image: "/Prajanay Chandra.jpg", bio: "Creates and directs videos, making sure our digital content looks great." },
   { name: "Divyansh Rathore", role: "Event Head", company: "Digit Crew", initial: "DR", image: "/Divyansh Rathore.jpg", bio: "Manages event plans and coordinates logistics so everything runs smoothly on the day of the event." },
   { name: "Vivaan Tripathi", role: "Event Head", company: "Digit Crew", initial: "VT", image: "/Vivaan Tripathi.png", bio: "Creates challenges and manages the technical parts of the events for the participants." },
   { name: "Aditya Pandey", role: "Event Head", company: "Digit Crew", initial: "AP", image: "/Aaditya Pandey.png", bio: "Event Head of DigiMeme" },
@@ -269,7 +269,7 @@ export default function Visionaries() {
           <div className="flex-1 w-full flex items-start justify-center relative min-h-0 overflow-hidden h-[62vh] md:h-[70vh] pt-4">
             <div 
               ref={gridWrapperRef}
-              className="w-full max-w-5xl px-2 md:px-4 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 pointer-events-auto relative"
+              className="w-full max-w-5xl px-2 md:px-4 grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4 pointer-events-auto relative"
               style={{ willChange: 'transform' }}
             >
               {fullSpeakers.map((speaker, i) => (
@@ -278,7 +278,10 @@ export default function Visionaries() {
                   ref={(el) => { fullCardsRef.current[i] = el; }}
                   onClick={() => setActiveSpeaker(speaker)}
                   style={{ willChange: 'transform, opacity' }}
-                  className="bg-cyber-black/80 backdrop-blur-md py-4 px-3 md:py-5 md:px-4 rounded-[20px] md:rounded-[24px] border border-neon-cyan/20 text-center shadow-[0_0_15px_rgba(0,255,255,0.1)] hover:border-neon-cyan transition-colors cursor-pointer w-full flex flex-col justify-center items-center relative overflow-hidden min-h-[150px] md:min-h-[170px]"
+                  className={cn(
+                    "bg-cyber-black/80 backdrop-blur-md py-4 px-3 md:py-5 md:px-4 rounded-[20px] md:rounded-[24px] border border-neon-cyan/20 text-center shadow-[0_0_15px_rgba(0,255,255,0.1)] hover:border-neon-cyan transition-colors cursor-pointer w-full flex flex-col justify-center items-center relative overflow-hidden min-h-[150px] md:min-h-[170px]",
+                    i < 4 ? "col-span-1 md:col-span-3" : "col-span-1 md:col-span-4"
+                  )}
                 >
                    <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 xl:w-24 xl:h-24 rounded-full bg-gradient-to-br from-neon-cyan/10 to-purple-900/40 border border-neon-cyan/30 mx-auto mb-2 md:mb-3 flex items-center justify-center text-lg font-display font-black text-neon-cyan relative shadow-inner overflow-hidden shrink-0">
                      {speaker.image ? (

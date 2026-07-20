@@ -11,6 +11,7 @@ import Timeline from './components/Timeline';
 import EventModal from './components/EventModal';
 import { categories, EventItem } from './data/events';
 import EventResults from './components/EventResults';
+import ContactUs from './components/ContactUs';
 import RegistrationForm from './components/RegistrationForm';
 import InterschoolSpecial from "./components/InterschoolSpecial";
 import Visionaries from './components/Visionaries';
@@ -219,6 +220,8 @@ export default function App() {
 
       {/* Results Section */}
       <EventResults />
+
+      
 
       {/* Footer */}
       <footer className="py-20 border-t border-white/5 relative z-10">

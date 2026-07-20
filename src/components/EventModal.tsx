@@ -115,9 +115,9 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
                         <Target size={18} className={categoryAccent} />
                         <h3 className="font-display font-bold uppercase tracking-wider text-sm">Objectives</h3>
                       </div>
-                      <ul className="list-disc list-inside text-white/60 text-sm md:text-base space-y-1">
-                        {event.objectives.map((objective, idx) => (
-                          <li key={idx}>{objective}</li>
+                      <ul className="text-white/60 text-sm md:text-base space-y-1">
+                        {event.themes.map((theme, idx) => (
+                          <li key={idx} className={theme.trim() === 'OR' ? 'list-none text-center font-bold my-1 text-white/40 text-xs' : 'list-disc list-inside'}>{theme}</li>
                         ))}
                       </ul>
                     </div>

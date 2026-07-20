@@ -56,15 +56,15 @@ export const categories: Category[] = [
         icon: Brush, 
         size: "col-span-1", 
         isLive: true, 
-        about: "Students will design vibrant digital posters on TuxPaint or Paint3D, bringing to life the theme of either SDG-3, Good Health and Well-Being or SDG-13, Climate Action.\n\nPreliminary Round: Online Submission.\nFinal Round: Offline (Selected students will present/explain their work for 2–3 minutes).\n\nCore Rule: All entries must be the original creation of the students.", 
-        venue: "Primary Computer Lab (basement)", 
+        about: "Students will design vibrant digital posters on TuxPaint or Paint3D, bringing to life the theme of either SDG-3, Good Health and Well-Being or SDG-13, Climate Action.\n\n- Preliminary Round: Online Submission.\n- Final Round: Offline (Selected students will present/explain their work for 2–3 minutes).\n\n- Core Rule: All entries must be the original creation of the students.", 
+        venue: "Primary Computer Lab (basement) (Final Round)", 
         image: "/digi-magic.png", 
         eventHead: "Ananya Gahlot", eventHeadNumber: "+91 9810743364",
         teamSize: "Individual",
-        themes: ["SDG 3: Good Health and Well-Being", "SDG 13: Climate Action"],
+        themes: ["SDG 3: Good Health and Well-Being", "OR", "SDG 13: Climate Action"],
         submissionFormat: ".png or .jpg format",
-        judgementCriteria: ["Content", "Creativity", "Smart use of tools", "Presentation", "Relevance to the topic"],
-        requirements: "Create an artwork related to the given themes. Students should use templates, pictures, effects, and other relevant tools.\n\nSend your entries latest by 10th August, 2026."
+        judgementCriteria: ["Originality", "Creativity", "Smart use of tools", "Presentation", "Relevance to the topic"],
+        requirements: "- Create an artwork related to the given themes.\n- Students should use templates, pictures, effects, and other relevant tools.\n- File Naming Convention: Eventname_Studentname\n- Send your entries latest by 10th August, 2026."
       },
       { 
         title: "DigiPoster", registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSczZFpFJKOMVQr3VOJb6yuyzJYoLjSE_3nQ4BseSftSD_0kEg/viewform?usp=publish-editor", 
@@ -75,15 +75,15 @@ export const categories: Category[] = [
         icon: ImageIcon, 
         size: "col-span-1", 
         featured: true, 
-        about: "DigiPoster encourages students to explore their creativity on Canva by designing a poster or E-Book Cover on either SDG 15, Life on Land or SDG 4, Quality Education.\n\nPreliminary Round: Online Submission.\nFinal Round: Offline (Selected students will present/explain their work for 2–3 minutes).\n\nCore Rule: All entries must be the original creation of the students.", 
-        venue: "Primary Computer Lab (basement)", 
+        about: "DigiPoster encourages students to explore their creativity on Canva by designing a Poster on either SDG 4, Quality Education OR SDG 15, Life on Land.\n\n- Preliminary Round: Online Submission.\n- Final Round: Offline (Selected students will present/explain their work for 2–3 minutes).\n\n- Core Rule: All entries must be the original creation of the students.", 
+        venue: "Primary Computer Lab (basement) (Final Round)", 
         image: "/digi-poster.png", 
         eventHead: "Ananya Gahlot", eventHeadNumber: "+91 9810743364",
         teamSize: "Individual",
-        themes: ["SDG 15: Life on Land", "SDG 4: Quality Education"],
-        submissionFormat: "PNG format",
-        judgementCriteria: ["Content", "Presentation", "Smart use of tools", "Creativity", "Relevance to the topic"],
-        requirements: "Design a poster/E-Book Cover in Canva. Students should make creative pictures, templates, backgrounds, etc. File Naming Convention: Event Name_Student Name\n\nSend your entries latest by 10th August, 2026."
+        themes: ["SDG 4: Quality Education", "OR", "SDG 15: Life on Land"],
+        submissionFormat: ".png format",
+        judgementCriteria: ["Originality", "Presentation", "Smart use of tools", "Creativity", "Relevance to the topic"],
+        requirements: "- Design a poster in Canva.\n- Students should make creative pictures, templates, backgrounds, etc.\n- File Naming Convention: Eventname_Studentname\n- Send your entries latest by 10th August, 2026."
       },
       { 
         title: "DigiSlides", registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSc0MgJPoUwAOcSG_UtGBAzvPlr-O7FCDNOJc7YcE3r5vLptTA/viewform?usp=publish-editor", 
@@ -93,15 +93,15 @@ export const categories: Category[] = [
         software: "Canva", 
         icon: Presentation, 
         size: "col-span-1", 
-        about: "In DigiSlides, students step into the world of creative expression, creating engaging presentations on Canva to highlight the importance of the chosen topic.\n\nPreliminary Round: Online Submission.\nFinal Round: Offline (Selected students will present/explain their work for 2–3 minutes).\n\nCore Rule: All entries must be the original creation of the students.", 
-        venue: "Primary Computer Lab (basement)", 
+        about: "In DigiSlides, students step into the world of creative expression, creating engaging presentations on Canva to highlight the importance of the chosen topic.\n\n- Preliminary Round: Online Submission.\n- Final Round: Offline (Selected students will present/explain their work for 2–3 minutes).\n\n- Core Rule: All entries must be the original creation of the students.", 
+        venue: "Primary Computer Lab (basement) (Final Round)", 
         image: "/digi-slides.png", 
         eventHead: "Navya Ahuja", eventHeadNumber: "+91 7827651124",
         teamSize: "Individual",
-        themes: ["SDG 6: Clean Water and Sanitation", "SDG 14: Life Below Water"],
+        themes: ["SDG 6: Clean Water and Sanitation", "OR", "SDG 14: Life Below Water"],
         submissionFormat: ".pptx format",
-        judgementCriteria: ["Content", "Coding (Note: explicitly listed under judgment criteria)", "Smart use of tools/Creativity", "Presentation", "Relevance to the topic"],
-        requirements: "Create a presentation highlighting the importance of the chosen topic. Length: Exactly 10 Slides. Language: English language only.\n\nSend your entries latest by 10th August, 2026."
+        judgementCriteria: ["Originality", "Coding (Note: explicitly listed under judgment criteria)", "Smart use of tools/Creativity", "Presentation", "Relevance to the topic"],
+        requirements: "- Create a presentation highlighting the importance of the chosen topic.\n- Length: Exactly 10 Slides.\n- Language: English language only.\n- File Naming Convention: Eventname_Studentname\n- Send your entries latest by 10th August, 2026."
       },
     ]
   },

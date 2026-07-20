@@ -8,10 +8,10 @@ const targetArray = `const fullSpeakers: Speaker[] = [
   { name: "Ms Garima Mehra", role: "Computer Visionary", company: "Digit Crew", initial: "GM", image: "/Ms Garima Mehra.png", bio: "Introduces young students to the basics of computers and digital literacy, building their tech skills early." },
   { name: "Rudransh Kandpal", role: "President", company: "Digit Crew", initial: "RK", image: "/Rudransh Kandpal.jpg", bio: "Leads the team, plans strategies, and makes sure everyone works together to achieve our goals." },
   { name: "Ishika Mittal", role: "Vice President", company: "Digit Crew", initial: "IM", image: "/Ishika Mittal.jpg", bio: "Helps in managing team operations, solving problems, and keeping the team organized." },
-  { name: "Prajanay Chandra", role: "Video Director", company: "Digit Crew", initial: "PC", image: "/Prajanay Chandra.jpg", bio: "Creates and directs videos, making sure our digital content looks great." },
-  { name: "Granth Shandilya", role: "Cinematic Visionary", company: "Digit Crew", initial: "GS", image: "/Granth.jpg", bio: "Captures the team's work on camera and turns ideas into amazing visual stories." },
-  { name: "Sheza Khan", role: "Content Director", company: "Digit Crew", initial: "SK", image: "/Sheza Khan.jpg", bio: "Manages our content and information, keeping everything well-organized and running smoothly." },
   { name: "Aarav Tuteja", role: "Media Manager", company: "Digit Crew", initial: "AT", image: "/Aarav Tuteja.jpg", bio: "Handles our online presence by creating posts and strategies to grow our social media accounts." },
+  { name: "Prajanay Chandra", role: "Video Visionary", company: "Digit Crew", initial: "PC", image: "/Prajanay Chandra.jpg", bio: "Creates and directs videos, making sure our digital content looks great." },
+  { name: "Granth Shandilya", role: "Video Visionary", company: "Digit Crew", initial: "GS", image: "/Granth.jpg", bio: "Captures the team's work on camera and turns ideas into amazing visual stories." },
+  { name: "Sheza Khan", role: "Director", company: "Digit Crew", initial: "SK", image: "/Sheza Khan.jpg", bio: "Manages our content and information, keeping everything well-organized and running smoothly." },
   { name: "Divyansh Rathore", role: "Event Head", company: "Digit Crew", initial: "DR", image: "/Divyansh Rathore.jpg", bio: "Manages event plans and coordinates logistics so everything runs smoothly on the day of the event." },
   { name: "Vivaan Tripathi", role: "Event Head", company: "Digit Crew", initial: "VT", image: "/Vivaan Tripathi.png", bio: "Creates challenges and manages the technical parts of the events for the participants." },
   { name: "Aditya Pandey", role: "Event Head", company: "Digit Crew", initial: "AP", image: "/Aaditya Pandey.png", bio: "Event Head of DigiMeme" },
@@ -28,10 +28,10 @@ const replacementArray = `const fullSpeakers: Speaker[] = [
   { name: "Ms Garima Mehra", role: "Computer Visionary", company: "Digit Crew", initial: "GM", image: "/Ms Garima Mehra.png", bio: "Introduces young students to the basics of computers and digital literacy, building their tech skills early." },
   { name: "Rudransh Kandpal", role: "President", company: "Digit Crew", initial: "RK", image: "/Rudransh Kandpal.jpg", bio: "Leads the team, plans strategies, and makes sure everyone works together to achieve our goals." },
   { name: "Ishika Mittal", role: "Vice President", company: "Digit Crew", initial: "IM", image: "/Ishika Mittal.jpg", bio: "Helps in managing team operations, solving problems, and keeping the team organized." },
-  { name: "Aarav Tuteja", role: "Media Manager", company: "Digit Crew", initial: "AT", image: "/Aarav Tuteja.jpg", bio: "Handles our online presence by creating posts and strategies to grow our social media accounts." },
-  { name: "Prajanay Chandra", role: "Video Visionary", company: "Digit Crew", initial: "PC", image: "/Prajanay Chandra.jpg", bio: "Creates and directs videos, making sure our digital content looks great." },
-  { name: "Granth Shandilya", role: "Video Visionary", company: "Digit Crew", initial: "GS", image: "/Granth.jpg", bio: "Captures the team's work on camera and turns ideas into amazing visual stories." },
   { name: "Sheza Khan", role: "Director", company: "Digit Crew", initial: "SK", image: "/Sheza Khan.jpg", bio: "Manages our content and information, keeping everything well-organized and running smoothly." },
+  { name: "Aarav Tuteja", role: "Media Lead", company: "Digit Crew", initial: "AT", image: "/Aarav Tuteja.jpg", bio: "Handles our online presence by creating posts and strategies to grow our social media accounts." },
+  { name: "Granth Shandilya", role: "Video Visionary", company: "Digit Crew", initial: "GS", image: "/Granth.jpg", bio: "Captures the team's work on camera and turns ideas into amazing visual stories." },
+  { name: "Prajanay Chandra", role: "Video Visionary", company: "Digit Crew", initial: "PC", image: "/Prajanay Chandra.jpg", bio: "Creates and directs videos, making sure our digital content looks great." },
   { name: "Divyansh Rathore", role: "Event Head", company: "Digit Crew", initial: "DR", image: "/Divyansh Rathore.jpg", bio: "Manages event plans and coordinates logistics so everything runs smoothly on the day of the event." },
   { name: "Vivaan Tripathi", role: "Event Head", company: "Digit Crew", initial: "VT", image: "/Vivaan Tripathi.png", bio: "Creates challenges and manages the technical parts of the events for the participants." },
   { name: "Aditya Pandey", role: "Event Head", company: "Digit Crew", initial: "AP", image: "/Aaditya Pandey.png", bio: "Event Head of DigiMeme" },
@@ -43,33 +43,112 @@ const replacementArray = `const fullSpeakers: Speaker[] = [
 
 content = content.replace(targetArray, replacementArray);
 
-const targetGrid = `className="w-full max-w-5xl px-2 md:px-4 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 pointer-events-auto relative"
-              style={{ willChange: 'transform' }}
-            >
-              {fullSpeakers.map((speaker, i) => (
-                <div
-                  key={speaker.name}
-                  ref={(el) => { fullCardsRef.current[i] = el; }}
-                  onClick={() => setActiveSpeaker(speaker)}
-                  style={{ willChange: 'transform, opacity' }}
-                  className="bg-cyber-black/80 backdrop-blur-md py-4 px-3 md:py-5 md:px-4 rounded-[20px] md:rounded-[24px] border border-neon-cyan/20 text-center shadow-[0_0_15px_rgba(0,255,255,0.1)] hover:border-neon-cyan transition-colors cursor-pointer w-full flex flex-col justify-center items-center relative overflow-hidden min-h-[150px] md:min-h-[170px]"
-                >`;
-
-const replacementGrid = `className="w-full max-w-5xl px-2 md:px-4 grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4 pointer-events-auto relative"
-              style={{ willChange: 'transform' }}
-            >
-              {fullSpeakers.map((speaker, i) => (
-                <div
-                  key={speaker.name}
-                  ref={(el) => { fullCardsRef.current[i] = el; }}
-                  onClick={() => setActiveSpeaker(speaker)}
-                  style={{ willChange: 'transform, opacity' }}
-                  className={cn(
-                    "bg-cyber-black/80 backdrop-blur-md py-4 px-3 md:py-5 md:px-4 rounded-[20px] md:rounded-[24px] border border-neon-cyan/20 text-center shadow-[0_0_15px_rgba(0,255,255,0.1)] hover:border-neon-cyan transition-colors cursor-pointer w-full flex flex-col justify-center items-center relative overflow-hidden min-h-[150px] md:min-h-[170px]",
-                    i < 4 ? "col-span-1 md:col-span-3" : "col-span-1 md:col-span-4"
-                  )}
-                >`;
-
-content = content.replace(targetGrid, replacementGrid);
-
 fs.writeFileSync('src/components/Visionaries.tsx', content);
+
+let contactContent = fs.readFileSync('src/components/ContactUs.tsx', 'utf8');
+
+const targetContactArray = `const STUDENT_DIRECTORS = [
+  {
+    name: "Rudransh Kandpal",
+    role: "President",
+    email: "rudransh.kandpal@digitcrew.in",
+    phone: "",
+    icon: Star,
+    accent: "text-neon-cyan"
+  },
+  {
+    name: "Ishika Mittal",
+    role: "Vice President & Event Head (DigiTote)",
+    email: "ishika.mittal@digitcrew.in",
+    phone: "+91 9310527312",
+    icon: Zap,
+    accent: "text-neon-cyan"
+  },
+  {
+    name: "Aarav Tuteja",
+    role: "Media Manager",
+    email: "aarav.tuteja@digitcrew.in",
+    phone: "",
+    icon: User,
+    accent: "text-neon-cyan"
+  },
+  {
+    name: "Prajanay Chandra",
+    role: "Video Visionary",
+    email: "prajanay.chandra@digitcrew.in",
+    phone: "",
+    icon: Code,
+    accent: "text-neon-cyan"
+  },
+  {
+    name: "Granth Shandilya",
+    role: "Video Visionary",
+    email: "granth.shandilya@digitcrew.in",
+    phone: "",
+    icon: User,
+    accent: "text-neon-cyan"
+  },
+  {
+    name: "Sheza Khan",
+    role: "Director",
+    email: "sheza.khan@digitcrew.in",
+    phone: "+91 9968882786",
+    icon: Code,
+    accent: "text-neon-cyan"
+  }
+];`;
+
+const replacementContactArray = `const STUDENT_DIRECTORS = [
+  {
+    name: "Rudransh Kandpal",
+    role: "President",
+    email: "rudransh.kandpal@digitcrew.in",
+    phone: "",
+    icon: Star,
+    accent: "text-neon-cyan"
+  },
+  {
+    name: "Ishika Mittal",
+    role: "Vice President & Event Head (DigiTote)",
+    email: "ishika.mittal@digitcrew.in",
+    phone: "+91 9310527312",
+    icon: Zap,
+    accent: "text-neon-cyan"
+  },
+  {
+    name: "Sheza Khan",
+    role: "Director",
+    email: "sheza.khan@digitcrew.in",
+    phone: "+91 9968882786",
+    icon: Code,
+    accent: "text-neon-cyan"
+  },
+  {
+    name: "Aarav Tuteja",
+    role: "Media Lead",
+    email: "aarav.tuteja@digitcrew.in",
+    phone: "",
+    icon: User,
+    accent: "text-neon-cyan"
+  },
+  {
+    name: "Granth Shandilya",
+    role: "Video Visionary",
+    email: "granth.shandilya@digitcrew.in",
+    phone: "",
+    icon: User,
+    accent: "text-neon-cyan"
+  },
+  {
+    name: "Prajanay Chandra",
+    role: "Video Visionary",
+    email: "prajanay.chandra@digitcrew.in",
+    phone: "",
+    icon: Code,
+    accent: "text-neon-cyan"
+  }
+];`;
+
+contactContent = contactContent.replace(targetContactArray, replacementContactArray);
+fs.writeFileSync('src/components/ContactUs.tsx', contactContent);
+
