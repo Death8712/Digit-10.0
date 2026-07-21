@@ -2,19 +2,21 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { Calendar, MapPin, Users, ArrowRight, Mail, Phone, Globe, Trophy } from 'lucide-react';
 import Navbar from './components/Navbar';
-import Hero3D from './components/Hero3D';
-import BentoGrid from './components/BentoGrid';
+import { Suspense, lazy } from 'react';
+const Hero3D = lazy(() => import('./components/Hero3D'));
+const BentoGrid = lazy(() => import('./components/BentoGrid'));
 import Countdown from './components/Countdown';
 import CountdownHero from './components/CountdownHero';
 import CustomCursor from './components/CustomCursor';
 import Timeline from './components/Timeline';
 import EventModal from './components/EventModal';
 import { categories, EventItem } from './data/events';
-import EventResults from './components/EventResults';
-import ContactUs from './components/ContactUs';
+const EventResults = lazy(() => import('./components/EventResults'));
 import RegistrationForm from './components/RegistrationForm';
-import InterschoolSpecial from "./components/InterschoolSpecial";
-import Visionaries from './components/Visionaries';
+const InterschoolSpecial = lazy(() => import('./components/InterschoolSpecial'));
+const Visionaries = lazy(() => import('./components/Visionaries'));
+const Gallery = lazy(() => import('./components/Gallery'));
+const ContactUs = lazy(() => import('./components/ContactUs'));
 import StarryBackground from './components/StarryBackground';
 
 const TypewriterText = ({ text, className = "", delay = 0 }: { text: string, className?: string, delay?: number }) => (
@@ -57,25 +59,6 @@ export default function App() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <div className="relative min-h-screen bg-cyber-black bg-blobs selection:bg-neon-cyan/30">
@@ -91,7 +74,7 @@ export default function App() {
       
       {/* Hero Section */}
       <section id="home" ref={heroRef} className="relative min-h-[100dvh] flex items-center pt-32 pb-16 overflow-hidden bg-grid">
-        <Hero3D />
+        <Suspense fallback={<div className="absolute inset-0 flex items-center justify-center text-neon-cyan/50 font-mono text-sm animate-pulse">Initializing 3D Environment...</div>}><Hero3D /></Suspense>
         
         <div className="max-w-[1400px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 relative z-10">
           <motion.div 
@@ -118,16 +101,9 @@ export default function App() {
             </h2>
             
             {/* Description */}
-            <div className="max-w-full text-white/80 text-sm md:text-base leading-relaxed mb-8 font-sans flex flex-col gap-3">
-              <p className="font-bold text-white uppercase tracking-wider">WELCOME TO DIGIT 10.0</p>
-              <p>
-                AHLCON INTERNATIONAL SCHOOL proudly presents the 10th Edition of DIGIT. For the very first time, DIGIT transcends internal boundaries to become an interschool event (DigiThon).
-              </p>
-              <p>
-                This year, we invite the finest minds and aspiring technologists from across the region to convene and compete. This expanded platform will foster unprecedented collaboration, rigorous competition, and high-caliber execution across diverse digital disciplines.
-              </p>
-              <p>
-                The rich legacy of the past decade culminates here, creating a definitive arena for the leaders of tomorrow. Join us to showcase your talent, discover new knowledge, and connect with a vibrant community that shares your enthusiasm for technology.
+            <div className="max-w-xl pr-4 lg:pr-12 text-white/80 text-sm md:text-base leading-relaxed mb-8 font-sans flex flex-col gap-3">
+              <p className="text-justify">
+                DIGIT began in 2012 with a simple vision: to provide every student with an equal opportunity to explore and participate in technology. Initially organised for Classes IX to XII, the event continued to grow over the years. During the COVID period, DIGIT expanded to include students from III to XII, making technology more accessible across the school. Now, as we celebrate the landmark 10th edition, DIGIT takes another major step by opening its platform to schools across the region. DIGIT 10.0 brings together young innovators to compete, collaborate, showcase their talent, gain knowledge, and connect through a shared passion for technology.
               </p>
             </div>
             
@@ -182,44 +158,69 @@ export default function App() {
       {/* Countdown Section */}
       <section className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-display font-black mb-12 reveal">T-MINUS to DIGIT</h2>
+          <motion.h2 initial={{opacity: 0, y: 30}} whileInView={{opacity: 1, y: 0}} transition={{duration: 0.8}} viewport={{once: true}} className="text-3xl md:text-5xl font-display font-black mb-12">T-MINUS to DIGIT</motion.h2>
           <Countdown />
         </div>
       </section>
 
       {/* Legacy Section */}
       <section id="legacy" className="py-20 relative z-10 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto px-4 text-center mb-16 reveal">
+        <motion.div initial={{opacity: 0, y: 30}} whileInView={{opacity: 1, y: 0}} transition={{duration: 0.8}} viewport={{once: true}} className="max-w-7xl mx-auto px-4 text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-display font-black mb-6">A Decade of Innovation</h2>
           <p className="text-white/40 max-w-2xl mx-auto">Explore the evolution of DIGIT from its humble beginnings to the global phenomenon it is today.</p>
-        </div>
+        </motion.div>
         <Timeline />
       </section>
 
       {/* Events Section */}
       <section id="events" className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div className="reveal-left">
+          <motion.div initial={{opacity: 0, x: -50}} whileInView={{opacity: 1, x: 0}} transition={{duration: 0.8}} viewport={{once: true}}>
             <span className="text-neon-cyan font-black uppercase tracking-widest text-xs mb-4 block">The Main Stage</span>
             <h2 className="text-4xl md:text-6xl font-display font-black">Intra-School Events</h2>
-          </div>
-          <p className="max-w-md text-white/80 font-display font-medium text-sm tracking-widest uppercase leading-relaxed reveal-right">
+          </motion.div>
+          <motion.p initial={{opacity: 0, x: 50}} whileInView={{opacity: 1, x: 0}} transition={{duration: 0.8}} viewport={{once: true}} className="max-w-md text-white/80 font-display font-medium text-sm tracking-widest uppercase leading-relaxed">
             Master the logic. Own the canvas. Claim the throne. High-stakes challenges for those who refuse to play it safe.
-          </p>
+          </motion.p>
         </div>
-        <BentoGrid />
+        <Suspense fallback={<div className="py-20 text-center text-neon-cyan/50 font-mono text-sm animate-pulse">Loading component...</div>}><BentoGrid /></Suspense>
       </section>
 
-      <InterschoolSpecial />
+      <Suspense fallback={<div className="py-20 text-center text-neon-cyan/50 font-mono text-sm animate-pulse">Loading component...</div>}><InterschoolSpecial /></Suspense>
 
       {/* Speakers Section */}
-      <Visionaries />
+      <Suspense fallback={<div className="py-20 text-center text-neon-cyan/50 font-mono text-sm animate-pulse">Loading component...</div>}><Visionaries /></Suspense>
 
       {/* Registration Section */}
       <RegistrationForm />
 
+            {/* Gallery Section */}
+      <Suspense fallback={<div className="py-20 text-center text-neon-cyan/50 font-mono text-sm animate-pulse">Loading component...</div>}><Gallery /></Suspense>
+
       {/* Results Section */}
-      <EventResults />
+      <Suspense fallback={<div className="py-20 text-center text-neon-cyan/50 font-mono text-sm animate-pulse">Loading component...</div>}><EventResults /></Suspense>
+      {/* Contact Us Section */}
+      <Suspense fallback={<div className="py-20 text-center text-neon-cyan/50 font-mono text-sm animate-pulse">Loading component...</div>}><ContactUs /></Suspense>
+
+      {/* School Logo Section */}
+      <section className="py-20 relative z-10 bg-white/[0.02]">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center justify-center gap-8"
+          >
+            <h3 className="text-white/40 font-mono text-sm tracking-widest uppercase">In Association With</h3>
+            <img 
+              src="/school-logo.png" 
+              alt="School Logo" 
+              className="w-48 md:w-64 lg:w-80 object-contain mix-blend-screen opacity-80 hover:opacity-100 transition-opacity duration-300"
+            />
+          </motion.div>
+        </div>
+      </section>
 
       
 

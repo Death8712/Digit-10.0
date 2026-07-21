@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 
-const NAV_ITEMS = ['JOURNEY', 'INTRASCHOOL', 'INTERSCHOOL', 'OUR TEAM', 'RESULTS'];
+const NAV_ITEMS = ['JOURNEY', 'INTRASCHOOL', 'INTERSCHOOL', 'OUR TEAM', 'RESULTS', 'CONTACT US'];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('');
@@ -13,6 +13,7 @@ export default function Navbar() {
         if (item === 'INTRASCHOOL') return 'events';
         if (item === 'INTERSCHOOL') return 'interschool';
         if (item === 'OUR TEAM') return 'visionaries';
+        if (item === 'CONTACT US') return 'contact';
         return item.toLowerCase();
       });
       
@@ -67,7 +68,7 @@ export default function Navbar() {
         {/* Navigation Links */}
         <div className="hidden lg:flex items-center gap-3 xl:gap-5">
           {NAV_ITEMS.map((item, index) => {
-            const id = item === 'JOURNEY' ? 'legacy' : item === 'INTRASCHOOL' ? 'events' : item === 'INTERSCHOOL' ? 'interschool' : item === 'OUR TEAM' ? 'visionaries' : item.toLowerCase();
+            const id = item === 'JOURNEY' ? 'legacy' : item === 'INTRASCHOOL' ? 'events' : item === 'INTERSCHOOL' ? 'interschool' : item === 'OUR TEAM' ? 'visionaries' : item === 'CONTACT US' ? 'contact' : item.toLowerCase();
             const isActive = activeSection === id;
             
             return (

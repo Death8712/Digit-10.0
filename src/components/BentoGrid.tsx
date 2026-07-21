@@ -15,12 +15,12 @@ export default function BentoGrid() {
           <div key={category.id} className="mb-20 last:mb-0">
             
             {/* Section Heading Row */}
-            <div className="flex items-center gap-6 mb-8 reveal">
+            <motion.div initial={{opacity: 0, y: 30}} whileInView={{opacity: 1, y: 0}} transition={{duration: 0.8}} viewport={{once: true}} className="flex items-center gap-6 mb-8">
               <h2 className="text-white font-display font-bold uppercase tracking-[0.2em] text-lg lg:text-xl whitespace-nowrap">
                 {category.name}
               </h2>
               <div className={cn("h-[1px] flex-1 bg-gradient-to-r opacity-50", category.lineColor, "to-transparent")} />
-            </div>
+            </motion.div>
 
             {/* Grid Layout */}
             <div className={cn("grid grid-cols-1 auto-rows-min gap-4 perspective-[1200px]", category.gridClass || "md:grid-cols-4")}>

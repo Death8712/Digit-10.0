@@ -63,6 +63,8 @@ export default function RegistrationForm() {
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-neon-cyan/20 rounded-full blur-[120px]" />
       </div>
 
+      
+
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <motion.div

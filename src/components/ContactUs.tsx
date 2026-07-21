@@ -7,7 +7,7 @@ const TEACHERS = [
   {
     name: "Ms. Urvashi Singhal",
     role: "Head of the Event",
-    email: "urvashi.singhal@digitcrew.in",
+    email: "urvashis@ahlconinternational.in",
     phone: "",
     icon: Star,
     accent: "text-amber-400"
@@ -15,7 +15,7 @@ const TEACHERS = [
   {
     name: "Ms. Nitika Wadhwa",
     role: "In-charge Senior Stage",
-    email: "nitika.wadhwa@digitcrew.in",
+    email: "nitikaw@ahlconinternational.in",
     phone: "",
     icon: Zap,
     accent: "text-neon-magenta"
@@ -23,7 +23,7 @@ const TEACHERS = [
   {
     name: "Ms. Deepti Chopra",
     role: "In-charge Middle Stage",
-    email: "deepti.chopra@digitcrew.in",
+    email: "deeptic@ahlconinternational.in",
     phone: "",
     icon: Code,
     accent: "text-purple-400"
@@ -31,7 +31,7 @@ const TEACHERS = [
   {
     name: "Ms. Garima Mehra",
     role: "In-charge Primary Stage",
-    email: "garima.mehra@digitcrew.in",
+    email: "garimam@ahlconinternational.in",
     phone: "",
     icon: User,
     accent: "text-emerald-400"
@@ -42,64 +42,57 @@ const STUDENT_DIRECTORS = [
   {
     name: "Rudransh Kandpal",
     role: "President",
-    email: "rudransh.kandpal@digitcrew.in",
-    phone: "",
+    phone: "9910663253",
     icon: Star,
     accent: "text-neon-cyan"
   },
   {
     name: "Ishika Mittal",
-    role: "Vice President & Event Head (DigiTote)",
-    email: "ishika.mittal@digitcrew.in",
-    phone: "+91 9310527312",
+    role: "Vice President",
+    phone: "9310527312",
     icon: Zap,
     accent: "text-neon-cyan"
   },
   {
     name: "Sheza Khan",
-    role: "Director",
-    email: "sheza.khan@digitcrew.in",
-    phone: "+91 9968882786",
+    role: "Coordinating Director",
+    phone: "9968882786",
     icon: Code,
     accent: "text-neon-cyan"
   },
   {
     name: "Aarav Tuteja",
     role: "Media Lead",
-    email: "aarav.tuteja@digitcrew.in",
-    phone: "",
+    phone: "7271000999",
     icon: User,
     accent: "text-neon-cyan"
   },
   {
     name: "Granth Shandilya",
     role: "Video Visionary",
-    email: "granth.shandilya@digitcrew.in",
-    phone: "",
+    phone: "9958468859",
     icon: User,
     accent: "text-neon-cyan"
   },
   {
     name: "Prajanay Chandra",
     role: "Video Visionary",
-    email: "prajanay.chandra@digitcrew.in",
-    phone: "",
-    icon: Code,
+    phone: "8010984447",
+    icon: User,
     accent: "text-neon-cyan"
   }
 ];
 
 
 const EVENT_HEADS = [
-  { name: "Ananya Gahlot", role: "DigiMagic, DigiPoster", phone: "+91 9810743364", email: "ananya.gahlot@digitcrew.in" },
-  { name: "Navya Ahuja", role: "DigiSlides, DigiScratch", phone: "+91 7827651124", email: "navya.ahuja@digitcrew.in" },
-  { name: "Hanisha Nagi", role: "DigiTales, DigiQuiz", phone: "+91 9810924894", email: "hanisha.nagi@digitcrew.in" },
-  { name: "Aaradhya Yadav", role: "DigiBuild, DigiInterSchool", phone: "+91 9818400124", email: "aaradhya.yadav@digitcrew.in" },
-  { name: "Ishika Mittal", role: "DigiTote", phone: "+91 9310527312", email: "ishika.mittal@digitcrew.in" },
-  { name: "Divyansh Rathore", role: "DigiBattles", phone: "+91 95608 02211", email: "divyansh.rathore@digitcrew.in" },
-  { name: "Aditya Pandey", role: "DigiMeme", phone: "+91 9876543210", email: "aditya.pandey@digitcrew.in" },
-  { name: "Vivaan Tripathi", role: "DigiCipher", phone: "+91 7011309610", email: "vivaan.tripathi@digitcrew.in" },
-  { name: "Sheza Khan", role: "DigiThon", phone: "+91 9968882786", email: "sheza.khan@digitcrew.in" }
+  { name: "Ananya Gahlot", role: "Event Head (DigiMagic, DigiPoster)", phone: "9810743364" },
+  { name: "Navya Ahuja", role: "Event Head (DigiSlides, DigiScratch)", phone: "7827651124" },
+  { name: "Hanisha Nagi", role: "Event Head (DigiTales, DigiQuiz)", phone: "9810924894" },
+  { name: "Aaradhya Yadav", role: "Event Head (DigiBuild, DigiInterSchool)", phone: "9818400124" },
+  { name: "Divyansh Rathore", role: "Event Head (DigiBattles)", phone: "9560802211" },
+  { name: "Aditya Pandey", role: "Event Head (DigiMeme)", phone: "9211977792" },
+  { name: "Vivaan Tripathi", role: "Event Head (DigiCipher)", phone: "7011309610" },
+  { name: "Sheza Khan", role: "Event Head (DigiThon)", phone: "9968882786" }
 ];
 
 export default function ContactUs() {
@@ -136,8 +129,8 @@ export default function ContactUs() {
             viewport={{ once: true }}
             className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 backdrop-blur-xl"
           >
-            <h3 className="text-2xl font-display font-black text-white mb-6">FACULTY IN-CHARGES</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <h3 className="text-2xl font-display font-black text-white mb-6">TEACHERS IN-CHARGE</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {TEACHERS.map((member, i) => (
                 <div key={i} className="bg-black/40 border border-white/5 rounded-2xl p-5 hover:border-white/20 transition-all group">
                   <div className="flex items-start gap-4">
@@ -147,10 +140,10 @@ export default function ContactUs() {
                     <div>
                       <h4 className="text-white font-bold text-lg leading-tight mb-1">{member.name}</h4>
                       <p className={cn("text-xs font-mono tracking-wider uppercase mb-3 drop-shadow-sm", member.accent)}>{member.role}</p>
-                      <a href={`mailto:${member.email}`} className="flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm break-all">
-                        <Mail size={14} className="shrink-0" />
-                        <span className="truncate">{member.email}</span>
-                      </a>
+                      <a href={member.email ? `mailto:${member.email}` : '#'} className="flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm break-all">
+                          <Mail size={14} className="shrink-0" />
+                          <span>{member.email}</span>
+                        </a>
                     </div>
                   </div>
                 </div>
@@ -169,25 +162,17 @@ export default function ContactUs() {
               <h3 className="text-2xl font-display font-black text-white mb-8">DIGIT HQ</h3>
               
               <div className="space-y-6">
-                <a href="mailto:contact@digitcrew.in" className="flex items-center gap-4 group">
+                <a href="mailto:aisdigit10@gmail.com" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-xl bg-neon-cyan/10 border border-neon-cyan/20 flex items-center justify-center text-neon-cyan group-hover:bg-neon-cyan group-hover:text-black transition-all">
                     <Mail size={20} />
                   </div>
                   <div>
                     <p className="text-white/40 text-xs font-mono uppercase tracking-wider mb-1">General Inquiries</p>
-                    <p className="text-white font-medium group-hover:text-neon-cyan transition-colors">contact@digitcrew.in</p>
+                    <p className="text-white font-medium group-hover:text-neon-cyan transition-colors">aisdigit10@gmail.com</p>
                   </div>
                 </a>
                 
-                <a href="tel:+919999999999" className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-black transition-all">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <p className="text-white/40 text-xs font-mono uppercase tracking-wider mb-1">Direct Line</p>
-                    <p className="text-white font-medium group-hover:text-purple-400 transition-colors">+91 99999 99999</p>
-                  </div>
-                </a>
+
 
                 <div className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 transition-all">
@@ -195,7 +180,7 @@ export default function ContactUs() {
                   </div>
                   <div>
                     <p className="text-white/40 text-xs font-mono uppercase tracking-wider mb-1">Location</p>
-                    <p className="text-white font-medium">DIGIT Campus, Cyber City</p>
+                    <p className="text-white font-medium">AHLCON INTERNATIONAL SCHOOL | MAYUR VIHAR Phase 1</p>
                   </div>
                 </div>
               </div>
@@ -223,9 +208,9 @@ export default function ContactUs() {
                         </div>
                       </div>
                       <div className="mt-1">
-                        <a href={`mailto:${member.email}`} className="flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm break-all">
-                          <Mail size={14} className="shrink-0" />
-                          <span className="truncate">{member.email}</span>
+                        <a href={member.phone !== 'N/A' ? `tel:${member.phone}` : '#'} className="flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm break-all">
+                          <Phone size={14} className="shrink-0" />
+                          <span className="truncate">{member.phone}</span>
                         </a>
                       </div>
                     </div>
@@ -258,13 +243,9 @@ export default function ContactUs() {
                   </div>
                 </div>
                 <div className="space-y-2 mt-auto">
-                  <a href={`tel:${head.phone.replace(/[^0-9+]/g, '')}`} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors text-xs font-mono">
+                  <a href={head.phone !== 'N/A' ? `tel:${head.phone.replace(/[^0-9+]/g, '')}` : '#'} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors text-xs font-mono">
                     <Phone size={12} className="text-neon-cyan" />
                     <span>{head.phone}</span>
-                  </a>
-                  <a href={`mailto:${head.email}`} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors text-xs">
-                    <Mail size={12} className="text-neon-magenta" />
-                    <span className="truncate">{head.email}</span>
                   </a>
                 </div>
               </div>

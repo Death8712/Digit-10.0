@@ -3,9 +3,9 @@ import { motion } from 'motion/react';
 import { cn } from '../lib/utils';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 
-type Item = { id: number, title: string, subtitle: string, video?: string, image?: string };
+type Item = { id: number, title: string, subtitle: string, video?: string, image?: string, youtubeId?: string };
 const ITEMS: Item[] = [
-  { id: 0, title: 'OFFICIAL TRAILER', subtitle: 'DIGIT 10.0', video: '/trailer.mp4' },
+  { id: 0, title: '', subtitle: '', youtubeId: 'zCkjOAJt1qQ' },
 ];
 
 function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () => void }) {
@@ -32,7 +32,7 @@ function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () =>
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => { setIsHovered(false); setCoords({ x: 0, y: 0 }); }}
-      className="relative w-[100vw] h-[60vh] md:h-[80vh] shrink-0 overflow-hidden cursor-pointer group"
+      className="relative w-[100vw] h-screen shrink-0 overflow-hidden cursor-pointer group"
       style={{ perspective: '1000px' }}
     >
       <div className="absolute inset-0 w-full h-full bg-[#0a0a0a] overflow-hidden border-y border-white/10 group-hover:border-white/30 transition-colors duration-500">
@@ -42,7 +42,7 @@ function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () =>
           className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-200 ease-out will-change-transform"
           style={{
             ...(item.image ? { backgroundImage: `url(${item.image})` } : {}),
-            filter: item.video ? 'brightness(0.5)' : 'blur(2px) brightness(0.7)',
+            filter: (item.video || item.youtubeId) ? 'brightness(0.5)' : 'blur(2px) brightness(0.7)',
             // Move in opposite direction of cursor
             transform: `scale(${isHovered ? 1.05 : 1.02}) translate(${isHovered ? -coords.x : 0}%, ${isHovered ? -coords.y : 0}%)`
           }}
@@ -57,11 +57,22 @@ function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () =>
               onEnded={onTrailerEnd}
             />
           )}
+          {item.youtubeId && (
+            <div className="absolute inset-0 w-full h-full bg-black z-20">
+              <iframe
+                className="w-full h-full"
+                src={`https://www.youtube.com/embed/${item.youtubeId}?rel=0&iv_load_policy=3&modestbranding=1`}
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+              />
+            </div>
+          )}
+
         </div>
 
         {/* Layer A: Foreground UI / Sharp elements */}
         <div 
-          className="absolute inset-0 w-full h-full p-8 flex flex-col justify-between transition-transform duration-200 ease-out will-change-transform z-10"
+          className="absolute inset-0 w-full h-full p-8 flex flex-col justify-between transition-transform duration-200 ease-out will-change-transform z-10 pointer-events-none"
           style={{
             // Move in direction of cursor
             transform: `scale(${isHovered ? 1.02 : 1}) translate(${isHovered ? coords.x : 0}%, ${isHovered ? coords.y : 0}%)`

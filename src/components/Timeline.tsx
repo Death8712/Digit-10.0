@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 
 const timelineData = [
   {
@@ -70,7 +71,7 @@ export default function Timeline() {
       
       <div className="space-y-12 relative pb-12">
         {timelineData.map((item, index) => (
-          <div key={item.year} className={`relative flex flex-col md:flex-row items-start md:items-center justify-between gap-8 group reveal ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+          <motion.div key={item.year} initial={{opacity: 0, y: 30}} whileInView={{opacity: 1, y: 0}} transition={{duration: 0.8}} viewport={{once: true}} className={`relative flex flex-col md:flex-row items-start md:items-center justify-between gap-8 group ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
             
             {/* Center Node / Dot */}
             <div className="absolute left-[20px] md:left-1/2 top-6 md:top-1/2 w-3 h-3 bg-cyber-black border-2 border-neon-cyan rounded-full -translate-x-[5px] md:-translate-x-1/2 md:-translate-y-1/2 group-hover:scale-150 group-hover:bg-neon-cyan transition-all shadow-[0_0_10px_rgba(0,255,255,0.5)] z-10" />
@@ -103,8 +104,7 @@ export default function Timeline() {
                 </div>
               )}
             </a>
-            
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

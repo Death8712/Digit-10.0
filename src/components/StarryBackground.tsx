@@ -31,7 +31,7 @@ export default function StarryBackground({ className }: { className?: string }) 
       cachedGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
       stars = [];
-      const numStars = Math.floor((canvas.width * canvas.height) / 10000); // Adjust density here
+      const numStars = Math.floor((canvas.width * canvas.height) / 20000); // Adjust density here
       
       for (let i = 0; i < numStars; i++) {
         // Randomly pick a color index: 0=cyan, 1=magenta, 2=white
@@ -67,17 +67,20 @@ export default function StarryBackground({ className }: { className?: string }) 
         ctx.fillStyle = cachedGradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
+      
+      // Twinkle occasionally, not every frame to save computation
+      const twinkle = Math.random() > 0.5;
 
       stars.forEach(star => {
+        if (twinkle) {
+            star.alpha += (Math.random() - 0.5) * 0.05;
+            if (star.alpha < 0.1) star.alpha = 0.1;
+            if (star.alpha > 1) star.alpha = 1;
+        }
+
+        ctx.fillStyle = `rgba(${star.r}, ${star.g}, ${star.b}, ${star.alpha.toFixed(2)})`;
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        
-        // Twinkling effect
-        star.alpha += (Math.random() - 0.5) * 0.05;
-        if (star.alpha < 0.1) star.alpha = 0.1;
-        if (star.alpha > 1) star.alpha = 1;
-
-        ctx.fillStyle = `rgba(${star.r}, ${star.g}, ${star.b}, ${star.alpha})`;
         ctx.fill();
 
         // Move stars
