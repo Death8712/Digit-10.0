@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { Calendar, MapPin, Users, ArrowRight, Mail, Phone, Globe, Trophy } from 'lucide-react';
+import { Calendar, MapPin, Users, ArrowRight, Mail, Phone, Globe, Trophy, Instagram, Youtube } from 'lucide-react';
 import Navbar from './components/Navbar';
 import { Suspense, lazy } from 'react';
 const Hero3D = lazy(() => import('./components/Hero3D'));
@@ -237,11 +237,15 @@ export default function App() {
                 The premier technology festival pushing the boundaries of human potential and digital innovation since 2012.
               </p>
               <div className="flex gap-4">
-                {[Mail, Phone, Globe].map((Icon, i) => (
-                  <div key={i} className="w-10 h-10 rounded-xl glass flex items-center justify-center text-white/40 hover:text-neon-cyan transition-colors cursor-pointer">
-                    <Icon size={18} />
-                  </div>
-                ))}
+                <a href="mailto:aisdigit10@gmail.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl glass flex items-center justify-center text-white/40 hover:text-neon-cyan transition-all hover:-translate-y-1 cursor-pointer">
+                  <Mail size={18} />
+                </a>
+                <a href="https://www.instagram.com/digitahlcon10.0" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl glass flex items-center justify-center text-white/40 hover:text-neon-cyan transition-all hover:-translate-y-1 cursor-pointer">
+                  <Instagram size={18} />
+                </a>
+                <a href="https://www.youtube.com/@DIGIT10.0" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl glass flex items-center justify-center text-white/40 hover:text-neon-cyan transition-all hover:-translate-y-1 cursor-pointer">
+                  <Youtube size={18} />
+                </a>
               </div>
             </div>
             

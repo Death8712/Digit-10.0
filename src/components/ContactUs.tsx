@@ -86,13 +86,14 @@ const STUDENT_DIRECTORS = [
 
 const EVENT_HEADS = [
   { name: "Ananya Gahlot", role: "Event Head (DigiMagic, DigiPoster)", phone: "9810743364" },
+  { name: "Garima Mehra", role: "Event Head (DigiScratch)", phone: "8527886150" },
   { name: "Navya Ahuja", role: "Event Head (DigiSlides, DigiScratch)", phone: "7827651124" },
   { name: "Hanisha Nagi", role: "Event Head (DigiTales, DigiQuiz)", phone: "9810924894" },
-  { name: "Aaradhya Yadav", role: "Event Head (DigiBuild, DigiInterSchool)", phone: "9818400124" },
+  { name: "Aaradhya Yadav", role: "Event Head (DigiBuild)", phone: "9818400124" },
   { name: "Divyansh Rathore", role: "Event Head (DigiBattles)", phone: "9560802211" },
   { name: "Aditya Pandey", role: "Event Head (DigiMeme)", phone: "9211977792" },
   { name: "Vivaan Tripathi", role: "Event Head (DigiCipher)", phone: "7011309610" },
-  { name: "Sheza Khan", role: "Event Head (DigiThon)", phone: "9968882786" }
+  { name: "Sheza Khan", role: "Event Head (DigiThon, DigiAI)", phone: "9968882786" }
 ];
 
 export default function ContactUs() {

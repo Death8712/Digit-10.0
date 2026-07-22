@@ -122,19 +122,7 @@ const RESULTS_DATA = [
       { position: '3RD', name: 'No Result', grade: 'TBD' },
     ]
   },
-  {
-    id: 'digiinterschool-2026',
-    eventName: 'DigiInterSchool',
-    category: 'Inter School Events',
-    genre: 'Technical',
-    icon: Eye,
-    image: '/digi-arena.png',
-    winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
-    ]
-  },
+
   {
     id: 'digibattles-2026',
     eventName: 'DigiBattles',

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Calendar, MapPin, Info, Monitor, Phone, User, ClipboardList, Lightbulb, Star, Target } from 'lucide-react';
+import { X, Calendar, MapPin, Info, Monitor, Phone, User, ClipboardList, Lightbulb, Star, Target, GraduationCap } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
@@ -18,6 +18,8 @@ interface EventModalProps {
     software?: string;
     eventHead?: string;
     eventHeadNumber?: string;
+    teacherInCharge?: string;
+    teacherInChargeNumber?: string;
     teamSize?: string;
     themes?: string[];
     submissionFormat?: string;
@@ -116,8 +118,8 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
                         <h3 className="font-display font-bold uppercase tracking-wider text-sm">Objectives</h3>
                       </div>
                       <ul className="text-white/60 text-sm md:text-base space-y-1">
-                        {event.themes.map((theme, idx) => (
-                          <li key={idx} className={theme.trim() === 'OR' ? 'list-none text-center font-bold my-1 text-white/40 text-xs' : 'list-disc list-inside'}>{theme}</li>
+                        {event.objectives.map((obj, idx) => (
+                          <li key={idx} className={obj.trim() === 'OR' ? 'list-none text-center font-bold my-1 text-white/40 text-xs' : 'list-disc list-inside'}>{obj}</li>
                         ))}
                       </ul>
                     </div>
@@ -215,19 +217,76 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
                       </p>
                     </div>
                   )}
+                  {event.teacherInCharge && (
+                    <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
+                      <div className="flex items-center gap-3 mb-3 text-white/80">
+                        <GraduationCap size={18} className={categoryAccent} />
+                        <h3 className="font-display font-bold uppercase tracking-wider text-sm">Teacher In-charge</h3>
+                      </div>
+                      <p className="text-white font-semibold text-sm md:text-base whitespace-pre-line leading-relaxed">
+                        {event.teacherInCharge}
+                      </p>
+                      {event.teacherInChargeNumber && (
+                        <div className="flex flex-col gap-2 mt-3 pt-3 border-t border-white/10">
+                          {event.teacherInChargeNumber.split('\n').map((line, idx) => {
+                            const phoneMatch = line.match(/(\+?\d[\d\s-]{8,15})/);
+                            return (
+                              <div key={idx} className="flex items-start gap-2 text-white/80">
+                                <Phone size={14} className={cn("shrink-0 mt-1", categoryAccent)} />
+                                {phoneMatch ? (
+                                  <span className="font-mono text-xs md:text-sm leading-relaxed">
+                                    <span className="text-white/60">{line.split(phoneMatch[0])[0]}</span>
+                                    <a 
+                                      href={`tel:${phoneMatch[0].replace(/[\s-]/g, '')}`} 
+                                      className="text-neon-cyan hover:underline font-bold transition-colors"
+                                    >
+                                      {phoneMatch[0]}
+                                    </a>
+                                    <span className="text-white/60">{line.split(phoneMatch[0])[1]}</span>
+                                  </span>
+                                ) : (
+                                  <span className="font-mono text-xs text-white/50 italic leading-relaxed">{line}</span>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  )}
                   {event.eventHead && (
                     <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
                       <div className="flex items-center gap-3 mb-3 text-white/80">
                         <User size={18} className={categoryAccent} />
                         <h3 className="font-display font-bold uppercase tracking-wider text-sm">Event Head</h3>
                       </div>
-                      <p className="text-white/60 font-medium">
+                      <p className="text-white font-semibold text-sm md:text-base whitespace-pre-line leading-relaxed">
                         {event.eventHead}
                       </p>
                       {event.eventHeadNumber && (
-                        <div className="flex items-center gap-2 mt-2 text-white/50">
-                          <Phone size={14} className={categoryAccent} />
-                          <span className="font-mono text-sm">{event.eventHeadNumber}</span>
+                        <div className="flex flex-col gap-2 mt-3 pt-3 border-t border-white/10">
+                          {event.eventHeadNumber.split('\n').map((line, idx) => {
+                            const phoneMatch = line.match(/(\+?\d[\d\s-]{8,15})/);
+                            return (
+                              <div key={idx} className="flex items-start gap-2 text-white/80">
+                                <Phone size={14} className={cn("shrink-0 mt-1", categoryAccent)} />
+                                {phoneMatch ? (
+                                  <span className="font-mono text-xs md:text-sm leading-relaxed">
+                                    <span className="text-white/60">{line.split(phoneMatch[0])[0]}</span>
+                                    <a 
+                                      href={`tel:${phoneMatch[0].replace(/[\s-]/g, '')}`} 
+                                      className="text-neon-cyan hover:underline font-bold transition-colors"
+                                    >
+                                      {phoneMatch[0]}
+                                    </a>
+                                    <span className="text-white/60">{line.split(phoneMatch[0])[1]}</span>
+                                  </span>
+                                ) : (
+                                  <span className="font-mono text-xs text-white/50 italic leading-relaxed">{line}</span>
+                                )}
+                              </div>
+                            );
+                          })}
                         </div>
                       )}
                     </div>

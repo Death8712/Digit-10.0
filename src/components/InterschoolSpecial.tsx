@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Lock, Unlock, Globe, Zap, Cpu, ExternalLink } from "lucide-react";
+import { Lock, Unlock, Globe, Zap, Cpu, ExternalLink, Bot } from "lucide-react";
 import { cn } from "../lib/utils";
 import EventModal from "./EventModal";
 import { EventItem } from "../data/events";
@@ -8,55 +8,76 @@ import { EventItem } from "../data/events";
 const interschoolEvents: Record<string, EventItem> = {
   digithon: {
     title: "DigiThon",
-    description: "Class 9-12",
+    description: "Programming on Python and MySQL",
     mode: "Online",
-    classGroup: "Class 9-12",
-    software: "-",
+    classGroup: "Class 9 to 12",
+    software: "Python & MySQL",
     icon: Cpu,
     size: "col-span-1",
-    about: "Build an AI-powered tool that helps process complexity, understand tradeoffs, and move from uncertainty to meaningful action — while preserving privacy, minimizing harm, and supporting human judgment.",
+    about: "The aim of DigiThon is to find a real world problem that is worthwhile to solve in groups of 2 students. Participants are encouraged to visit local businesses to identify real problems (such as automated GST invoice generation) and build an application using Python for structure/logic/UI and MySQL for data manipulation.",
     venue: "Online",
     image: "/digi-thon.png",
     eventHead: "Sheza Khan",
     eventHeadNumber: "+91 9968882786",
-    teamSize: "Team / Individual",
+    teamSize: "1 team per school (2 participants per team)",
+    themes: ["MySQL and Python Programming"],
+    judgementCriteria: [
+      "Problem Understanding",
+      "Python Coding",
+      "Solution Design",
+      "Impact & Insight",
+      "Originality and Creativity"
+    ],
+    requirements: "Guidelines:\n• Number of teams per school: 1 | Participants per team: 2\n• Theme: MySQL and Python Programming\n• Students are encouraged to visit local businesses and ask about real-world challenges (e.g. automating GST invoice generation from raw transaction data).\n• Students write a Python program that handles the structure, logic, and user interface.\n• MySQL will be used for data manipulation.\n• Use a wide variety of Python libraries to create user-friendly applications (games, school software, accessibility apps, or mobile apps).\n• Must use free, legitimate open-source software.\n• Plagiarized, copied, or inappropriate/harmful content will lead to disqualification.\n• The use of AI is strictly prohibited.\n• E-certificates will be given to the top three winning teams.\n\nSubmission:\n1. Submit the written Python program.\n2. Submit a short write-up (maximum 500 words) explaining the problem, solution design, and bibliography.\n3. Include a demo video or screen recording (maximum 3 minutes) of the working app.\n4. Upload links/files through the designated online portal before the deadline: 17th August 2026."
+  },
+  digiai: {
+    title: "DigiAI",
+    description: "Build the \"Second Brain\" for Real Life",
+    mode: "Online",
+    classGroup: "Class 9 to 12",
+    software: "Python / AI Frameworks / Open Source",
+    icon: Bot,
+    size: "col-span-1",
+    about: "Build an original AI powered MVP (Minimum Viable Product) that helps students schedule their tasks, take decisions, protect their privacy and help them think clearly. Your MVP must feature a system that takes fragmented inputs, applies an AI reasoning layer (pattern detection, modeling, or decision support), and produces a useful output a human operator can act on.",
+    venue: "Online",
+    image: "/Digi-AI.png",
+    eventHead: "Sheza Khan",
+    eventHeadNumber: "+91 9968882786",
+    teamSize: "1 team per school (2 participants per team)",
     themes: ["Computational Thinking and Artificial Intelligence"],
-    objectives: ["Build an original AI-powered MVP that helps process complexity and make better decisions.", "Understand a complex situation, decide or plan a real next step, and do so safely."],
-    requirements: "Guidelines\nBuild an original AI-powered MVP that helps students, early professionals, or creators process complexity and make better decisions, and turn ideas into action.\nYour MVP must help the user understand a complex situation, decide or plan a real next step, and do so safely.\nAI tools may be used for brainstorming, prototyping, and development, but the core idea, logic, and integration must be your team's original work.\nFully AI-generated submissions with no original design or reasoning are not allowed.\nPlagiarized, copied, or inappropriate/harmful content will lead to disqualification.\nSolutions should not function only as surveillance tools or remove the human from the final decision.\nSubmit a short write-up (maximum 500 words) explaining the problem, how the AI works, and how privacy and harm were addressed.\nInclude a demo video or screen recording (maximum 3 minutes) of the working prototype.\nSubmission: Upload the prototype link/files through the designated online submission portal before the deadline."
+    judgementCriteria: [
+      "Problem Understanding",
+      "AI Reasoning",
+      "Solution Design",
+      "Impact & Insight",
+      "Responsible AI"
+    ],
+    requirements: "Guidelines:\n• Number of teams per school: 1 | Participants per team: 2\n• Theme: Computational Thinking and Artificial Intelligence\n• Build an original AI powered MVP that helps students schedule tasks, make decisions, protect privacy, and think clearly.\n• MVP must feature a system taking fragmented inputs, applying an AI reasoning layer (pattern detection, modeling, or decision support), and producing actionable output.\n• AI tools may be used for brainstorming, prototyping, and development, but the core idea, logic, and integration must be your team's original work.\n• Disclose all AI tools used in your submission.\n• Judging rewards reasoning and design thinking over technical resources. Open-source/free tools are encouraged.\n• Solutions should not function only as surveillance tools or remove human agency from final decisions.\n• Plagiarized, copied, or inappropriate/harmful content will lead to disqualification.\n• E-certificates will be given to the top three winning teams.\n\nSubmission:\n1. Submit a working prototype (MVP).\n2. Submit a short write-up (maximum 500 words) explaining the problem, how the AI works, and how privacy and harm were addressed.\n3. Include a demo video or screen recording (maximum 3 minutes) of the working prototype.\n4. Upload prototype links/files through the designated online portal before the deadline: 17th August 2026."
   },
   digiscratch: {
     title: "DigiScratch",
-    description: "Class 3-5",
+    description: "Math O Mania (Class 5)",
     mode: "Online",
-    classGroup: "Class 3-5",
+    classGroup: "Class 5",
     software: "Scratch",
     icon: ExternalLink,
     size: "col-span-1",
-    about: "Unleash your creativity with block-based programming. Design interactive stories, games, and animations using Scratch.",
+    about: "'Math O Mania' is an engaging inter-school Scratch coding competition designed for Class V students to explore Mathematics through creativity, humour, and coding. Participants will develop an interactive Scratch project that explains a mathematical concept using entertaining elements such as jokes, memes, humorous animations, or storytelling, making learning both enjoyable and meaningful.",
     venue: "Online",
-    image: "/digi-scratch.png",
-    eventHead: "Navya Ahuja", eventHeadNumber: "+91 7827651124",
-    teamSize: "Individual / Team of 2",
-    themes: ["Interactive Storytelling", "Game Design"],
-    objectives: ["Develop logical thinking using block-based coding.", "Express creativity through interactive media."],
-    requirements: "Guidelines\nParticipants must use Scratch to build their project.\nThe project must align with the provided themes.\nProjects will be judged on creativity, logic, and visual appeal.\nSubmit the Scratch project link or .sb3 file."
-  },
-  digiinterschool: {
-    title: "DigiInterSchool",
-    description: "Class 6-8",
-    mode: "Offline",
-    classGroup: "Class 6-8",
-    software: "-",
-    icon: Globe,
-    size: "col-span-1",
-    about: "The grand tech symposium where schools clash for the ultimate technology championship trophy. Showcase your tech prowess across multiple disciplines.",
-    venue: "Main Auditorium",
-    image: "/digi-interschool.png",
-    eventHead: "Aaradhya Yadav", eventHeadNumber: "+91 9818400124",
-    teamSize: "School Delegation",
-    themes: ["Technology Symposium", "Inter-School Championship"],
-    objectives: ["Foster inter-school collaboration and competition.", "Celebrate technological innovation among young minds."],
-    requirements: "Guidelines\nEach school can send a designated delegation.\nParticipants will compete in various on-the-spot tech challenges.\nThe school with the highest overall points will be awarded the Championship Trophy."
+    image: "/Digi-Scratch.png",
+    eventHead: "Navya Ahuja (Student Event Head)",
+    eventHeadNumber: "+91 7827651124",
+    teacherInCharge: "Ms. Garima Mehra (Teacher In-charge)",
+    teacherInChargeNumber: "+91 8527886150 (3:00 PM to 5:00 PM)",
+    teamSize: "1 participant per school",
+    themes: ["Math Humour ('Math O Mania')"],
+    judgementCriteria: [
+      "Creativity and Humour: Originality, engagement, and effective use of humour.",
+      "Programming Skills: Appropriate use of Scratch features, coding logic, and interactivity.",
+      "Clarity of Communication: Ability to explain the mathematical concept in a simple, engaging manner.",
+      "Understanding of Mathematical Concepts: Accuracy, relevance, and depth of content presented."
+    ],
+    requirements: "Guidelines:\n• Mode: Online | Team Size: 1 participant per school | Platform: Scratch\n• Theme: Math Humour ('Math O Mania')\n• Develop an interactive Scratch project that explains a mathematical concept using entertaining elements like jokes, memes, humorous animations, or storytelling.\n• For queries, contact Event In-charge between 3:00 p.m. to 5:00 p.m. (Ms. Garima Mehra: 8527886150, Ms. Navya Ahuja: 7827651124).\n\nSubmission Requirements:\n1. Submit Scratch project file (.sb3) and Scratch project sharing link by the name: Schoolname_Event name.\n2. Submission Deadline: 18th August 2026."
   }
 };
 
@@ -75,7 +96,7 @@ export default function InterschoolSpecial() {
 
   return (
     <section id="interschool" className="py-20 relative z-10 overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 relative">
+      <div className="max-w-7xl mx-auto px-4 relative">
         <AnimatePresence mode="wait">
           {!isRevealed ? (
             <motion.div
@@ -158,15 +179,18 @@ export default function InterschoolSpecial() {
                     Welcome to the elite tier of DIGIT 10.0. These high-stakes challenges are strictly for top-tier competitors representing their institutions.
                   </p>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full text-left">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full text-left">
                     {/* Event 1: DigiThon */}
                     <div className="p-6 rounded-2xl border border-neon-cyan/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-cyan transition-colors">
                       <div className="w-12 h-12 rounded-xl bg-neon-cyan/10 flex items-center justify-center text-neon-cyan mb-2">
                         <Cpu className="w-6 h-6" />
                       </div>
                       <h3 className="text-2xl font-display font-bold text-white">DigiThon</h3>
+                      <p className="text-neon-cyan text-xs font-mono font-semibold uppercase tracking-wider">
+                        Programming on Python & MySQL
+                      </p>
                       <p className="text-white/60 font-sans text-sm flex-1">
-                        Build an AI-powered tool that helps process complexity, understand tradeoffs, and move from uncertainty to meaningful action — while preserving privacy, minimizing harm, and supporting human judgment.
+                        Find a real-world problem and build a solution using Python & MySQL. Create open-source software for local businesses or schools.
                       </p>
                       <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
                         <span className="text-neon-cyan">CLASS 9-12</span>
@@ -178,41 +202,47 @@ export default function InterschoolSpecial() {
                         </button>
                       </div>
                     </div>
-                    
-                    {/* Event 2: DigiScratch */}
-                    <div className="p-6 rounded-2xl border border-neon-magenta/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-magenta transition-colors">
-                      <div className="w-12 h-12 rounded-xl bg-neon-magenta/10 flex items-center justify-center text-neon-magenta mb-2">
-                        <ExternalLink className="w-6 h-6" />
+
+                    {/* Event 2: DigiAI */}
+                    <div className="p-6 rounded-2xl border border-purple-400/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-purple-400 transition-colors">
+                      <div className="w-12 h-12 rounded-xl bg-purple-400/10 flex items-center justify-center text-purple-400 mb-2">
+                        <Bot className="w-6 h-6" />
                       </div>
-                      <h3 className="text-2xl font-display font-bold text-white">DigiScratch</h3>
+                      <h3 className="text-2xl font-display font-bold text-white">DigiAI</h3>
+                      <p className="text-purple-400 text-xs font-mono font-semibold uppercase tracking-wider">
+                        "Second Brain" for Real Life
+                      </p>
                       <p className="text-white/60 font-sans text-sm flex-1">
-                        Unleash your creativity with block-based programming. Design interactive stories, games, and animations.
+                        Build an original AI-powered MVP with a reasoning layer to help students schedule tasks, make decisions, and protect privacy.
                       </p>
                       <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
-                        <span className="text-neon-magenta">CLASS 3-5</span>
+                        <span className="text-purple-400">CLASS 9-12</span>
                         <button 
-                          onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiscratch, accent: "text-neon-magenta"}); }}
-                          className="text-white/40 group-hover:text-neon-magenta transition-colors uppercase tracking-[0.2em]"
+                          onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiai, accent: "text-purple-400"}); }}
+                          className="text-white/40 group-hover:text-purple-400 transition-colors uppercase tracking-[0.2em]"
                         >
                           [ INITIATE ]
                         </button>
                       </div>
                     </div>
                     
-                    {/* Event 3: DigiInterSchool */}
-                    <div className="p-6 rounded-2xl border border-yellow-500/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-yellow-500 transition-colors">
-                      <div className="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-500 mb-2">
-                        <Globe className="w-6 h-6" />
+                    {/* Event 3: DigiScratch */}
+                    <div className="p-6 rounded-2xl border border-neon-magenta/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-magenta transition-colors">
+                      <div className="w-12 h-12 rounded-xl bg-neon-magenta/10 flex items-center justify-center text-neon-magenta mb-2">
+                        <ExternalLink className="w-6 h-6" />
                       </div>
-                      <h3 className="text-2xl font-display font-bold text-white">DigiInterSchool</h3>
+                      <h3 className="text-2xl font-display font-bold text-white">DigiScratch</h3>
+                      <p className="text-neon-magenta text-xs font-mono font-semibold uppercase tracking-wider">
+                        Math O Mania ('Math Humour')
+                      </p>
                       <p className="text-white/60 font-sans text-sm flex-1">
-                        The grand tech symposium where schools clash for the ultimate technology championship trophy.
+                        Explain mathematical concepts using Scratch coding, humor, memes, storytelling, and interactive animations.
                       </p>
                       <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
-                        <span className="text-yellow-500">CLASS 6-8</span>
+                        <span className="text-neon-magenta">CLASS 5</span>
                         <button 
-                          onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiinterschool, accent: "text-yellow-500"}); }}
-                          className="text-white/40 group-hover:text-yellow-500 transition-colors uppercase tracking-[0.2em]"
+                          onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiscratch, accent: "text-neon-magenta"}); }}
+                          className="text-white/40 group-hover:text-neon-magenta transition-colors uppercase tracking-[0.2em]"
                         >
                           [ INITIATE ]
                         </button>
@@ -229,9 +259,10 @@ export default function InterschoolSpecial() {
       <EventModal 
         isOpen={!!selectedEvent}
         onClose={() => setSelectedEvent(null)}
-        event={selectedEvent?.event || null}
-        categoryAccent={selectedEvent?.accent || ""}
+        event={selectedEvent?.event || interschoolEvents.digithon}
+        categoryAccent={selectedEvent?.accent || "text-neon-cyan"}
       />
     </section>
   );
 }
+

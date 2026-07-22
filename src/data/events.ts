@@ -15,6 +15,8 @@ export interface EventItem {
   image: string;
   eventHead?: string;
   eventHeadNumber?: string;
+  teacherInCharge?: string;
+  teacherInChargeNumber?: string;
   teamSize?: string;
   registrationLink?: string;
   themes?: string[];

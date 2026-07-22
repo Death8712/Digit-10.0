@@ -31,7 +31,7 @@
 
 @layer base {
   body {
-    @apply bg-cyber-black text-white selection:bg-neon-cyan/30 selection:text-neon-cyan overflow-x-hidden;
+    @apply bg-cyber-black text-white selection:bg-neon-cyan/30 selection:text-neon-cyan overflow-x-clip;
     font-family: var(--font-sans);
   }
   
@@ -49,6 +49,16 @@
   
   .glass {
     @apply backdrop-blur-2xl bg-white/5 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.2)];
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
   
   .bg-blobs {

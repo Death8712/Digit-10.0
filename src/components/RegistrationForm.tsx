@@ -48,8 +48,8 @@ const REGISTRATION_LINKS = [
     hoverBg: "hover:bg-emerald-400/10",
     events: [
       { name: "DigiThon", link: "https://forms.gle/yqvhAApcUWGkr3qi6" },
-      { name: "DigiScratch", link: "https://forms.gle/yqvhAApcUWGkr3qi6" },
-      { name: "DigiInterSchool", link: "https://forms.gle/yqvhAApcUWGkr3qi6" }
+      { name: "DigiAI", link: "https://forms.gle/yqvhAApcUWGkr3qi6" },
+      { name: "DigiScratch", link: "https://forms.gle/yqvhAApcUWGkr3qi6" }
     ]
   }
 ];
