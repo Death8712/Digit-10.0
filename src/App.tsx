@@ -213,11 +213,18 @@ export default function App() {
             className="flex flex-col items-center justify-center gap-8"
           >
             <h3 className="text-white/40 font-mono text-sm tracking-widest uppercase">In Association With</h3>
-            <img 
-              src="/school-logo.png" 
-              alt="School Logo" 
-              className="w-48 md:w-64 lg:w-80 object-contain mix-blend-screen opacity-80 hover:opacity-100 transition-opacity duration-300"
-            />
+            <a 
+              href="http://ahlconinternational.com/public/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block cursor-pointer"
+            >
+              <img 
+                src="/school-logo.png" 
+                alt="Ahlcon International School" 
+                className="w-48 md:w-64 lg:w-80 object-contain mix-blend-screen opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-300"
+              />
+            </a>
           </motion.div>
         </div>
       </section>

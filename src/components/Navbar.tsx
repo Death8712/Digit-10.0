@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 
-const NAV_ITEMS = ['JOURNEY', 'INTRASCHOOL', 'INTERSCHOOL', 'OUR TEAM', 'RESULTS', 'CONTACT US'];
+const NAV_ITEMS = ['JOURNEY', 'INTRASCHOOL', 'INTERSCHOOL', 'OUR TEAM', 'RESULTS', 'GALLERY', 'CONTACT US'];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('');
@@ -76,7 +76,7 @@ export default function Navbar() {
                 <a
                   href={`#${id}`}
                   onClick={() => setActiveSection(id)}
-                  className={`relative text-[10px] xl:text-[11px] font-display font-bold tracking-[0.05em] whitespace-nowrap transition-colors duration-200 py-1 ${
+                  className={`relative text-xs xl:text-sm font-display font-bold tracking-[0.05em] whitespace-nowrap transition-colors duration-200 py-1 ${
                     isActive 
                       ? 'text-neon-cyan drop-shadow-[0_0_8px_rgba(0,255,255,0.8)]' 
                       : 'text-white/70 hover:text-neon-cyan hover:drop-shadow-[0_0_6px_rgba(0,255,255,0.5)]'
@@ -91,7 +91,7 @@ export default function Navbar() {
                   )}
                 </a>
                 {index < NAV_ITEMS.length - 1 && (
-                  <span className="text-neon-cyan/25 text-[9px] select-none mx-0.5">/</span>
+                  <span className="text-neon-cyan/25 text-[10px] select-none mx-0.5 xl:mx-1">/</span>
                 )}
               </div>
             );

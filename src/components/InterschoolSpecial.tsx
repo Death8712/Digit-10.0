@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Lock, Unlock, Globe, Zap, Cpu, ExternalLink, Bot } from "lucide-react";
+import { Lock, Unlock, Globe, Zap, Cpu, ExternalLink, Bot, Video } from "lucide-react";
 import { cn } from "../lib/utils";
 import EventModal from "./EventModal";
 import { EventItem } from "../data/events";
@@ -53,6 +53,32 @@ const interschoolEvents: Record<string, EventItem> = {
       "Responsible AI"
     ],
     requirements: "Guidelines:\n• Number of teams per school: 1 | Participants per team: 2\n• Theme: Computational Thinking and Artificial Intelligence\n• Build an original AI powered MVP that helps students schedule tasks, make decisions, protect privacy, and think clearly.\n• MVP must feature a system taking fragmented inputs, applying an AI reasoning layer (pattern detection, modeling, or decision support), and producing actionable output.\n• AI tools may be used for brainstorming, prototyping, and development, but the core idea, logic, and integration must be your team's original work.\n• Disclose all AI tools used in your submission.\n• Judging rewards reasoning and design thinking over technical resources. Open-source/free tools are encouraged.\n• Solutions should not function only as surveillance tools or remove human agency from final decisions.\n• Plagiarized, copied, or inappropriate/harmful content will lead to disqualification.\n• E-certificates will be given to the top three winning teams.\n\nSubmission:\n1. Submit a working prototype (MVP).\n2. Submit a short write-up (maximum 500 words) explaining the problem, how the AI works, and how privacy and harm were addressed.\n3. Include a demo video or screen recording (maximum 3 minutes) of the working prototype.\n4. Upload prototype links/files through the designated online portal before the deadline: 17th August 2026."
+  },
+  digiframes: {
+    title: "DigiFrames",
+    description: "Identify. Innovate. Impact.",
+    mode: "Online",
+    classGroup: "Class 6-8",
+    software: "Video Editing Tools",
+    icon: Video,
+    size: "col-span-1",
+    about: "Think like a changemaker and use AI and technology to solve a real problem in your local community. Observe, innovate, and present your idea through a 2–3 minute video that demonstrates how technology can create a positive impact.",
+    venue: "Online",
+    image: "/Digi-Frames.png",
+    eventHead: "TBD",
+    eventHeadNumber: "-",
+    teamSize: "1 team per school (up to 2 students)",
+    themes: ["Identify. Innovate. Impact."],
+    judgementCriteria: [
+      "Understanding of the Community Problem",
+      "Innovation and Creativity",
+      "Application of Technology",
+      "Practicality and Feasibility",
+      "Research and Evidence",
+      "Presentation and Communication",
+      "Ethical and Social Impact"
+    ],
+    requirements: "Objectives:\n• Inspire students to identify real-world community challenges and propose practical solutions.\n• Develop problem-solving and design thinking skills.\n• Encourage responsible, ethical, and creative use of AI and technology.\n• Foster research, innovation, communication, and teamwork.\n\nEligibility:\n• Open to Classes VI–VIII.\n• Participation in teams of up to 2 students.\n• Only one entry per team is permitted.\n\nRules & Requirements:\n• Submit a 2–3 minute video presenting an innovative Technology or AI-based solution to a local community problem.\n• The presentation should clearly address:\n  ○ Problem Statement – Identify and describe the community issue.\n  ○ Proposed Solution – Present the technology or AI-based solution.\n  ○ Working Mechanism – Explain how the solution functions.\n  ○ Target Beneficiaries – Identify who will benefit from the solution.\n  ○ Community Impact – Describe the expected outcomes and benefits.\n• The solution should be innovative, practical, and relevant to the chosen problem.\n• Narration or subtitles must be in English.\n• AI tools may be used for research, animation, or visualization. However, the idea, explanation, and voiceover must be the team's own.\n• Videos may include interviews, photographs, sketches, models, demonstrations, or animations (optional).\n• A working prototype or coding is NOT required.\n• The video must be submitted in MP4 format, landscape orientation, with clear audio and visuals.\n• All work must be original and created specifically for this competition.\n\nGrounds for Disqualification:\n• Video exceeds or falls short of the prescribed duration.\n• Fully AI-generated submissions without original student contribution.\n• False claims, fabricated evidence, or misrepresentation of research.\n• Multiple submissions from the same team or participant.\n• Failure to comply with the competition rules or submission requirements."
   },
   digiscratch: {
     title: "DigiScratch",
@@ -179,7 +205,7 @@ export default function InterschoolSpecial() {
                     Welcome to the elite tier of DIGIT 10.0. These high-stakes challenges are strictly for top-tier competitors representing their institutions.
                   </p>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full text-left">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full text-left">
                     {/* Event 1: DigiThon */}
                     <div className="p-6 rounded-2xl border border-neon-cyan/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-cyan transition-colors">
                       <div className="w-12 h-12 rounded-xl bg-neon-cyan/10 flex items-center justify-center text-neon-cyan mb-2">
@@ -226,7 +252,30 @@ export default function InterschoolSpecial() {
                       </div>
                     </div>
                     
-                    {/* Event 3: DigiScratch */}
+                    {/* Event 3: DigiFrames */}
+                    <div className="p-6 rounded-2xl border border-yellow-500/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-yellow-500 transition-colors">
+                      <div className="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-500 mb-2">
+                        <Video className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-2xl font-display font-bold text-white">DigiFrames</h3>
+                      <p className="text-yellow-500 text-xs font-mono font-semibold uppercase tracking-wider">
+                        Identify. Innovate. Impact.
+                      </p>
+                      <p className="text-white/60 font-sans text-sm flex-1">
+                        Think like a changemaker and use AI and technology to solve a real problem in your local community through a 2-3 minute video.
+                      </p>
+                      <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
+                        <span className="text-yellow-500">CLASS 6-8</span>
+                        <button 
+                          onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiframes, accent: "text-yellow-500"}); }}
+                          className="text-white/40 group-hover:text-yellow-500 transition-colors uppercase tracking-[0.2em]"
+                        >
+                          [ INITIATE ]
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Event 4: DigiScratch */}
                     <div className="p-6 rounded-2xl border border-neon-magenta/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-magenta transition-colors">
                       <div className="w-12 h-12 rounded-xl bg-neon-magenta/10 flex items-center justify-center text-neon-magenta mb-2">
                         <ExternalLink className="w-6 h-6" />

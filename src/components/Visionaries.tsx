@@ -234,14 +234,6 @@ export default function Visionaries() {
                 </div>
                 <h3 className="text-sm md:text-xl font-bold mb-1 text-white">{speaker.name}</h3>
                 <p className="text-xs md:text-sm font-bold text-neon-cyan mb-4 font-mono uppercase tracking-wider drop-shadow-[0_0_5px_rgba(0,255,255,0.4)]">{speaker.role}</p>
-                <div className="flex justify-center gap-4 mt-auto">
-                  <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/40 hover:text-neon-cyan hover:bg-neon-cyan/10 transition-colors cursor-pointer border border-white/5">
-                    <Globe size={14} />
-                  </div>
-                  <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/40 hover:text-neon-magenta hover:bg-neon-magenta/10 transition-colors cursor-pointer border border-white/5">
-                    <Mail size={14} />
-                  </div>
-                </div>
               </div>
             ))}
           </div>

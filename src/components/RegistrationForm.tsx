@@ -7,7 +7,10 @@ const REGISTRATION_LINKS = [
     category: "Preparatory Stage",
     accent: "text-amber-400",
     border: "border-amber-400/20",
+    borderSolid: "border-amber-400",
     bg: "bg-amber-400/5",
+    solidBg: "bg-amber-400",
+    shadowColor: "shadow-amber-400",
     hoverBg: "hover:bg-amber-400/10",
     events: [
       { name: "DigiMagic", link: "https://docs.google.com/forms/d/e/1FAIpQLSc8EG57o4A2Pw7kOJuPL9gJggOoGHZgBqYmbieBBAfdogFGvg/viewform?usp=header" },
@@ -19,7 +22,10 @@ const REGISTRATION_LINKS = [
     category: "Middle Stage",
     accent: "text-purple-400",
     border: "border-purple-400/20",
+    borderSolid: "border-purple-400",
     bg: "bg-purple-400/5",
+    solidBg: "bg-purple-400",
+    shadowColor: "shadow-purple-400",
     hoverBg: "hover:bg-purple-400/10",
     events: [
       { name: "DigiTales", link: "#" },
@@ -31,7 +37,10 @@ const REGISTRATION_LINKS = [
     category: "Seniors Stage",
     accent: "text-neon-cyan",
     border: "border-neon-cyan/20",
+    borderSolid: "border-neon-cyan",
     bg: "bg-neon-cyan/5",
+    solidBg: "bg-neon-cyan",
+    shadowColor: "shadow-neon-cyan",
     hoverBg: "hover:bg-neon-cyan/10",
     events: [
       { name: "DigiTote", link: "https://forms.gle/vpnQUDbj6f48i1hH9" },
@@ -44,11 +53,15 @@ const REGISTRATION_LINKS = [
     category: "Inter School Events",
     accent: "text-emerald-400",
     border: "border-emerald-400/20",
+    borderSolid: "border-emerald-400",
     bg: "bg-emerald-400/5",
+    solidBg: "bg-emerald-400",
+    shadowColor: "shadow-emerald-400",
     hoverBg: "hover:bg-emerald-400/10",
     events: [
       { name: "DigiThon", link: "https://forms.gle/yqvhAApcUWGkr3qi6" },
       { name: "DigiAI", link: "https://forms.gle/yqvhAApcUWGkr3qi6" },
+      { name: "DigiFrames", link: "https://forms.gle/yqvhAApcUWGkr3qi6" },
       { name: "DigiScratch", link: "https://forms.gle/yqvhAApcUWGkr3qi6" }
     ]
   }
@@ -82,33 +95,46 @@ export default function RegistrationForm() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {REGISTRATION_LINKS.map((category, idx) => (
             <motion.div
               key={category.category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: idx * 0.1, duration: 0.4 }}
               viewport={{ once: true }}
               className={cn(
-                "rounded-2xl border backdrop-blur-xl p-8 relative overflow-hidden group",
-                category.bg,
-                category.border
+                "rounded-3xl border bg-black/40 backdrop-blur-xl p-8 relative overflow-hidden group hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] transition-all duration-500 flex flex-col",
+                category.border,
+                category.shadowColor
               )}
             >
+              {/* Animated Gradient Background */}
+              <div className={cn(
+                "absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500",
+                category.solidBg
+              )} />
+              
               {/* Category Header */}
-              <div className="mb-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <Layout size={20} className={category.accent} />
-                  <h3 className="text-xl font-display font-black text-white uppercase tracking-wider">
-                    {category.category}
-                  </h3>
+              <div className="mb-8 relative z-10 flex items-start justify-between">
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className={cn("p-2 rounded-lg bg-white/5 border border-white/10", category.accent)}>
+                      <Layout size={20} />
+                    </div>
+                    <h3 className="text-2xl font-display font-black text-white uppercase tracking-wider">
+                      {category.category}
+                    </h3>
+                  </div>
+                  <div className={cn("h-0.5 w-16 rounded-full opacity-50", category.solidBg)} />
                 </div>
-                <div className={cn("w-12 h-1 rounded-full bg-current opacity-50", category.accent)} />
+                <div className={cn("text-xs font-mono font-bold px-3 py-1 rounded-full border bg-black/50", category.border, category.accent)}>
+                  {category.events.length} EVENTS
+                </div>
               </div>
 
               {/* Event Links */}
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10 mt-auto">
                 {category.events.map((event) => (
                   <a
                     key={event.name}
@@ -116,20 +142,25 @@ export default function RegistrationForm() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      "flex items-center justify-between p-4 rounded-xl border border-white/5 bg-black/40 transition-all duration-300 group/link",
+                      "flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/[0.02] transition-all duration-300 group/link overflow-hidden relative",
                       category.hoverBg
                     )}
                   >
-                    <span className="font-sans font-medium text-white/90 group-hover/link:text-white transition-colors">
+                    <div className={cn("absolute inset-0 w-0 group-hover/link:w-full transition-all duration-500 opacity-10", category.solidBg)} />
+                    
+                    <span className="font-sans font-bold text-sm text-white/70 group-hover/link:text-white transition-colors relative z-10 truncate pr-2">
                       {event.name}
                     </span>
-                    <ExternalLink 
-                      size={16} 
-                      className={cn("opacity-50 group-hover/link:opacity-100 transition-opacity", category.accent)} 
-                    />
+                    <div className={cn("w-6 h-6 rounded-full flex items-center justify-center bg-white/5 border border-white/10 group-hover/link:scale-110 transition-transform relative z-10 shrink-0", category.accent)}>
+                      <ExternalLink size={12} />
+                    </div>
                   </a>
                 ))}
               </div>
+              
+              {/* Decorative Corner Borders */}
+              <div className={cn("absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 rounded-tl-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-500", category.borderSolid)} />
+              <div className={cn("absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 rounded-br-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-500", category.borderSolid)} />
             </motion.div>
           ))}
         </div>

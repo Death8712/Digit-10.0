@@ -110,6 +110,32 @@ const RESULTS_DATA = [
     ]
   },
   {
+    id: 'digiai-2026',
+    eventName: 'DigiAI',
+    category: 'Inter School Events',
+    genre: 'Creative',
+    icon: Bot,
+    image: '/digi-ai.png',
+    winners: [
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
+    ]
+  },
+  {
+    id: 'digiframes-2026',
+    eventName: 'DigiFrames',
+    category: 'Inter School Events',
+    genre: 'Creative',
+    icon: Video,
+    image: '/Digi-Frames.png',
+    winners: [
+      { position: '1ST', name: 'No Result', grade: 'TBD' },
+      { position: '2ND', name: 'No Result', grade: 'TBD' },
+      { position: '3RD', name: 'No Result', grade: 'TBD' },
+    ]
+  },
+  {
     id: 'digiscratch-2026',
     eventName: 'DigiScratch',
     category: 'Inter School Events',
