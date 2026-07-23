@@ -130,13 +130,8 @@ function BentoCard({ event, category, index, onClick }: { event: EventItem, cate
       <div className="relative z-20 flex-col flex h-full" style={{ transform: 'translateZ(20px)' }}>
         <div>
           {/* Top-Left Rounded Icon Container */}
-          <div className="flex justify-between items-start mb-6">
-            <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 shadow-inner shadow-white/5", category.accentCode)}>
-              <event.icon className="w-6 h-6" />
-            </div>
-            {event.image && (
-              <img src={event.image} alt={event.title} className="w-16 h-16 object-contain mix-blend-screen opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
-            )}
+          <div className="flex justify-between items-start mb-2">
+            
           </div>
           
           <h3 className="text-2xl font-display font-bold mb-2 text-white drop-shadow-md">{event.title}</h3>
@@ -148,13 +143,26 @@ function BentoCard({ event, category, index, onClick }: { event: EventItem, cate
         </div>
         
         {/* Learn More Link / CTA */}
-        <div className="mt-8 mt-auto">
+        <div className="mt-8 mt-auto flex items-center justify-between">
           <button 
             className={cn("text-xs font-mono font-bold tracking-[0.2em] uppercase flex items-center gap-2 group/btn relative z-20 cursor-pointer drop-shadow-md", category.accentCode)}
           >
-            [ INITIATE_SCAN ]
+            [ DETAILS ]
             <span className="w-0 h-[1px] bg-current group-hover/btn:w-8 transition-all duration-300" />
           </button>
+
+          {event.registrationLink && (
+            <a
+              href={event.registrationLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className={cn("text-xs font-mono font-bold tracking-[0.2em] uppercase flex items-center gap-2 group/btn2 relative z-30 cursor-pointer drop-shadow-md", category.accentCode)}
+            >
+              [ REGISTER ]
+              <span className="w-0 h-[1px] bg-current group-hover/btn2:w-8 transition-all duration-300" />
+            </a>
+          )}
         </div>
       </div>
     </motion.div>

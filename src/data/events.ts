@@ -52,58 +52,84 @@ export const categories: Category[] = [
       { 
         title: "DigiMagic", registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSc8EG57o4A2Pw7kOJuPL9gJggOoGHZgBqYmbieBBAfdogFGvg/viewform?usp=header", 
         description: "Class 3", 
-        mode: "Preliminary Round: Online Submission | Final Round: Offline", 
+        mode: "Preliminary Round: Online | Final Round: Offline", 
         classGroup: "Class 3", 
         software: "TuxPaint or Paint3D", 
         icon: Brush, 
         size: "col-span-1", 
         isLive: true, 
-        about: "Students will design vibrant digital posters on TuxPaint or Paint3D, bringing to life the theme of either SDG-3, Good Health and Well-Being or SDG-13, Climate Action.\n\n- Preliminary Round: Online Submission.\n- Final Round: Offline (Selected students will present/explain their work for 2–3 minutes).\n\n- Core Rule: All entries must be the original creation of the students.", 
+        about: "Students will design vibrant digital posters on TuxPaint or Paint 3D, bringing to life the theme of either SDG-3, Good Health and Well-Being or SDG-13, Climate Action.", 
         venue: "Primary Computer Lab (basement) (Final Round)", 
         image: "/digi-magic.png", 
         eventHead: "Ananya Gahlot", eventHeadNumber: "9810743364",
         teamSize: "Individual",
         themes: ["SDG 3: Good Health and Well-Being", "OR", "SDG 13: Climate Action"],
         submissionFormat: ".png or .jpg format",
-        judgementCriteria: ["Originality", "Creativity", "Smart use of tools", "Presentation", "Relevance to the topic"],
-        requirements: "- Create an artwork related to the given themes.\n- Students should use templates, pictures, effects, and other relevant tools.\n- File Naming Convention: Eventname_Studentname\n- Send your entries latest by 10th August, 2026."
+        objectives: [
+          "To foster creativity and digital art skills by designing meaningful artwork based on Sustainable Development Goals (SDGs).",
+          "To encourage young learners to use digital drawing tools to spread awareness about health, well-being, and environmental conservation."
+        ],
+        judgementCriteria: [
+          "Originality", 
+          "Creativity", 
+          "Effective and Smart Use of Digital Tools", 
+          "Presentation", 
+          "Relevance to the Theme"
+        ],
+        requirements: "Guidelines\n• Students are required to create an Artwork related to the theme.\n• Students should use Tuxpaint or Paint 3D to create Artwork.\n• Students should use Templates, Pictures, Effects and other tools relevant to the topic.\n• The entry must be the original creation of the students.\n• Submission of entry should be uploaded in .png or .jpg format on submission link by 14th August 2026.\n• After selection of preliminary round students will be selected for Final Round.\n• Selected students will be called for Final Round and explain briefly about topic and relevance in 2-3min in front of judges on 21st August.\n• Certificates will be given to the top 3 winners."
       },
       { 
         title: "DigiPoster", registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSczZFpFJKOMVQr3VOJb6yuyzJYoLjSE_3nQ4BseSftSD_0kEg/viewform?usp=publish-editor", 
         description: "Class 4", 
-        mode: "Preliminary Round: Online Submission | Final Round: Offline", 
+        mode: "Preliminary Round: Online | Final Round: Offline", 
         classGroup: "Class 4", 
         software: "Canva", 
         icon: ImageIcon, 
         size: "col-span-1", 
         featured: true, 
-        about: "DigiPoster encourages students to explore their creativity on Canva by designing a Poster on either SDG 4, Quality Education OR SDG 15, Life on Land.\n\n- Preliminary Round: Online Submission.\n- Final Round: Offline (Selected students will present/explain their work for 2–3 minutes).\n\n- Core Rule: All entries must be the original creation of the students.", 
+        about: "DigiPoster encourages students to explore their creativity on Canva by designing a Poster on either SDG 4, Quality Education OR SDG 15, Life on Land.", 
         venue: "Primary Computer Lab (basement) (Final Round)", 
         image: "/digi-poster.png", 
         eventHead: "Ananya Gahlot", eventHeadNumber: "9810743364",
         teamSize: "Individual",
         themes: ["SDG 4: Quality Education", "OR", "SDG 15: Life on Land"],
         submissionFormat: ".png format",
-        judgementCriteria: ["Originality", "Presentation", "Smart use of tools", "Creativity", "Relevance to the topic"],
-        requirements: "- Design a poster in Canva.\n- Students should apply creative pictures, templates, backgrounds, etc.\n- File Naming Convention: Eventname_Studentname\n- Send your entries latest by 10th August, 2026."
+        objectives: [
+          "To inspire students to express their ideas creatively through digital poster designing on Sustainable Development Goals (SDGs).",
+          "To enhance visual communication skills using digital design tools and original artwork."
+        ],
+        judgementCriteria: [
+          "Originality", 
+          "Presentation", 
+          "Effective and Smart Use of Digital Tools", 
+          "Creativity", 
+          "Relevance to the Theme"
+        ],
+        requirements: "Guidelines\n• Students are required to Design a Poster in Canva on the theme.\n• Participants are encouraged to use creative elements such as images, templates, backgrounds, icons, and graphics to enhance their posters.\n• The content and design must be the original work of the student.\n• The file should be saved using the following naming convention: Event Name_Student Name\n• The final submission must be in PNG format.\n• Students shortlisted in the Preliminary Round will be invited to participate in the Final Round, where they will present and explain their poster in 2–3 minutes.\n• Certificates will be given to the top 3 winners."
       },
       { 
         title: "DigiSlides", registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSc0MgJPoUwAOcSG_UtGBAzvPlr-O7FCDNOJc7YcE3r5vLptTA/viewform?usp=publish-editor", 
         description: "Class 5", 
-        mode: "Preliminary Round: Online Submission | Final Round: Offline", 
+        mode: "Preliminary Round: Online | Final Round: Offline", 
         classGroup: "Class 5", 
         software: "Canva", 
         icon: Presentation, 
         size: "col-span-1", 
-        about: "In DigiSlides, students step into the world of creative expression, creating engaging presentations on Canva to highlight the importance of the chosen topic.\n\n- Preliminary Round: Online Submission.\n- Final Round: Offline (Selected students will present/explain their work for 2–3 minutes).\n\n- Core Rule: All entries must be the original creation of the students.", 
+        about: "In DigiSlides, students step into the world of creative expression, creating engaging presentations on Canva to highlight the importance of the chosen topic.", 
         venue: "Primary Computer Lab (basement) (Final Round)", 
         image: "/digi-slides.png", 
         eventHead: "Navya Ahuja", eventHeadNumber: "7827651124",
         teamSize: "Individual",
         themes: ["SDG 6: Clean Water and Sanitation", "OR", "SDG 14: Life Below Water"],
         submissionFormat: ".pptx format",
-        judgementCriteria: ["Originality", "Coding (Note: explicitly listed under judgment criteria)", "Smart use of tools/Creativity", "Presentation", "Relevance to the topic"],
-        requirements: "- Create a presentation highlighting the importance of the chosen topic.\n- Length: Exactly 10 Slides.\n- Language: English language only.\n- File Naming Convention: Eventname_Studentname\n- Send your entries latest by 10th August, 2026."
+        judgementCriteria: [
+          "Originality", 
+          "Technical Skills and Digital Competency", 
+          "Creativity and Effective Use of Digital Tools", 
+          "Presentation", 
+          "Relevance to the Theme"
+        ],
+        requirements: "Guidelines\n• Students are required to create a presentation on the given theme.\n• The presentation should consist of 10 slides highlighting the selected Sustainable Development Goal and its significance.\n• The presentation must be prepared only in English.\n• Students should use Canva to create the presentation.\n• The submission must be the original work of the student.\n• The presentation should be submitted in PPTX format.\n• Shortlisted participants will be invited to the Final Round, where they will present and explain their topic in 2-3 minutes.\n• Certificates will be given to the top 3 winners."
       },
     ]
   },
@@ -117,9 +143,9 @@ export const categories: Category[] = [
     hoverBgCode: "bg-gradient-to-br from-purple-400/20 to-purple-500/5",
     gridClass: "md:grid-cols-3",
     events: [
-      { title: "DigiTales", description: "Class 6", mode: "Online + Offline", classGroup: "Class 6", software: "Adobe, Canva, ppt, etc.", icon: Clapperboard, size: "col-span-1", about: "DigiTales is all about storytelling in the digital age. Students share experiences through comic strips, animations, digital art, or puzzles. This event encourages imagination, expression, and innovation, allowing participants to transform their thoughts into engaging digital creations that entertain, inform, and inspire.", venue: "Middle Computer Lab (basement)", image: "/digi-tales.png", eventHead: "Hanisha Nagi", eventHeadNumber: "9810924894", teamSize: "Individual", themes: ["My Digital Promise for a Better India"], objectives: ["Encourage students to think about national initiatives and sustainable development.", "Promote responsible citizenship through digital storytelling.", "Inspire students to showcase how they contribute towards building a better India.", "Develop creativity, communication, and digital presentation skills."], requirements: "Topic Selection: Choose one Government Mission (e.g., Swachh Bharat, Green India, Save Environment, Mission Life, Water Conservation, etc.).\n\nOutput Requirements: Create either a 4–8 panel digital comic strip OR a 1–2-minute animated video.\n\nAllowed Tools: Students may use Microsoft PowerPoint, Canva, Adobe Express, or any other digital creation tool to design their entries.\n\nAI Policy: The submission must be the student's original work. AI tools may be used only for limited assistance (e.g., brainstorming or creating minor design elements). Fully AI-generated comic strips or videos are strictly prohibited and will result in disqualification.\n\nContent Focus: Show how you are contributing today and how your efforts can help build a stronger, better, and more prosperous India in the future.\n\nIdentification: Clearly mention the student's name, class, and section in the submission.\n\nSubmission Details:\n* Format: Comic Strip (PDF/JPG/PNG) or Animated Video (MP4)\n* Submission Deadline: 10th August 2026\n\nSelection Process:\n* Preliminary Round: Online submission.\n* Final Round: Shortlisted participants will present their entries before a panel of judges." },
-      { title: "DigiQuiz", description: "Class 7", mode: "Online", classGroup: "Class 7", software: "Kahoot / Nearpod", icon: Lightbulb, size: "col-span-1", about: "Put your thinking caps on for DigiQuiz! This event tests students’ knowledge of computational thinking and artificial intelligence. Fast-paced and engaging, it challenges participants to think logically, solve problems, and apply concepts, making learning both competitive and fun.", venue: "Online", image: "/digi-quiz.png", eventHead: "Hanisha Nagi", eventHeadNumber: "9810924894", teamSize: "Individual", themes: ["Cybersecurity & Artificial Intelligence Challenge"], objectives: ["Assess students' understanding of Cybersecurity and Artificial Intelligence.", "Promote responsible and ethical use of digital technologies."], requirements: "Participation: Individual participation only.\n\nPlatform: The quiz will be conducted online using Kahoot or Nearpod.\n\nProfile Name: Participants must join the quiz using their registered name.\n\nConnectivity: Ensure a stable internet connection throughout the quiz.\n\nTiming: The quiz will be timed, and no extra time will be provided.\n\nFair Play: Use of external help, books, notes, or electronic resources is strictly prohibited. Participants must answer independently.\n\nAuthority: The decision of the organizers will be final.\n\nNote: Participants will be informed of the date and time of the competition in advance.\n\nQuiz Coverage:\n- Cybersecurity\n- Artificial Intelligence (AI)\n- Digital Citizenship", judgementCriteria: ["Accuracy of Responses", "Speed of Answering", "Cybersecurity & AI Awareness", "Overall Score"] },
-      { title: "DigiBuild", description: "Class 8", mode: "Online", classGroup: "Class 8", software: "Minecraft", icon: Bot, size: "col-span-1", about: "DigiBuild is a platform for aspiring innovators to showcase their technical prowess. Students will engage in online problem-solving challenges and build creative solutions in real-time.", venue: "Online (Microsoft Teams)", image: "/digi-build.png", eventHead: "Aaradhya Yadav", eventHeadNumber: "9818400124", teamSize: "Team of 2", themes: ["Future World Powered by AI Technology"], objectives: ["Design an AI-powered futuristic world in Minecraft showcasing innovation and sustainability."], requirements: "Team Size: Team of 2 participants.\n\nPlatform: Online event conducted via Microsoft Teams.\n\nLive Building: Building must take place during the competition only. Teams will share their screens one by one while building.\n\nTime Allocation:\n* Total Build Time: 1 hour.\n* Submission Time: Additional 30 minutes for recording and submission.\n\nDeliverables: Submit screenshots and a video tour explaining the AI features.\n\nEvaluation: Teams must be ready to answer judges' questions during the presentation.\n\nGameplay Rules:\n* Mode: Vanilla Minecraft (Creative Mode) only.\n* Edition: Java or Bedrock Edition.\n* Allowed Features: Command Blocks are allowed.\n* Prohibited Elements: Mods, plugins, World Edit, downloaded maps/builds, and external editing tools are strictly prohibited.\n\nGeneral Rules:\n* Original work only.\n* No external assistance allowed.\n* Late submissions will not be accepted.\n* The judges' decision will be final.\n\nNote: Participants will be informed of the date and time of the competition in advance.", judgementCriteria: ["Creativity", "AI Integration", "Technical Execution", "Innovation", "Presentation", "Teamwork", "Overall Impact"] },
+      { title: "DigiTales", registrationLink: "https://forms.gle/GH1Xfx6bLh6x9pnq5", description: "Class 6", mode: "Online + Offline", classGroup: "Class 6", software: "Adobe, Canva, ppt, etc.", icon: Clapperboard, size: "col-span-1", about: "DigiTales is all about storytelling in the digital age. Students share experiences through comic strips, animations, digital art, or puzzles. This event encourages imagination, expression, and innovation, allowing participants to transform their thoughts into engaging digital creations that entertain, inform, and inspire.", venue: "Middle Computer Lab (basement)", image: "/digi-tales.png", eventHead: "Hanisha Nagi", eventHeadNumber: "9810924894", teamSize: "Individual", themes: ["My Digital Promise for a Better India"], objectives: ["Encourage students to think about national initiatives and sustainable development.", "Promote responsible citizenship through digital storytelling.", "Inspire students to showcase how they contribute towards building a better India.", "Develop creativity, communication, and digital presentation skills."], requirements: "Topic Selection: Choose one Government Mission (e.g., Swachh Bharat, Green India, Save Environment, Mission Life, Water Conservation, etc.).\n\nOutput Requirements: Create either a 4–8 panel digital comic strip OR a 1–2-minute animated video.\n\nAllowed Tools: Students may use Microsoft PowerPoint, Canva, Adobe Express, or any other digital creation tool to design their entries.\n\nAI Policy: The submission must be the student's original work. AI tools may be used only for limited assistance (e.g., brainstorming or creating minor design elements). Fully AI-generated comic strips or videos are strictly prohibited and will result in disqualification.\n\nContent Focus: Show how you are contributing today and how your efforts can help build a stronger, better, and more prosperous India in the future.\n\nIdentification: Clearly mention the student's name, class, and section in the submission.\n\nSelection Process:\n* Preliminary Round: Online submission.\n* Final Round: Shortlisted participants will present their entries before a panel of judges on 21st August 2026.\n\nCertificates will be given to the top 3 winners only.\n\nSubmission Details:\n* Format: Comic Strip (PDF/JPG/PNG) or Animated Video (MP4)\n* Submission Deadline: 14th August 2026\n* Registration and Submission Link: The link will be shared separately." },
+      { title: "DigiQuiz", registrationLink: "https://forms.gle/DCAqmB9xQFmc7cfo6", description: "Class 7", mode: "Online", classGroup: "Class 7", software: "Kahoot / Nearpod", icon: Lightbulb, size: "col-span-1", about: "Put your thinking caps on for DigiQuiz! This event tests students’ knowledge of computational thinking and artificial intelligence. Fast-paced and engaging, it challenges participants to think logically, solve problems, and apply concepts, making learning both competitive and fun.", venue: "Online", image: "/digi-quiz.png", eventHead: "Hanisha Nagi", eventHeadNumber: "9810924894", teamSize: "Individual", themes: ["Cybersecurity & Artificial Intelligence Challenge"], objectives: ["Assess students' understanding of Cybersecurity and Artificial Intelligence.", "Promote responsible and ethical use of digital technologies."], requirements: "Participation: Individual participation only.\n\nPlatform: The quiz will be conducted online using Kahoot or Nearpod.\n\nProfile Name: Participants must join the quiz using their registered name.\n\nConnectivity: Ensure a stable internet connection throughout the quiz.\n\nTiming: The quiz will be timed, and no extra time will be provided.\n\nFair Play: Use of external help, books, notes, or electronic resources is strictly prohibited. Participants must answer independently.\n\nAuthority: The decision of the organizers will be final.\n\nCertificates will be given to the top 3 winners only.\n\nNote: Participants will be informed of the date and time of the competition in advance.\n\nQuiz Coverage:\n- Cybersecurity\n- Artificial Intelligence (AI)\n- Digital Citizenship", judgementCriteria: ["Accuracy of Responses", "Speed of Answering", "Cybersecurity & AI Awareness", "Overall Score"] },
+      { title: "DigiBuild", registrationLink: "https://forms.gle/vvVwPuHbq6xC383P7", description: "Class 8", mode: "Online", classGroup: "Class 8", software: "Minecraft", icon: Bot, size: "col-span-1", about: "DigiBuild is a platform for aspiring innovators to showcase their technical prowess. Students will engage in online problem-solving challenges and build creative solutions in real-time.", venue: "Online (Microsoft Teams)", image: "/digi-build.png", eventHead: "Aaradhya Yadav", eventHeadNumber: "9818400124", teamSize: "Team of 2", themes: ["Future World Powered by AI Technology"], objectives: ["Design an AI-powered futuristic world in Minecraft showcasing innovation and sustainability."], requirements: "Team Size: Team of 2 participants.\n\nPlatform: Online event conducted via Microsoft Teams.\n\nLive Building: Building must take place during the competition only. Teams will share their screens one by one while building.\n\nTime Allocation:\n* Total Build Time: 1 hour.\n* Submission Time: Additional 30 minutes for recording and submission.\n\nDeliverables: Submit screenshots and a video tour explaining the AI features.\n\nEvaluation: Teams must be ready to answer judges' questions during the presentation.\n\nCertificates will be given to the top 3 winners only.\n\nGameplay Rules:\n* Mode: Vanilla Minecraft (Creative Mode) only.\n* Edition: Java or Bedrock Edition.\n* Allowed Features: Command Blocks are allowed.\n* Prohibited Elements: Mods, plugins, World Edit, downloaded maps/builds, and external editing tools are strictly prohibited.\n\nGeneral Rules:\n* Original work only.\n* No external assistance allowed.\n* Late submissions will not be accepted.\n* The judges' decision will be final.\n\nNote: Participants will be informed of the date and time of the competition in advance.", judgementCriteria: ["Creativity", "AI Integration", "Technical Execution", "Innovation", "Presentation", "Teamwork", "Overall Impact"] },
     ]
   },
   {

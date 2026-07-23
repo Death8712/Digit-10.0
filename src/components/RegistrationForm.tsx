@@ -28,9 +28,9 @@ const REGISTRATION_LINKS = [
     shadowColor: "hover:shadow-[0_0_30px_-5px_rgba(192,132,252,0.3)]",
     hoverBg: "hover:bg-purple-400/10",
     events: [
-      { name: "DigiTales", link: "#" },
-      { name: "DigiQuiz", link: "#" },
-      { name: "DigiBuild", link: "#" },
+      { name: "DigiTales", link: "https://forms.gle/GH1Xfx6bLh6x9pnq5" },
+      { name: "DigiQuiz", link: "https://forms.gle/DCAqmB9xQFmc7cfo6" },
+      { name: "DigiBuild", link: "https://forms.gle/vvVwPuHbq6xC383P7" },
     ]
   },
   {
