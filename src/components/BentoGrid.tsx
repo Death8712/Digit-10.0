@@ -131,8 +131,12 @@ function BentoCard({ event, category, index, onClick }: { event: EventItem, cate
         <div>
           {/* Top-Left Rounded Icon Container */}
           <div className="flex justify-between items-start mb-6">
-            
-
+            <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 shadow-inner shadow-white/5", category.accentCode)}>
+              <event.icon className="w-6 h-6" />
+            </div>
+            {event.image && (
+              <img src={event.image} alt={event.title} className="w-16 h-16 object-contain mix-blend-screen opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
+            )}
           </div>
           
           <h3 className="text-2xl font-display font-bold mb-2 text-white drop-shadow-md">{event.title}</h3>

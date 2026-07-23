@@ -19,6 +19,8 @@ const interschoolEvents: Record<string, EventItem> = {
     image: "/digi-thon.png",
     eventHead: "Sheza Khan",
     eventHeadNumber: "+91 9968882786",
+    teacherInCharge: "Ms. Urvashi Singhal",
+    teacherInChargeNumber: "+91 9818893193",
     teamSize: "1 team per school (2 participants per team)",
     themes: ["MySQL and Python Programming"],
     judgementCriteria: [
@@ -43,6 +45,8 @@ const interschoolEvents: Record<string, EventItem> = {
     image: "/Digi-AI.png",
     eventHead: "Sheza Khan",
     eventHeadNumber: "+91 9968882786",
+    teacherInCharge: "Ms. Urvashi Singhal",
+    teacherInChargeNumber: "+91 9818893193",
     teamSize: "1 team per school (2 participants per team)",
     themes: ["Computational Thinking and Artificial Intelligence"],
     judgementCriteria: [
@@ -65,8 +69,10 @@ const interschoolEvents: Record<string, EventItem> = {
     about: "Think like a changemaker and use AI and technology to solve a real problem in your local community. Observe, innovate, and present your idea through a 2–3 minute video that demonstrates how technology can create a positive impact.",
     venue: "Online",
     image: "/Digi-Frames.png",
-    eventHead: "TBD",
-    eventHeadNumber: "-",
+    eventHead: "Aaradhya Yadav",
+    eventHeadNumber: "+91 9818400124",
+    teacherInCharge: "Ms. Deepti Chopra",
+    teacherInChargeNumber: "+91 8860189198",
     teamSize: "1 team per school (up to 2 students)",
     themes: ["Identify. Innovate. Impact."],
     judgementCriteria: [
@@ -208,8 +214,10 @@ export default function InterschoolSpecial() {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full text-left">
                     {/* Event 1: DigiThon */}
                     <div className="p-6 rounded-2xl border border-neon-cyan/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-cyan transition-colors">
-                      <div className="w-12 h-12 rounded-xl bg-neon-cyan/10 flex items-center justify-center text-neon-cyan mb-2">
-                        <Cpu className="w-6 h-6" />
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="w-12 h-12 rounded-xl bg-neon-cyan/10 flex items-center justify-center text-neon-cyan">
+                          <Cpu className="w-6 h-6" />
+                        </div>
                       </div>
                       <h3 className="text-2xl font-display font-bold text-white">DigiThon</h3>
                       <p className="text-neon-cyan text-xs font-mono font-semibold uppercase tracking-wider">
@@ -231,8 +239,10 @@ export default function InterschoolSpecial() {
 
                     {/* Event 2: DigiAI */}
                     <div className="p-6 rounded-2xl border border-purple-400/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-purple-400 transition-colors">
-                      <div className="w-12 h-12 rounded-xl bg-purple-400/10 flex items-center justify-center text-purple-400 mb-2">
-                        <Bot className="w-6 h-6" />
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="w-12 h-12 rounded-xl bg-purple-400/10 flex items-center justify-center text-purple-400">
+                          <Bot className="w-6 h-6" />
+                        </div>
                       </div>
                       <h3 className="text-2xl font-display font-bold text-white">DigiAI</h3>
                       <p className="text-purple-400 text-xs font-mono font-semibold uppercase tracking-wider">
@@ -254,8 +264,10 @@ export default function InterschoolSpecial() {
                     
                     {/* Event 3: DigiFrames */}
                     <div className="p-6 rounded-2xl border border-yellow-500/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-yellow-500 transition-colors">
-                      <div className="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-500 mb-2">
-                        <Video className="w-6 h-6" />
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-500">
+                          <Video className="w-6 h-6" />
+                        </div>
                       </div>
                       <h3 className="text-2xl font-display font-bold text-white">DigiFrames</h3>
                       <p className="text-yellow-500 text-xs font-mono font-semibold uppercase tracking-wider">
@@ -277,8 +289,10 @@ export default function InterschoolSpecial() {
 
                     {/* Event 4: DigiScratch */}
                     <div className="p-6 rounded-2xl border border-neon-magenta/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-magenta transition-colors">
-                      <div className="w-12 h-12 rounded-xl bg-neon-magenta/10 flex items-center justify-center text-neon-magenta mb-2">
-                        <ExternalLink className="w-6 h-6" />
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="w-12 h-12 rounded-xl bg-neon-magenta/10 flex items-center justify-center text-neon-magenta">
+                          <ExternalLink className="w-6 h-6" />
+                        </div>
                       </div>
                       <h3 className="text-2xl font-display font-bold text-white">DigiScratch</h3>
                       <p className="text-neon-magenta text-xs font-mono font-semibold uppercase tracking-wider">

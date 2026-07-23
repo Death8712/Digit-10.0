@@ -10,7 +10,7 @@ const REGISTRATION_LINKS = [
     borderSolid: "border-amber-400",
     bg: "bg-amber-400/5",
     solidBg: "bg-amber-400",
-    shadowColor: "shadow-amber-400",
+    shadowColor: "hover:shadow-[0_0_30px_-5px_rgba(251,191,36,0.3)]",
     hoverBg: "hover:bg-amber-400/10",
     events: [
       { name: "DigiMagic", link: "https://docs.google.com/forms/d/e/1FAIpQLSc8EG57o4A2Pw7kOJuPL9gJggOoGHZgBqYmbieBBAfdogFGvg/viewform?usp=header" },
@@ -25,7 +25,7 @@ const REGISTRATION_LINKS = [
     borderSolid: "border-purple-400",
     bg: "bg-purple-400/5",
     solidBg: "bg-purple-400",
-    shadowColor: "shadow-purple-400",
+    shadowColor: "hover:shadow-[0_0_30px_-5px_rgba(192,132,252,0.3)]",
     hoverBg: "hover:bg-purple-400/10",
     events: [
       { name: "DigiTales", link: "#" },
@@ -40,7 +40,7 @@ const REGISTRATION_LINKS = [
     borderSolid: "border-neon-cyan",
     bg: "bg-neon-cyan/5",
     solidBg: "bg-neon-cyan",
-    shadowColor: "shadow-neon-cyan",
+    shadowColor: "hover:shadow-[0_0_30px_-5px_rgba(0,255,255,0.3)]",
     hoverBg: "hover:bg-neon-cyan/10",
     events: [
       { name: "DigiTote", link: "https://forms.gle/vpnQUDbj6f48i1hH9" },
@@ -56,7 +56,7 @@ const REGISTRATION_LINKS = [
     borderSolid: "border-emerald-400",
     bg: "bg-emerald-400/5",
     solidBg: "bg-emerald-400",
-    shadowColor: "shadow-emerald-400",
+    shadowColor: "hover:shadow-[0_0_30px_-5px_rgba(52,211,153,0.3)]",
     hoverBg: "hover:bg-emerald-400/10",
     events: [
       { name: "DigiThon", link: "https://forms.gle/yqvhAApcUWGkr3qi6" },
@@ -104,7 +104,7 @@ export default function RegistrationForm() {
               transition={{ delay: idx * 0.1, duration: 0.4 }}
               viewport={{ once: true }}
               className={cn(
-                "rounded-3xl border bg-black/40 backdrop-blur-xl p-8 relative overflow-hidden group hover:shadow-[0_0_30px_-5px_var(--tw-shadow-color)] transition-all duration-500 flex flex-col",
+                "rounded-3xl border bg-black/40 backdrop-blur-xl p-8 relative overflow-hidden group  transition-all duration-500 flex flex-col",
                 category.border,
                 category.shadowColor
               )}
@@ -143,7 +143,7 @@ export default function RegistrationForm() {
                     rel="noopener noreferrer"
                     className={cn(
                       "flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/[0.02] transition-all duration-300 group/link overflow-hidden relative",
-                      category.hoverBg
+
                     )}
                   >
                     <div className={cn("absolute inset-0 w-0 group-hover/link:w-full transition-all duration-500 opacity-10", category.solidBg)} />

@@ -5,7 +5,8 @@ import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 type Item = { id: number, title: string, subtitle: string, video?: string, image?: string, youtubeId?: string };
 const ITEMS: Item[] = [
-  { id: 0, title: '', subtitle: '', youtubeId: 'zCkjOAJt1qQ' },
+  { id: 0, title: 'DIGIT 10.0', subtitle: 'OFFICIAL TRAILER', youtubeId: 'zCkjOAJt1qQ' },
+  { id: 1, title: 'INTRASCHOOL SHOWCASE', subtitle: 'INNOVATION AT ITS PEAK', youtubeId: '3UVXuutyNm0' }
 ];
 
 function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () => void }) {
@@ -32,10 +33,10 @@ function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () =>
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => { setIsHovered(false); setCoords({ x: 0, y: 0 }); }}
-      className="relative w-[100vw] h-screen shrink-0 overflow-hidden cursor-pointer group"
+      className="relative w-[85vw] h-[65vh] md:w-[75vw] md:h-[80vh] mx-2 md:mx-4 shrink-0 overflow-hidden cursor-pointer group rounded-2xl md:rounded-3xl border border-white/10 shadow-2xl"
       style={{ perspective: '1000px' }}
     >
-      <div className="absolute inset-0 w-full h-full bg-[#0a0a0a] overflow-hidden border-y border-white/10 group-hover:border-white/30 transition-colors duration-500">
+      <div className="absolute inset-0 w-full h-full bg-[#0a0a0a] overflow-hidden group-hover:border-white/30 transition-colors duration-500">
         
         {/* Layer B: Background (Deep buffer view, softened) */}
         <div 
@@ -78,28 +79,8 @@ function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () =>
             transform: `scale(${isHovered ? 1.02 : 1}) translate(${isHovered ? coords.x : 0}%, ${isHovered ? coords.y : 0}%)`
           }}
         >
-          {/* Top Interface */}
-          <div className="flex justify-between items-start opacity-80">
-            <div className="px-3 py-1 rounded-full border border-white/20 bg-black/40 backdrop-blur-md">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-white/90">IMG_{item.id.toString().padStart(3, '0')}</span>
-            </div>
-            <div className="w-8 h-8 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center">
-              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-            </div>
-          </div>
-
           {/* Central Frame Element */}
           <div className="absolute inset-8 border border-white/10 pointer-events-none rounded-xl" />
-
-          {/* Bottom Text */}
-          <div>
-            <h3 className="font-display font-black text-3xl md:text-5xl lg:text-7xl text-white uppercase tracking-tighter mb-2 drop-shadow-xl">
-              {item.title}
-            </h3>
-            <p className="font-mono text-sm md:text-lg tracking-[0.2em] text-white/70 uppercase">
-              {item.subtitle}
-            </p>
-          </div>
         </div>
 
         {/* Additional Lighting / Reflection */}
@@ -189,7 +170,7 @@ export default function Gallery() {
         {/* Carousel Container */}
         <div 
           ref={scrollRef}
-          className="flex overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-10 [&::-webkit-scrollbar]:hidden items-center py-8 px-4 md:px-12 lg:px-24"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {ITEMS.map((item) => (

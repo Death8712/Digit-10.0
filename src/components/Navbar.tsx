@@ -66,17 +66,17 @@ export default function Navbar() {
         </div>
         
         {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center gap-1.5 xl:gap-2.5 shrink-0 ml-4 mr-4">
+        <div className="hidden lg:flex items-center gap-1 xl:gap-2 shrink-0 ml-2 xl:ml-4 mr-2 xl:mr-4">
           {NAV_ITEMS.map((item, index) => {
             const id = item === 'JOURNEY' ? 'legacy' : item === 'INTRASCHOOL' ? 'events' : item === 'INTERSCHOOL' ? 'interschool' : item === 'OUR TEAM' ? 'visionaries' : item === 'CONTACT US' ? 'contact' : item.toLowerCase();
             const isActive = activeSection === id;
             
             return (
-              <div key={item} className="flex items-center gap-1.5 xl:gap-2.5 shrink-0">
+              <div key={item} className="flex items-center gap-1 xl:gap-2 shrink-0">
                 <a
                   href={`#${id}`}
                   onClick={() => setActiveSection(id)}
-                  className={`relative text-xs xl:text-sm font-display font-bold tracking-[0.05em] whitespace-nowrap transition-colors duration-200 py-1 ${
+                  className={`relative text-[10px] xl:text-xs font-display font-bold tracking-[0.05em] whitespace-nowrap transition-colors duration-200 py-1 ${
                     isActive 
                       ? 'text-neon-cyan drop-shadow-[0_0_8px_rgba(0,255,255,0.8)]' 
                       : 'text-white/70 hover:text-neon-cyan hover:drop-shadow-[0_0_6px_rgba(0,255,255,0.5)]'
