@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { Lock, Unlock, Globe, Zap, Cpu, ExternalLink, Bot, Video } from "lucide-react";
 import { cn } from "../lib/utils";
 import EventModal from "./EventModal";
@@ -114,199 +114,221 @@ const interschoolEvents: Record<string, EventItem> = {
 };
 
 export default function InterschoolSpecial() {
-  const [isRevealed, setIsRevealed] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<{event: EventItem, accent: string} | null>(null);
+  const [unlockStatus, setUnlockStatus] = useState<"locked" | "unlocking" | "unlocked">("locked");
 
-  const handleReveal = () => {
-    setIsAnimating(true);
+  const handleUnlock = () => {
+    if (unlockStatus !== "locked") return;
+    setUnlockStatus("unlocking");
     setTimeout(() => {
-      setIsRevealed(true);
-      setIsAnimating(false);
-    }, 1500); // Wait for unlocking animation
+      setUnlockStatus("unlocked");
+    }, 1500); // 1.5s decryption animation
   };
 
   return (
-    <section id="interschool" className="py-20 relative z-10 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 relative">
-        <AnimatePresence mode="wait">
-          {!isRevealed ? (
-            <motion.div
-              key="locked"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-              className="flex flex-col items-center justify-center text-center p-12 md:p-24 border border-neon-cyan/20 rounded-3xl bg-black/40 backdrop-blur-md relative overflow-hidden group"
-            >
-              {/* Scanline effect */}
-              <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,255,0.05)_50%)] bg-[length:100%_4px] pointer-events-none" />
-              
-              <motion.div
-                animate={{
-                  boxShadow: isAnimating 
-                    ? ["0 0 0px #0ff", "0 0 50px #0ff", "0 0 100px #0ff"] 
-                    : "0 0 0px transparent",
-                }}
-                className="w-24 h-24 rounded-full border border-neon-cyan/30 flex items-center justify-center mb-8 relative"
-              >
-                {isAnimating ? (
-                  <Unlock className="w-10 h-10 text-neon-cyan animate-pulse" />
-                ) : (
-                  <Lock className="w-10 h-10 text-white/50 group-hover:text-neon-cyan transition-colors" />
-                )}
-                
-                {/* Rotating ring */}
-                <motion.div 
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-[-10px] border border-dashed border-neon-cyan/20 rounded-full"
-                />
-              </motion.div>
+    <section id="interschool" className="py-20 relative z-10 w-full overflow-hidden min-h-[600px] flex flex-col items-center justify-center">
+      <AnimatePresence mode="wait">
+        {unlockStatus !== "unlocked" ? (
+          <motion.div 
+            key="locked-state"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.5, filter: "blur(10px)" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="flex flex-col items-center justify-center cursor-pointer group relative z-30"
+            onClick={handleUnlock}
+          >
+            {/* Decryption Effect Background */}
+            {unlockStatus === "unlocking" && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: [0, 1, 0], scale: [0.5, 2, 4] }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="absolute inset-0 bg-neon-cyan/20 rounded-full blur-3xl pointer-events-none"
+              />
+            )}
 
-              <h2 className="text-3xl md:text-5xl font-display font-black mb-4">
-                <span className="text-white/30">RESTRICTED </span> 
-                <span className={isAnimating ? "text-neon-cyan animate-pulse" : "text-white"}>ACCESS</span>
+            <div className="relative w-40 h-40 flex items-center justify-center mb-8">
+              {/* Outer scanning rings */}
+              <motion.div 
+                animate={{ rotate: 360 }} 
+                transition={{ duration: unlockStatus === "unlocking" ? 1 : 10, repeat: Infinity, ease: "linear" }}
+                className={cn(
+                  "absolute inset-0 rounded-full border-2",
+                  unlockStatus === "unlocking" ? "border-neon-cyan/80 border-dashed" : "border-neon-cyan/20 border-t-neon-cyan/80"
+                )} 
+              />
+              <motion.div 
+                animate={{ rotate: -360 }} 
+                transition={{ duration: unlockStatus === "unlocking" ? 1.5 : 15, repeat: Infinity, ease: "linear" }}
+                className={cn(
+                  "absolute inset-4 rounded-full border-2",
+                  unlockStatus === "unlocking" ? "border-neon-magenta/80 border-dotted" : "border-neon-magenta/20 border-b-neon-magenta/80"
+                )}
+              />
+              
+              {/* Center Lock Button */}
+              <motion.div 
+                animate={unlockStatus === "unlocking" ? { scale: [1, 1.2, 0.8], opacity: [1, 0.8, 0] } : { scale: 1 }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className={cn(
+                  "relative z-10 flex items-center justify-center w-24 h-24 bg-[#050505] rounded-full border transition-all duration-500",
+                  unlockStatus === "unlocking" ? "border-neon-cyan shadow-[0_0_50px_rgba(0,255,255,0.8)]" : "border-white/10 group-hover:border-neon-cyan/50 group-hover:shadow-[0_0_30px_rgba(0,255,255,0.3)]"
+                )}
+              >
+                 <AnimatePresence mode="wait">
+                   {unlockStatus === "locked" ? (
+                     <motion.div key="lock" exit={{ opacity: 0, scale: 0.5 }} transition={{ duration: 0.2 }}>
+                       <Lock className="w-10 h-10 text-white/50 group-hover:text-neon-cyan transition-colors" />
+                     </motion.div>
+                   ) : (
+                     <motion.div key="unlock" initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1.2 }} transition={{ duration: 0.4, type: "spring" }}>
+                       <Unlock className="w-12 h-12 text-neon-cyan drop-shadow-[0_0_10px_rgba(0,255,255,0.8)]" />
+                     </motion.div>
+                   )}
+                 </AnimatePresence>
+              </motion.div>
+            </div>
+            
+            <motion.div 
+              animate={unlockStatus === "unlocking" ? { opacity: 0, y: 10 } : { opacity: 1, y: 0 }}
+              className="text-neon-cyan font-mono text-lg tracking-[0.3em] uppercase group-hover:text-white transition-colors"
+            >
+              {unlockStatus === "locked" ? "Click to Decrypt" : "Decrypting..."}
+            </motion.div>
+            <motion.div 
+              animate={unlockStatus === "unlocking" ? { opacity: 0 } : { opacity: 1 }}
+              className="text-white/40 font-sans text-sm mt-3 uppercase tracking-wider"
+            >
+              Classified Inter-School Events
+            </motion.div>
+          </motion.div>
+        ) : (
+          <motion.div 
+            key="unlocked-state"
+            initial={{ opacity: 0, scale: 0.9, y: 50, filter: "blur(10px)" }}
+            animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
+            className="w-full max-w-7xl mx-auto px-4 relative z-20"
+          >
+<div className="relative p-[2px] rounded-3xl overflow-hidden group">
+          {/* Animated border */}
+          <div className="absolute inset-0 bg-gradient-to-r from-neon-magenta via-neon-cyan to-neon-magenta bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]" />
+          
+          <div className="bg-cyber-black rounded-3xl p-8 md:p-12 relative z-10 overflow-hidden">
+            {/* Background Grid */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-20" />
+            
+            <div className="relative z-20 flex flex-col items-center text-center">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neon-magenta/30 bg-neon-magenta/10 text-neon-magenta font-mono text-xs font-bold tracking-widest uppercase mb-6">
+                <Zap className="w-3 h-3 fill-neon-magenta" />
+                Exclusive Access Granted
+              </div>
+              
+              <h2 className="text-4xl md:text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-magenta mb-6">
+                INTER-SCHOOL MEGA EVENTS
               </h2>
               
-              <p className="text-white/50 font-mono text-sm tracking-widest uppercase mb-10 max-w-md">
-                Encrypted payload detected. Authorization required to access the flagship Inter-school Mega Events.
+              <p className="text-lg text-white/70 leading-relaxed font-sans max-w-2xl mb-12">
+                Welcome to the elite tier of DIGIT 10.0. These high-stakes challenges are strictly for top-tier competitors representing their institutions.
               </p>
-
-              <button
-                onClick={handleReveal}
-                disabled={isAnimating}
-                className="px-8 py-4 bg-neon-cyan/10 border border-neon-cyan hover:bg-neon-cyan hover:text-black transition-all duration-300 font-mono font-bold tracking-widest uppercase flex items-center gap-3 group/btn relative overflow-hidden text-neon-cyan disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {/* Glitch effect on hover */}
-                <span className="absolute inset-0 bg-white/20 -translate-x-full group-hover/btn:animate-[glitch_0.2s_linear]" />
-                {isAnimating ? "DECRYPTING..." : "DECRYPT EVENT"}
-              </button>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="revealed"
-              initial={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              transition={{ duration: 0.8, type: "spring" }}
-              className="relative p-[2px] rounded-3xl overflow-hidden group"
-            >
-              {/* Animated border */}
-              <div className="absolute inset-0 bg-gradient-to-r from-neon-magenta via-neon-cyan to-neon-magenta bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]" />
               
-              <div className="bg-cyber-black rounded-3xl p-8 md:p-12 relative z-10 overflow-hidden">
-                {/* Background Grid */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-20" />
-                
-                <div className="relative z-20 flex flex-col items-center text-center">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neon-magenta/30 bg-neon-magenta/10 text-neon-magenta font-mono text-xs font-bold tracking-widest uppercase mb-6">
-                    <Zap className="w-3 h-3 fill-neon-magenta" />
-                    Exclusive Access Granted
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full text-left">
+                {/* Event 1: DigiThon */}
+                <div className="p-6 rounded-2xl border border-neon-cyan/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-cyan transition-colors">
+                  <div className="flex justify-between items-start mb-2">
                   </div>
-                  
-                  <h2 className="text-4xl md:text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-magenta mb-6">
-                    INTER-SCHOOL MEGA EVENTS
-                  </h2>
-                  
-                  <p className="text-lg text-white/70 leading-relaxed font-sans max-w-2xl mb-12">
-                    Welcome to the elite tier of DIGIT 10.0. These high-stakes challenges are strictly for top-tier competitors representing their institutions.
+                  <h3 className="text-2xl font-display font-bold text-white">DigiThon</h3>
+                  <p className="text-neon-cyan text-xs font-mono font-semibold uppercase tracking-wider">
+                    Programming on Python & MySQL
                   </p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full text-left">
-                    {/* Event 1: DigiThon */}
-                    <div className="p-6 rounded-2xl border border-neon-cyan/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-cyan transition-colors">
-                      <div className="flex justify-between items-start mb-2">
-                      </div>
-                      <h3 className="text-2xl font-display font-bold text-white">DigiThon</h3>
-                      <p className="text-neon-cyan text-xs font-mono font-semibold uppercase tracking-wider">
-                        Programming on Python & MySQL
-                      </p>
-                      <p className="text-white/60 font-sans text-sm flex-1">
-                        Find a real-world problem and build a solution using Python & MySQL. Create open-source software for local businesses or schools.
-                      </p>
-                      <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
-                        <span className="text-neon-cyan">CLASS 9-12</span>
-                        <button 
-                          onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digithon, accent: "text-neon-cyan"}); }}
-                          className="text-white/40 group-hover:text-neon-cyan transition-colors uppercase tracking-[0.2em]"
-                        >
-                          [ INITIATE ]
-                        </button>
-                      </div>
-                    </div>
+                  <p className="text-white/60 font-sans text-sm flex-1">
+                    Find a real-world problem and build a solution using Python & MySQL. Create open-source software for local businesses or schools.
+                  </p>
+                  <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
+                    <span className="text-neon-cyan">CLASS 9-12</span>
+                    <button 
+                      onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digithon, accent: "text-neon-cyan"}); }}
+                      className="text-white/40 group-hover:text-neon-cyan transition-colors uppercase tracking-[0.2em]"
+                    >
+                      [ INITIATE ]
+                    </button>
+                  </div>
+                </div>
 
-                    {/* Event 2: DigiAI */}
-                    <div className="p-6 rounded-2xl border border-purple-400/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-purple-400 transition-colors">
-                      <div className="flex justify-between items-start mb-2">
-                      </div>
-                      <h3 className="text-2xl font-display font-bold text-white">DigiAI</h3>
-                      <p className="text-purple-400 text-xs font-mono font-semibold uppercase tracking-wider">
-                        "Second Brain" for Real Life
-                      </p>
-                      <p className="text-white/60 font-sans text-sm flex-1">
-                        Build an original AI-powered MVP with a reasoning layer to help students schedule tasks, make decisions, and protect privacy.
-                      </p>
-                      <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
-                        <span className="text-purple-400">CLASS 9-12</span>
-                        <button 
-                          onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiai, accent: "text-purple-400"}); }}
-                          className="text-white/40 group-hover:text-purple-400 transition-colors uppercase tracking-[0.2em]"
-                        >
-                          [ INITIATE ]
-                        </button>
-                      </div>
-                    </div>
-                    
-                    {/* Event 3: DigiFrames */}
-                    <div className="p-6 rounded-2xl border border-yellow-500/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-yellow-500 transition-colors">
-                      <div className="flex justify-between items-start mb-2">
-                      </div>
-                      <h3 className="text-2xl font-display font-bold text-white">DigiFrames</h3>
-                      <p className="text-yellow-500 text-xs font-mono font-semibold uppercase tracking-wider">
-                        Identify. Innovate. Impact.
-                      </p>
-                      <p className="text-white/60 font-sans text-sm flex-1">
-                        Think like a changemaker and use AI and technology to solve a real problem in your local community through a 2-3 minute video.
-                      </p>
-                      <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
-                        <span className="text-yellow-500">CLASS 6-8</span>
-                        <button 
-                          onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiframes, accent: "text-yellow-500"}); }}
-                          className="text-white/40 group-hover:text-yellow-500 transition-colors uppercase tracking-[0.2em]"
-                        >
-                          [ INITIATE ]
-                        </button>
-                      </div>
-                    </div>
+                {/* Event 2: DigiAI */}
+                <div className="p-6 rounded-2xl border border-purple-400/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-purple-400 transition-colors">
+                  <div className="flex justify-between items-start mb-2">
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-white">DigiAI</h3>
+                  <p className="text-purple-400 text-xs font-mono font-semibold uppercase tracking-wider">
+                    "Second Brain" for Real Life
+                  </p>
+                  <p className="text-white/60 font-sans text-sm flex-1">
+                    Build an original AI-powered MVP with a reasoning layer to help students schedule tasks, make decisions, and protect privacy.
+                  </p>
+                  <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
+                    <span className="text-purple-400">CLASS 9-12</span>
+                    <button 
+                      onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiai, accent: "text-purple-400"}); }}
+                      className="text-white/40 group-hover:text-purple-400 transition-colors uppercase tracking-[0.2em]"
+                    >
+                      [ INITIATE ]
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Event 3: DigiFrames */}
+                <div className="p-6 rounded-2xl border border-yellow-500/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-yellow-500 transition-colors">
+                  <div className="flex justify-between items-start mb-2">
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-white">DigiFrames</h3>
+                  <p className="text-yellow-500 text-xs font-mono font-semibold uppercase tracking-wider">
+                    Identify. Innovate. Impact.
+                  </p>
+                  <p className="text-white/60 font-sans text-sm flex-1">
+                    Think like a changemaker and use AI and technology to solve a real problem in your local community through a 2-3 minute video.
+                  </p>
+                  <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
+                    <span className="text-yellow-500">CLASS 6-8</span>
+                    <button 
+                      onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiframes, accent: "text-yellow-500"}); }}
+                      className="text-white/40 group-hover:text-yellow-500 transition-colors uppercase tracking-[0.2em]"
+                    >
+                      [ INITIATE ]
+                    </button>
+                  </div>
+                </div>
 
-                    {/* Event 4: DigiScratch */}
-                    <div className="p-6 rounded-2xl border border-neon-magenta/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-magenta transition-colors">
-                      <div className="flex justify-between items-start mb-2">
-                      </div>
-                      <h3 className="text-2xl font-display font-bold text-white">DigiScratch</h3>
-                      <p className="text-neon-magenta text-xs font-mono font-semibold uppercase tracking-wider">
-                        Math O Mania ('Math Humour')
-                      </p>
-                      <p className="text-white/60 font-sans text-sm flex-1">
-                        Explain mathematical concepts using Scratch coding, humor, memes, storytelling, and interactive animations.
-                      </p>
-                      <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
-                        <span className="text-neon-magenta">CLASS 5</span>
-                        <button 
-                          onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiscratch, accent: "text-neon-magenta"}); }}
-                          className="text-white/40 group-hover:text-neon-magenta transition-colors uppercase tracking-[0.2em]"
-                        >
-                          [ INITIATE ]
-                        </button>
-                      </div>
-                    </div>
+                {/* Event 4: DigiScratch */}
+                <div className="p-6 rounded-2xl border border-neon-magenta/20 bg-black/40 backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-magenta transition-colors">
+                  <div className="flex justify-between items-start mb-2">
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-white">DigiScratch</h3>
+                  <p className="text-neon-magenta text-xs font-mono font-semibold uppercase tracking-wider">
+                    Math O Mania ('Math Humour')
+                  </p>
+                  <p className="text-white/60 font-sans text-sm flex-1">
+                    Explain mathematical concepts using Scratch coding, humor, memes, storytelling, and interactive animations.
+                  </p>
+                  <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
+                    <span className="text-neon-magenta">CLASS 5</span>
+                    <button 
+                      onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiscratch, accent: "text-neon-magenta"}); }}
+                      className="text-white/40 group-hover:text-neon-magenta transition-colors uppercase tracking-[0.2em]"
+                    >
+                      [ INITIATE ]
+                    </button>
                   </div>
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
 
+        )}
+      </AnimatePresence>
       <EventModal 
         isOpen={!!selectedEvent}
         onClose={() => setSelectedEvent(null)}
@@ -316,4 +338,3 @@ export default function InterschoolSpecial() {
     </section>
   );
 }
-
