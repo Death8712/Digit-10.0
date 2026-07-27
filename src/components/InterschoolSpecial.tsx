@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { Lock, Unlock, Globe, Zap, Cpu, ExternalLink, Bot, Video } from "lucide-react";
 import { cn } from "../lib/utils";
@@ -113,6 +113,30 @@ const interschoolEvents: Record<string, EventItem> = {
   }
 };
 
+
+const ScrambleText = ({ text, isScrambling }: { text: string; isScrambling: boolean }) => {
+  const [displayText, setDisplayText] = useState(text);
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;':,./<>?";
+  
+  useEffect(() => {
+    if (!isScrambling) {
+      setDisplayText(text);
+      return;
+    }
+    
+    let interval = setInterval(() => {
+      setDisplayText(text.split('').map(char => {
+        if (char === ' ') return ' ';
+        return chars[Math.floor(Math.random() * chars.length)];
+      }).join(''));
+    }, 50);
+    
+    return () => clearInterval(interval);
+  }, [text, isScrambling]);
+
+  return <span>{displayText}</span>;
+};
+
 export default function InterschoolSpecial() {
   const [selectedEvent, setSelectedEvent] = useState<{event: EventItem, accent: string} | null>(null);
   const [unlockStatus, setUnlockStatus] = useState<"locked" | "unlocking" | "unlocked">("locked");
@@ -122,7 +146,7 @@ export default function InterschoolSpecial() {
     setUnlockStatus("unlocking");
     setTimeout(() => {
       setUnlockStatus("unlocked");
-    }, 1500); // 1.5s decryption animation
+    }, 2500); // 1.5s decryption animation
   };
 
   return (
@@ -191,10 +215,10 @@ export default function InterschoolSpecial() {
             </div>
             
             <motion.div 
-              animate={unlockStatus === "unlocking" ? { opacity: 0, y: 10 } : { opacity: 1, y: 0 }}
+              animate={unlockStatus === "unlocking" ? { opacity: [1, 0.5, 1], y: 0, textShadow: "0 0 10px #0ff" } : { opacity: 1, y: 0 }}
               className="text-neon-cyan font-mono text-lg tracking-[0.3em] uppercase group-hover:text-white transition-colors"
             >
-              {unlockStatus === "locked" ? "Click to Decrypt" : "Decrypting..."}
+              {unlockStatus === "locked" ? "Click to Decrypt" : <ScrambleText text="ACCESSING CLASSIFIED DATA..." isScrambling={true} />}
             </motion.div>
             <motion.div 
               animate={unlockStatus === "unlocking" ? { opacity: 0 } : { opacity: 1 }}

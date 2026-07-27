@@ -165,3 +165,12 @@
     opacity: 1 !important;
   }
 }
+
+.event-requirements-html b, .event-requirements-html strong {
+  color: white;
+  font-weight: 700;
+}
+.event-requirements-html a {
+  color: #0ff;
+  text-decoration: underline;
+}

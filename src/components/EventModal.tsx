@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Calendar, MapPin, Info, Monitor, Phone, User, ClipboardList, Lightbulb, Star, Target, GraduationCap } from 'lucide-react';
+import { X, Calendar, MapPin, Info, Monitor, Phone, User, ClipboardList, Lightbulb, Star, Target, GraduationCap , Globe } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
@@ -22,11 +22,14 @@ interface EventModalProps {
     teacherInChargeNumber?: string;
     teamSize?: string;
     themes?: string[];
+    sdgs?: string[];
     submissionFormat?: string;
     judgementCriteria?: string[];
     requirements?: string;
     objectives?: string[];
     registrationLink?: string;
+    submissionLink?: string;
+    submissionDate?: string;
   } | null;
   categoryAccent?: string;
 }
@@ -130,7 +133,20 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
                         <ClipboardList size={18} className={categoryAccent} />
                         <h3 className="font-display font-bold uppercase tracking-wider text-sm">Requirements</h3>
                       </div>
-                      <div className="text-white/60 text-sm md:text-base whitespace-pre-wrap">{event.requirements}</div>
+                      <div className="text-white/60 text-sm md:text-base whitespace-pre-wrap event-requirements-html" dangerouslySetInnerHTML={{ __html: event.requirements }} />
+                    </div>
+                  )}
+                  {event.sdgs && event.sdgs.length > 0 && (
+                    <div className="col-span-1 sm:col-span-2 lg:col-span-3 bg-white/5 rounded-2xl p-6 border border-white/5">
+                      <div className="flex items-center gap-3 mb-3 text-white/80">
+                        <Globe size={18} className={categoryAccent} />
+                        <h3 className="font-display font-bold uppercase tracking-wider text-sm">Sustainable Development Goals (SDG)</h3>
+                      </div>
+                      <ul className="text-white/60 text-sm md:text-base space-y-1">
+                        {event.sdgs.map((sdg, idx) => (
+                          <li key={idx} className={sdg.trim() === 'OR' ? 'list-none text-center font-bold my-1 text-white/40 text-xs' : 'list-disc list-inside'}>{sdg}</li>
+                        ))}
+                      </ul>
                     </div>
                   )}
                   {event.themes && event.themes.length > 0 && (
@@ -215,6 +231,29 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
                       <p className="text-white/60 font-medium">
                         {event.submissionFormat}
                       </p>
+                    </div>
+                  )}
+
+                  {event.submissionDate && (
+                    <div className="bg-white/5 rounded-2xl p-6 border border-white/5">
+                      <div className="flex items-center gap-3 mb-3 text-white/80">
+                        <Calendar size={18} className={categoryAccent} />
+                        <h3 className="font-display font-bold uppercase tracking-wider text-sm">Important Date</h3>
+                      </div>
+                      <p className="text-white/60 font-medium">
+                        {event.submissionDate}
+                      </p>
+                    </div>
+                  )}
+                  {event.submissionLink && (
+                    <div className="bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col justify-center">
+                      <div className="flex items-center gap-3 mb-3 text-white/80">
+                        <Target size={18} className={categoryAccent} />
+                        <h3 className="font-display font-bold uppercase tracking-wider text-sm">Submission</h3>
+                      </div>
+                      <a href={event.submissionLink} target="_blank" rel="noopener noreferrer" className={cn("text-neon-cyan hover:underline font-bold text-sm break-all", categoryAccent)}>
+                        Submit Here &rarr;
+                      </a>
                     </div>
                   )}
                   {event.teacherInCharge && (
