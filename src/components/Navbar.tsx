@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 
-const NAV_ITEMS = ['JOURNEY', 'INTRASCHOOL', 'INTERSCHOOL', 'OUR TEAM', 'RESULTS', 'GALLERY', 'CONTACT US'];
+const NAV_ITEMS = ['JOURNEY', 'INTRASCHOOL', 'INTERSCHOOL', 'OUR TEAM', 'GALLERY', 'RESULTS', 'CONTACT US'];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('');
@@ -79,7 +79,7 @@ export default function Navbar() {
                   className={`relative text-[10px] xl:text-xs font-display font-bold tracking-[0.05em] whitespace-nowrap transition-colors duration-200 py-1 ${
                     isActive 
                       ? 'text-neon-cyan drop-shadow-[0_0_8px_rgba(0,255,255,0.8)]' 
-                      : 'text-white/70 hover:text-neon-cyan hover:drop-shadow-[0_0_6px_rgba(0,255,255,0.5)]'
+                      : 'text-ice-blue hover:text-neon-cyan hover:drop-shadow-[0_0_6px_rgba(0,255,255,0.5)]'
                   }`}
                 >
                   {item}
@@ -111,7 +111,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-white/80 hover:text-neon-cyan border border-white/10 rounded-lg bg-white/5"
+            className="lg:hidden p-2 text-ice-blue hover:text-neon-cyan border border-[rgba(0,240,255,0.18)] rounded-lg bg-[#0F172A]"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -144,7 +144,7 @@ export default function Navbar() {
                     className={`text-sm font-display font-bold tracking-widest py-2 px-3 rounded-lg border transition-all ${
                       isActive
                         ? 'text-neon-cyan border-neon-cyan/40 bg-neon-cyan/10'
-                        : 'text-white/80 border-transparent hover:text-neon-cyan hover:bg-white/5'
+                        : 'text-ice-blue border-transparent hover:text-neon-cyan hover:bg-[#0F172A]'
                     }`}
                   >
                     {item}

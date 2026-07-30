@@ -205,7 +205,7 @@ export default function Visionaries() {
           
           <div ref={titleRef} className="mb-4 md:mb-6">
             <h2 className="text-4xl md:text-6xl font-display font-black mb-2 font-['Orbitron',sans-serif]">Our Team</h2>
-            <p className="text-white/40 font-sans text-sm md:text-base">Meet the minds behind Digit Crew.</p>
+            <p className="text-ice-blue font-sans text-sm md:text-base">Meet the minds behind Digit Crew.</p>
           </div>
           
           {/* 4 Initial Cards - Phase 1 */}
@@ -216,7 +216,7 @@ export default function Visionaries() {
                 ref={(el) => { cardsRef.current[i] = el; }}
                 onClick={() => setActiveSpeaker(speaker)}
                 style={{ willChange: 'transform, opacity' }}
-                className="bg-white/5 backdrop-blur-md p-4 md:p-8 rounded-[16px] md:rounded-[24px] border border-white/5 text-center transition-shadow duration-300 pointer-events-auto shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer"
+                className="bg-[#0F172A] backdrop-blur-md p-4 md:p-8 rounded-[16px] md:rounded-[24px] border border-[rgba(0,240,255,0.18)] text-center transition-shadow duration-300 pointer-events-auto shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer"
               >
                 <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-gray-700 to-purple-900 mx-auto mb-6 flex items-center justify-center text-2xl font-display font-black text-white overflow-hidden relative shadow-inner shadow-black/50">
                   {speaker.image ? (
@@ -316,11 +316,12 @@ export default function Visionaries() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto custom-scrollbar bg-cyber-black border rounded-3xl border-white/10 shadow-[0_0_40px_rgba(0,255,255,0.15)] flex flex-col"
+              data-lenis-prevent="true"
+              className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto custom-scrollbar bg-cyber-black border rounded-3xl border-[rgba(0,240,255,0.18)] shadow-[0_0_40px_rgba(0,255,255,0.15)] flex flex-col"
             >
               <button
                 onClick={() => setActiveSpeaker(null)}
-                className="absolute z-10 p-2 text-white/50 transition-colors bg-black/50 rounded-full top-4 right-4 hover:text-white hover:bg-black/80 backdrop-blur-md cursor-pointer"
+                className="absolute z-10 p-2 text-ice-blue transition-colors bg-black/50 rounded-full top-4 right-4 hover:text-white hover:bg-black/80 backdrop-blur-md cursor-pointer"
               >
                 <X size={20} />
               </button>
@@ -333,7 +334,7 @@ export default function Visionaries() {
                     className="object-contain max-h-full max-w-full relative z-10" style={{ objectPosition: activeSpeaker.imagePosition || 'center' }}
                   />
                 ) : (
-                  <div className="flex items-center justify-center w-full h-full text-6xl font-black text-neon-cyan/50 font-display">
+                  <div className="flex items-center justify-center w-full h-full text-6xl font-black text-ice-blue font-display">
                     {activeSpeaker.initial}
                   </div>
                 )}
@@ -353,7 +354,7 @@ export default function Visionaries() {
                 
                 <div className="w-12 h-1 mx-auto mb-6 rounded-full bg-neon-cyan/30" />
                 
-                <p className="leading-relaxed text-white/70">
+                <p className="leading-relaxed text-ice-blue">
                   {activeSpeaker.bio || "No biography available."}
                 </p>
               </div>

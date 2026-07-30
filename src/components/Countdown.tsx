@@ -39,11 +39,11 @@ export default function Countdown() {
         { label: 'Minutes', value: timeLeft.minutes },
         { label: 'Seconds', value: timeLeft.seconds }
       ].map((item) => (
-        <div key={item.label} className="glass w-24 h-24 md:w-32 md:h-32 rounded-2xl flex flex-col items-center justify-center border-white/10 group hover:border-neon-cyan/50 transition-colors duration-500">
+        <div key={item.label} className="glass w-24 h-24 md:w-32 md:h-32 rounded-2xl flex flex-col items-center justify-center border-[rgba(0,240,255,0.18)] group hover:border-neon-cyan/50 transition-colors duration-500">
           <span className="text-3xl md:text-5xl font-display font-black text-neon-cyan text-glow group-hover:scale-110 transition-transform duration-500">
             {item.value.toString().padStart(2, '0')}
           </span>
-          <span className="text-[10px] md:text-xs uppercase tracking-widest font-bold text-white/40 mt-2">
+          <span className="text-[10px] md:text-xs uppercase tracking-widest font-bold text-ice-blue mt-2">
             {item.label}
           </span>
         </div>

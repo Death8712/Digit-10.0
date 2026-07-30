@@ -211,7 +211,7 @@ export default function EventResults() {
   }, [searchQuery, selectedCategory, selectedGenre]);
 
   return (
-    <section id="results" className="py-20 relative bg-cyber-black overflow-hidden z-10 border-t border-white/5">
+    <section id="results" className="py-20 relative bg-cyber-black overflow-hidden z-10 border-t border-[rgba(0,240,255,0.18)]">
       {/* Cyber Grid Background */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-20"
@@ -246,7 +246,7 @@ export default function EventResults() {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-16 justify-between items-center bg-white/5 backdrop-blur-md p-4 rounded-2xl border border-neon-cyan/30 shadow-[0_0_15px_rgba(0,255,255,0.1)]">
+        <div className="flex flex-col md:flex-row gap-4 mb-16 justify-between items-center bg-[#0F172A] backdrop-blur-md p-4 rounded-2xl border border-neon-cyan/30 shadow-[0_0_15px_rgba(0,255,255,0.1)]">
           <div className="relative w-full md:flex-grow md:max-w-md group">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neon-cyan/70 group-focus-within:text-neon-cyan transition-colors" />
             <input 
@@ -323,7 +323,7 @@ export default function EventResults() {
                   {/* Leaderboard */}
                   <div className="flex flex-col gap-4">
                     {result.winners.map((winner, index) => (
-                      <div key={index} className="flex flex-col relative p-3 rounded-xl bg-cyber-black/30 border border-white/5 group-hover:border-neon-cyan/20 transition-colors">
+                      <div key={index} className="flex flex-col relative p-3 rounded-xl bg-cyber-black/30 border border-[rgba(0,240,255,0.18)] group-hover:border-neon-cyan/20 transition-colors">
                         <div className="flex items-center justify-between mb-1">
                           <span className={cn(
                             "font-display font-black text-sm tracking-widest px-2 py-0.5 rounded",

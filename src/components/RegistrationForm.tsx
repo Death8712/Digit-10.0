@@ -1,5 +1,6 @@
-import { motion } from "motion/react";
-import { ExternalLink, Layout } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ExternalLink, Layout, X, FileEdit, Monitor } from "lucide-react";
 import { cn } from "../lib/utils";
 
 const REGISTRATION_LINKS = [
@@ -28,9 +29,9 @@ const REGISTRATION_LINKS = [
     shadowColor: "hover:shadow-[0_0_30px_-5px_rgba(192,132,252,0.3)]",
     hoverBg: "hover:bg-purple-400/10",
     events: [
-      { name: "DigiTales", link: "https://forms.gle/GH1Xfx6bLh6x9pnq5" },
-      { name: "DigiQuiz", link: "https://forms.gle/DCAqmB9xQFmc7cfo6" },
-      { name: "DigiBuild", link: "https://forms.gle/vvVwPuHbq6xC383P7" },
+      { name: "DigiTales", link: "https://forms.gle/N1VUwZehgdyR2jg47" },
+      { name: "DigiQuiz", link: "https://forms.gle/SHMUFddF3xkrEJVk8" },
+      { name: "DigiBuild", link: "https://forms.gle/vvVwPuHbq6xC383P7", submissionLink: "https://forms.gle/yJ8XXKPEkuB7bwwcA" },
     ]
   },
   {
@@ -43,10 +44,10 @@ const REGISTRATION_LINKS = [
     shadowColor: "hover:shadow-[0_0_30px_-5px_rgba(0,255,255,0.3)]",
     hoverBg: "hover:bg-neon-cyan/10",
     events: [
-      { name: "DigiTote", link: "https://forms.gle/vpnQUDbj6f48i1hH9" },
-      { name: "DigiBattles", link: "https://forms.gle/amXKvuL2Ug6Egs4N6" },
-      { name: "DigiMeme", link: "https://forms.gle/8YgKyHoiMQwPruwv5" },
-      { name: "DigiCipher", link: "https://forms.gle/VpNCtkyw8L2EeFf37" }
+      { name: "DigiTote", link: "https://forms.gle/99fGYJK4KrEPu26A7" },
+      { name: "DigiBattles", link: "https://forms.gle/DqjJ9N5dAHnQ4Le66" },
+      { name: "DigiMeme", link: "https://forms.gle/tK29smSro85PP8Ct9" },
+      { name: "DigiCipher", link: "https://forms.gle/D32aJLKhFkyd3Lui7" }
     ]
   },
   {
@@ -59,17 +60,20 @@ const REGISTRATION_LINKS = [
     shadowColor: "hover:shadow-[0_0_30px_-5px_rgba(52,211,153,0.3)]",
     hoverBg: "hover:bg-emerald-400/10",
     events: [
-      { name: "DigiThon", link: "https://forms.gle/yqvhAApcUWGkr3qi6" },
-      { name: "DigiAI", link: "https://forms.gle/yqvhAApcUWGkr3qi6" },
-      { name: "DigiFrames", link: "https://forms.gle/yqvhAApcUWGkr3qi6" },
-      { name: "DigiScratch", link: "https://forms.gle/yqvhAApcUWGkr3qi6" }
+      { name: "DigiThon", link: "https://forms.gle/XbcUQVdSB3kYenx87", submissionLink: "https://forms.gle/PoVHyc1N4pZ6iiYZA" },
+      { name: "DigiAI", link: "https://forms.gle/r6SjjfLxc5CcE96Y7", submissionLink: "https://forms.gle/VbGUhrZG3Es4M3U17" },
+      { name: "DigiFrames", link: "https://forms.gle/z6Kosigzztwqxnko9", submissionLink: "https://forms.gle/N3D1etUKEoNqyroC8" },
+      { name: "DigiScratch", link: "https://forms.gle/KcSh7RZE77C27NoC8", submissionLink: "https://forms.gle/itMacTVM679vJ3iN7" }
     ]
   }
 ];
 
 export default function RegistrationForm() {
+  const [selectedEvent, setSelectedEvent] = useState<{ name: string; link: string; submissionLink?: string } | null>(null);
+
   return (
-    <section id="register" className="py-24 relative overflow-hidden bg-[#050505]">
+
+    <section id="register" className="py-24 relative overflow-hidden bg-cyber-black">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[120px]" />
@@ -89,7 +93,7 @@ export default function RegistrationForm() {
             <h2 className="text-4xl md:text-6xl font-display font-black text-white uppercase tracking-tighter mb-6 italic">
               SECURE YOUR <span className="text-neon-cyan">SLOT</span>
             </h2>
-            <p className="text-white/40 max-w-2xl mx-auto font-sans leading-relaxed">
+            <p className="text-ice-blue max-w-2xl mx-auto font-sans leading-relaxed">
               Register for your selected event below to join our event of innovators. Clicking the link will direct you to the official registration form.
             </p>
           </motion.div>
@@ -119,7 +123,7 @@ export default function RegistrationForm() {
               <div className="mb-8 relative z-10 flex items-start justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <div className={cn("p-2 rounded-lg bg-white/5 border border-white/10", category.accent)}>
+                    <div className={cn("p-2 rounded-lg bg-[#0F172A] border border-[rgba(0,240,255,0.18)]", category.accent)}>
                       <Layout size={20} />
                     </div>
                     <h3 className="text-2xl font-display font-black text-white uppercase tracking-wider">
@@ -139,19 +143,24 @@ export default function RegistrationForm() {
                   <a
                     key={event.name}
                     href={event.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={(event as any).submissionLink ? undefined : "_blank"}
+                    rel={(event as any).submissionLink ? undefined : "noopener noreferrer"}
+                    onClick={(e) => {
+                      if ((event as any).submissionLink) {
+                        e.preventDefault();
+                        setSelectedEvent(event as any);
+                      }
+                    }}
                     className={cn(
-                      "flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/[0.02] transition-all duration-300 group/link overflow-hidden relative",
-
+                      "flex items-center justify-between p-4 rounded-xl border border-[rgba(0,240,255,0.18)] bg-white/[0.02] transition-all duration-300 group/link overflow-hidden relative cursor-pointer text-left w-full",
                     )}
                   >
                     <div className={cn("absolute inset-0 w-0 group-hover/link:w-full transition-all duration-500 opacity-10", category.solidBg)} />
                     
-                    <span className="font-sans font-bold text-sm text-white/70 group-hover/link:text-white transition-colors relative z-10 truncate pr-2">
+                    <span className="font-sans font-bold text-sm text-ice-blue group-hover/link:text-white transition-colors relative z-10 truncate pr-2">
                       {event.name}
                     </span>
-                    <div className={cn("w-6 h-6 rounded-full flex items-center justify-center bg-white/5 border border-white/10 group-hover/link:scale-110 transition-transform relative z-10 shrink-0", category.accent)}>
+                    <div className={cn("w-6 h-6 rounded-full flex items-center justify-center bg-[#0F172A] border border-[rgba(0,240,255,0.18)] group-hover/link:scale-110 transition-transform relative z-10 shrink-0", category.accent)}>
                       <ExternalLink size={12} />
                     </div>
                   </a>
@@ -165,6 +174,62 @@ export default function RegistrationForm() {
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedEvent && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedEvent(null)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-[10px]"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-md bg-[#0B132B]/90 backdrop-blur-2xl rounded-3xl p-8 shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-[rgba(0,240,255,0.18)] flex flex-col gap-6"
+            >
+              <button
+                onClick={() => setSelectedEvent(null)}
+                className="absolute top-4 right-4 text-ice-blue hover:text-white transition-colors"
+              >
+                <X size={20} />
+              </button>
+              
+              <h3 className="text-2xl font-display font-black text-white uppercase tracking-wider pr-6">
+                {selectedEvent.name}
+              </h3>
+              
+              <div className="flex flex-col gap-4">
+                <a
+                  href={selectedEvent.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-4 rounded-xl border border-[rgba(0,240,255,0.18)] bg-white/[0.02] hover:bg-white/[0.05] transition-colors"
+                >
+                  <FileEdit size={20} className="text-neon-cyan" />
+                  <span className="font-sans font-bold text-white uppercase tracking-wider text-sm">Registration Form</span>
+                </a>
+                
+                {selectedEvent.submissionLink && (
+                  <a
+                    href={selectedEvent.submissionLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 rounded-xl border border-[rgba(0,240,255,0.18)] bg-white/[0.02] hover:bg-white/[0.05] transition-colors"
+                  >
+                    <Monitor size={20} className="text-neon-cyan" />
+                    <span className="font-sans font-bold text-white uppercase tracking-wider text-sm">Submission Form</span>
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
     </section>
   );
 }

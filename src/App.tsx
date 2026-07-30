@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import Lenis from 'lenis';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { Calendar, MapPin, Users, ArrowRight, Mail, Phone, Globe, Trophy, Instagram, Youtube, X } from 'lucide-react';
 import Navbar from './components/Navbar';
@@ -49,6 +50,27 @@ const TypewriterText = ({ text, className = "", delay = 0 }: { text: string, cla
 );
 
 export default function App() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => lenis.destroy();
+  }, []);
+
   const heroRef = useRef<HTMLDivElement>(null);
   const [selectedTimelineEvent, setSelectedTimelineEvent] = useState<{event: EventItem, categoryAccent: string} | null>(null);
   const [showBrochureMenu, setShowBrochureMenu] = useState(false);
@@ -75,7 +97,7 @@ export default function App() {
       
       {/* Hero Section */}
       <section id="home" ref={heroRef} className="relative min-h-[100dvh] flex items-center pt-32 pb-16 overflow-hidden bg-grid">
-        <Suspense fallback={<div className="absolute inset-0 flex items-center justify-center text-neon-cyan/50 font-mono text-sm animate-pulse">Initializing 3D Environment...</div>}><Hero3D /></Suspense>
+        <Suspense fallback={<div className="absolute inset-0 flex items-center justify-center text-ice-blue font-mono text-sm animate-pulse">Initializing 3D Environment...</div>}><Hero3D /></Suspense>
         
         <div className="max-w-[1400px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 relative z-10">
           <motion.div 
@@ -102,7 +124,7 @@ export default function App() {
             </h2>
             
             {/* Description */}
-            <div className="max-w-xl pr-4 lg:pr-12 text-white/80 text-sm md:text-base leading-relaxed mb-8 font-sans flex flex-col gap-3">
+            <div className="max-w-xl pr-4 lg:pr-12 text-ice-blue text-sm md:text-base leading-relaxed mb-8 font-sans flex flex-col gap-3">
               <p className="text-justify">
                 DIGIT began in 2012 with a simple vision: to provide every student with an equal opportunity to explore and participate in technology. Initially organised for Classes IX to XII, the event continued to grow over the years. During the COVID period, DIGIT expanded to include students from III to XII, making technology more accessible across the school. Now, as we celebrate the landmark 10th edition, DIGIT takes another major step by opening its platform to schools across the region. DIGIT 10.0 brings together young innovators to compete, collaborate, showcase their talent, gain knowledge, and connect through a shared passion for technology.
               </p>
@@ -117,7 +139,7 @@ export default function App() {
               ].map((stat, i) => (
                 <div key={i} className="flex flex-col border-l-2 border-neon-cyan/20 pl-4">
                   <span className="text-3xl font-display font-black text-white">{stat.value}</span>
-                  <span className="text-xs font-sans font-bold tracking-[0.1em] text-white/50 uppercase mt-1">{stat.label}</span>
+                  <span className="text-xs font-sans font-bold tracking-[0.1em] text-ice-blue uppercase mt-1">{stat.label}</span>
                 </div>
               ))}
             </div>
@@ -147,22 +169,22 @@ export default function App() {
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="relative bg-[#0F172A] border border-white/10 p-8 rounded-2xl w-full max-w-md shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden"
+                        className="relative bg-[#0F172A] border border-[rgba(0,240,255,0.18)] p-8 rounded-2xl w-full max-w-md shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden"
                       >
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-cyan via-purple-500 to-amber-500" />
                         <button 
                           onClick={() => setShowBrochureMenu(false)}
-                          className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors"
+                          className="absolute top-4 right-4 text-ice-blue hover:text-white transition-colors"
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                         </button>
                         <h3 className="text-2xl font-display font-bold text-white mb-6 pr-8 uppercase">Select Brochure</h3>
                         <div className="flex flex-col gap-4">
-                          <a href="#" className="p-6 bg-white/5 hover:bg-neon-cyan/10 border border-white/10 hover:border-neon-cyan/50 text-white hover:text-neon-cyan transition-all rounded-xl font-mono text-sm tracking-widest uppercase flex justify-between items-center group">
+                          <a href="#" className="p-6 bg-[#0F172A] hover:bg-neon-cyan/10 border border-[rgba(0,240,255,0.18)] hover:border-neon-cyan/50 text-white hover:text-neon-cyan transition-all rounded-xl font-mono text-sm tracking-widest uppercase flex justify-between items-center group">
                             INTER-SCHOOL BROCHURE
                             <ArrowRight className="w-5 h-5 opacity-50 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
                           </a>
-                          <a href="#" className="p-6 bg-white/5 hover:bg-purple-400/10 border border-white/10 hover:border-purple-400/50 text-white hover:text-purple-400 transition-all rounded-xl font-mono text-sm tracking-widest uppercase flex justify-between items-center group">
+                          <a href="https://drive.google.com/file/d/1Q7bGz41pHU9WXnZ7rtoKVuJf4EXoPlv6/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="p-6 bg-[#0F172A] hover:bg-purple-400/10 border border-[rgba(0,240,255,0.18)] hover:border-purple-400/50 text-white hover:text-purple-400 transition-all rounded-xl font-mono text-sm tracking-widest uppercase flex justify-between items-center group">
                             INTRA-SCHOOL BROCHURE
                             <ArrowRight className="w-5 h-5 opacity-50 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
                           </a>
@@ -174,7 +196,7 @@ export default function App() {
               </div>
               
               {/* Secondary Link */}
-              <a href="#events" className="text-white/70 hover:text-white font-sans font-medium text-sm tracking-widest uppercase transition-colors group flex items-center gap-2">
+              <a href="#events" className="text-ice-blue hover:text-white font-sans font-medium text-sm tracking-widest uppercase transition-colors group flex items-center gap-2">
                 Explore Events 
                 <span className="text-neon-cyan group-hover:translate-x-1 transition-transform">&gt;</span>
               </a>
@@ -212,7 +234,7 @@ export default function App() {
       <section id="legacy" className="py-20 relative z-10 bg-white/[0.02]">
         <motion.div initial={{opacity: 0, y: 30}} whileInView={{opacity: 1, y: 0}} transition={{duration: 0.8}} viewport={{once: true}} className="max-w-7xl mx-auto px-4 text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-display font-black mb-6">A Decade of Innovation</h2>
-          <p className="text-white/40 max-w-2xl mx-auto">Explore the evolution of DIGIT from its humble beginnings to the global phenomenon it is today.</p>
+          <p className="text-ice-blue max-w-2xl mx-auto">Explore the evolution of DIGIT from its humble beginnings to the global phenomenon it is today.</p>
         </motion.div>
         <Timeline />
       </section>
@@ -224,28 +246,28 @@ export default function App() {
             <span className="text-neon-cyan font-black uppercase tracking-widest text-xs mb-4 block">The Main Stage</span>
             <h2 className="text-4xl md:text-6xl font-display font-black">Intra-School Events</h2>
           </motion.div>
-          <motion.p initial={{opacity: 0, x: 50}} whileInView={{opacity: 1, x: 0}} transition={{duration: 0.8}} viewport={{once: true}} className="max-w-md text-white/80 font-display font-medium text-sm tracking-widest uppercase leading-relaxed">
+          <motion.p initial={{opacity: 0, x: 50}} whileInView={{opacity: 1, x: 0}} transition={{duration: 0.8}} viewport={{once: true}} className="max-w-md text-ice-blue font-display font-medium text-sm tracking-widest uppercase leading-relaxed">
             Master the logic. Own the canvas. Claim the throne. High-stakes challenges for those who refuse to play it safe.
           </motion.p>
         </div>
-        <Suspense fallback={<div className="py-20 text-center text-neon-cyan/50 font-mono text-sm animate-pulse">Loading component...</div>}><BentoGrid /></Suspense>
+        <Suspense fallback={<div className="py-20 text-center text-ice-blue font-mono text-sm animate-pulse">Loading component...</div>}><BentoGrid /></Suspense>
       </section>
 
-      <Suspense fallback={<div className="py-20 text-center text-neon-cyan/50 font-mono text-sm animate-pulse">Loading component...</div>}><InterschoolSpecial /></Suspense>
+      <Suspense fallback={<div className="py-20 text-center text-ice-blue font-mono text-sm animate-pulse">Loading component...</div>}><InterschoolSpecial /></Suspense>
 
       {/* Speakers Section */}
-      <Suspense fallback={<div className="py-20 text-center text-neon-cyan/50 font-mono text-sm animate-pulse">Loading component...</div>}><Visionaries /></Suspense>
+      <Suspense fallback={<div className="py-20 text-center text-ice-blue font-mono text-sm animate-pulse">Loading component...</div>}><Visionaries /></Suspense>
 
       {/* Registration Section */}
       <RegistrationForm />
 
             {/* Gallery Section */}
-      <Suspense fallback={<div className="py-20 text-center text-neon-cyan/50 font-mono text-sm animate-pulse">Loading component...</div>}><Gallery /></Suspense>
+      <Suspense fallback={<div className="py-20 text-center text-ice-blue font-mono text-sm animate-pulse">Loading component...</div>}><Gallery /></Suspense>
 
       {/* Results Section */}
-      <Suspense fallback={<div className="py-20 text-center text-neon-cyan/50 font-mono text-sm animate-pulse">Loading component...</div>}><EventResults /></Suspense>
+      <Suspense fallback={<div className="py-20 text-center text-ice-blue font-mono text-sm animate-pulse">Loading component...</div>}><EventResults /></Suspense>
       {/* Contact Us Section */}
-      <Suspense fallback={<div className="py-20 text-center text-neon-cyan/50 font-mono text-sm animate-pulse">Loading component...</div>}><ContactUs /></Suspense>
+      <Suspense fallback={<div className="py-20 text-center text-ice-blue font-mono text-sm animate-pulse">Loading component...</div>}><ContactUs /></Suspense>
 
       {/* School Logo Section */}
       <section className="py-20 relative z-10 bg-white/[0.02]">
@@ -257,7 +279,7 @@ export default function App() {
             viewport={{ once: true }}
             className="flex flex-col items-center justify-center gap-8"
           >
-            <h3 className="text-white/40 font-mono text-sm tracking-widest uppercase">In Association With</h3>
+            <h3 className="text-ice-blue font-mono text-sm tracking-widest uppercase">In Association With</h3>
             <a 
               href="http://ahlconinternational.com/public/" 
               target="_blank" 
@@ -277,7 +299,7 @@ export default function App() {
       
 
       {/* Footer */}
-      <footer className="py-20 border-t border-white/5 relative z-10">
+      <footer className="py-20 border-t border-[rgba(0,240,255,0.18)] relative z-10">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
             <div className="col-span-1 md:col-span-2">
@@ -285,17 +307,17 @@ export default function App() {
                 <div className="w-10 h-10 bg-neon-cyan rounded-xl flex items-center justify-center font-display font-black text-cyber-black text-xl">D</div>
                 <span className="font-display font-black tracking-tighter text-2xl">DIGIT <span className="text-neon-cyan">10.0</span></span>
               </div>
-              <p className="text-white/40 max-w-sm mb-8 leading-relaxed">
+              <p className="text-ice-blue max-w-sm mb-8 leading-relaxed">
                 The premier technology festival pushing the boundaries of human potential and digital innovation since 2012.
               </p>
               <div className="flex gap-4">
-                <a href="mailto:aisdigit10@gmail.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl glass flex items-center justify-center text-white/40 hover:text-neon-cyan transition-all hover:-translate-y-1 cursor-pointer">
+                <a href="mailto:aisdigit10@gmail.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl glass flex items-center justify-center text-ice-blue hover:text-neon-cyan transition-all hover:-translate-y-1 cursor-pointer">
                   <Mail size={18} />
                 </a>
-                <a href="https://www.instagram.com/digitahlcon10.0" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl glass flex items-center justify-center text-white/40 hover:text-neon-cyan transition-all hover:-translate-y-1 cursor-pointer">
+                <a href="https://www.instagram.com/digitahlcon10.0" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl glass flex items-center justify-center text-ice-blue hover:text-neon-cyan transition-all hover:-translate-y-1 cursor-pointer">
                   <Instagram size={18} />
                 </a>
-                <a href="https://www.youtube.com/@DIGIT10.0" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl glass flex items-center justify-center text-white/40 hover:text-neon-cyan transition-all hover:-translate-y-1 cursor-pointer">
+                <a href="https://www.youtube.com/@DIGIT10.0" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl glass flex items-center justify-center text-ice-blue hover:text-neon-cyan transition-all hover:-translate-y-1 cursor-pointer">
                   <Youtube size={18} />
                 </a>
               </div>
@@ -307,13 +329,13 @@ export default function App() {
                 <div className="w-2 h-2 rounded-full bg-red-500/80 shadow-[0_0_5px_red]"></div>
                 <div className="w-2 h-2 rounded-full bg-yellow-500/80 shadow-[0_0_5px_yellow]"></div>
                 <div className="w-2 h-2 rounded-full bg-green-500/80 shadow-[0_0_5px_green]"></div>
-                <span className="text-[10px] text-neon-cyan/50 tracking-widest uppercase ml-2 select-none">sys_admin@digit_10.0:~</span>
+                <span className="text-[10px] text-ice-blue tracking-widest uppercase ml-2 select-none">sys_admin@digit_10.0:~</span>
               </div>
               <div className="pt-10 flex-1 flex flex-col gap-2 text-xs md:text-sm text-neon-cyan/80 select-none">
                 <p className="flex items-center gap-2"><span className="text-neon-magenta">{'>'}</span> system_check --all</p>
-                <p className="flex items-center gap-2 text-white/70 ml-4">[OK] Neural network synced.</p>
-                <p className="flex items-center gap-2 text-white/70 ml-4">[OK] Speakers compiled.</p>
-                <p className="flex items-center gap-2 text-white/70 ml-4">[WARN] Coffee reservoir dangerously low.</p>
+                <p className="flex items-center gap-2 text-ice-blue ml-4">[OK] Neural network synced.</p>
+                <p className="flex items-center gap-2 text-ice-blue ml-4">[OK] Speakers compiled.</p>
+                <p className="flex items-center gap-2 text-ice-blue ml-4">[WARN] Coffee reservoir dangerously low.</p>
                 <p className="flex items-center gap-2 mt-2"><span className="text-neon-magenta">{'>'}</span> execute command: hype_mode --force</p>
                 <p className="flex items-center gap-2 text-neon-cyan mt-auto">
                    <span className="text-neon-magenta animate-pulse">{'>'}</span> <span className="animate-pulse">_</span>
@@ -325,12 +347,12 @@ export default function App() {
             </div>
           </div>
           
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-white/5">
-            <div className="text-[10px] uppercase tracking-[0.3em] font-black text-white/40 hover:text-neon-cyan transition-colors cursor-default hover:drop-shadow-[0_0_12px_rgba(0,255,255,0.5)]">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-[rgba(0,240,255,0.18)]">
+            <div className="text-[10px] uppercase tracking-[0.3em] font-black text-ice-blue hover:text-neon-cyan transition-colors cursor-default hover:drop-shadow-[0_0_12px_rgba(0,255,255,0.5)]">
               <TypewriterText text="© 2026 DIGIT 10.0. SIMULATION RUNNING." delay={0.2} />
             </div>
             <div className="flex flex-col items-center md:items-end gap-3">
-              <div className="flex flex-wrap justify-center md:justify-end items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-black text-white/40 cursor-default hover:text-white transition-colors duration-300">
+              <div className="flex flex-wrap justify-center md:justify-end items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-black text-ice-blue cursor-default hover:text-white transition-colors duration-300">
                 <TypewriterText text="INITIALIZED WITH " delay={1.4} />
                 <motion.span 
                   initial={{ scale: 0 }}

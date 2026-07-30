@@ -79,7 +79,7 @@ export default function Timeline() {
             {/* Year / Floating Label */}
             <div className={`w-full md:w-5/12 flex ${index % 2 === 0 ? 'md:justify-start pl-[50px] md:pl-0' : 'md:justify-end pl-[50px] md:pl-0'}`}>
               <div className="relative inline-flex items-center">
-                <span className="text-4xl md:text-6xl font-display font-black text-white/5 group-hover:text-neon-cyan/10 transition-colors pointer-events-none select-none">
+                <span className="text-4xl md:text-6xl font-display font-black text-ice-blue group-hover:text-neon-cyan/10 transition-colors pointer-events-none select-none">
                   {item.year}
                 </span>
                 <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg md:text-xl text-neon-cyan font-bold tracking-[0.2em] opacity-100 uppercase mix-blend-screen whitespace-nowrap">
@@ -93,10 +93,10 @@ export default function Timeline() {
               href={item.link || "#"}
               target={item.link ? "_blank" : undefined}
               rel={item.link ? "noopener noreferrer" : undefined}
-              className={`w-full md:w-5/12 ml-[50px] md:ml-0 glass p-6 rounded-2xl border-white/5 border group-hover:border-neon-cyan/30 transition-colors shadow-lg hover:shadow-[0_0_20px_rgba(0,255,255,0.1)] block ${!item.link ? "cursor-default" : "cursor-pointer"}`}
+              className={`w-full md:w-5/12 ml-[50px] md:ml-0 glass p-6 rounded-2xl border-[rgba(0,240,255,0.18)] border group-hover:border-neon-cyan/30 transition-colors shadow-lg hover:shadow-[0_0_20px_rgba(0,255,255,0.1)] block ${!item.link ? "cursor-default" : "cursor-pointer"}`}
             > 
               <h3 className="text-xl font-bold mb-2 text-white group-hover:text-neon-cyan transition-colors">{item.title}</h3>
-              <p className="text-white/60 text-sm leading-relaxed">{item.description}</p>
+              <p className="text-ice-blue text-sm leading-relaxed">{item.description}</p>
               {item.link && (
                 <div className="mt-4 text-neon-cyan text-xs font-mono font-bold uppercase tracking-widest flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   [ VIEW_ARCHIVE ]

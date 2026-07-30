@@ -70,7 +70,7 @@ function BentoCard({ event, category, index, onClick }: { event: EventItem, cate
       onMouseMove={handleMouseMove}
       onClick={onClick}
       className={cn(
-        "p-8 rounded-xl flex flex-col justify-between group cursor-pointer relative overflow-hidden backdrop-blur-[12px] border bg-white/5 z-20",
+        "p-8 rounded-xl flex flex-col justify-between group cursor-pointer relative overflow-hidden backdrop-blur-[12px] border bg-[#0F172A] z-20",
         event.size,
         category.borderCode
       )}
@@ -121,7 +121,7 @@ function BentoCard({ event, category, index, onClick }: { event: EventItem, cate
       {/* Live Glowing Dot */}
       {event.isLive && (
         <div className="absolute top-6 right-6 flex items-center gap-2 z-20" style={{ transform: 'translateZ(10px)' }}>
-           <span className="text-[10px] font-mono tracking-widest uppercase text-white/50">SYS.LIVE</span>
+           <span className="text-[10px] font-mono tracking-widest uppercase text-ice-blue">SYS.LIVE</span>
            <span className={cn("w-2 h-2 rounded-full animate-pulse shadow-[0_0_10px_currentColor]", category.accentCode)} />
         </div>
       )}

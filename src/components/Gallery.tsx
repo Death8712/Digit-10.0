@@ -33,10 +33,10 @@ function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () =>
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => { setIsHovered(false); setCoords({ x: 0, y: 0 }); }}
-      className="relative w-[85vw] h-[65vh] md:w-[75vw] md:h-[80vh] mx-2 md:mx-4 shrink-0 overflow-hidden cursor-pointer group rounded-2xl md:rounded-3xl border border-white/10 shadow-2xl"
+      className="relative w-[85vw] h-[65vh] md:w-[75vw] md:h-[80vh] mx-2 md:mx-4 shrink-0 overflow-hidden cursor-pointer group rounded-2xl md:rounded-3xl border border-[rgba(0,240,255,0.18)] shadow-2xl"
       style={{ perspective: '1000px' }}
     >
-      <div className="absolute inset-0 w-full h-full bg-[#0a0a0a] overflow-hidden group-hover:border-white/30 transition-colors duration-500">
+      <div className="absolute inset-0 w-full h-full bg-cyber-black overflow-hidden group-hover:border-white/30 transition-colors duration-500">
         
         {/* Layer B: Background (Deep buffer view, softened) */}
         <div 
@@ -80,7 +80,7 @@ function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () =>
           }}
         >
           {/* Central Frame Element */}
-          <div className="absolute inset-8 border border-white/10 pointer-events-none rounded-xl" />
+          <div className="absolute inset-8 border border-[rgba(0,240,255,0.18)] pointer-events-none rounded-xl" />
         </div>
 
         {/* Additional Lighting / Reflection */}
@@ -131,9 +131,9 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="py-24 relative bg-[#050505] overflow-hidden border-t border-white/5 min-h-screen flex flex-col justify-center">
+    <section id="gallery" className="py-24 relative bg-cyber-black overflow-hidden border-t border-[rgba(0,240,255,0.18)] min-h-screen flex flex-col justify-center">
       {/* Background Gradients */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-black via-[#050505] to-[#020202] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-black via-cyber-black to-cyber-black pointer-events-none" />
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-neon-cyan/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none" />
       
@@ -146,7 +146,7 @@ export default function Gallery() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-white uppercase tracking-tight mb-4">
               Event Showcase
             </h2>
-            <p className="text-white/60 font-sans max-w-2xl text-sm md:text-base leading-relaxed">
+            <p className="text-ice-blue font-sans max-w-2xl text-sm md:text-base leading-relaxed">
               Explore the digital frontier. A visual archive of our specialized events and challenges.
             </p>
           </div>
@@ -154,13 +154,13 @@ export default function Gallery() {
           <div className="flex gap-4">
             <button 
               onClick={scrollLeft}
-              className="w-12 h-12 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 flex items-center justify-center text-white backdrop-blur-sm transition-colors"
+              className="w-12 h-12 rounded-full border border-[rgba(0,240,255,0.18)] bg-[#0F172A] hover:bg-white/10 flex items-center justify-center text-white backdrop-blur-sm transition-colors"
             >
               <ChevronLeft size={24} />
             </button>
             <button 
               onClick={scrollRight}
-              className="w-12 h-12 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 flex items-center justify-center text-white backdrop-blur-sm transition-colors"
+              className="w-12 h-12 rounded-full border border-[rgba(0,240,255,0.18)] bg-[#0F172A] hover:bg-white/10 flex items-center justify-center text-white backdrop-blur-sm transition-colors"
             >
               <ChevronRight size={24} />
             </button>

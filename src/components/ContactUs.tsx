@@ -98,7 +98,7 @@ const EVENT_HEADS = [
 
 export default function ContactUs() {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-[#050505] border-t border-white/5">
+    <section id="contact" className="py-24 relative overflow-hidden bg-cyber-black border-t border-[rgba(0,240,255,0.18)]">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-neon-cyan/10 rounded-full blur-[120px]" />
@@ -116,7 +116,7 @@ export default function ContactUs() {
             <h2 className="text-4xl md:text-6xl font-display font-black text-white uppercase tracking-tighter mb-6">
               REACH <span className="text-neon-cyan">OUT</span>
             </h2>
-            <p className="text-white/40 max-w-2xl mx-auto font-sans leading-relaxed">
+            <p className="text-ice-blue max-w-2xl mx-auto font-sans leading-relaxed">
               Initiate contact protocols. Connect with the visionaries and event heads driving DIGIT 10.0.
             </p>
           </motion.div>
@@ -128,20 +128,20 @@ export default function ContactUs() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 backdrop-blur-xl"
+            className="bg-white/[0.02] border border-[rgba(0,240,255,0.18)] rounded-3xl p-8 backdrop-blur-xl"
           >
             <h3 className="text-2xl font-display font-black text-white mb-6">TEACHERS IN-CHARGE</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {TEACHERS.map((member, i) => (
-                <div key={i} className="bg-black/40 border border-white/5 rounded-2xl p-5 hover:border-white/20 transition-all group">
+                <div key={i} className="bg-black/40 border border-[rgba(0,240,255,0.18)] rounded-2xl p-5 hover:border-[rgba(0,240,255,0.18)] transition-all group">
                   <div className="flex items-start gap-4">
-                    <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-white/5 border border-white/10 group-hover:scale-110 transition-transform", member.accent)}>
+                    <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-[#0F172A] border border-[rgba(0,240,255,0.18)] group-hover:scale-110 transition-transform", member.accent)}>
                       <member.icon size={18} />
                     </div>
                     <div>
                       <h4 className="text-white font-bold text-lg leading-tight mb-1">{member.name}</h4>
                       <p className={cn("text-xs font-mono tracking-wider uppercase mb-3 drop-shadow-sm", member.accent)}>{member.role}</p>
-                      <a href={member.email ? `mailto:${member.email}` : '#'} className="flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm break-all">
+                      <a href={member.email ? `mailto:${member.email}` : '#'} className="flex items-center gap-2 text-ice-blue hover:text-white transition-colors text-sm break-all">
                           <Mail size={14} className="shrink-0" />
                           <span>{member.email}</span>
                         </a>
@@ -158,7 +158,7 @@ export default function ContactUs() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-4 bg-white/[0.02] border border-white/10 rounded-3xl p-8 backdrop-blur-xl h-full flex flex-col justify-center"
+              className="lg:col-span-4 bg-white/[0.02] border border-[rgba(0,240,255,0.18)] rounded-3xl p-8 backdrop-blur-xl h-full flex flex-col justify-center"
             >
               <h3 className="text-2xl font-display font-black text-white mb-8">DIGIT HQ</h3>
               
@@ -168,7 +168,7 @@ export default function ContactUs() {
                     <Mail size={20} />
                   </div>
                   <div>
-                    <p className="text-white/40 text-xs font-mono uppercase tracking-wider mb-1">General Inquiries</p>
+                    <p className="text-ice-blue text-xs font-mono uppercase tracking-wider mb-1">General Inquiries</p>
                     <p className="text-white font-medium group-hover:text-neon-cyan transition-colors">aisdigit10@gmail.com</p>
                   </div>
                 </a>
@@ -180,7 +180,7 @@ export default function ContactUs() {
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <p className="text-white/40 text-xs font-mono uppercase tracking-wider mb-1">Location</p>
+                    <p className="text-ice-blue text-xs font-mono uppercase tracking-wider mb-1">Location</p>
                     <p className="text-white font-medium">AHLCON INTERNATIONAL SCHOOL | MAYUR VIHAR Phase 1</p>
                   </div>
                 </div>
@@ -192,15 +192,15 @@ export default function ContactUs() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-8 bg-white/[0.02] border border-white/10 rounded-3xl p-8 backdrop-blur-xl"
+              className="lg:col-span-8 bg-white/[0.02] border border-[rgba(0,240,255,0.18)] rounded-3xl p-8 backdrop-blur-xl"
             >
               <h3 className="text-2xl font-display font-black text-white mb-6">STUDENT DIRECTORS</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {STUDENT_DIRECTORS.map((member, i) => (
-                  <div key={i} className="bg-black/40 border border-white/5 rounded-2xl p-5 hover:border-white/20 transition-all group">
+                  <div key={i} className="bg-black/40 border border-[rgba(0,240,255,0.18)] rounded-2xl p-5 hover:border-[rgba(0,240,255,0.18)] transition-all group">
                     <div className="flex flex-col gap-3">
                       <div className="flex items-start gap-4">
-                        <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-white/5 border border-white/10 group-hover:scale-110 transition-transform", member.accent)}>
+                        <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-[#0F172A] border border-[rgba(0,240,255,0.18)] group-hover:scale-110 transition-transform", member.accent)}>
                           <member.icon size={18} />
                         </div>
                         <div>
@@ -209,7 +209,7 @@ export default function ContactUs() {
                         </div>
                       </div>
                       <div className="mt-1">
-                        <a href={member.phone !== 'N/A' ? `tel:${member.phone}` : '#'} className="flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm break-all">
+                        <a href={member.phone !== 'N/A' ? `tel:${member.phone}` : '#'} className="flex items-center gap-2 text-ice-blue hover:text-white transition-colors text-sm break-all">
                           <Phone size={14} className="shrink-0" />
                           <span className="truncate">{member.phone}</span>
                         </a>
@@ -227,7 +227,7 @@ export default function ContactUs() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 backdrop-blur-xl"
+          className="bg-white/[0.02] border border-[rgba(0,240,255,0.18)] rounded-3xl p-8 backdrop-blur-xl"
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <h3 className="text-2xl font-display font-black text-white">EVENT HEADS</h3>
@@ -236,15 +236,15 @@ export default function ContactUs() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {EVENT_HEADS.map((head, i) => (
-              <div key={i} className="flex flex-col p-4 rounded-xl border border-white/5 bg-black/40 hover:bg-black/60 hover:border-neon-cyan/30 transition-all group">
+              <div key={i} className="flex flex-col p-4 rounded-xl border border-[rgba(0,240,255,0.18)] bg-black/40 hover:bg-black/60 hover:border-neon-cyan/30 transition-all group">
                 <div className="flex justify-between items-start mb-3">
                   <div>
                     <h4 className="font-sans font-bold text-white group-hover:text-neon-cyan transition-colors">{head.name}</h4>
-                    <p className="font-mono text-[10px] text-white/50 uppercase tracking-widest mt-0.5">{head.role}</p>
+                    <p className="font-mono text-[10px] text-ice-blue uppercase tracking-widest mt-0.5">{head.role}</p>
                   </div>
                 </div>
                 <div className="space-y-2 mt-auto">
-                  <a href={head.phone !== 'N/A' ? `tel:${head.phone.replace(/[^0-9+]/g, '')}` : '#'} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors text-xs font-mono">
+                  <a href={head.phone !== 'N/A' ? `tel:${head.phone.replace(/[^0-9+]/g, '')}` : '#'} className="flex items-center gap-2 text-ice-blue hover:text-white transition-colors text-xs font-mono">
                     <Phone size={12} className="text-neon-cyan" />
                     <span>{head.phone}</span>
                   </a>

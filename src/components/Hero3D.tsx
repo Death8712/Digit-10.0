@@ -44,9 +44,9 @@ function DataNodes({ radius = 1.9, count = 120 }) {
     <group ref={groupRef}>
       <instancedMesh ref={meshRef} args={[null, null, count]}>
         <octahedronGeometry args={[0.1, 0]} />
-        <meshStandardMaterial color="#00FFFF" emissive="#00FFFF" emissiveIntensity={5} />
+        <meshStandardMaterial color="#00F0FF" emissive="#00F0FF" emissiveIntensity={5} />
       </instancedMesh>
-      <pointLight color="#00FFFF" intensity={4} distance={6} decay={2} />
+      <pointLight color="#00F0FF" intensity={4} distance={6} decay={2} />
     </group>
   );
 }
@@ -66,7 +66,7 @@ function RefractiveGlassCore() {
       {/* Multifaceted geometric core */}
       <icosahedronGeometry args={[2.1, 0]} />
       <meshPhysicalMaterial 
-        color="#081015" 
+        color="#0A1628" 
         transmission={0.96} 
         opacity={1} 
         transparent={true}
@@ -105,11 +105,11 @@ function ComplexWireframe() {
         <mesh>
           <dodecahedronGeometry args={[2.5, 0]} />
           <meshStandardMaterial 
-             color="#00FFFF" 
+             color="#00F0FF" 
              wireframe 
              transparent 
              opacity={0.3} 
-             emissive="#00FFFF" 
+             emissive="#00F0FF" 
              emissiveIntensity={0.8} 
           />
         </mesh>
@@ -117,11 +117,11 @@ function ComplexWireframe() {
         <mesh rotation={[Math.PI / 4, Math.PI / 4, 0]}>
           <dodecahedronGeometry args={[2.6, 0]} />
           <meshStandardMaterial 
-             color="#00FFFF" 
+             color="#00F0FF" 
              wireframe 
              transparent 
              opacity={0.15} 
-             emissive="#00FFFF" 
+             emissive="#00F0FF" 
              emissiveIntensity={0.5} 
           />
         </mesh>
@@ -131,11 +131,11 @@ function ComplexWireframe() {
       <group ref={ringsRef}>
         <mesh rotation={[Math.PI / 3, 0, 0]}>
           <torusGeometry args={[3.8, 0.006, 16, 100]} />
-          <meshBasicMaterial color="#00FFFF" transparent opacity={0.5} />
+          <meshBasicMaterial color="#00F0FF" transparent opacity={0.5} />
         </mesh>
         <mesh rotation={[Math.PI / 2.5, 0.4, 0]}>
           <torusGeometry args={[4.4, 0.003, 16, 100]} />
-          <meshBasicMaterial color="#00FFFF" transparent opacity={0.3} />
+          <meshBasicMaterial color="#00F0FF" transparent opacity={0.3} />
         </mesh>
       </group>
     </group>
@@ -166,7 +166,7 @@ function FloatingParticles({ count = 200 }) {
     <Points ref={pointsRef} positions={points}>
       <PointMaterial
         transparent
-        color="#00FFFF"
+        color="#00F0FF"
         size={0.03}
         sizeAttenuation={true}
         depthWrite={false}
@@ -212,7 +212,7 @@ function FloatingGeometries() {
   const orbGeom = useMemo(() => new THREE.SphereGeometry(1, 32, 32), []);
   const boxGeom = useMemo(() => new THREE.BoxGeometry(1, 4, 1), []);
   const sharedMat = useMemo(() => new THREE.MeshPhysicalMaterial({
-    color: "#050505", 
+    color: "#000000", 
     metalness: 0.9, 
     roughness: 0.1,
     clearcoat: 1,
@@ -291,32 +291,31 @@ export default function Hero3D() {
         gl={{ antialias: false, toneMapping: THREE.ACESFilmicToneMapping, alpha: true, powerPreference: "high-performance" }} 
         camera={{ position: [14, 11, 14], fov: 28 }}
       >
-        <ambientLight intensity={0.4} color="#00FFFF" />
-        <spotLight position={[10, 15, 10]} intensity={150} color="#00FFFF" penumbra={0.5} distance={50} angle={0.8} />
-        <spotLight position={[-15, -10, -15]} intensity={100} color="#00FFFF" penumbra={1} distance={50} />
+        <ambientLight intensity={0.4} color="#00F0FF" />
+        <spotLight position={[10, 15, 10]} intensity={150} color="#00F0FF" penumbra={0.5} distance={50} angle={0.8} />
+        <spotLight position={[-15, -10, -15]} intensity={100} color="#00F0FF" penumbra={1} distance={50} />
         <directionalLight position={[6, -2, 10]} intensity={2.5} color="#ffffff" />
         
-        <FloatingGeometries />
         <CyberTechArtifact />
       </Canvas>
       
       {/* HUD Overlay specific to the right 3D side */}
       <div className="absolute top-1/2 right-12 -translate-y-1/2 flex flex-col items-end gap-1 opacity-60 hidden md:flex">
-        <div className="w-16 h-[1px] bg-[#00FFFF]" />
-        <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-[#00FFFF] uppercase">
+        <div className="w-16 h-[1px] bg-[#00F0FF]" />
+        <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-[#00F0FF] uppercase">
           CORE SYS v2.6
         </span>
-        <span className="text-[10px] font-mono tracking-[0.2em] text-[#00FFFF]/50 uppercase">
+        <span className="text-[10px] font-mono tracking-[0.2em] text-[#00F0FF]/50 uppercase">
           SYNC STATE: OPTIMAL
         </span>
       </div>
 
       {/* Subtle UI Corner Brackets (Right Side) */}
-      <div className="absolute top-24 right-8 w-6 h-6 border-t border-r border-[#00FFFF]/30 hidden lg:block" />
-      <div className="absolute bottom-32 right-8 w-6 h-6 border-b border-r border-[#00FFFF]/30 hidden lg:block" />
+      <div className="absolute top-24 right-8 w-6 h-6 border-t border-r border-[#00F0FF]/30 hidden lg:block" />
+      <div className="absolute bottom-32 right-8 w-6 h-6 border-b border-r border-[#00F0FF]/30 hidden lg:block" />
 
       {/* Gradual negative space blend for sharp UI contrast on the left */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-transparent to-transparent pointer-events-none" />
     </div>
   );
 }

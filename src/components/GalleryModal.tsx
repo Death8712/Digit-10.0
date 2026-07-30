@@ -130,7 +130,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-[#09090b] pointer-events-none"
+            className="absolute inset-0 bg-cyber-black pointer-events-none"
           >
             {/* Soft grid background */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
@@ -148,17 +148,17 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
             className="relative w-full h-full flex flex-col overflow-hidden"
           >
             {/* Editor-style Top Status Bar */}
-            <div className="w-full bg-black/40 border-b border-white/5 py-1.5 px-4 flex justify-center items-center z-[60]">
-              <span className="text-[10px] font-mono tracking-[0.4em] text-white/30 uppercase">
+            <div className="w-full bg-black/40 border-b border-[rgba(0,240,255,0.18)] py-1.5 px-4 flex justify-center items-center z-[60]">
+              <span className="text-[10px] font-mono tracking-[0.4em] text-ice-blue uppercase">
                 DIGIT 10.0 Final
               </span>
             </div>
 
             {/* Perfect Symmetrical Header */}
-            <header className="w-full grid grid-cols-3 items-center px-4 md:px-10 py-4 md:py-6 border-b border-white/5 bg-[#09090b]/80 backdrop-blur-xl z-50">
+            <header className="w-full grid grid-cols-3 items-center px-4 md:px-10 py-4 md:py-6 border-b border-[rgba(0,240,255,0.18)] bg-cyber-black/80 backdrop-blur-xl z-50">
               {/* Left: Logo */}
               <div className="flex items-center gap-3 md:gap-4 justify-self-start">
-                <div className="w-8 h-8 md:w-10 md:h-10 border border-neon-cyan/30 flex items-center justify-center rounded-sm bg-white/5">
+                <div className="w-8 h-8 md:w-10 md:h-10 border border-neon-cyan/30 flex items-center justify-center rounded-sm bg-[#0F172A]">
                   <img src="/digit-logo.png" alt="DIGIT" className="w-5 h-5 md:w-6 md:h-6 object-contain opacity-70" />
                 </div>
                 <h1 className="text-white font-display font-black tracking-widest text-lg md:text-xl uppercase">DIGIT</h1>
@@ -167,7 +167,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
               {/* Center: Navigation Items */}
               <nav className="hidden lg:flex items-center justify-center gap-12">
                 {navItems.map((item) => (
-                  <button key={item} onClick={onClose} className="text-white/40 font-mono text-[10px] tracking-[0.3em] hover:text-neon-cyan transition-colors uppercase">
+                  <button key={item} onClick={onClose} className="text-ice-blue font-mono text-[10px] tracking-[0.3em] hover:text-neon-cyan transition-colors uppercase">
                     {item}
                   </button>
                 ))}
@@ -180,7 +180,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
                 </button>
                 <button
                   onClick={onClose}
-                  className="p-2 border border-white/5 text-white/30 hover:text-white hover:border-white/20 transition-colors bg-white/5 backdrop-blur-md rounded-sm"
+                  className="p-2 border border-[rgba(0,240,255,0.18)] text-ice-blue hover:text-white hover:border-[rgba(0,240,255,0.18)] transition-colors bg-[#0F172A] backdrop-blur-md rounded-sm"
                   aria-label="Close"
                 >
                   <X size={18} />
@@ -196,7 +196,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
                 {/* Minimal 3D Depth Frame */}
                 <div className="absolute inset-[-1px] bg-gradient-to-r from-neon-cyan/40 via-white/5 to-neon-magenta/40 opacity-20 blur-[1px]" />
                 
-                <div className="relative w-full h-full border border-white/10 bg-[#0c0c0e] overflow-hidden shadow-2xl">
+                <div className="relative w-full h-full border border-[rgba(0,240,255,0.18)] bg-cyber-black overflow-hidden shadow-2xl">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={selectedIndex}
@@ -217,9 +217,9 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
                   </div>
                   
                   {/* Precise Lower-Left Label */}
-                  <div className="absolute bottom-8 left-8 flex items-center gap-3 bg-black/60 backdrop-blur-xl px-4 py-2 border border-white/10">
+                  <div className="absolute bottom-8 left-8 flex items-center gap-3 bg-black/60 backdrop-blur-xl px-4 py-2 border border-[rgba(0,240,255,0.18)]">
                     <div className="w-1.5 h-1.5 rounded-full bg-neon-cyan animate-ping" />
-                    <span className="text-white/80 font-mono text-[9px] md:text-[10px] tracking-[0.25em] uppercase">
+                    <span className="text-ice-blue font-mono text-[9px] md:text-[10px] tracking-[0.25em] uppercase">
                       {galleryItems[selectedIndex].desc}
                     </span>
                   </div>
@@ -235,7 +235,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
                     className={`relative w-32 md:w-44 aspect-video overflow-hidden border transition-all duration-500 group ${
                       selectedIndex === index
                         ? "border-neon-cyan shadow-[0_0_20px_rgba(0,255,255,0.15)] scale-105 z-10"
-                        : "border-white/5 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 hover:border-white/20"
+                        : "border-[rgba(0,240,255,0.18)] opacity-30 grayscale hover:opacity-100 hover:grayscale-0 hover:border-[rgba(0,240,255,0.18)]"
                     }`}
                   >
                     <img
@@ -248,23 +248,23 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
               </div>
 
               {/* Refined Footer & Nav Console */}
-              <div className="flex items-center gap-4 md:gap-8 mt-auto shrink-0 bg-black/60 border border-white/5 backdrop-blur-md px-6 md:px-8 py-2 md:py-3 shadow-lg rounded-full">
+              <div className="flex items-center gap-4 md:gap-8 mt-auto shrink-0 bg-black/60 border border-[rgba(0,240,255,0.18)] backdrop-blur-md px-6 md:px-8 py-2 md:py-3 shadow-lg rounded-full">
                 <button
                   onClick={handlePrev}
-                  className="text-white/40 hover:text-neon-cyan transition-colors"
+                  className="text-ice-blue hover:text-neon-cyan transition-colors"
                 >
                   <ChevronLeft size={20} strokeWidth={1} />
                 </button>
 
                 <div className="flex items-center gap-2 font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase">
                   <span className="text-neon-cyan font-bold">IMAGE {String(selectedIndex + 1).padStart(2, "0")}</span>
-                  <span className="text-white/30">/</span>
-                  <span className="text-white/50">{String(galleryItems.length).padStart(2, "0")}</span>
+                  <span className="text-ice-blue">/</span>
+                  <span className="text-ice-blue">{String(galleryItems.length).padStart(2, "0")}</span>
                 </div>
 
                 <button
                   onClick={handleNext}
-                  className="text-white/40 hover:text-neon-cyan transition-colors"
+                  className="text-ice-blue hover:text-neon-cyan transition-colors"
                 >
                   <ChevronRight size={20} strokeWidth={1} />
                 </button>

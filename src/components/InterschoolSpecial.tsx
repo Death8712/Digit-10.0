@@ -8,6 +8,8 @@ import { EventItem } from "../data/events";
 const interschoolEvents: Record<string, EventItem> = {
   digithon: {
     title: "DigiThon",
+    registrationLink: "https://forms.gle/XbcUQVdSB3kYenx87",
+    submissionLink: "https://forms.gle/PoVHyc1N4pZ6iiYZA",
     description: "Programming on Python and MySQL",
     mode: "Online",
     classGroup: "Class 9 to 12",
@@ -17,8 +19,8 @@ const interschoolEvents: Record<string, EventItem> = {
     about: "The aim of DigiThon is to find a real world problem that is worthwhile to solve in groups of 2 students. Participants are encouraged to visit local businesses to identify real problems (such as automated GST invoice generation) and build an application using Python for structure/logic/UI and MySQL for data manipulation.",
     venue: "Online",
     image: "/digi-thon.png",
-    eventHead: "Sheza Khan",
-    eventHeadNumber: "+91 9968882786",
+    eventHead: "Ishika Mittal",
+    eventHeadNumber: "+91 9310527312",
     teacherInCharge: "Ms. Urvashi Singhal",
     teacherInChargeNumber: "+91 9818893193",
     teamSize: "1 team per school (2 participants per team)",
@@ -30,10 +32,12 @@ const interschoolEvents: Record<string, EventItem> = {
       "Impact & Insight",
       "Originality and Creativity"
     ],
-    requirements: "Guidelines:\n• Number of teams per school: 1 | Participants per team: 2\n• Theme: MySQL and Python Programming\n• Students are encouraged to visit local businesses and ask about real-world challenges (e.g. automating GST invoice generation from raw transaction data).\n• Students write a Python program that handles the structure, logic, and user interface.\n• MySQL will be used for data manipulation.\n• Use a wide variety of Python libraries to create user-friendly applications (games, school software, accessibility apps, or mobile apps).\n• Must use free, legitimate open-source software.\n• Plagiarized, copied, or inappropriate/harmful content will lead to disqualification.\n• The use of AI is strictly prohibited.\n• E-certificates will be given to the top three winning teams.\n\nSubmission:\n1. Submit the written Python program.\n2. Submit a short write-up (maximum 500 words) explaining the problem, solution design, and bibliography.\n3. Include a demo video or screen recording (maximum 3 minutes) of the working app.\n4. Upload links/files through the designated online portal before the deadline: 17th August 2026."
+    requirements: "Guidelines:\n• Number of teams per school: 1 | Participants per team: 2\n• Theme: MySQL and Python Programming\n• Students are encouraged to visit local businesses and ask about real-world challenges (e.g. automating GST invoice generation from raw transaction data).\n• Students write a Python program that handles the structure, logic, and user interface.\n• MySQL will be used for data manipulation.\n• Use a wide variety of Python libraries to create user-friendly applications (games, school software, accessibility apps, or mobile apps).\n• Must use free, legitimate open-source software.\n• Plagiarized, copied, or inappropriate/harmful content will lead to disqualification.\n• The use of AI is strictly prohibited.\n• E-certificates will be given to the top three winning teams.\n\nSubmission:\n1. Upload the python (.py) files, MySQL (notepad) files, connectivity commands (notepad) file, a short write-up (maximum 500 words), and a video or screen recording (maximum 5 minutes) of working software.\n2. Share the drive link including all files at https://forms.gle/Hn3NLHXLqcANnkgo7 before the deadline 21st August 2026."
   },
   digiai: {
     title: "DigiAI",
+    registrationLink: "https://forms.gle/r6SjjfLxc5CcE96Y7",
+    submissionLink: "https://forms.gle/VbGUhrZG3Es4M3U17",
     description: "Build the \"Second Brain\" for Real Life",
     mode: "Online",
     classGroup: "Class 9 to 12",
@@ -56,10 +60,12 @@ const interschoolEvents: Record<string, EventItem> = {
       "Impact & Insight",
       "Responsible AI"
     ],
-    requirements: "Guidelines:\n• Number of teams per school: 1 | Participants per team: 2\n• Theme: Computational Thinking and Artificial Intelligence\n• Build an original AI powered MVP that helps students schedule tasks, make decisions, protect privacy, and think clearly.\n• MVP must feature a system taking fragmented inputs, applying an AI reasoning layer (pattern detection, modeling, or decision support), and producing actionable output.\n• AI tools may be used for brainstorming, prototyping, and development, but the core idea, logic, and integration must be your team's original work.\n• Disclose all AI tools used in your submission.\n• Judging rewards reasoning and design thinking over technical resources. Open-source/free tools are encouraged.\n• Solutions should not function only as surveillance tools or remove human agency from final decisions.\n• Plagiarized, copied, or inappropriate/harmful content will lead to disqualification.\n• E-certificates will be given to the top three winning teams.\n\nSubmission:\n1. Submit a working prototype (MVP).\n2. Submit a short write-up (maximum 500 words) explaining the problem, how the AI works, and how privacy and harm were addressed.\n3. Include a demo video or screen recording (maximum 3 minutes) of the working prototype.\n4. Upload prototype links/files through the designated online portal before the deadline: 17th August 2026."
+    requirements: "Guidelines:\n• Number of teams per school: 1 | Participants per team: 2\n• Theme: Computational Thinking and Artificial Intelligence\n• Build an original AI powered MVP that helps students schedule tasks, make decisions, protect privacy, and think clearly.\n• MVP must feature a system taking fragmented inputs, applying an AI reasoning layer (pattern detection, modeling, or decision support), and producing actionable output.\n• AI tools may be used for brainstorming, prototyping, and development, but the core idea, logic, and integration must be your team's original work.\n• Disclose all AI tools used in your submission.\n• Judging rewards reasoning and design thinking over technical resources. Open-source/free tools are encouraged.\n• Solutions should not function only as surveillance tools or remove human agency from final decisions.\n• Plagiarized, copied, or inappropriate/harmful content will lead to disqualification.\n• E-certificates will be given to the top three winning teams.\n\nSubmission:\n1. Submit a working prototype (MVP) and a short write-up (maximum 500 words) explaining the problem, how the AI works, and how privacy and harm were addressed.\n2. Include a demo video or screen recording (maximum 3 minutes) of the working prototype.\n3. Upload the prototype link/files at https://forms.gle/61zWhAfeHR1beX2x9 before the deadline 21st August 2026."
   },
   digiframes: {
     title: "DigiFrames",
+    registrationLink: "https://forms.gle/z6Kosigzztwqxnko9",
+    submissionLink: "https://forms.gle/N3D1etUKEoNqyroC8",
     description: "Identify. Innovate. Impact.",
     mode: "Online",
     classGroup: "Class 6-8",
@@ -73,43 +79,43 @@ const interschoolEvents: Record<string, EventItem> = {
     eventHeadNumber: "+91 9818400124",
     teacherInCharge: "Ms. Deepti Chopra",
     teacherInChargeNumber: "+91 8860189198",
-    teamSize: "1 team per school (up to 2 students)",
-    themes: ["Identify. Innovate. Impact."],
+    teamSize: "1 team per school (2 participants per team)",
+    themes: ["Innovating for a Better Community"],
     judgementCriteria: [
       "Understanding of the Community Problem",
       "Innovation and Creativity",
-      "Application of Technology",
-      "Practicality and Feasibility",
-      "Research and Evidence",
-      "Presentation and Communication",
-      "Ethical and Social Impact"
+      "Application of AI & Technology",
+      "Effectiveness and Feasibility of the Proposed Solution",
+      "Presentation and Communication"
     ],
-    requirements: "Objectives:\n• Inspire students to identify real-world community challenges and propose practical solutions.\n• Develop problem-solving and design thinking skills.\n• Encourage responsible, ethical, and creative use of AI and technology.\n• Foster research, innovation, communication, and teamwork.\n\nEligibility:\n• Open to Classes VI–VIII.\n• Participation in teams of up to 2 students.\n• Only one entry per team is permitted.\n\nRules & Requirements:\n• Submit a 2–3 minute video presenting an innovative Technology or AI-based solution to a local community problem.\n• The presentation should clearly address:\n  ○ Problem Statement – Identify and describe the community issue.\n  ○ Proposed Solution – Present the technology or AI-based solution.\n  ○ Working Mechanism – Explain how the solution functions.\n  ○ Target Beneficiaries – Identify who will benefit from the solution.\n  ○ Community Impact – Describe the expected outcomes and benefits.\n• The solution should be innovative, practical, and relevant to the chosen problem.\n• Narration or subtitles must be in English.\n• AI tools may be used for research, animation, or visualization. However, the idea, explanation, and voiceover must be the team's own.\n• Videos may include interviews, photographs, sketches, models, demonstrations, or animations (optional).\n• A working prototype or coding is NOT required.\n• The video must be submitted in MP4 format, landscape orientation, with clear audio and visuals.\n• All work must be original and created specifically for this competition.\n\nGrounds for Disqualification:\n• Video exceeds or falls short of the prescribed duration.\n• Fully AI-generated submissions without original student contribution.\n• False claims, fabricated evidence, or misrepresentation of research.\n• Multiple submissions from the same team or participant.\n• Failure to comply with the competition rules or submission requirements."
+    requirements: "Objectives:\n• Inspire students to identify real-world community challenges and propose practical solutions.\n• Develop problem-solving and design thinking skills.\n• Encourage responsible, ethical, and creative use of AI and technology.\n• Foster research, innovation, communication, and teamwork.\n\nEligibility:\n• Open to Classes VI–VIII.\n• Participation in teams of 2 students.\n• Only one entry per team is permitted.\n\nRules & Requirements:\n• Submit a 2–3 minute video presenting an innovative Technology solution to a local community problem.\n• The presentation should clearly address:\n  ○ Problem Statement – Identify and describe the community issue.\n  ○ Proposed Solution – Present the technology based solution.\n  ○ Working Mechanism – Explain how the solution functions.\n  ○ Target Beneficiaries – Identify who will benefit from the solution.\n  ○ Community Impact – Describe the expected outcomes and benefits.\n• The solution should be innovative, practical, and relevant to the chosen problem.\n• Narration or subtitles must be in English.\n• AI tools may be used for research, animation, or visualization. However, the concept, explanation, and narration must be entirely the team's own.\n• Videos may include interviews, photographs, sketches, models, demonstrations, or animations (optional).\n• A working prototype or coding is NOT required.\n• The video must be submitted in MP4 format, landscape orientation, with clear audio and visuals.\n• All work must be original and created specifically for this competition.\n\nGrounds for Disqualification:\n• Video exceeds or falls short of the prescribed duration.\n• Fully AI-generated submissions without original student contribution.\n• False claims, fabricated evidence, or misrepresentation of research.\n• Multiple submissions from the same team or participant.\n• Failure to comply with the competition rules or submission requirements.\n\nSubmission:\nUpload the 2–3 minute video to YouTube as an Unlisted video and submit the YouTube link at https://forms.gle/YwDugv245ZSnzvfX7. The video must be in MP4 format, landscape orientation, with clear audio and visuals. Last Date of Submission: 21st August 2026."
   },
   digiscratch: {
     title: "DigiScratch",
-    description: "Math O Mania (Class 5)",
+    registrationLink: "https://forms.gle/KcSh7RZE77C27NoC8",
+    submissionLink: "https://forms.gle/itMacTVM679vJ3iN7",
+    description: "Math Humour",
     mode: "Online",
     classGroup: "Class 5",
     software: "Scratch",
     icon: ExternalLink,
     size: "col-span-1",
-    about: "'Math O Mania' is an engaging inter-school Scratch coding competition designed for Class V students to explore Mathematics through creativity, humour, and coding. Participants will develop an interactive Scratch project that explains a mathematical concept using entertaining elements such as jokes, memes, humorous animations, or storytelling, making learning both enjoyable and meaningful.",
+    about: "An engaging inter-school Scratch coding competition designed for Class V students to explore Mathematics through creativity, humour, and coding. Participants will develop an interactive Scratch project that explains a mathematical concept using entertaining elements such as jokes, memes, humorous animations, or storytelling, making learning both enjoyable and meaningful.",
     venue: "Online",
     image: "/Digi-Scratch.png",
-    eventHead: "Navya Ahuja (Student Event Head)",
+    eventHead: "Navya Ahuja",
     eventHeadNumber: "+91 7827651124",
-    teacherInCharge: "Ms. Garima Mehra (Teacher In-charge)",
-    teacherInChargeNumber: "+91 8527886150 (3:00 PM to 5:00 PM)",
+    teacherInCharge: "Ms. Garima Mehra",
+    teacherInChargeNumber: "+91 8527886150",
     teamSize: "1 participant per school",
-    themes: ["Math Humour ('Math O Mania')"],
+    themes: ["Math Humour"],
     judgementCriteria: [
-      "Creativity and Humour: Originality, engagement, and effective use of humour.",
-      "Programming Skills: Appropriate use of Scratch features, coding logic, and interactivity.",
-      "Clarity of Communication: Ability to explain the mathematical concept in a simple, engaging manner.",
-      "Understanding of Mathematical Concepts: Accuracy, relevance, and depth of content presented."
+      "Creativity and Humour",
+      "Programming Skills",
+      "Clarity of Communication",
+      "Understanding of Mathematical Concepts"
     ],
-    requirements: "Guidelines:\n• Mode: Online | Team Size: 1 participant per school | Platform: Scratch\n• Theme: Math Humour ('Math O Mania')\n• Develop an interactive Scratch project that explains a mathematical concept using entertaining elements like jokes, memes, humorous animations, or storytelling.\n• For queries, contact Event In-charge between 3:00 p.m. to 5:00 p.m. (Ms. Garima Mehra: 8527886150, Ms. Navya Ahuja: 7827651124).\n\nSubmission Requirements:\n1. Submit Scratch project file (.sb3) and Scratch project sharing link by the name: Schoolname_Event name.\n2. Submission Deadline: 18th August 2026."
+    requirements: "Guidelines:\n• Mode: Online | Team Size: 1 participant per school | Platform: Scratch\n• Theme: Math Humour\n• Develop an interactive Scratch project that explains a mathematical concept using entertaining elements like jokes, memes, humorous animations, or storytelling.\n• E-certificates will be mailed to the top three winners.\n• For queries, contact Event In-charge between 3:00 p.m. to 5:00 p.m. (Ms. Garima Mehra: 8527886150, Ms. Navya Ahuja: 7827651124).\n\nSubmission Requirements:\n1. Submit Scratch project file (.sb3) and Scratch project sharing link by the name: Schoolname_EventName_StudentName.\n2. Register and submit your entries at https://forms.gle/L1MamUhfreoCsUeB8.\n3. Send your entries latest by 21st August 2026."
   }
 };
 
@@ -196,14 +202,14 @@ export default function InterschoolSpecial() {
                 animate={unlockStatus === "unlocking" ? { scale: [1, 1.2, 0.8], opacity: [1, 0.8, 0] } : { scale: 1 }}
                 transition={{ duration: 1.5, ease: "easeInOut" }}
                 className={cn(
-                  "relative z-10 flex items-center justify-center w-24 h-24 bg-[#050505] rounded-full border transition-all duration-500",
-                  unlockStatus === "unlocking" ? "border-neon-cyan shadow-[0_0_50px_rgba(0,255,255,0.8)]" : "border-white/10 group-hover:border-neon-cyan/50 group-hover:shadow-[0_0_30px_rgba(0,255,255,0.3)]"
+                  "relative z-10 flex items-center justify-center w-24 h-24 bg-cyber-black rounded-full border transition-all duration-500",
+                  unlockStatus === "unlocking" ? "border-neon-cyan shadow-[0_0_50px_rgba(0,255,255,0.8)]" : "border-[rgba(0,240,255,0.18)] group-hover:border-neon-cyan/50 group-hover:shadow-[0_0_30px_rgba(0,255,255,0.3)]"
                 )}
               >
                  <AnimatePresence mode="wait">
                    {unlockStatus === "locked" ? (
                      <motion.div key="lock" exit={{ opacity: 0, scale: 0.5 }} transition={{ duration: 0.2 }}>
-                       <Lock className="w-10 h-10 text-white/50 group-hover:text-neon-cyan transition-colors" />
+                       <Lock className="w-10 h-10 text-ice-blue group-hover:text-neon-cyan transition-colors" />
                      </motion.div>
                    ) : (
                      <motion.div key="unlock" initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1.2 }} transition={{ duration: 0.4, type: "spring" }}>
@@ -222,7 +228,7 @@ export default function InterschoolSpecial() {
             </motion.div>
             <motion.div 
               animate={unlockStatus === "unlocking" ? { opacity: 0 } : { opacity: 1 }}
-              className="text-white/40 font-sans text-sm mt-3 uppercase tracking-wider"
+              className="text-ice-blue font-sans text-sm mt-3 uppercase tracking-wider"
             >
               Classified Inter-School Events
             </motion.div>
@@ -253,7 +259,7 @@ export default function InterschoolSpecial() {
                 INTER-SCHOOL MEGA EVENTS
               </h2>
               
-              <p className="text-lg text-white/70 leading-relaxed font-sans max-w-2xl mb-12">
+              <p className="text-lg text-ice-blue leading-relaxed font-sans max-w-2xl mb-12">
                 Welcome to the elite tier of DIGIT 10.0. These high-stakes challenges are strictly for top-tier competitors representing their institutions.
               </p>
               
@@ -266,14 +272,14 @@ export default function InterschoolSpecial() {
                   <p className="text-neon-cyan text-xs font-mono font-semibold uppercase tracking-wider">
                     Programming on Python & MySQL
                   </p>
-                  <p className="text-white/60 font-sans text-sm flex-1">
+                  <p className="text-ice-blue font-sans text-sm flex-1">
                     Find a real-world problem and build a solution using Python & MySQL. Create open-source software for local businesses or schools.
                   </p>
                   <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
                     <span className="text-neon-cyan">CLASS 9-12</span>
                     <button 
                       onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digithon, accent: "text-neon-cyan"}); }}
-                      className="text-white/40 group-hover:text-neon-cyan transition-colors uppercase tracking-[0.2em]"
+                      className="text-ice-blue group-hover:text-neon-cyan transition-colors uppercase tracking-[0.2em]"
                     >
                       [ INITIATE ]
                     </button>
@@ -288,14 +294,14 @@ export default function InterschoolSpecial() {
                   <p className="text-purple-400 text-xs font-mono font-semibold uppercase tracking-wider">
                     "Second Brain" for Real Life
                   </p>
-                  <p className="text-white/60 font-sans text-sm flex-1">
+                  <p className="text-ice-blue font-sans text-sm flex-1">
                     Build an original AI-powered MVP with a reasoning layer to help students schedule tasks, make decisions, and protect privacy.
                   </p>
                   <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
                     <span className="text-purple-400">CLASS 9-12</span>
                     <button 
                       onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiai, accent: "text-purple-400"}); }}
-                      className="text-white/40 group-hover:text-purple-400 transition-colors uppercase tracking-[0.2em]"
+                      className="text-ice-blue group-hover:text-purple-400 transition-colors uppercase tracking-[0.2em]"
                     >
                       [ INITIATE ]
                     </button>
@@ -310,14 +316,14 @@ export default function InterschoolSpecial() {
                   <p className="text-yellow-500 text-xs font-mono font-semibold uppercase tracking-wider">
                     Identify. Innovate. Impact.
                   </p>
-                  <p className="text-white/60 font-sans text-sm flex-1">
+                  <p className="text-ice-blue font-sans text-sm flex-1">
                     Think like a changemaker and use AI and technology to solve a real problem in your local community through a 2-3 minute video.
                   </p>
                   <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
                     <span className="text-yellow-500">CLASS 6-8</span>
                     <button 
                       onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiframes, accent: "text-yellow-500"}); }}
-                      className="text-white/40 group-hover:text-yellow-500 transition-colors uppercase tracking-[0.2em]"
+                      className="text-ice-blue group-hover:text-yellow-500 transition-colors uppercase tracking-[0.2em]"
                     >
                       [ INITIATE ]
                     </button>
@@ -332,14 +338,14 @@ export default function InterschoolSpecial() {
                   <p className="text-neon-magenta text-xs font-mono font-semibold uppercase tracking-wider">
                     Math O Mania ('Math Humour')
                   </p>
-                  <p className="text-white/60 font-sans text-sm flex-1">
+                  <p className="text-ice-blue font-sans text-sm flex-1">
                     Explain mathematical concepts using Scratch coding, humor, memes, storytelling, and interactive animations.
                   </p>
                   <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
                     <span className="text-neon-magenta">CLASS 5</span>
                     <button 
                       onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiscratch, accent: "text-neon-magenta"}); }}
-                      className="text-white/40 group-hover:text-neon-magenta transition-colors uppercase tracking-[0.2em]"
+                      className="text-ice-blue group-hover:text-neon-magenta transition-colors uppercase tracking-[0.2em]"
                     >
                       [ INITIATE ]
                     </button>
