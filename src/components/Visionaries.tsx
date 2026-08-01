@@ -21,10 +21,16 @@ interface Speaker {
 }
 
 const fullSpeakers: Speaker[] = [
-  { name: "Ms Urvashi Singhal", role: "HOD Computer Science", company: "Digit Crew", initial: "US", image: "/Ms Uravshi Singhal.jpg", imagePosition: "center top", bio: "Leads the computer science department, guiding the team and mentoring students in technology." },
-  { name: "Ms Nitika Wadhwa", role: "Computer Visionary", company: "Digit Crew", initial: "NW", image: "/Ms Nitika Wadhwa.jpg", imagePosition: "center top", bio: "Teaches coding foundations to students, making classroom learning technical and engaging." },
-  { name: "Ms Deepti Chopra", role: "Computer Visionary", company: "Digit Crew", initial: "DC", image: "/Ms Deepti Chopra.png", bio: "Guides students through computing concepts with patience and mentorship, inspiring their interest in technology." },
-  { name: "Ms Garima Mehra", role: "Computer Visionary", company: "Digit Crew", initial: "GM", image: "/Ms Garima Mehra.png", bio: "Introduces young students to the basics of computers and digital literacy, building their tech skills early." },
+  { name: "Mr. Ashok Pandey", role: "Visionary", company: "Ahlcon International School", initial: "AP", bio: "Mr. Ashok Pandey guides the overall vision and direction of Ahlcon International School. He focuses on keeping learning modern and helping the school maintain strong educational standards." },
+  { name: "Mr. Sanjay Yadav", role: "Visionary", company: "Ahlcon International School", initial: "SY", bio: "Mr. Sanjay Yadav manages the day-to-day running of the school and focuses on student growth. He works closely with teachers and students to build a supportive, active learning environment." },
+  { name: "Mr. Puneet Duggal", role: "Visionary", company: "Ahlcon International School", initial: "PD", bio: "Mr. Puneet Duggal oversees daily operations and academic discipline across the school. He works behind the scenes to keep things running smoothly and support both staff and students." },
+  { name: "Dr. Ekta K. Ratra", role: "Visionary", company: "Ahlcon International School", initial: "ER", bio: "Dr. Ekta K. Ratra leads the Senior Stage, guiding students through higher academics and board prep. She helps older students stay focused on their goals and transition smoothly toward university and careers." },
+  { name: "Ms. Sunanda S. Kumar", role: "Visionary", company: "Ahlcon International School", initial: "SK", bio: "Ms. Sunanda S. Kumar heads the Middle Stage, helping students adapt as their studies become more structured. She balances academics with extracurriculars to keep students curious and engaged." },
+  { name: "Ms. Madhuri Daddich", role: "Visionary", company: "Ahlcon International School", initial: "MD", bio: "Ms. Madhuri Daddich focuses on building strong fundamentals and a comfortable learning space for younger students. She works to help children build confidence and enjoy coming to school every day." },
+  { name: "Ms. Urvashi Singhal", role: "Mentor", company: "Digit Crew", initial: "US", image: "/Ms Uravshi Singhal.jpg", imagePosition: "center top", bio: "Leads the computer science department, guiding the team and mentoring students in technology." },
+  { name: "Ms. Nitika Wadhwa", role: "Mentor", company: "Digit Crew", initial: "NW", image: "/Ms Nitika Wadhwa.jpg", imagePosition: "center top", bio: "Teaches coding foundations to students, making classroom learning technical and engaging." },
+  { name: "Ms. Deepti Chopra", role: "Mentor", company: "Digit Crew", initial: "DC", image: "/Ms Deepti Chopra.png", bio: "Guides students through computing concepts with patience and mentorship, inspiring their interest in technology." },
+  { name: "Ms. Garima Mehra", role: "Mentor", company: "Digit Crew", initial: "GM", image: "/Ms Garima Mehra.png", bio: "Introduces young students to the basics of computers and digital literacy, building their tech skills early." },
   { name: "Rudransh Kandpal", role: "President", company: "Digit Crew", initial: "RK", image: "/Rudransh Kandpal.jpg", bio: "Leads the team, plans strategies, and makes sure everyone works together to achieve our goals." },
   { name: "Ishika Mittal", role: "Vice President", company: "Digit Crew", initial: "IM", image: "/Ishika Mittal.jpg", bio: "Helps in managing team operations, solving problems, and keeping the team organized." },
   { name: "Sheza Khan", role: "Coordinating Director", company: "Digit Crew", initial: "SK", image: "/Sheza Khan.jpg", bio: "Manages our content and information, keeping everything well-organized and running smoothly." },
@@ -40,7 +46,7 @@ const fullSpeakers: Speaker[] = [
   { name: "Ananya Gahlot", role: "Event Head", company: "Digit Crew", initial: "AG", image: "/Ananya Gahlot.jpg", bio: "Coordinates people and resources to turn event ideas into successful live events." }
 ];
 
-const initialSpeakers = fullSpeakers.slice(0, 4);
+const initialSpeakers = fullSpeakers.slice(0, 6);
 
 export default function Visionaries() {
   const [activeSpeaker, setActiveSpeaker] = React.useState<Speaker | null>(null);
@@ -50,7 +56,6 @@ export default function Visionaries() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const fullCardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const logoRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
   const backgroundGlowRef = useRef<HTMLDivElement>(null);
   const gridWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -101,14 +106,6 @@ export default function Visionaries() {
       }, 0);
     });
 
-    // Fade out title
-    tl.to(titleRef.current, {
-      opacity: 0,
-      y: -20,
-      ease: 'power2.inOut',
-      duration: 0.5,
-      force3D: true
-    }, 0);
 
     // Animate Logo: scale up to 1 and fade in
     tl.to(logoRef.current, {
@@ -181,7 +178,7 @@ export default function Visionaries() {
           return -scrollDistance;
         },
         ease: 'none', // linear scroll feels more like native scrolling
-        duration: 8, // Give plenty of scrolling duration for the increased length
+        duration: 12, // Give plenty of scrolling duration for the increased length
         force3D: true
       }, 3.5); // Starts right when cards finish exploding so it's one seamless motion
     }
@@ -203,13 +200,10 @@ export default function Visionaries() {
 
         <div className="max-w-7xl mx-auto px-4 w-full h-full flex flex-col relative z-10">
           
-          <div ref={titleRef} className="mb-4 md:mb-6">
-            <h2 className="text-4xl md:text-6xl font-display font-black mb-2 font-['Orbitron',sans-serif]">Our Team</h2>
-            <p className="text-ice-blue font-sans text-sm md:text-base">Meet the minds behind Digit Crew.</p>
-          </div>
+
           
-          {/* 4 Initial Cards - Phase 1 */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl px-4 grid grid-cols-2 md:grid-cols-4 gap-6 pointer-events-none">
+          {/* 6 Initial Cards - Phase 1 */}
+          <div className="absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl px-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6 pointer-events-none">
             {initialSpeakers.map((speaker, i) => (
               <div
                 key={speaker.name}
@@ -272,7 +266,7 @@ export default function Visionaries() {
                   style={{ willChange: 'transform, opacity' }}
                   className={cn(
                     "bg-cyber-black/80 backdrop-blur-md py-4 px-3 md:py-5 md:px-4 rounded-[20px] md:rounded-[24px] border border-neon-cyan/20 text-center shadow-[0_0_15px_rgba(0,255,255,0.1)] hover:border-neon-cyan transition-colors cursor-pointer w-full flex flex-col justify-center items-center relative overflow-hidden min-h-[150px] md:min-h-[170px]",
-                    i < 4 ? "col-span-1 md:col-span-3" : "col-span-1 md:col-span-4"
+                    (i >= 6 && i < 10) ? "col-span-1 md:col-span-6 lg:col-span-3" : "col-span-1 md:col-span-4 lg:col-span-4"
                   )}
                 >
                    <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 xl:w-24 xl:h-24 rounded-full bg-gradient-to-br from-neon-cyan/10 to-purple-900/40 border border-neon-cyan/30 mx-auto mb-2 md:mb-3 flex items-center justify-center text-lg font-display font-black text-neon-cyan relative shadow-inner overflow-hidden shrink-0">
