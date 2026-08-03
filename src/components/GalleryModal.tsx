@@ -155,7 +155,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
             </div>
 
             {/* Perfect Symmetrical Header */}
-            <header className="w-full grid grid-cols-3 items-center px-4 md:px-10 py-4 md:py-6 border-b border-[rgba(0,240,255,0.18)] bg-cyber-black/80 backdrop-blur-xl z-50">
+            <header className="w-full grid grid-cols-3 items-center px-4 md:px-10 py-4 md:py-6 border-b border-[rgba(0,240,255,0.18)] bg-cyber-black/80 md:backdrop-blur-xl z-50">
               {/* Left: Logo */}
               <div className="flex items-center gap-3 md:gap-4 justify-self-start">
                 <div className="w-8 h-8 md:w-10 md:h-10 border border-neon-cyan/30 flex items-center justify-center rounded-sm bg-[#0F172A]">
@@ -180,7 +180,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
                 </button>
                 <button
                   onClick={onClose}
-                  className="p-2 border border-[rgba(0,240,255,0.18)] text-ice-blue hover:text-white hover:border-[rgba(0,240,255,0.18)] transition-colors bg-[#0F172A] backdrop-blur-md rounded-sm"
+                  className="p-2 border border-[rgba(0,240,255,0.18)] text-ice-blue hover:text-white hover:border-[rgba(0,240,255,0.18)] transition-colors bg-[#0F172A] md:backdrop-blur-md rounded-sm"
                   aria-label="Close"
                 >
                   <X size={18} />
@@ -217,7 +217,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
                   </div>
                   
                   {/* Precise Lower-Left Label */}
-                  <div className="absolute bottom-8 left-8 flex items-center gap-3 bg-black/60 backdrop-blur-xl px-4 py-2 border border-[rgba(0,240,255,0.18)]">
+                  <div className="absolute bottom-8 left-8 flex items-center gap-3 bg-black/60 md:backdrop-blur-xl px-4 py-2 border border-[rgba(0,240,255,0.18)]">
                     <div className="w-1.5 h-1.5 rounded-full bg-neon-cyan animate-ping" />
                     <span className="text-ice-blue font-mono text-[9px] md:text-[10px] tracking-[0.25em] uppercase">
                       {galleryItems[selectedIndex].desc}
@@ -248,7 +248,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
               </div>
 
               {/* Refined Footer & Nav Console */}
-              <div className="flex items-center gap-4 md:gap-8 mt-auto shrink-0 bg-black/60 border border-[rgba(0,240,255,0.18)] backdrop-blur-md px-6 md:px-8 py-2 md:py-3 shadow-lg rounded-full">
+              <div className="flex items-center gap-4 md:gap-8 mt-auto shrink-0 bg-black/60 border border-[rgba(0,240,255,0.18)] md:backdrop-blur-md px-6 md:px-8 py-2 md:py-3 shadow-lg rounded-full">
                 <button
                   onClick={handlePrev}
                   className="text-ice-blue hover:text-neon-cyan transition-colors"

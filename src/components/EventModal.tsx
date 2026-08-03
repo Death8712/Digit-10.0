@@ -56,19 +56,19 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/60 backdrop-blur-[10px] brightness-50"
+            className="absolute inset-0 bg-black/60 md:backdrop-blur-[10px] brightness-50"
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="relative w-full max-w-4xl max-h-[90vh] flex flex-col bg-[#0B132B]/80 backdrop-blur-2xl rounded-[32px] p-[1px] shadow-[0_0_50px_rgba(0,0,0,0.8)]"
+            className="relative w-full max-w-4xl max-h-[90vh] flex flex-col bg-[#0B132B]/80 md:backdrop-blur-2xl rounded-[32px] p-[1px] shadow-[0_0_50px_rgba(0,0,0,0.8)]"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/40 via-purple-500/20 to-amber-500/10 rounded-[32px] -z-10 pointer-events-none" />
             <button 
               onClick={onClose}
-              className="absolute top-6 right-6 z-50 w-10 h-10 flex items-center justify-center rounded-full bg-black/60 backdrop-blur-md hover:bg-white/10 text-ice-blue hover:text-white transition-colors border border-[rgba(0,240,255,0.18)]"
+              className="absolute top-6 right-6 z-50 w-10 h-10 flex items-center justify-center rounded-full bg-black/60 md:backdrop-blur-md hover:bg-white/10 text-ice-blue hover:text-white transition-colors border border-[rgba(0,240,255,0.18)]"
             >
               <X size={20} />
             </button>

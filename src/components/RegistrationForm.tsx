@@ -108,7 +108,7 @@ export default function RegistrationForm() {
               transition={{ delay: idx * 0.1, duration: 0.4 }}
               viewport={{ once: true }}
               className={cn(
-                "rounded-3xl border bg-black/40 backdrop-blur-xl p-8 relative overflow-hidden group  transition-all duration-500 flex flex-col",
+                "rounded-3xl border bg-black/40 md:backdrop-blur-xl p-8 relative overflow-hidden group  transition-all duration-500 flex flex-col",
                 category.border,
                 category.shadowColor
               )}
@@ -183,13 +183,13 @@ export default function RegistrationForm() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedEvent(null)}
-              className="absolute inset-0 bg-black/60 backdrop-blur-[10px]"
+              className="absolute inset-0 bg-black/60 md:backdrop-blur-[10px]"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-md bg-[#0B132B]/90 backdrop-blur-2xl rounded-3xl p-8 shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-[rgba(0,240,255,0.18)] flex flex-col gap-6"
+              className="relative w-full max-w-md bg-[#0B132B]/90 md:backdrop-blur-2xl rounded-3xl p-8 shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-[rgba(0,240,255,0.18)] flex flex-col gap-6"
             >
               <button
                 onClick={() => setSelectedEvent(null)}

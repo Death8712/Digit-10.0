@@ -136,7 +136,7 @@ export default function InterschoolSpecial() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-              className="flex flex-col items-center justify-center text-center p-12 md:p-24 border border-neon-cyan/20 rounded-3xl bg-black/40 backdrop-blur-md relative overflow-hidden group"
+              className="flex flex-col items-center justify-center text-center p-12 md:p-24 border border-neon-cyan/20 rounded-3xl bg-black/40 md:backdrop-blur-md relative overflow-hidden group"
             >
               {/* Scanline effect */}
               <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,255,0.05)_50%)] bg-[length:100%_4px] pointer-events-none" />

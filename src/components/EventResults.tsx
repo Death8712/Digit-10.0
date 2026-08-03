@@ -246,7 +246,7 @@ export default function EventResults() {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-16 justify-between items-center bg-[#0F172A] backdrop-blur-md p-4 rounded-2xl border border-neon-cyan/30 shadow-[0_0_15px_rgba(0,255,255,0.1)]">
+        <div className="flex flex-col md:flex-row gap-4 mb-16 justify-between items-center bg-[#0F172A] md:backdrop-blur-md p-4 rounded-2xl border border-neon-cyan/30 shadow-[0_0_15px_rgba(0,255,255,0.1)]">
           <div className="relative w-full md:flex-grow md:max-w-md group">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neon-cyan/70 group-focus-within:text-neon-cyan transition-colors" />
             <input 
@@ -294,7 +294,7 @@ export default function EventResults() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-white/[0.03] backdrop-blur-xl border border-neon-cyan/30 rounded-2xl p-6 group hover:border-neon-cyan hover:bg-white/[0.05] transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,255,0.5)] relative overflow-hidden"
+                  className="bg-white/[0.03] md:backdrop-blur-xl border border-neon-cyan/30 rounded-2xl p-6 group hover:border-neon-cyan hover:bg-white/[0.05] transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,255,0.5)] relative overflow-hidden"
                 >
                   {/* Glowing edge effect on hover */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-neon-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

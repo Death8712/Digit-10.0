@@ -66,18 +66,15 @@ function RefractiveGlassCore() {
       {/* Multifaceted geometric core */}
       <icosahedronGeometry args={[2.1, 0]} />
       <meshPhysicalMaterial 
-        color="#0A1628" 
-        transmission={0.96} 
-        opacity={1} 
-        transparent={true}
-        roughness={0.15} 
-        metalness={0.5}
-        ior={2.2} 
-        thickness={2.5} 
-        clearcoat={1} 
-        clearcoatRoughness={0.1}
-        emissive="#008080"
-        emissiveIntensity={0.2}
+         color="#0A1628" 
+         opacity={0.4} 
+         transparent={true}
+         roughness={0.2} 
+         metalness={0.8}
+         clearcoat={1} 
+         clearcoatRoughness={0.1}
+         emissive="#008080"
+         emissiveIntensity={0.5}
       />
     </mesh>
   );

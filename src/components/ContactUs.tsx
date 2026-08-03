@@ -128,7 +128,7 @@ export default function ContactUs() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white/[0.02] border border-[rgba(0,240,255,0.18)] rounded-3xl p-8 backdrop-blur-xl"
+            className="bg-white/[0.02] border border-[rgba(0,240,255,0.18)] rounded-3xl p-8 md:backdrop-blur-xl"
           >
             <h3 className="text-2xl font-display font-black text-white mb-6">TEACHERS IN-CHARGE</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -158,7 +158,7 @@ export default function ContactUs() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-4 bg-white/[0.02] border border-[rgba(0,240,255,0.18)] rounded-3xl p-8 backdrop-blur-xl h-full flex flex-col justify-center"
+              className="lg:col-span-4 bg-white/[0.02] border border-[rgba(0,240,255,0.18)] rounded-3xl p-8 md:backdrop-blur-xl h-full flex flex-col justify-center"
             >
               <h3 className="text-2xl font-display font-black text-white mb-8">DIGIT HQ</h3>
               
@@ -192,7 +192,7 @@ export default function ContactUs() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-8 bg-white/[0.02] border border-[rgba(0,240,255,0.18)] rounded-3xl p-8 backdrop-blur-xl"
+              className="lg:col-span-8 bg-white/[0.02] border border-[rgba(0,240,255,0.18)] rounded-3xl p-8 md:backdrop-blur-xl"
             >
               <h3 className="text-2xl font-display font-black text-white mb-6">STUDENT DIRECTORS</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -227,7 +227,7 @@ export default function ContactUs() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white/[0.02] border border-[rgba(0,240,255,0.18)] rounded-3xl p-8 backdrop-blur-xl"
+          className="bg-white/[0.02] border border-[rgba(0,240,255,0.18)] rounded-3xl p-8 md:backdrop-blur-xl"
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <h3 className="text-2xl font-display font-black text-white">EVENT HEADS</h3>

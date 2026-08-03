@@ -140,7 +140,7 @@ export default function Gallery() {
       <div className="max-w-[100vw] mx-auto relative z-10 w-full flex flex-col">
         <div className="px-6 md:px-12 lg:px-24 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <div className="inline-block border border-neon-cyan/50 px-4 py-2 rounded-md bg-neon-cyan/10 backdrop-blur-md mb-6">
+            <div className="inline-block border border-neon-cyan/50 px-4 py-2 rounded-md bg-neon-cyan/10 md:backdrop-blur-md mb-6">
               <span className="text-neon-cyan text-[10px] font-mono font-bold tracking-[0.2em] uppercase">SYS.NETWORK // ARCHIVE</span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-white uppercase tracking-tight mb-4">
@@ -154,13 +154,13 @@ export default function Gallery() {
           <div className="flex gap-4">
             <button 
               onClick={scrollLeft}
-              className="w-12 h-12 rounded-full border border-[rgba(0,240,255,0.18)] bg-[#0F172A] hover:bg-white/10 flex items-center justify-center text-white backdrop-blur-sm transition-colors"
+              className="w-12 h-12 rounded-full border border-[rgba(0,240,255,0.18)] bg-[#0F172A] hover:bg-white/10 flex items-center justify-center text-white md:backdrop-blur-sm transition-colors"
             >
               <ChevronLeft size={24} />
             </button>
             <button 
               onClick={scrollRight}
-              className="w-12 h-12 rounded-full border border-[rgba(0,240,255,0.18)] bg-[#0F172A] hover:bg-white/10 flex items-center justify-center text-white backdrop-blur-sm transition-colors"
+              className="w-12 h-12 rounded-full border border-[rgba(0,240,255,0.18)] bg-[#0F172A] hover:bg-white/10 flex items-center justify-center text-white md:backdrop-blur-sm transition-colors"
             >
               <ChevronRight size={24} />
             </button>

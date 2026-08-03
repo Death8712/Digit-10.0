@@ -45,7 +45,7 @@ export default function Navbar() {
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="fixed top-0 left-0 w-full z-50 px-4 md:px-6 py-4 bg-cyber-black/90 border-b border-neon-cyan/20 backdrop-blur-xl"
+      className="fixed top-0 left-0 w-full z-50 px-4 md:px-6 py-4 bg-cyber-black/90 border-b border-neon-cyan/20 md:backdrop-blur-xl"
     >
       <div className="max-w-[1400px] mx-auto flex items-center justify-between">
         {/* Logo and Image */}

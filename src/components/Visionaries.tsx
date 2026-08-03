@@ -210,7 +210,7 @@ export default function Visionaries() {
                 ref={(el) => { cardsRef.current[i] = el; }}
                 onClick={() => setActiveSpeaker(speaker)}
                 style={{ willChange: 'transform, opacity' }}
-                className="bg-[#0F172A] backdrop-blur-md p-4 md:p-8 rounded-[16px] md:rounded-[24px] border border-[rgba(0,240,255,0.18)] text-center transition-shadow duration-300 pointer-events-auto shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer"
+                className="bg-[#0F172A]/95 md:bg-[#0F172A]/80 md:backdrop-blur-md p-4 md:p-8 rounded-[16px] md:rounded-[24px] border border-[rgba(0,240,255,0.18)] text-center transition-shadow duration-300 pointer-events-auto shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer"
               >
                 <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-gray-700 to-purple-900 mx-auto mb-6 flex items-center justify-center text-2xl font-display font-black text-white overflow-hidden relative shadow-inner shadow-black/50">
                   {speaker.image ? (
@@ -227,7 +227,7 @@ export default function Visionaries() {
                   )}
                 </div>
                 <h3 className="text-sm md:text-xl font-bold mb-1 text-white">{speaker.name}</h3>
-                <p className="text-xs md:text-sm font-bold text-neon-cyan mb-4 font-mono uppercase tracking-wider drop-shadow-[0_0_5px_rgba(0,255,255,0.4)]">{speaker.role}</p>
+                <p className="text-xs md:text-sm font-bold text-neon-cyan mb-4 font-mono uppercase tracking-wider md:drop-shadow-[0_0_5px_rgba(0,255,255,0.4)]">{speaker.role}</p>
               </div>
             ))}
           </div>
@@ -265,7 +265,7 @@ export default function Visionaries() {
                   onClick={() => setActiveSpeaker(speaker)}
                   style={{ willChange: 'transform, opacity' }}
                   className={cn(
-                    "bg-cyber-black/80 backdrop-blur-md py-4 px-3 md:py-5 md:px-4 rounded-[20px] md:rounded-[24px] border border-neon-cyan/20 text-center shadow-[0_0_15px_rgba(0,255,255,0.1)] hover:border-neon-cyan transition-colors cursor-pointer w-full flex flex-col justify-center items-center relative overflow-hidden min-h-[150px] md:min-h-[170px]",
+                    "bg-cyber-black/95 md:bg-cyber-black/80 md:backdrop-blur-md py-4 px-3 md:py-5 md:px-4 rounded-[20px] md:rounded-[24px] border border-neon-cyan/20 text-center shadow-[0_0_15px_rgba(0,255,255,0.1)] hover:border-neon-cyan transition-colors cursor-pointer w-full flex flex-col justify-center items-center relative overflow-hidden min-h-[150px] md:min-h-[170px]",
                     (i >= 6 && i < 10) ? "col-span-1 md:col-span-6 lg:col-span-3" : "col-span-1 md:col-span-4 lg:col-span-4"
                   )}
                 >
@@ -285,7 +285,7 @@ export default function Visionaries() {
                    </div>
                    <h3 className="text-[11px] sm:text-xs md:text-sm font-bold text-white truncate max-w-full">{speaker.name}</h3>
                    
-                   <p className="text-[9px] sm:text-[11px] font-black text-neon-cyan truncate mt-1 max-w-full tracking-wider uppercase drop-shadow-[0_0_5px_rgba(0,255,255,0.4)]">{speaker.role}</p>
+                   <p className="text-[9px] sm:text-[11px] font-black text-neon-cyan truncate mt-1 max-w-full tracking-wider uppercase md:drop-shadow-[0_0_5px_rgba(0,255,255,0.4)]">{speaker.role}</p>
                 </div>
               ))}
             </div>
@@ -303,7 +303,7 @@ export default function Visionaries() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setActiveSpeaker(null)}
-              className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+              className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 md:backdrop-blur-md"
             >
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
@@ -315,7 +315,7 @@ export default function Visionaries() {
             >
               <button
                 onClick={() => setActiveSpeaker(null)}
-                className="absolute z-10 p-2 text-ice-blue transition-colors bg-black/50 rounded-full top-4 right-4 hover:text-white hover:bg-black/80 backdrop-blur-md cursor-pointer"
+                className="absolute z-10 p-2 text-ice-blue transition-colors bg-black/50 rounded-full top-4 right-4 hover:text-white hover:bg-black/80 md:backdrop-blur-md cursor-pointer"
               >
                 <X size={20} />
               </button>
@@ -343,7 +343,7 @@ export default function Visionaries() {
                   {activeSpeaker.name}
                 </h3>
                 <p className="mb-6 font-mono text-sm text-neon-cyan">
-                  <span className="font-bold uppercase tracking-wider drop-shadow-[0_0_5px_rgba(0,255,255,0.4)]">{activeSpeaker.role}</span>
+                  <span className="font-bold uppercase tracking-wider md:drop-shadow-[0_0_5px_rgba(0,255,255,0.4)]">{activeSpeaker.role}</span>
                 </p>
                 
                 <div className="w-12 h-1 mx-auto mb-6 rounded-full bg-neon-cyan/30" />
