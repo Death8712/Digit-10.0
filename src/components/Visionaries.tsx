@@ -81,12 +81,14 @@ export default function Visionaries() {
     };
 
     // Create GSAP Timeline
+    const isMobile = window.innerWidth < 768;
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 0.5, // Tighter scrubbing so it feels less viscous but still smooth
+        scrub: 1.2, // Ultra-smooth fluid lag when scrolling
         invalidateOnRefresh: true,
       }
     });
@@ -101,46 +103,44 @@ export default function Visionaries() {
         scale: 0.2,
         opacity: 0,
         ease: 'power2.inOut',
-        duration: 1,
+        duration: 1.8,
         force3D: true
       }, 0);
     });
-
 
     // Animate Logo: scale up to 1 and fade in
     tl.to(logoRef.current, {
       opacity: 1,
       scale: 1,
       ease: 'power2.inOut',
-      duration: 1,
+      duration: 1.8,
       force3D: true
-    }, 0.2);
+    }, 0.3);
 
     // --- PHASE 2 ---
     // Background glow intensifies
     tl.to(backgroundGlowRef.current, {
-      opacity: 1,
-      scale: 3,
+      opacity: 0.85,
+      scale: isMobile ? 1.8 : 2.5,
       ease: 'power2.in',
-      duration: 1.5,
+      duration: 2.0,
       force3D: true
-    }, 1.5);
+    }, 1.8);
     
-    // Logo zooms past camera and fades out
+    // Logo zooms outward smoothly and fades out
     tl.to(logoRef.current, {
-      scale: 30, // massive zoom
+      scale: isMobile ? 10 : 16,
       opacity: 0,
-      ease: 'power3.in',
-      duration: 1.5,
+      ease: 'power2.in',
+      duration: 2.0,
       force3D: true
-    }, 1.5);
+    }, 1.8);
     
     // --- PHASE 3 ---
-    // Extract full cards from the center (starting at the center, scaling up to natural pos)
+    // Extract full cards from the center
     fullCardsRef.current.forEach((card, index) => {
       if (!card) return;
       
-      // Calculate stagger based on distance from center of grid
       const col = index % 4;
       const row = Math.floor(index / 4);
       const dist = Math.sqrt(Math.pow(row - 0.5, 2) + Math.pow(col - 1.5, 2));
@@ -158,29 +158,27 @@ export default function Visionaries() {
           y: 0,
           scale: 1,
           opacity: 1,
-          ease: 'power2.out', // smoother, less snappy
-          duration: 1.5,
+          ease: 'power2.out',
+          duration: 2.0,
           force3D: true
         },
-        2.0 + (dist * 0.1) // Stagger outward from center
+        3.2 + (dist * 0.18)
       );
     });
 
     // --- PHASE 4: Grid Auto Scroll ---
-    // Smoothly scroll the entire grid upward as the user scrolls down the page
     if (gridWrapperRef.current) {
       tl.to(gridWrapperRef.current, {
         y: () => {
           const wrapperHeight = gridWrapperRef.current?.scrollHeight || 0;
           const containerHeight = gridWrapperRef.current?.parentElement?.clientHeight || 0;
-          // Calculate needed scroll distance to show everything (plus some bottom padding)
-          const scrollDistance = Math.max(0, wrapperHeight - containerHeight + 80);
+          const scrollDistance = Math.max(0, wrapperHeight - containerHeight + 60);
           return -scrollDistance;
         },
-        ease: 'none', // linear scroll feels more like native scrolling
-        duration: 12, // Give plenty of scrolling duration for the increased length
+        ease: 'none',
+        duration: 12,
         force3D: true
-      }, 3.5); // Starts right when cards finish exploding so it's one seamless motion
+      }, 5.5);
     }
 
   }, { scope: containerRef });
@@ -190,7 +188,7 @@ export default function Visionaries() {
       ref={containerRef} 
       id="visionaries" 
       className="relative z-10 w-full"
-      style={{ height: '350vh' }}
+      style={{ height: '650vh' }}
     >
       <div 
         ref={stickyRef} 
