@@ -73,7 +73,6 @@ export default function App() {
 
   const heroRef = useRef<HTMLDivElement>(null);
   const [selectedTimelineEvent, setSelectedTimelineEvent] = useState<{event: EventItem, categoryAccent: string} | null>(null);
-  const [showBrochureMenu, setShowBrochureMenu] = useState(false);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"]
@@ -146,59 +145,12 @@ export default function App() {
 
             {/* CTA Container */}
             <div className="flex flex-wrap items-center gap-6 relative z-50">
-              {/* CTA Button */}
-              <div className="relative">
-                <button 
-                  onClick={() => setShowBrochureMenu(!showBrochureMenu)}
-                  className="px-10 py-4 bg-transparent border border-neon-cyan text-neon-cyan font-sans font-bold uppercase tracking-[0.2em] text-sm hover:bg-neon-cyan hover:text-cyber-black transition-all duration-300 shadow-[0_0_15px_rgba(0,255,255,0.4),inset_0_0_10px_rgba(0,255,255,0.2)]"
-                >
-                  VIEW BROCHURE
-                </button>
-                
-                <AnimatePresence>
-                  {showBrochureMenu && (
-                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-                      <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={() => setShowBrochureMenu(false)}
-                        className="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer"
-                      />
-                      <motion.div 
-                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="relative bg-[#0F172A] border border-[rgba(0,240,255,0.18)] p-8 rounded-2xl w-full max-w-md shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden"
-                      >
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-cyan via-purple-500 to-amber-500" />
-                        <button 
-                          onClick={() => setShowBrochureMenu(false)}
-                          className="absolute top-4 right-4 text-ice-blue hover:text-white transition-colors"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </button>
-                        <h3 className="text-2xl font-display font-bold text-white mb-6 pr-8 uppercase">Select Brochure</h3>
-                        <div className="flex flex-col gap-4">
-                          <a href="#" className="p-6 bg-[#0F172A] hover:bg-neon-cyan/10 border border-[rgba(0,240,255,0.18)] hover:border-neon-cyan/50 text-white hover:text-neon-cyan transition-all rounded-xl font-mono text-sm tracking-widest uppercase flex justify-between items-center group">
-                            INTER-SCHOOL BROCHURE
-                            <ArrowRight className="w-5 h-5 opacity-50 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
-                          </a>
-                          <a href="https://drive.google.com/file/d/1Q7bGz41pHU9WXnZ7rtoKVuJf4EXoPlv6/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="p-6 bg-[#0F172A] hover:bg-purple-400/10 border border-[rgba(0,240,255,0.18)] hover:border-purple-400/50 text-white hover:text-purple-400 transition-all rounded-xl font-mono text-sm tracking-widest uppercase flex justify-between items-center group">
-                            INTRA-SCHOOL BROCHURE
-                            <ArrowRight className="w-5 h-5 opacity-50 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
-                          </a>
-                        </div>
-                      </motion.div>
-                    </div>
-                  )}
-                </AnimatePresence>
-              </div>
-              
-              {/* Secondary Link */}
-              <a href="#events" className="text-ice-blue hover:text-white font-sans font-medium text-sm tracking-widest uppercase transition-colors group flex items-center gap-2">
-                Explore Events 
-                <span className="text-neon-cyan group-hover:translate-x-1 transition-transform">&gt;</span>
+              <a 
+                href="#events"
+                className="px-10 py-4 bg-transparent border border-neon-cyan text-neon-cyan font-sans font-bold uppercase tracking-[0.2em] text-sm hover:bg-neon-cyan hover:text-cyber-black transition-all duration-300 shadow-[0_0_15px_rgba(0,255,255,0.4),inset_0_0_10px_rgba(0,255,255,0.2)] inline-flex items-center gap-2 group"
+              >
+                EXPLORE EVENTS
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </motion.div>

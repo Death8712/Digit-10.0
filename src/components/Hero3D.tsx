@@ -240,24 +240,76 @@ function CyberTechArtifact() {
   const mobileScale = Math.min(viewport.width / 14, 1) * 1.05;
 
   const [hovered, setHovered] = useState(false);
-  const groupRef = useRef<THREE.Group>(null);
+  const [isDragging, setIsDragging] = useState(false);
 
-  // Smoothly lerp towards a larger scale when hovered
-  useFrame((state, delta) => {
+  const groupRef = useRef<THREE.Group>(null);
+  const rotateGroupRef = useRef<THREE.Group>(null);
+
+  const prevMousePos = useRef({ x: 0, y: 0 });
+  const velocity = useRef({ x: 0, y: 0 });
+
+  // Mouse / Touch drag handlers
+  const handlePointerDown = (e: React.PointerEvent) => {
+    e.stopPropagation();
+    setIsDragging(true);
+    prevMousePos.current = { x: e.clientX, y: e.clientY };
+    try {
+      (e.target as HTMLElement).setPointerCapture(e.pointerId);
+    } catch (_) {}
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDragging) return;
+    e.stopPropagation();
+    const deltaX = e.clientX - prevMousePos.current.x;
+    const deltaY = e.clientY - prevMousePos.current.y;
+
+    velocity.current = {
+      x: deltaY * 0.005,
+      y: deltaX * 0.005,
+    };
+
+    if (rotateGroupRef.current) {
+      rotateGroupRef.current.rotation.x += velocity.current.x;
+      rotateGroupRef.current.rotation.y += velocity.current.y;
+    }
+
+    prevMousePos.current = { x: e.clientX, y: e.clientY };
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    e.stopPropagation();
+    setIsDragging(false);
+    try {
+      (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch (_) {}
+  };
+
+  // Smoothly lerp towards target scale and position, and apply momentum rotation
+  useFrame(() => {
     if (groupRef.current) {
       const targetScale = hovered ? mobileScale * 1.15 : mobileScale;
       groupRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.1);
       groupRef.current.position.lerp(new THREE.Vector3(xOffset, 1.2, 0), 0.1);
     }
+
+    if (rotateGroupRef.current && !isDragging) {
+      rotateGroupRef.current.rotation.x += velocity.current.x;
+      rotateGroupRef.current.rotation.y += velocity.current.y;
+
+      // Apply damping to velocity
+      velocity.current.x *= 0.94;
+      velocity.current.y *= 0.94;
+    }
   });
 
-  // Change cursor on hover
+  // Change cursor on hover & drag
   useEffect(() => {
-    document.body.style.cursor = hovered ? 'pointer' : 'auto';
+    document.body.style.cursor = isDragging ? 'grabbing' : hovered ? 'grab' : 'auto';
     return () => {
-      document.body.style.cursor = 'auto'; // Reset cursor on unmount
+      document.body.style.cursor = 'auto';
     };
-  }, [hovered]);
+  }, [hovered, isDragging]);
 
   return (
     <group 
@@ -269,12 +321,18 @@ function CyberTechArtifact() {
       onPointerOut={() => {
         setHovered(false);
       }}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
     >
       <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.3}>
-        <DataNodes />
-        <RefractiveGlassCore />
-        <ComplexWireframe />
-        <FloatingParticles />
+        <group ref={rotateGroupRef}>
+          <DataNodes />
+          <RefractiveGlassCore />
+          <ComplexWireframe />
+          <FloatingParticles />
+        </group>
       </Float>
     </group>
   );

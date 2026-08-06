@@ -290,11 +290,15 @@ export const categories: Category[] = [
 • Theme Relevance & Sustainability
 • Craftsmanship & Finish
 • Presentation` , submissionDate: "Event Day"},
-      { title: "DigiBattles", registrationLink: "https://forms.gle/DqjJ9N5dAHnQ4Le66", description: "Class 9-12", mode: "Online", classGroup: "Class 9-12", software: "Battlegrounds Mobile India (BGMI)", icon: Gamepad2, size: "col-span-1", featured: true, about: "DigiBattles brings teamwork and strategy into the spotlight. Students compete in teams through gaming challenges, testing coordination, communication, and quick decision-making. It’s not just about playing—it’s about strategy, collaboration, and performing under pressure.", venue: "Second Floor Classrooms", image: "/digi-battles.png", eventHead: "Divyansh Rathore", eventHeadNumber: "9560802211" , teamSize: "Team of 4", themes: ["The Ultimate Battlegrounds Mobile Tournament"], objectives: ["Step into the battleground and compete in DIGIBattle. Form your squad, showcase your teamwork, strategy, and gaming skills, and battle through intense TPP/FPP survival shooter matches against the best teams. Fight for victory, earn bragging rights, and experience the thrill of competitive mobile esports."], requirements: `<b>Requirements</b>
+      { title: "DigiBattles", registrationLink: "https://forms.gle/DqjJ9N5dAHnQ4Le66", description: "Class 9-12", mode: "Online Prelims | Offline Finals", classGroup: "Class 9-12", software: "Battlegrounds Mobile India (BGMI)", icon: Gamepad2, size: "col-span-1", featured: true, about: "DigiBattles brings teamwork and strategy into the spotlight. Students compete in teams through gaming challenges, testing coordination, communication, and quick decision-making. It’s not just about playing—it’s about strategy, collaboration, and performing under pressure.", venue: "Online & Offline (Second Floor Classrooms)", image: "/digi-battles.png", eventHead: "Divyansh Rathore", eventHeadNumber: "9560802211" , teamSize: "Team of 4", themes: ["The Ultimate Battlegrounds Mobile Tournament"], objectives: ["Step into the battleground and compete in DIGIBattle. Form your squad, showcase your teamwork, strategy, and gaming skills, and battle through intense TPP/FPP survival shooter matches against the best teams. Fight for victory, earn bragging rights, and experience the thrill of competitive mobile esports."], requirements: `<b>Tournament Schedule</b>
+• <b>First Round (Online):</b> 19th August 2026
+• <b>Second Round (Offline):</b> 21st August 2026
+
+<b>Requirements</b>
 • All participants must possess a <b>valid BGMI account</b>.
 • Only registered players are permitted. Substitutes or unregistered players are <b>not allowed</b>.
 • Teams must report and be ready before the scheduled match time.
-• Participants must ensure they have sufficient gameplay availability on the tournament day.
+• Participants must ensure they have sufficient gameplay availability on the tournament days.
 • Any technical issues must be reported to the organizers immediately.
 • Certificates will be awarded to the <b>Top 3 winners</b>.
 
@@ -309,7 +313,7 @@ export const categories: Category[] = [
 • Abusive, offensive, discriminatory language, or unsportsmanlike behaviour will lead to disqualification.
 • Late registrations will not be accepted.
 • Organizers reserve the right to interpret, amend, or enforce the rules to ensure fair play.
-• The decision of the organizers and judges will be final.` , submissionDate: "22nd and 23rd of August"},
+• The decision of the organizers and judges will be final.` , submissionDate: "19th & 21st August 2026"},
       { title: "DigiMeme", registrationLink: "https://forms.gle/tK29smSro85PP8Ct9", description: "Class 9-12", mode: "Online Prelims | Offline Finals", classGroup: "Class 9-12", software: "Photoshop / Canva / Any", icon: ImageIcon, size: "col-span-1", about: "DigiMeme is the ultimate playground for tech-humor and creativity. Students design humorous, high-impact tech memes that blend digital culture, computing jokes, and clever concepts.", venue: "Offline", image: "/digi-meme.png", eventHead: "Aditya Pandey", eventHeadNumber: "9211977792" , teamSize: "Team of 2", themes: ["Think Before You Meme: Technology with a Purpose"], objectives: ["Encourage creativity through digital memes.", "Promote digital literacy and responsible technology use.", "Develop teamwork, humour, and visual communication skills.", "Spread awareness about technology, AI, cybersecurity, and digital wellness."], requirements: `<b>Guidelines</b>
 <b>Round 1 – Online Preliminary Round</b>
 • This is a <b>team event</b>, with 2 participants per team.
