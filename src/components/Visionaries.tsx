@@ -190,7 +190,7 @@ export default function Visionaries() {
       ref={containerRef} 
       id="visionaries" 
       className="relative z-10 w-full"
-      style={{ height: '600vh' }}
+      style={{ height: '350vh' }}
     >
       <div 
         ref={stickyRef} 
@@ -210,13 +210,15 @@ export default function Visionaries() {
                 ref={(el) => { cardsRef.current[i] = el; }}
                 onClick={() => setActiveSpeaker(speaker)}
                 style={{ willChange: 'transform, opacity' }}
-                className="bg-[#0F172A]/95 md:bg-[#0F172A]/80 md:backdrop-blur-md p-4 md:p-8 rounded-[16px] md:rounded-[24px] border border-[rgba(0,240,255,0.18)] text-center transition-shadow duration-300 pointer-events-auto shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer"
+                className="bg-[#0F172A] p-4 md:p-8 rounded-[16px] md:rounded-[24px] border border-[rgba(0,240,255,0.18)] text-center transition-shadow duration-300 pointer-events-auto shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer"
               >
                 <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-gray-700 to-purple-900 mx-auto mb-6 flex items-center justify-center text-2xl font-display font-black text-white overflow-hidden relative shadow-inner shadow-black/50">
                   {speaker.image ? (
                     <img 
                       src={speaker.image} 
                       alt={speaker.name} 
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover" style={{ objectPosition: speaker.imagePosition || 'center' }}
                       onError={(e) => {
                         (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=300';
@@ -227,7 +229,7 @@ export default function Visionaries() {
                   )}
                 </div>
                 <h3 className="text-sm md:text-xl font-bold mb-1 text-white">{speaker.name}</h3>
-                <p className="text-xs md:text-sm font-bold text-neon-cyan mb-4 font-mono uppercase tracking-wider md:drop-shadow-[0_0_5px_rgba(0,255,255,0.4)]">{speaker.role}</p>
+                <p className="text-xs md:text-sm font-bold text-neon-cyan mb-4 font-mono uppercase tracking-wider">{speaker.role}</p>
               </div>
             ))}
           </div>
@@ -235,7 +237,7 @@ export default function Visionaries() {
           {/* Ambient Glow */}
           <div 
             ref={backgroundGlowRef}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] bg-neon-cyan/20 blur-[100px] rounded-full opacity-0 pointer-events-none"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] bg-neon-cyan/20 blur-[60px] rounded-full opacity-0 pointer-events-none"
           />
 
           {/* Logo Placeholder - Scales and expands */}
@@ -247,6 +249,8 @@ export default function Visionaries() {
             <img 
               src="/digit-logo.png" 
               alt="Digit Logo" 
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(0,242,255,0.8)]" 
             />
           </div>
@@ -265,7 +269,7 @@ export default function Visionaries() {
                   onClick={() => setActiveSpeaker(speaker)}
                   style={{ willChange: 'transform, opacity' }}
                   className={cn(
-                    "bg-cyber-black/95 md:bg-cyber-black/80 md:backdrop-blur-md py-4 px-3 md:py-5 md:px-4 rounded-[20px] md:rounded-[24px] border border-neon-cyan/20 text-center shadow-[0_0_15px_rgba(0,255,255,0.1)] hover:border-neon-cyan transition-colors cursor-pointer w-full flex flex-col justify-center items-center relative overflow-hidden min-h-[150px] md:min-h-[170px]",
+                    "bg-[#0B1222] py-4 px-3 md:py-5 md:px-4 rounded-[20px] md:rounded-[24px] border border-neon-cyan/20 text-center shadow-[0_0_15px_rgba(0,255,255,0.05)] hover:border-neon-cyan transition-colors cursor-pointer w-full flex flex-col justify-center items-center relative overflow-hidden min-h-[150px] md:min-h-[170px]",
                     (i >= 6 && i < 10) ? "col-span-1 md:col-span-6 lg:col-span-3" : "col-span-1 md:col-span-4 lg:col-span-4"
                   )}
                 >
@@ -274,6 +278,8 @@ export default function Visionaries() {
                        <img 
                          src={speaker.image} 
                          alt={speaker.name} 
+                         loading="lazy"
+                         decoding="async"
                          className="w-full h-full object-cover" style={{ objectPosition: speaker.imagePosition || 'center' }}
                          onError={(e) => {
                            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=300';
@@ -285,7 +291,7 @@ export default function Visionaries() {
                    </div>
                    <h3 className="text-[11px] sm:text-xs md:text-sm font-bold text-white truncate max-w-full">{speaker.name}</h3>
                    
-                   <p className="text-[9px] sm:text-[11px] font-black text-neon-cyan truncate mt-1 max-w-full tracking-wider uppercase md:drop-shadow-[0_0_5px_rgba(0,255,255,0.4)]">{speaker.role}</p>
+                   <p className="text-[9px] sm:text-[11px] font-black text-neon-cyan truncate mt-1 max-w-full tracking-wider uppercase">{speaker.role}</p>
                 </div>
               ))}
             </div>

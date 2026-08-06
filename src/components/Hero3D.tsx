@@ -339,20 +339,37 @@ function CyberTechArtifact() {
 }
 
 export default function Hero3D() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsVisible(entry.isIntersecting);
+    }, { threshold: 0.01 });
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden">
-      <Canvas 
-        dpr={1} 
-        gl={{ antialias: false, toneMapping: THREE.ACESFilmicToneMapping, alpha: true, powerPreference: "high-performance" }} 
-        camera={{ position: [14, 11, 14], fov: 28 }}
-      >
-        <ambientLight intensity={0.4} color="#00F0FF" />
-        <spotLight position={[10, 15, 10]} intensity={150} color="#00F0FF" penumbra={0.5} distance={50} angle={0.8} />
-        <spotLight position={[-15, -10, -15]} intensity={100} color="#00F0FF" penumbra={1} distance={50} />
-        <directionalLight position={[6, -2, 10]} intensity={2.5} color="#ffffff" />
-        
-        <CyberTechArtifact />
-      </Canvas>
+    <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden">
+      {isVisible && (
+        <Canvas 
+          dpr={1} 
+          gl={{ antialias: false, toneMapping: THREE.ACESFilmicToneMapping, alpha: true, powerPreference: "high-performance" }} 
+          camera={{ position: [14, 11, 14], fov: 28 }}
+        >
+          <ambientLight intensity={0.4} color="#00F0FF" />
+          <spotLight position={[10, 15, 10]} intensity={150} color="#00F0FF" penumbra={0.5} distance={50} angle={0.8} />
+          <spotLight position={[-15, -10, -15]} intensity={100} color="#00F0FF" penumbra={1} distance={50} />
+          <directionalLight position={[6, -2, 10]} intensity={2.5} color="#ffffff" />
+          
+          <CyberTechArtifact />
+        </Canvas>
+      )}
       
       {/* HUD Overlay specific to the right 3D side */}
       <div className="absolute top-1/2 right-12 -translate-y-1/2 flex flex-col items-end gap-1 opacity-60 hidden md:flex">

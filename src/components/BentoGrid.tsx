@@ -70,7 +70,7 @@ function BentoCard({ event, category, index, onClick }: { event: EventItem, cate
       onMouseMove={handleMouseMove}
       onClick={onClick}
       className={cn(
-        "p-8 rounded-xl flex flex-col justify-between group cursor-pointer relative overflow-hidden bg-[#0F172A]/95 md:bg-[#0F172A]/80 md:backdrop-blur-[12px] border z-20",
+        "p-8 rounded-xl flex flex-col justify-between group cursor-pointer relative overflow-hidden bg-[#0F172A] border z-20",
         event.size,
         category.borderCode
       )}

@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { motion } from 'motion/react';
 
 export default function StarryBackground({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -12,7 +11,19 @@ export default function StarryBackground({ className }: { className?: string }) 
     if (!ctx) return;
 
     let animationFrameId: number;
-    let stars: { x: number; y: number; radius: number; vx: number; vy: number; alpha: number; r: number; g: number; b: number }[] = [];
+    let isVisible = true;
+    let stars: { x: number; y: number; radius: number; vx: number; vy: number; alpha: number; fillStyle: string; r: number; g: number; b: number }[] = [];
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible) {
+        draw();
+      } else {
+        cancelAnimationFrame(animationFrameId);
+      }
+    }, { threshold: 0.01 });
+
+    observer.observe(canvas);
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -31,10 +42,10 @@ export default function StarryBackground({ className }: { className?: string }) 
       cachedGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
       stars = [];
-      const numStars = Math.floor((canvas.width * canvas.height) / 20000); // Adjust density here
+      const isMobile = window.innerWidth < 768;
+      const numStars = Math.min(isMobile ? 40 : 100, Math.floor((canvas.width * canvas.height) / 30000));
       
       for (let i = 0; i < numStars; i++) {
-        // Randomly pick a color index: 0=cyan, 1=magenta, 2=white
         const colorType = Math.random();
         let r, g, b;
         if (colorType > 0.8) {
@@ -47,61 +58,64 @@ export default function StarryBackground({ className }: { className?: string }) 
           r = 255; g = 255; b = 255; // White
         }
 
+        const alpha = Math.random() * 0.7 + 0.3;
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          radius: Math.random() * 1.5 + 0.1, // Star size
-          vx: (Math.random() - 0.5) * 0.2, // Very slow movement
-          vy: (Math.random() - 0.5) * 0.2,
-          alpha: Math.random(),
+          radius: Math.random() * 1.2 + 0.2,
+          vx: (Math.random() - 0.5) * 0.15,
+          vy: (Math.random() - 0.5) * 0.15,
+          alpha,
+          fillStyle: `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(2)})`,
           r, g, b
         });
       }
     };
 
     const draw = () => {
+      if (!isVisible) return;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Use cached gradient
       if (cachedGradient) {
         ctx.fillStyle = cachedGradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
       
-      // Twinkle occasionally, not every frame to save computation
-      const twinkle = Math.random() > 0.5;
+      const twinkle = Math.random() > 0.7;
 
-      stars.forEach(star => {
+      for (let i = 0; i < stars.length; i++) {
+        const star = stars[i];
         if (twinkle) {
-            star.alpha += (Math.random() - 0.5) * 0.05;
-            if (star.alpha < 0.1) star.alpha = 0.1;
-            if (star.alpha > 1) star.alpha = 1;
+          star.alpha += (Math.random() - 0.5) * 0.05;
+          if (star.alpha < 0.2) star.alpha = 0.2;
+          if (star.alpha > 0.9) star.alpha = 0.9;
+          star.fillStyle = `rgba(${star.r}, ${star.g}, ${star.b}, ${star.alpha.toFixed(2)})`;
         }
 
-        ctx.fillStyle = `rgba(${star.r}, ${star.g}, ${star.b}, ${star.alpha.toFixed(2)})`;
+        ctx.fillStyle = star.fillStyle;
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         ctx.fill();
 
-        // Move stars
         star.x += star.vx;
         star.y += star.vy;
 
-        // Wrap around screen
         if (star.x < 0) star.x = canvas.width;
         if (star.x > canvas.width) star.x = 0;
         if (star.y < 0) star.y = canvas.height;
         if (star.y > canvas.height) star.y = 0;
-      });
+      }
 
       animationFrameId = requestAnimationFrame(draw);
     };
 
     window.addEventListener('resize', resize);
-    resize(); // Initial setup
-    draw();   // Start animation loop
+    resize();
+    draw();
 
     return () => {
+      observer.disconnect();
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationFrameId);
     };
@@ -111,7 +125,6 @@ export default function StarryBackground({ className }: { className?: string }) 
     <canvas
       ref={canvasRef}
       className={className || "fixed inset-0 pointer-events-none z-0 opacity-60"}
-      style={{ mixBlendMode: 'screen' }}
     />
   );
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, useSpring } from 'motion/react';
 
 export default function CustomCursor() {
+  const [isTouchDevice, setIsTouchDevice] = useState(true);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
 
@@ -10,6 +11,11 @@ export default function CustomCursor() {
   const cursorY = useSpring(0, springConfig);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+    setIsTouchDevice(isTouch);
+    if (isTouch) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
       cursorX.set(e.clientX);
@@ -33,6 +39,8 @@ export default function CustomCursor() {
       window.removeEventListener('mouseover', handleMouseOver);
     };
   }, [cursorX, cursorY]);
+
+  if (isTouchDevice) return null;
 
   return (
     <>
