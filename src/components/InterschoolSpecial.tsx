@@ -149,10 +149,13 @@ export default function InterschoolSpecial() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full text-left">
                 {/* Event 1: DigiThon */}
-                <div className="p-6 rounded-2xl border border-neon-cyan/20 bg-black/40 md:backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-cyan transition-colors">
+                <div 
+                  onClick={() => setSelectedEvent({event: interschoolEvents.digithon, accent: "text-neon-cyan"})}
+                  className="p-6 rounded-2xl border border-neon-cyan/20 bg-black/40 md:backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-cyan transition-all duration-300 cursor-pointer"
+                >
                   <div className="flex justify-between items-start mb-2">
                   </div>
-                  <h3 className="text-2xl font-display font-bold text-white">DigiThon</h3>
+                  <h3 className="text-2xl font-display font-bold text-white group-hover:text-neon-cyan transition-colors">DigiThon</h3>
                   <p className="text-neon-cyan text-xs font-mono font-semibold uppercase tracking-wider">
                     Programming on Python & MySQL
                   </p>
@@ -161,20 +164,20 @@ export default function InterschoolSpecial() {
                   </p>
                   <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
                     <span className="text-neon-cyan">CLASS 9-12</span>
-                    <button 
-                      onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digithon, accent: "text-neon-cyan"}); }}
-                      className="text-ice-blue group-hover:text-neon-cyan transition-colors uppercase tracking-[0.2em]"
-                    >
+                    <span className="text-ice-blue group-hover:text-neon-cyan transition-colors uppercase tracking-[0.2em]">
                       [ INITIATE ]
-                    </button>
+                    </span>
                   </div>
                 </div>
 
                 {/* Event 2: DigiAI */}
-                <div className="p-6 rounded-2xl border border-purple-400/20 bg-black/40 md:backdrop-blur-sm flex flex-col gap-4 group hover:border-purple-400 transition-colors">
+                <div 
+                  onClick={() => setSelectedEvent({event: interschoolEvents.digiai, accent: "text-purple-400"})}
+                  className="p-6 rounded-2xl border border-purple-400/20 bg-black/40 md:backdrop-blur-sm flex flex-col gap-4 group hover:border-purple-400 transition-all duration-300 cursor-pointer"
+                >
                   <div className="flex justify-between items-start mb-2">
                   </div>
-                  <h3 className="text-2xl font-display font-bold text-white">DigiAI</h3>
+                  <h3 className="text-2xl font-display font-bold text-white group-hover:text-purple-400 transition-colors">DigiAI</h3>
                   <p className="text-purple-400 text-xs font-mono font-semibold uppercase tracking-wider">
                     "Second Brain" for Real Life
                   </p>
@@ -183,20 +186,20 @@ export default function InterschoolSpecial() {
                   </p>
                   <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
                     <span className="text-purple-400">CLASS 9-12</span>
-                    <button 
-                      onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiai, accent: "text-purple-400"}); }}
-                      className="text-ice-blue group-hover:text-purple-400 transition-colors uppercase tracking-[0.2em]"
-                    >
+                    <span className="text-ice-blue group-hover:text-purple-400 transition-colors uppercase tracking-[0.2em]">
                       [ INITIATE ]
-                    </button>
+                    </span>
                   </div>
                 </div>
                 
                 {/* Event 3: DigiFrames */}
-                <div className="p-6 rounded-2xl border border-yellow-500/20 bg-black/40 md:backdrop-blur-sm flex flex-col gap-4 group hover:border-yellow-500 transition-colors">
+                <div 
+                  onClick={() => setSelectedEvent({event: interschoolEvents.digiframes, accent: "text-yellow-500"})}
+                  className="p-6 rounded-2xl border border-yellow-500/20 bg-black/40 md:backdrop-blur-sm flex flex-col gap-4 group hover:border-yellow-500 transition-all duration-300 cursor-pointer"
+                >
                   <div className="flex justify-between items-start mb-2">
                   </div>
-                  <h3 className="text-2xl font-display font-bold text-white">DigiFrames</h3>
+                  <h3 className="text-2xl font-display font-bold text-white group-hover:text-yellow-500 transition-colors">DigiFrames</h3>
                   <p className="text-yellow-500 text-xs font-mono font-semibold uppercase tracking-wider">
                     Identify. Innovate. Impact.
                   </p>
@@ -205,20 +208,20 @@ export default function InterschoolSpecial() {
                   </p>
                   <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
                     <span className="text-yellow-500">CLASS 6-8</span>
-                    <button 
-                      onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiframes, accent: "text-yellow-500"}); }}
-                      className="text-ice-blue group-hover:text-yellow-500 transition-colors uppercase tracking-[0.2em]"
-                    >
+                    <span className="text-ice-blue group-hover:text-yellow-500 transition-colors uppercase tracking-[0.2em]">
                       [ INITIATE ]
-                    </button>
+                    </span>
                   </div>
                 </div>
 
                 {/* Event 4: DigiScratch */}
-                <div className="p-6 rounded-2xl border border-neon-magenta/20 bg-black/40 md:backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-magenta transition-colors">
+                <div 
+                  onClick={() => setSelectedEvent({event: interschoolEvents.digiscratch, accent: "text-neon-magenta"})}
+                  className="p-6 rounded-2xl border border-neon-magenta/20 bg-black/40 md:backdrop-blur-sm flex flex-col gap-4 group hover:border-neon-magenta transition-all duration-300 cursor-pointer"
+                >
                   <div className="flex justify-between items-start mb-2">
                   </div>
-                  <h3 className="text-2xl font-display font-bold text-white">DigiScratch</h3>
+                  <h3 className="text-2xl font-display font-bold text-white group-hover:text-neon-magenta transition-colors">DigiScratch</h3>
                   <p className="text-neon-magenta text-xs font-mono font-semibold uppercase tracking-wider">
                     Math O Mania ('Math Humour')
                   </p>
@@ -227,12 +230,9 @@ export default function InterschoolSpecial() {
                   </p>
                   <div className="flex items-center justify-between mt-4 text-xs font-mono font-bold">
                     <span className="text-neon-magenta">CLASS 5</span>
-                    <button 
-                      onClick={(e) => { e.preventDefault(); setSelectedEvent({event: interschoolEvents.digiscratch, accent: "text-neon-magenta"}); }}
-                      className="text-ice-blue group-hover:text-neon-magenta transition-colors uppercase tracking-[0.2em]"
-                    >
+                    <span className="text-ice-blue group-hover:text-neon-magenta transition-colors uppercase tracking-[0.2em]">
                       [ INITIATE ]
-                    </button>
+                    </span>
                   </div>
                 </div>
               </div>

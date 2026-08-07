@@ -150,19 +150,6 @@ function BentoCard({ event, category, index, onClick }: { event: EventItem, cate
             [ DETAILS ]
             <span className="w-0 h-[1px] bg-current group-hover/btn:w-8 transition-all duration-300" />
           </button>
-
-          {event.registrationLink && (
-            <a
-              href={event.registrationLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className={cn("text-xs font-mono font-bold tracking-[0.2em] uppercase flex items-center gap-2 group/btn2 relative z-30 cursor-pointer drop-shadow-md", category.accentCode)}
-            >
-              [ REGISTER ]
-              <span className="w-0 h-[1px] bg-current group-hover/btn2:w-8 transition-all duration-300" />
-            </a>
-          )}
         </div>
       </div>
     </motion.div>

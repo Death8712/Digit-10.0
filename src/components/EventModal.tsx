@@ -97,39 +97,6 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
                     <p className="text-ice-blue leading-relaxed text-sm md:text-base font-sans mt-2 whitespace-pre-wrap">
                       {event.about || "Join us for an exciting technology competition where students showcase their innovation, creativity, and technical prowess. Push your limits and discover the digital frontier."}
                     </p>
-                    
-                    {(event.registrationLink || event.submissionLink) && (
-                      <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                        {event.registrationLink && (
-                          <a
-                            href={event.registrationLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={cn(
-                              "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-mono text-sm font-bold tracking-widest uppercase transition-all duration-300 border bg-[#0F172A] hover:bg-white/10 border-[rgba(0,240,255,0.18)] flex-1",
-                              categoryAccent
-                            )}
-                          >
-                            <Target size={16} />
-                            Register Now
-                          </a>
-                        )}
-                        {event.submissionLink && (
-                          <a
-                            href={event.submissionLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={cn(
-                              "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-mono text-sm font-bold tracking-widest uppercase transition-all duration-300 border bg-[#0F172A] hover:bg-white/10 border-[rgba(0,240,255,0.18)] flex-1",
-                              categoryAccent
-                            )}
-                          >
-                            <Monitor size={16} />
-                            Submit Here
-                          </a>
-                        )}
-                      </div>
-                    )}
                   </div>
                   {event.objectives && event.objectives.length > 0 && (
                     <div className="col-span-1 sm:col-span-2 lg:col-span-3 bg-[#0F172A] rounded-2xl p-6 border border-[rgba(0,240,255,0.18)]">

@@ -115,7 +115,7 @@ const RESULTS_DATA = [
     category: 'Inter School Events',
     genre: 'Creative',
     icon: Bot,
-    image: '/digi-ai.png',
+    image: '/Digi-AI.png',
     winners: [
       { position: '1ST', name: 'No Result', grade: 'TBD' },
       { position: '2ND', name: 'No Result', grade: 'TBD' },
@@ -141,7 +141,7 @@ const RESULTS_DATA = [
     category: 'Inter School Events',
     genre: 'Creative',
     icon: Bot,
-    image: '/digi-bug.png',
+    image: '/Digi-Scratch.png',
     winners: [
       { position: '1ST', name: 'No Result', grade: 'TBD' },
       { position: '2ND', name: 'No Result', grade: 'TBD' },
@@ -302,8 +302,8 @@ export default function EventResults() {
                   {/* Event Image */}
                   {result.image && (
                     <div className="h-32 -mx-6 -mt-6 mb-6 overflow-hidden relative">
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#020813] to-transparent z-10 opacity-90" />
-                      <img src={result.image} alt={result.eventName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60 group-hover:opacity-80 mix-blend-screen" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#020813] via-transparent to-transparent z-10 opacity-80" />
+                      <img src={result.image} alt={result.eventName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100" />
                     </div>
                   )}
                   

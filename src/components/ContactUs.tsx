@@ -86,7 +86,6 @@ const STUDENT_DIRECTORS = [
 
 const EVENT_HEADS = [
   { name: "Ananya Gahlot", role: "Event Head (DigiMagic, DigiPoster)", phone: "9810743364" },
-  { name: "Garima Mehra", role: "Event Head (DigiScratch)", phone: "8527886150" },
   { name: "Navya Ahuja", role: "Event Head (DigiSlides, DigiScratch)", phone: "7827651124" },
   { name: "Hanisha Nagi", role: "Event Head (DigiTales, DigiQuiz)", phone: "9810924894" },
   { name: "Aaradhya Yadav", role: "Event Head (DigiBuild)", phone: "9818400124" },
