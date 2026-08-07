@@ -76,7 +76,7 @@ const STUDENT_DIRECTORS = [
   },
   {
     name: "Prajanay Chandra",
-    role: "Video Visionary",
+    role: "Producer",
     phone: "8010984447",
     icon: User,
     accent: "text-neon-cyan"

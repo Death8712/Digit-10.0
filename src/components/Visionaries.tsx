@@ -36,7 +36,7 @@ const fullSpeakers: Speaker[] = [
   { name: "Sheza Khan", role: "Coordinating Director", company: "Digit Crew", initial: "SK", image: "/Sheza Khan.jpg", bio: "Manages our content and information, keeping everything well-organized and running smoothly." },
   { name: "Aarav Tuteja", role: "Media Lead", company: "Digit Crew", initial: "AT", image: "/Aarav Tuteja.jpg", bio: "Handles our online presence by creating posts and strategies to grow our social media accounts." },
   { name: "Granth Shandilya", role: "Video Visionary", company: "Digit Crew", initial: "GS", image: "/Granth.jpg", bio: "Captures the team's work on camera and turns ideas into amazing visual stories." },
-  { name: "Prajanay Chandra", role: "Video Visionary", company: "Digit Crew", initial: "PC", image: "/Prajanay Chandra.jpg", bio: "Creates and directs videos, making sure our digital content looks great." },
+  { name: "Prajanay Chandra", role: "Producer", company: "Digit Crew", initial: "PC", image: "/Prajanay Chandra.jpg", bio: "Creates and directs videos, making sure our digital content looks great." },
   { name: "Divyansh Rathore", role: "Event Head", company: "Digit Crew", initial: "DR", image: "/Divyansh Rathore.jpg", bio: "Manages event plans and coordinates logistics so everything runs smoothly on the day of the event." },
   { name: "Vivaan Tripathi", role: "Event Head", company: "Digit Crew", initial: "VT", image: "/Vivaan Tripathi.png", bio: "Creates challenges and manages the technical parts of the events for the participants." },
   { name: "Aditya Pandey", role: "Event Head", company: "Digit Crew", initial: "AP", image: "/Aaditya Pandey.png", bio: "Event Head of DigiMeme" },
