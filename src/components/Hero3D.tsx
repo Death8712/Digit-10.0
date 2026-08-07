@@ -341,24 +341,34 @@ function CyberTechArtifact() {
 export default function Hero3D() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024 && !window.matchMedia('(pointer: coarse)').matches);
+    };
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+
     const el = containerRef.current;
-    if (!el) return;
+    if (!el) return () => window.removeEventListener('resize', checkDesktop);
 
     const observer = new IntersectionObserver(([entry]) => {
       setIsVisible(entry.isIntersecting);
     }, { threshold: 0.01 });
 
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener('resize', checkDesktop);
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden">
-      {isVisible && (
+      {isVisible && isDesktop ? (
         <Canvas 
-          dpr={1} 
+          dpr={[1, 1.5]} 
           gl={{ antialias: false, toneMapping: THREE.ACESFilmicToneMapping, alpha: true, powerPreference: "high-performance" }} 
           camera={{ position: [14, 11, 14], fov: 28 }}
         >
@@ -369,6 +379,8 @@ export default function Hero3D() {
           
           <CyberTechArtifact />
         </Canvas>
+      ) : (
+        <div className="absolute right-10 top-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-neon-cyan/10 blur-3xl pointer-events-none animate-pulse hidden md:block" />
       )}
       
       {/* HUD Overlay specific to the right 3D side */}

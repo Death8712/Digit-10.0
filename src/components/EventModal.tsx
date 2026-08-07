@@ -224,9 +224,8 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
                         <Calendar size={18} className={categoryAccent} />
                         <h3 className="font-display font-bold uppercase tracking-wider text-sm">Important Date</h3>
                       </div>
-                      <p className="text-ice-blue font-medium">
-                        {event.submissionDate}
-                      </p>
+                      <p className="text-ice-blue font-medium" dangerouslySetInnerHTML={{ __html: event.submissionDate }} />
+
                     </div>
                   )}
 

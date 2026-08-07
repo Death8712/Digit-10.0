@@ -271,6 +271,7 @@ export const categories: Category[] = [
     gridClass: "md:grid-cols-2 lg:grid-cols-2",
     events: [
       { title: "DigiTote", registrationLink: "https://forms.gle/99fGYJK4KrEPu26A7", description: "Class 9-12", mode: "Offline", classGroup: "Class 9-12", software: "Physical Tote Bag (Prepared at Home)", icon: ShoppingBag, size: "col-span-1", about: "DigiTote combines creativity with sustainability. Students design eco-friendly tote bags inspired by technology, turning everyday items into meaningful expressions. This offline event encourages innovation, environmental awareness, and artistic flair, proving that style and sustainability can go hand in hand.", venue: "Auditorium", image: "/digi-tote.png", eventHead: "Ishika Mittal", eventHeadNumber: "9310527312" , teamSize: "Team of 2", themes: ["Upcycle E-Waste: Design for a Greener Tomorrow"], objectives: ["Encourage students to creatively reuse discarded electronic components.", "Promote awareness about responsible e-waste management and environmental sustainability.", "Inspire innovation by transforming waste into functional and artistic designs.", "Develop creativity, teamwork, and design-thinking skills.", "Highlight the importance of the 3Rs—Reduce, Reuse, and Recycle—in building a sustainable future."], requirements: `<b>Guidelines</b>
+• <b>Register till <mark>August 14th</mark></b>
 • The tote bag must be <b>designed and completed before the competition</b> and brought to school on the event day.
 • The design should effectively communicate a message related to e-waste reduction, sustainability, responsible technology use, or the circular economy.
 • Certificates will be awarded to the <b>Top 3 winners</b>.
@@ -289,8 +290,9 @@ export const categories: Category[] = [
 • Effective Use of Upcycled E-Waste
 • Theme Relevance & Sustainability
 • Craftsmanship & Finish
-• Presentation` , submissionDate: "Event Day"},
+• Presentation` , submissionDate: "Register till <mark>August 14th</mark> (Event Day: 21st August 2026)"},
       { title: "DigiBattles", registrationLink: "https://forms.gle/DqjJ9N5dAHnQ4Le66", description: "Class 9-12", mode: "Online Prelims | Offline Finals", classGroup: "Class 9-12", software: "Battlegrounds Mobile India (BGMI)", icon: Gamepad2, size: "col-span-1", featured: true, about: "DigiBattles brings teamwork and strategy into the spotlight. Students compete in teams through gaming challenges, testing coordination, communication, and quick decision-making. It’s not just about playing—it’s about strategy, collaboration, and performing under pressure.", venue: "Online & Offline (Second Floor Classrooms)", image: "/digi-battles.png", eventHead: "Divyansh Rathore", eventHeadNumber: "9560802211" , teamSize: "Team of 4", themes: ["The Ultimate Battlegrounds Mobile Tournament"], objectives: ["Step into the battleground and compete in DIGIBattle. Form your squad, showcase your teamwork, strategy, and gaming skills, and battle through intense TPP/FPP survival shooter matches against the best teams. Fight for victory, earn bragging rights, and experience the thrill of competitive mobile esports."], requirements: `<b>Tournament Schedule</b>
+• <b>Register till <mark>August 14th</mark></b>
 • <b>First Round (Online):</b> 19th August 2026
 • <b>Second Round (Offline):</b> 21st August 2026
 
@@ -313,9 +315,10 @@ export const categories: Category[] = [
 • Abusive, offensive, discriminatory language, or unsportsmanlike behaviour will lead to disqualification.
 • Late registrations will not be accepted.
 • Organizers reserve the right to interpret, amend, or enforce the rules to ensure fair play.
-• The decision of the organizers and judges will be final.` , submissionDate: "19th & 21st August 2026"},
+• The decision of the organizers and judges will be final.` , submissionDate: "Register till <mark>August 14th</mark> | Event: 19th & 21st August 2026"},
       { title: "DigiMeme", registrationLink: "https://forms.gle/tK29smSro85PP8Ct9", description: "Class 9-12", mode: "Online Prelims | Offline Finals", classGroup: "Class 9-12", software: "Photoshop / Canva / Any", icon: ImageIcon, size: "col-span-1", about: "DigiMeme is the ultimate playground for tech-humor and creativity. Students design humorous, high-impact tech memes that blend digital culture, computing jokes, and clever concepts.", venue: "Offline", image: "/digi-meme.png", eventHead: "Aditya Pandey", eventHeadNumber: "9211977792" , teamSize: "Team of 2", themes: ["Daily Dose of Digital Depths"], objectives: ["Encourage creativity through digital memes.", "Promote digital literacy and responsible technology use.", "Develop teamwork, humour, and visual communication skills.", "Spread awareness about technology, AI, cybersecurity, and digital wellness."], requirements: `<b>Guidelines</b>
 <b>Round 1 – Online Preliminary Round</b>
+• <b>Register till <mark>August 14th</mark></b>
 • This is a <b>team event</b>, with 2 participants per team.
 • Create <b>one original digital meme</b> based on the given theme.
 • AI tools may be used only for brainstorming. <b>AI-generated memes are not allowed.</b>
@@ -332,8 +335,9 @@ export const categories: Category[] = [
 <b>Submission</b>
 • <b>Round 1:</b> Upload the meme through the designated online submission link before the deadline.
 • <b>Round 2:</b> Submit the completed meme during the event within the allotted time.
-• Certificates will be given to the <b>top 3 winners only</b>.` , submissionDate: "Round 1 Deadline"},
+• Certificates will be given to the <b>top 3 winners only</b>.` , submissionDate: "Register till <mark>August 14th</mark>"},
       { title: "DigiCipher", registrationLink: "https://forms.gle/D32aJLKhFkyd3Lui7", description: "Class 9-12", mode: "Online (via WhatsApp)", classGroup: "Class 9-12", software: "-", icon: Key, size: "col-span-1", about: "DigiCipher challenges students with cryptography and problem-solving. Decode puzzles, crack ciphers, and find the hidden flag in this intense CTF-style event.", venue: "Online", image: "/digi-cipher.png", eventHead: "Vivaan Tripathi", eventHeadNumber: "7011309610" , teamSize: "Individual", themes: ["Alternate Reality Game (ARG): Decipher the Matrix"], objectives: ["Enhance Problem-Solving: Test and develop the critical thinking, logical reasoning, and deciphering skills of the participants.", "Promote Digital Literacy: Encourage the effective use of digital file management tools, encryption techniques, and online decoding resources.", "Foster Independent Thinking: Challenge students to rely on their intellect and analytical skills to solve complex, layered puzzles without automated assistance.", "Simulate Real-World Cybersecurity Puzzles: Introduce students to basic concepts of cryptography, file security, and pattern recognition in an engaging, competitive format."], requirements: `<b>Guidelines</b>
+• <b>Register till <mark>August 14th</mark></b>
 • This is an <b>individual event</b>.
 • The competition consists of <b>5 sequential cipher-based levels</b> in an Alternate Reality Game (ARG) format.
 • Each solved level reveals the password required to unlock the next encrypted folder.
@@ -348,7 +352,7 @@ export const categories: Category[] = [
 • Ensure your device has a compatible file explorer capable of extracting password-protected ZIP files.
 • Organizers reserve the right to modify or interpret the rules if required.
 • The decision of the organizers and judges will be final.
-• Certificates will be awarded to the <b>Top 3 winners</b>.` , submissionDate: "During 90 Minute Event"},
+• Certificates will be awarded to the <b>Top 3 winners</b>.` , submissionDate: "Register till <mark>August 14th</mark>"},
     ]
   },
 ];

@@ -43,7 +43,7 @@ export default function StarryBackground({ className }: { className?: string }) 
 
       stars = [];
       const isMobile = window.innerWidth < 768;
-      const numStars = Math.min(isMobile ? 40 : 100, Math.floor((canvas.width * canvas.height) / 30000));
+      const numStars = Math.min(isMobile ? 20 : 80, Math.floor((canvas.width * canvas.height) / 30000));
       
       for (let i = 0; i < numStars; i++) {
         const colorType = Math.random();
@@ -72,8 +72,19 @@ export default function StarryBackground({ className }: { className?: string }) 
       }
     };
 
-    const draw = () => {
+    let lastFrameTime = 0;
+    const isMobile = window.innerWidth < 768;
+    const targetFps = isMobile ? 30 : 60;
+    const fpsInterval = 1000 / targetFps;
+
+    const draw = (nowTime = 0) => {
       if (!isVisible) return;
+
+      animationFrameId = requestAnimationFrame(draw);
+
+      const elapsed = nowTime - lastFrameTime;
+      if (elapsed < fpsInterval) return;
+      lastFrameTime = nowTime - (elapsed % fpsInterval);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
@@ -106,8 +117,6 @@ export default function StarryBackground({ className }: { className?: string }) 
         if (star.y < 0) star.y = canvas.height;
         if (star.y > canvas.height) star.y = 0;
       }
-
-      animationFrameId = requestAnimationFrame(draw);
     };
 
     window.addEventListener('resize', resize);

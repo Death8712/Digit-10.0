@@ -88,7 +88,7 @@ export default function Visionaries() {
         trigger: containerRef.current,
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 1.2, // Ultra-smooth fluid lag when scrolling
+        scrub: 2.0, // Smoother fluid lag when scrolling
         invalidateOnRefresh: true,
       }
     });
@@ -103,7 +103,7 @@ export default function Visionaries() {
         scale: 0.2,
         opacity: 0,
         ease: 'power2.inOut',
-        duration: 1.8,
+        duration: 3.5,
         force3D: true
       }, 0);
     });
@@ -113,9 +113,9 @@ export default function Visionaries() {
       opacity: 1,
       scale: 1,
       ease: 'power2.inOut',
-      duration: 1.8,
+      duration: 3.5,
       force3D: true
-    }, 0.3);
+    }, 0.5);
 
     // --- PHASE 2 ---
     // Background glow intensifies
@@ -123,18 +123,18 @@ export default function Visionaries() {
       opacity: 0.85,
       scale: isMobile ? 1.8 : 2.5,
       ease: 'power2.in',
-      duration: 2.0,
+      duration: 4.0,
       force3D: true
-    }, 1.8);
+    }, 3.5);
     
     // Logo zooms outward smoothly and fades out
     tl.to(logoRef.current, {
       scale: isMobile ? 10 : 16,
       opacity: 0,
       ease: 'power2.in',
-      duration: 2.0,
+      duration: 4.0,
       force3D: true
-    }, 1.8);
+    }, 3.5);
     
     // --- PHASE 3 ---
     // Extract full cards from the center
@@ -159,10 +159,10 @@ export default function Visionaries() {
           scale: 1,
           opacity: 1,
           ease: 'power2.out',
-          duration: 2.0,
+          duration: 4.5,
           force3D: true
         },
-        3.2 + (dist * 0.18)
+        7.2 + (dist * 0.35)
       );
     });
 
@@ -176,9 +176,9 @@ export default function Visionaries() {
           return -scrollDistance;
         },
         ease: 'none',
-        duration: 12,
+        duration: 25,
         force3D: true
-      }, 5.5);
+      }, 12.0);
     }
 
   }, { scope: containerRef });
@@ -188,7 +188,7 @@ export default function Visionaries() {
       ref={containerRef} 
       id="visionaries" 
       className="relative z-10 w-full"
-      style={{ height: '650vh' }}
+      style={{ height: '1000vh' }}
     >
       <div 
         ref={stickyRef} 

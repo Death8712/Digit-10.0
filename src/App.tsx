@@ -38,8 +38,8 @@ const TypewriterText = ({ text, className = "", delay = 0 }: { text: string, cla
       <motion.span
         key={index}
         variants={{
-          hidden: { opacity: 0, y: 10, filter: 'blur(4px)' },
-          visible: { opacity: 1, y: 0, filter: 'blur(0px)' }
+          hidden: { opacity: 0, y: 10 },
+          visible: { opacity: 1, y: 0 }
         }}
         style={{ display: 'inline-block', whiteSpace: char === ' ' ? 'pre' : 'normal' }}
       >
