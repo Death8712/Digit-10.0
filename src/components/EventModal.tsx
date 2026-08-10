@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Calendar, MapPin, Info, Monitor, Phone, User, ClipboardList, Lightbulb, Star, Target, GraduationCap , Globe } from 'lucide-react';
+import { X, Calendar, MapPin, Info, Monitor, Phone, User, ClipboardList, Lightbulb, Star, Target, GraduationCap , Globe, PenTool, Upload, ExternalLink } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
@@ -87,6 +87,64 @@ export default function EventModal({ isOpen, onClose, event, categoryAccent }: E
                   {event.description}
                 </div>
               </div>
+
+              {/* Registration & Submission Action Boxes */}
+              {(event.registrationLink || event.submissionLink) && (
+                <div className={cn(
+                  "mb-8 grid gap-4",
+                  event.registrationLink && event.submissionLink ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"
+                )}>
+                  {event.registrationLink && (
+                    <a
+                      href={event.registrationLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative flex items-center justify-between p-5 rounded-2xl bg-gradient-to-r from-neon-cyan/20 via-cyan-500/10 to-blue-600/20 border-2 border-neon-cyan/60 hover:border-neon-cyan hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-neon-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                      <div className="flex items-center gap-3.5 relative z-10">
+                        <div className="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan group-hover:bg-neon-cyan group-hover:text-black transition-colors duration-300 shrink-0">
+                          <PenTool size={20} />
+                        </div>
+                        <div>
+                          <div className="font-display font-black text-white text-lg tracking-wide uppercase group-hover:text-neon-cyan transition-colors">
+                            Register Now
+                          </div>
+                          <div className="text-xs font-mono text-ice-blue/80 tracking-wider">
+                            Fill Registration Form &rarr;
+                          </div>
+                        </div>
+                      </div>
+                      <ExternalLink size={20} className="text-neon-cyan shrink-0 group-hover:translate-x-1 transition-transform ml-2" />
+                    </a>
+                  )}
+
+                  {event.submissionLink && (
+                    <a
+                      href={event.submissionLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative flex items-center justify-between p-5 rounded-2xl bg-gradient-to-r from-amber-400/20 via-orange-500/10 to-yellow-600/20 border-2 border-amber-400/60 hover:border-amber-400 hover:shadow-[0_0_25px_rgba(251,191,36,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-amber-400/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                      <div className="flex items-center gap-3.5 relative z-10">
+                        <div className="w-10 h-10 rounded-xl bg-amber-400/20 border border-amber-400/50 flex items-center justify-center text-amber-400 group-hover:bg-amber-400 group-hover:text-black transition-colors duration-300 shrink-0">
+                          <Upload size={20} />
+                        </div>
+                        <div>
+                          <div className="font-display font-black text-white text-lg tracking-wide uppercase group-hover:text-amber-400 transition-colors">
+                            Submit Entry
+                          </div>
+                          <div className="text-xs font-mono text-ice-blue/80 tracking-wider">
+                            Upload Submission &rarr;
+                          </div>
+                        </div>
+                      </div>
+                      <ExternalLink size={20} className="text-amber-400 shrink-0 group-hover:translate-x-1 transition-transform ml-2" />
+                    </a>
+                  )}
+                </div>
+              )}
               <div className="flex flex-col md:flex-row gap-4 lg:gap-6">
                 <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 h-full">
                   <div className="col-span-1 sm:col-span-2 lg:col-span-3 bg-[#0F172A] rounded-2xl p-6 border border-[rgba(0,240,255,0.18)]">

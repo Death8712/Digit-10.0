@@ -100,7 +100,7 @@ export const categories: Category[] = [
 • Effective and Smart Use of Digital Tools
 • Creativity
 • Relevance to the Theme`
-      , submissionLink: "https://aisdigit10.in", submissionDate: "14th August 2026"},
+      , submissionDate: "14th August 2026"},
       { 
         title: "DigiPoster", registrationLink: "https://forms.gle/oT2hqWsrEbQrRcFu9", 
         description: "Class 4", 
@@ -147,7 +147,7 @@ export const categories: Category[] = [
 • Effective and Smart Use of Digital Tools
 • Presentation
 • Relevance to the Theme`
-      , submissionLink: "https://forms.gle/oT2hqWsrEbQrRcFu9", submissionDate: "14th August 2026"},
+      , submissionDate: "14th August 2026"},
       { 
         title: "DigiSlides", registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSc0MgJPoUwAOcSG_UtGBAzvPlr-O7FCDNOJc7YcE3r5vLptTA/viewform?usp=publish-editor", 
         description: "Class 5", 
@@ -189,7 +189,7 @@ export const categories: Category[] = [
 • Creativity and Effective Use of Digital Tools
 • Presentation
 • Relevance to the Theme`
-      , submissionLink: "https://forms.gle/oT2hqWsrEbQrRcFu9", submissionDate: "14th August 2026"},
+      , submissionDate: "14th August 2026"},
     ]
   },
   {
@@ -214,7 +214,7 @@ export const categories: Category[] = [
 <b>Selection Process:</b>
 • <b>Preliminary Round:</b> Last date for online submission is <b>14th August 2026</b>
 • <b>Final Round:</b> Shortlisted participants will present their entries before the panel of judges on <b>21st August 2026</b>.
-• Certificates will be given to the <b>top 3 winners</b>.` , submissionLink: "https://forms.gle/vKKVwLvWYNDMsAkT9", submissionDate: "14th August 2026"},
+• Certificates will be given to the <b>top 3 winners</b>.` , submissionDate: "14th August 2026"},
       { title: "DigiQuiz", registrationLink: "https://forms.gle/SHMUFddF3xkrEJVk8", description: "Class 7", mode: "Online", classGroup: "Class 7", software: "Kahoot", icon: Lightbulb, size: "col-span-1", about: "Put your thinking caps on for DigiQuiz! This event tests students’ knowledge of computational thinking and artificial intelligence. Fast-paced and engaging, it challenges participants to think logically, solve problems, and apply concepts, making learning both competitive and fun.", venue: "Online", image: "/digi-quiz.png", eventHead: "Hanisha Nagi", eventHeadNumber: "9810924894", teamSize: "Individual", themes: ["Cybersecurity & Artificial Intelligence Challenge"], objectives: ["Assess students' understanding of Cybersecurity and Artificial Intelligence.", "Promote responsible and ethical use of digital technologies."], requirements: `<b>Guidelines</b>
 • Participants must join the quiz using their <b>registered name</b>.
 • Ensure a <b>stable internet connection</b> throughout the quiz.
@@ -229,7 +229,7 @@ export const categories: Category[] = [
 • Accuracy of Responses
 • Speed of Answering
 • Cybersecurity & AI Awareness
-• Overall Score`, judgementCriteria: ["Accuracy of Responses", "Speed of Answering", "Cybersecurity & AI Awareness", "Overall Score"] , submissionLink: "https://forms.gle/9NYwguZbFp2kEbBL6", submissionDate: "To be informed in advance"},
+• Overall Score`, judgementCriteria: ["Accuracy of Responses", "Speed of Answering", "Cybersecurity & AI Awareness", "Overall Score"] , submissionDate: "To be informed in advance"},
       { title: "DigiBuild", registrationLink: "https://forms.gle/a6zgNzGwftbnNTQQ7", description: "Class 8", mode: "Online (via Microsoft Teams)", classGroup: "Class 8", software: "Minecraft (Vanilla Creative - Java/Bedrock)", icon: Bot, size: "col-span-1", about: "DigiBuild is a platform for aspiring innovators to showcase their technical prowess. Students will engage in online problem-solving challenges and build creative solutions in real-time.", venue: "Online (Microsoft Teams)", image: "/digi-build.png", eventHead: "Aaradhya Yadav", eventHeadNumber: "9818400124", teamSize: "Team of 2", themes: ["Future World Powered by AI Technology"], objectives: ["Design an AI-powered futuristic world in Minecraft showcasing innovation and sustainability."], requirements: `<b>Competition Guidelines</b>
 • Build during the competition <b>only</b>.
 • Teams will <b>share their screens</b> one by one while building.
@@ -299,6 +299,9 @@ export const categories: Category[] = [
 <b>Requirements</b>
 • All participants must possess a <b>valid BGMI account</b>.
 • Only registered players are permitted. Substitutes or unregistered players are <b>not allowed</b>.
+• <b>You have to use the same UID for Registration and the Online & Offline Round.</b>
+• <b>Any Change in UID will lead to Disqualification of whole team.</b>
+• <b>Replacements will Not be Allowed in the match in any case.</b>
 • Teams must report and be ready before the scheduled match time.
 • Participants must ensure they have sufficient gameplay availability on the tournament days.
 • Any technical issues must be reported to the organizers immediately.
