@@ -46,7 +46,7 @@ const REGISTRATION_LINKS = [
     events: [
       { name: "DigiTote", link: "https://forms.gle/99fGYJK4KrEPu26A7" },
       { name: "DigiBattles", link: "https://forms.gle/DqjJ9N5dAHnQ4Le66" },
-      { name: "DigiMeme", link: "https://forms.gle/tK29smSro85PP8Ct9" },
+      { name: "DigiMeme", link: "https://forms.gle/tK29smSro85PP8Ct9", submissionLink: "https://forms.gle/aek2SmGCkBvxv1LT6" },
       { name: "DigiCipher", link: "https://forms.gle/D32aJLKhFkyd3Lui7" }
     ]
   },
