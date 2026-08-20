@@ -90,15 +90,10 @@ const RESULTS_DATA = [
     genre: 'Knowledge',
     icon: Lightbulb,
     image: '/digi-quiz.png',
-    preliminaryQualifiers: [
-      { name: 'No Result', grade: 'Class 7', status: 'Qualifier' },
-      { name: 'No Result', grade: 'Class 7', status: 'Qualifier' },
-      { name: 'No Result', grade: 'Class 7', status: 'Qualifier' },
-    ],
     winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
+      { position: '1ST', name: 'Aviana Jain', grade: '7th D' },
+      { position: '2ND', name: 'Aayra Jain', grade: '7th E' },
+      { position: '3RD', name: 'Akshat Sharma', grade: '7th D' },
     ]
   },
   {
@@ -108,15 +103,10 @@ const RESULTS_DATA = [
     genre: 'Technical',
     icon: Bot,
     image: '/digi-build.png',
-    preliminaryQualifiers: [
-      { name: 'No Result', grade: 'Class 8', status: 'Qualifier' },
-      { name: 'No Result', grade: 'Class 8', status: 'Qualifier' },
-      { name: 'No Result', grade: 'Class 8', status: 'Qualifier' },
-    ],
     winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
+      { position: '1ST', name: 'Gurpertaap Singh & Mihit Jindal', grade: '8th C' },
+      { position: '2ND', name: 'Naira Arora & Ishani Saini', grade: '8th C' },
+      { position: '3RD', name: 'Dhairya Baheti & Rayyan Malik', grade: '8th A' },
     ]
   },
   {
