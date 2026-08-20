@@ -1,5 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+
+function isWebGLAvailable(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    const canvas = document.createElement('canvas');
+    return Boolean(
+      window.WebGLRenderingContext &&
+      (canvas.getContext('webgl2') || canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+    );
+  } catch {
+    return false;
+  }
+}
 
 export interface InteractiveGlobeProps {
   rotationSpeed?: number; // Base auto-rotation speed multiplier
@@ -15,10 +28,24 @@ export default function InteractiveGlobe({
   className = "w-full h-full min-h-[400px] relative overflow-hidden bg-black"
 }: InteractiveGlobeProps) {
   const mountRef = useRef<HTMLDivElement>(null);
+  const [hasWebGL, setHasWebGL] = useState(true);
 
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;
+
+    if (!isWebGLAvailable()) {
+      setHasWebGL(false);
+      return;
+    }
+
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'default' });
+    } catch {
+      setHasWebGL(false);
+      return;
+    }
 
     // --- Scene, Camera, Renderer ---
     const scene = new THREE.Scene();
@@ -30,7 +57,6 @@ export default function InteractiveGlobe({
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
     camera.position.set(0, 0, 8);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
@@ -260,5 +286,17 @@ export default function InteractiveGlobe({
     };
   }, [rotationSpeed, damping, particleCount]);
 
-  return <div ref={mountRef} className={className} style={{ touchAction: 'none' }} />;
+  return (
+    <div ref={mountRef} className={className} style={{ touchAction: 'none' }}>
+      {!hasWebGL && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="relative w-64 h-64 flex items-center justify-center">
+            <div className="absolute inset-0 rounded-full border border-neon-cyan/30 animate-[spin_20s_linear_infinite]" />
+            <div className="absolute inset-8 rounded-full border-2 border-dashed border-neon-cyan/20 border-t-neon-cyan/80 animate-[spin_12s_linear_infinite_reverse]" />
+            <div className="w-20 h-20 rounded-full bg-neon-cyan/10 blur-xl animate-pulse" />
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }

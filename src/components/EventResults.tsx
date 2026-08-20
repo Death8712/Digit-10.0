@@ -73,9 +73,11 @@ const RESULTS_DATA = [
     icon: Clapperboard,
     image: '/digi-tales.png',
     preliminaryQualifiers: [
-      { name: 'No Result', grade: 'Class 6', status: 'Qualifier' },
-      { name: 'No Result', grade: 'Class 6', status: 'Qualifier' },
-      { name: 'No Result', grade: 'Class 6', status: 'Qualifier' },
+      { name: 'Prajesh Rastogi', grade: 'Class 6 D', status: 'Qualifier' },
+      { name: 'Purvanshi Arora', grade: 'Class 6 F', status: 'Qualifier' },
+      { name: 'Aashvi Singhal', grade: 'Class 6 E', status: 'Qualifier' },
+      { name: 'Ishaan Agarwal', grade: 'Class 6 B', status: 'Qualifier' },
+      { name: 'Kavyaanshi', grade: 'Class 6 D', status: 'Qualifier' },
     ],
     winners: [
       { position: '1ST', name: 'No Result', grade: 'TBD' },
