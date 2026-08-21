@@ -80,9 +80,9 @@ const RESULTS_DATA = [
       { name: 'Kavyaanshi', grade: 'Class 6 D', status: 'Qualifier' },
     ],
     winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
+      { position: '1ST', name: 'Purvanshi Arora', grade: 'VI-F' },
+      { position: '2ND', name: 'Prajesh Rastogi', grade: 'VI-D' },
+      { position: '3RD', name: 'Aashvi Singhal', grade: 'VI-E' },
     ]
   },
   {
@@ -93,9 +93,9 @@ const RESULTS_DATA = [
     icon: Lightbulb,
     image: '/digi-quiz.png',
     winners: [
-      { position: '1ST', name: 'Aviana Jain', grade: '7th D' },
-      { position: '2ND', name: 'Aayra Jain', grade: '7th E' },
-      { position: '3RD', name: 'Akshat Sharma', grade: '7th D' },
+      { position: '1ST', name: 'Aviana Jain', grade: 'VII-D' },
+      { position: '2ND', name: 'Aayra Jain', grade: 'VII-E' },
+      { position: '3RD', name: 'Akshat Sharma', grade: 'VII-D' },
     ]
   },
   {
@@ -106,9 +106,9 @@ const RESULTS_DATA = [
     icon: Bot,
     image: '/digi-build.png',
     winners: [
-      { position: '1ST', name: 'Gurpertaap Singh & Mihit Jindal', grade: '8th C' },
-      { position: '2ND', name: 'Naira Arora & Ishani Saini', grade: '8th C' },
-      { position: '3RD', name: 'Dhairya Baheti & Rayyan Malik', grade: '8th A' },
+      { position: '1ST', name: 'Gurpertaap Singh and Mihit Jindal', grade: 'VIII-C' },
+      { position: '2ND', name: 'Naira Arora and Ishani Saini', grade: 'VIII-C' },
+      { position: '3RD', name: 'Dhairya Baheti and Rayyan Malik', grade: 'VIII-A' },
     ]
   },
   {
@@ -118,15 +118,11 @@ const RESULTS_DATA = [
     genre: 'Design',
     icon: ShoppingBag,
     image: '/digi-tote.png',
-    preliminaryQualifiers: [
-      { name: 'No Result', grade: 'Class 9-12', status: 'Qualifier' },
-      { name: 'No Result', grade: 'Class 9-12', status: 'Qualifier' },
-      { name: 'No Result', grade: 'Class 9-12', status: 'Qualifier' },
-    ],
     winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
+      { position: '1ST', name: 'Tote-ally Glitched', grade: 'Aggregate: 29' },
+      { position: '2ND', name: 'EcoBytes', grade: 'Aggregate: 28' },
+      { position: '3RD (TIE)', name: 'ToteDynamos', grade: 'Aggregate: 27' },
+      { position: '3RD (TIE)', name: 'E - Waste Avengers', grade: 'Aggregate: 27' },
     ]
   },
   {
@@ -190,9 +186,9 @@ const RESULTS_DATA = [
     icon: Gamepad2,
     image: '/digi-battles.png',
     winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
+      { position: '1ST', name: 'RWBL', grade: '60 Points' },
+      { position: '2ND', name: 'Godlike', grade: '50 Points' },
+      { position: '3RD', name: 'Rule Breakers', grade: '37 Points' },
     ]
   },
   {
@@ -214,9 +210,9 @@ const RESULTS_DATA = [
       { name: 'Rishabh Raina & Idhant Sharma', grade: 'Class 9-12', status: 'Qualifier' },
     ],
     winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
+      { position: '1ST', name: 'Anandi Singh & Yashaswi Sahas', grade: 'Class 9-12' },
+      { position: '2ND', name: 'Rishath Saini & Idhant Sharma', grade: 'Class 9-12' },
+      { position: '3RD', name: 'Tanmay & Medhansh', grade: 'Class 9-12' },
     ]
   },
   {
@@ -417,23 +413,27 @@ export default function EventResults() {
                       </div>
 
                       <div className="flex flex-col gap-2.5">
-                        {result.winners.map((winner, index) => (
-                          <div key={index} className="flex flex-col relative p-3 rounded-xl bg-cyber-black/40 border border-[rgba(0,240,255,0.18)] group-hover:border-neon-cyan/20 transition-colors">
-                            <div className="flex items-center justify-between mb-1">
-                              <span className={cn(
-                                "font-display font-black text-xs tracking-widest px-2 py-0.5 rounded",
-                                index === 0 ? "bg-amber-400/20 text-amber-400 border border-amber-400/30 shadow-[0_0_8px_rgba(251,191,36,0.5)]" :
-                                index === 1 ? "bg-slate-300/20 text-slate-300 border border-slate-300/30" :
-                                "bg-orange-600/20 text-orange-500 border border-orange-600/30"
-                              )}>
-                                {winner.position}
-                              </span>
-                              {index === 0 && <Trophy size={14} className="text-amber-400 shrink-0" />}
+                        {result.winners.map((winner, index) => {
+                          const isFirst = winner.position.startsWith('1');
+                          const isSecond = winner.position.startsWith('2');
+                          return (
+                            <div key={index} className="flex flex-col relative p-3 rounded-xl bg-cyber-black/40 border border-[rgba(0,240,255,0.18)] group-hover:border-neon-cyan/20 transition-colors">
+                              <div className="flex items-center justify-between mb-1">
+                                <span className={cn(
+                                  "font-display font-black text-xs tracking-widest px-2 py-0.5 rounded",
+                                  isFirst ? "bg-amber-400/20 text-amber-400 border border-amber-400/30 shadow-[0_0_8px_rgba(251,191,36,0.5)]" :
+                                  isSecond ? "bg-slate-300/20 text-slate-300 border border-slate-300/30" :
+                                  "bg-orange-600/20 text-orange-500 border border-orange-600/30"
+                                )}>
+                                  {winner.position}
+                                </span>
+                                {isFirst && <Trophy size={14} className="text-amber-400 shrink-0" />}
+                              </div>
+                              <h4 className="font-sans font-bold text-white text-sm break-words leading-snug">{winner.name}</h4>
+                              <p className="font-mono text-xs text-slate-400 mt-0.5">{winner.grade}</p>
                             </div>
-                            <h4 className="font-sans font-bold text-white text-sm truncate">{winner.name}</h4>
-                            <p className="font-mono text-xs text-slate-400 truncate mt-0.5">{winner.grade}</p>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
