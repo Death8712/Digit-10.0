@@ -210,7 +210,7 @@ const RESULTS_DATA = [
       { name: 'Rishabh Raina & Idhant Sharma', grade: 'Class 9-12', status: 'Qualifier' },
     ],
     winners: [
-      { position: '1ST', name: 'Anandi Singh & Yashaswi Sahas', grade: 'Class 9-12' },
+      { position: '1ST', name: 'Anandi Singh & Yashaswi Sahay', grade: 'Class 9-12' },
       { position: '2ND', name: 'Rishath Saini & Idhant Sharma', grade: 'Class 9-12' },
       { position: '3RD', name: 'Tanmay & Medhansh', grade: 'Class 9-12' },
     ]
