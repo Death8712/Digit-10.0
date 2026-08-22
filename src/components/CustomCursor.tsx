@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import { motion, useSpring } from 'motion/react';
+import { motion, useMotionValue, useSpring } from 'motion/react';
 
 export default function CustomCursor() {
   const [isTouchDevice, setIsTouchDevice] = useState(true);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
 
-  const springConfig = { damping: 25, stiffness: 200 };
-  const cursorX = useSpring(0, springConfig);
-  const cursorY = useSpring(0, springConfig);
+  const rawX = useMotionValue(-100);
+  const rawY = useMotionValue(-100);
+
+  const springConfig = { damping: 28, stiffness: 250, mass: 0.5 };
+  const cursorX = useSpring(rawX, springConfig);
+  const cursorY = useSpring(rawY, springConfig);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -17,46 +19,49 @@ export default function CustomCursor() {
     if (isTouch) return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
+      rawX.set(e.clientX);
+      rawY.set(e.clientY);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.closest('.glass')) {
+      if (target?.closest?.('button, a, .glass, [role="button"], input, select, textarea')) {
         setIsHovering(true);
       } else {
         setIsHovering(false);
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('mouseover', handleMouseOver, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
     };
-  }, [cursorX, cursorY]);
+  }, [rawX, rawY]);
 
   if (isTouchDevice) return null;
 
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-4 h-4 bg-neon-cyan rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-3.5 h-3.5 bg-neon-cyan rounded-full pointer-events-none z-[9999] mix-blend-difference will-change-transform"
         style={{
-          x: mousePos.x - 8,
-          y: mousePos.y - 8,
+          x: rawX,
+          y: rawY,
+          translateX: '-50%',
+          translateY: '-50%',
         }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border border-neon-cyan rounded-full pointer-events-none z-[9998]"
+        className="fixed top-0 left-0 w-9 h-9 border border-neon-cyan rounded-full pointer-events-none z-[9998] will-change-transform"
         animate={{
-          scale: isHovering ? 1.5 : 1,
-          opacity: isHovering ? 0.5 : 1,
+          scale: isHovering ? 1.6 : 1,
+          opacity: isHovering ? 0.6 : 0.8,
+          borderColor: isHovering ? '#ff00ff' : '#00F0FF',
         }}
+        transition={{ duration: 0.15 }}
         style={{
           x: cursorX,
           y: cursorY,

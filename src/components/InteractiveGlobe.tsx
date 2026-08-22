@@ -230,10 +230,24 @@ export default function InteractiveGlobe({
 
     // --- Animation Loop with Damping & Momentum ---
     let animationFrameId: number;
+    let isVisible = true;
     const baseAutoSpeed = 0.002 * rotationSpeed;
     const dampingFactor = Math.max(0.8, Math.min(0.99, 1 - damping));
 
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible) {
+        cancelAnimationFrame(animationFrameId);
+        animate();
+      } else {
+        cancelAnimationFrame(animationFrameId);
+      }
+    }, { threshold: 0.05 });
+
+    intersectionObserver.observe(container);
+
     const animate = () => {
+      if (!isVisible) return;
       animationFrameId = requestAnimationFrame(animate);
 
       if (!isDragging) {
@@ -259,6 +273,7 @@ export default function InteractiveGlobe({
     return () => {
       cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();
+      intersectionObserver.disconnect();
 
       domTarget.removeEventListener('mousedown', onPointerDown);
       window.removeEventListener('mousemove', onPointerMove);

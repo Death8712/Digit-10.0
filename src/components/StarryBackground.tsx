@@ -7,7 +7,7 @@ export default function StarryBackground({ className }: { className?: string }) 
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
     let animationFrameId: number;
@@ -17,7 +17,8 @@ export default function StarryBackground({ className }: { className?: string }) 
     const observer = new IntersectionObserver(([entry]) => {
       isVisible = entry.isIntersecting;
       if (isVisible) {
-        draw();
+        lastFrameTime = performance.now();
+        draw(lastFrameTime);
       } else {
         cancelAnimationFrame(animationFrameId);
       }
@@ -31,40 +32,31 @@ export default function StarryBackground({ className }: { className?: string }) 
       initStars();
     };
 
-    let cachedGradient: CanvasGradient | null = null;
     const initStars = () => {
-      cachedGradient = ctx.createRadialGradient(
-        canvas.width / 2, canvas.height / 2, 0,
-        canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height)
-      );
-      cachedGradient.addColorStop(0, 'rgba(0, 255, 255, 0.03)');
-      cachedGradient.addColorStop(0.5, 'rgba(128, 0, 128, 0.02)');
-      cachedGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
       stars = [];
       const isMobile = window.innerWidth < 768;
-      const numStars = Math.min(isMobile ? 20 : 80, Math.floor((canvas.width * canvas.height) / 30000));
+      const numStars = isMobile ? 18 : 45;
       
       for (let i = 0; i < numStars; i++) {
         const colorType = Math.random();
         let r, g, b;
         if (colorType > 0.8) {
-          r = 0; g = 255; b = 255; // Cyan
-        } else if (colorType > 0.7) {
+          r = 0; g = 240; b = 255; // Cyan
+        } else if (colorType > 0.65) {
           r = 255; g = 0; b = 255; // Magenta
-        } else if (colorType > 0.6) {
-          r = 100; g = 150; b = 255; // Blue-ish white
+        } else if (colorType > 0.5) {
+          r = 147; g = 197; b = 253; // Ice blue
         } else {
           r = 255; g = 255; b = 255; // White
         }
 
-        const alpha = Math.random() * 0.7 + 0.3;
+        const alpha = Math.random() * 0.6 + 0.2;
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          radius: Math.random() * 1.2 + 0.2,
-          vx: (Math.random() - 0.5) * 0.15,
-          vy: (Math.random() - 0.5) * 0.15,
+          radius: Math.random() * 1.2 + 0.4,
+          vx: (Math.random() - 0.5) * 0.12,
+          vy: (Math.random() - 0.5) * 0.12,
           alpha,
           fillStyle: `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(2)})`,
           r, g, b
@@ -73,8 +65,7 @@ export default function StarryBackground({ className }: { className?: string }) 
     };
 
     let lastFrameTime = 0;
-    const isMobile = window.innerWidth < 768;
-    const targetFps = isMobile ? 30 : 60;
+    const targetFps = 45;
     const fpsInterval = 1000 / targetFps;
 
     const draw = (nowTime = 0) => {
@@ -87,23 +78,10 @@ export default function StarryBackground({ className }: { className?: string }) 
       lastFrameTime = nowTime - (elapsed % fpsInterval);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      if (cachedGradient) {
-        ctx.fillStyle = cachedGradient;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      }
-      
-      const twinkle = Math.random() > 0.7;
 
       for (let i = 0; i < stars.length; i++) {
         const star = stars[i];
-        if (twinkle) {
-          star.alpha += (Math.random() - 0.5) * 0.05;
-          if (star.alpha < 0.2) star.alpha = 0.2;
-          if (star.alpha > 0.9) star.alpha = 0.9;
-          star.fillStyle = `rgba(${star.r}, ${star.g}, ${star.b}, ${star.alpha.toFixed(2)})`;
-        }
-
+        
         ctx.fillStyle = star.fillStyle;
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
@@ -119,7 +97,7 @@ export default function StarryBackground({ className }: { className?: string }) 
       }
     };
 
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
     resize();
     draw();
 
@@ -133,7 +111,7 @@ export default function StarryBackground({ className }: { className?: string }) 
   return (
     <canvas
       ref={canvasRef}
-      className={className || "fixed inset-0 pointer-events-none z-0 opacity-60"}
+      className={className || "fixed inset-0 pointer-events-none z-0 opacity-50 will-change-transform"}
     />
   );
 }

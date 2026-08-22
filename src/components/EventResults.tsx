@@ -20,9 +20,9 @@ const RESULTS_DATA = [
       { name: 'Vyom', grade: 'Class 3 A', status: 'Qualifier' },
     ],
     winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
+      { position: '1ST', name: 'Akshara Jha', grade: 'III C' },
+      { position: '2ND', name: 'Avyaan Jain', grade: 'III E' },
+      { position: '3RD', name: 'Vyom Aggarwal', grade: 'III A' },
     ]
   },
   {
@@ -40,9 +40,9 @@ const RESULTS_DATA = [
       { name: 'Nayra Jha', grade: 'Class 4 B', status: 'Qualifier' },
     ],
     winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
+      { position: '1ST', name: 'Savneet Kaur', grade: 'IV D' },
+      { position: '2ND', name: 'Nayra Jha', grade: 'IV B' },
+      { position: '3RD', name: 'Atharva Sethi', grade: 'IV C' },
     ]
   },
   {
@@ -60,9 +60,9 @@ const RESULTS_DATA = [
       { name: 'Tiana Gupta', grade: 'Class 5 B', status: 'Qualifier' },
     ],
     winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
+      { position: '1ST', name: 'Shaurya Bansal', grade: 'V C' },
+      { position: '2ND', name: 'Aayra Kapoor', grade: 'V D' },
+      { position: '3RD', name: 'Anvika Caroli', grade: 'V A' },
     ]
   },
   {

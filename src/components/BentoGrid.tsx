@@ -99,11 +99,9 @@ function BentoCard({ event, category, index, onClick }: { event: EventItem, cate
       />
       
       {/* HUD Scanning Line */}
-      <motion.div 
-        animate={{ top: ['0%', '100%', '0%'] }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'linear', delay: index * 0.5 }}
+      <div 
         className={cn(
-          "absolute left-0 w-full h-[2px] opacity-20 group-hover:opacity-50 transition-opacity z-30 shadow-lg",
+          "absolute inset-x-0 h-[2px] opacity-20 group-hover:opacity-60 transition-opacity z-30 pointer-events-none will-change-transform animate-[scanline_6s_linear_infinite]",
           category.hoverBgCode
         )}
       />
