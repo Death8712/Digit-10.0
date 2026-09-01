@@ -17,7 +17,7 @@ function isWebGLAvailable(): boolean {
   }
 }
 
-// Resilient Error Boundary for WebGL initialization crashes
+// Resilient Error Boundary for WebGL initialization
 interface ErrorBoundaryProps {
   fallback: ReactNode;
   children: ReactNode;
@@ -53,16 +53,33 @@ class WebGLErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryStat
 function CyberTechFallbackVisual() {
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-      <div className="absolute right-12 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-neon-cyan/10 blur-[80px] animate-pulse" />
-      <div className="relative w-72 h-72 flex items-center justify-center opacity-80 scale-90 lg:scale-105 lg:translate-x-20">
+      {/* Radial ambient glow */}
+      <div className="absolute right-12 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-neon-cyan/15 blur-[90px] animate-pulse" />
+      <div className="absolute right-28 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-neon-purple/15 blur-[70px]" />
+
+      {/* Cybernetic Hologram Core Rings */}
+      <div className="relative w-80 h-80 flex items-center justify-center opacity-80 scale-90 lg:scale-110 lg:translate-x-20">
+        {/* Outer dashed spinning ring */}
         <div className="absolute inset-0 rounded-full border border-dashed border-neon-cyan/30 animate-[spin_25s_linear_infinite]" />
+        
+        {/* Middle counter-rotating ring */}
         <div className="absolute inset-6 rounded-full border-2 border-neon-cyan/20 border-t-neon-cyan/80 border-b-neon-purple/80 animate-[spin_15s_linear_infinite_reverse]" />
+        
+        {/* Third geometric ring with tick accents */}
         <div className="absolute inset-14 rounded-full border border-white/15 animate-[spin_35s_linear_infinite]">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-neon-cyan shadow-[0_0_8px_#00F0FF]" />
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-neon-purple shadow-[0_0_8px_#b026ff]" />
         </div>
+
+        {/* Inner geometric core */}
         <div className="absolute inset-24 rounded-2xl border border-neon-cyan/40 rotate-45 animate-[spin_10s_ease-in-out_infinite_alternate] bg-neon-cyan/5 backdrop-blur-xs flex items-center justify-center shadow-[0_0_25px_rgba(0,240,255,0.2)]">
           <div className="w-8 h-8 rounded-lg bg-neon-cyan/20 border border-neon-cyan rotate-45 animate-pulse" />
+        </div>
+
+        {/* Floating crosshair nodes */}
+        <div className="absolute -top-3 right-10 flex items-center gap-1 font-mono text-[9px] text-neon-cyan/70 tracking-widest uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-neon-cyan animate-ping" />
+          <span>SYS.RENDER: 2D_ACCEL</span>
         </div>
       </div>
     </div>
@@ -234,8 +251,8 @@ function FloatingParticles({ count = 80 }) {
 function CyberTechArtifact() {
   const { viewport } = useThree();
   const isMobile = viewport.width < 8;
-  const xOffset = isMobile ? 0 : Math.min(viewport.width * 0.25, 4.5);
-  const baseScale = isMobile ? Math.min(viewport.width / 9, 0.85) : Math.min(viewport.width / 14, 1) * 1.05;
+  const xOffset = isMobile ? 0 : Math.min(viewport.width * 0.24, 4.2);
+  const baseScale = isMobile ? Math.min(viewport.width / 8.5, 0.9) : Math.min(viewport.width / 13.5, 1) * 1.1;
 
   const [hovered, setHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -282,14 +299,21 @@ function CyberTechArtifact() {
     } catch (_) {}
   };
 
+  const targetScaleVec = useMemo(() => new THREE.Vector3(), []);
+  const targetPosVec = useMemo(() => new THREE.Vector3(), []);
+
   useFrame(() => {
     if (groupRef.current) {
       const targetScale = hovered ? baseScale * 1.12 : baseScale;
-      groupRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.1);
-      groupRef.current.position.lerp(new THREE.Vector3(xOffset, isMobile ? 0.3 : 1.2, 0), 0.1);
+      targetScaleVec.set(targetScale, targetScale, targetScale);
+      targetPosVec.set(xOffset, isMobile ? 0.3 : 1.1, 0);
+      groupRef.current.scale.lerp(targetScaleVec, 0.1);
+      groupRef.current.position.lerp(targetPosVec, 0.1);
     }
 
     if (rotateGroupRef.current && !isDragging) {
+      // Gentle auto-spin
+      rotateGroupRef.current.rotation.y += 0.003;
       rotateGroupRef.current.rotation.x += velocity.current.x;
       rotateGroupRef.current.rotation.y += velocity.current.y;
 
@@ -359,7 +383,7 @@ export default function Hero3D() {
         <WebGLErrorBoundary fallback={<CyberTechFallbackVisual />}>
           <Canvas 
             frameloop={isVisible ? "always" : "never"}
-            dpr={[1, 1.5]} 
+            dpr={[1, 1.25]} 
             gl={{ 
               antialias: false, 
               toneMapping: THREE.ACESFilmicToneMapping, 
@@ -370,10 +394,10 @@ export default function Hero3D() {
             camera={{ position: [14, 11, 14], fov: 28 }}
             fallback={<CyberTechFallbackVisual />}
           >
-            <ambientLight intensity={0.5} color="#00F0FF" />
+            <ambientLight intensity={0.6} color="#00F0FF" />
             <spotLight position={[10, 15, 10]} intensity={120} color="#00F0FF" penumbra={0.5} distance={50} angle={0.8} />
-            <spotLight position={[-15, -10, -15]} intensity={80} color="#00F0FF" penumbra={1} distance={50} />
-            <directionalLight position={[6, -2, 10]} intensity={2.0} color="#ffffff" />
+            <spotLight position={[-15, -10, -15]} intensity={80} color="#b026ff" penumbra={1} distance={50} />
+            <directionalLight position={[6, -2, 10]} intensity={2.2} color="#ffffff" />
             
             <CyberTechArtifact />
           </Canvas>
@@ -386,10 +410,10 @@ export default function Hero3D() {
       <div className="absolute top-1/2 right-12 -translate-y-1/2 flex flex-col items-end gap-1 opacity-60 hidden md:flex pointer-events-none">
         <div className="w-16 h-[1px] bg-[#00F0FF]" />
         <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-[#00F0FF] uppercase">
-          CORE SYS v2.6
+          DIGIT CORE v10.0
         </span>
         <span className="text-[10px] font-mono tracking-[0.2em] text-[#00F0FF]/50 uppercase">
-          SYNC STATE: OPTIMAL
+          SYNC STATE: ACTIVE
         </span>
       </div>
 
@@ -402,4 +426,5 @@ export default function Hero3D() {
     </div>
   );
 }
+
 

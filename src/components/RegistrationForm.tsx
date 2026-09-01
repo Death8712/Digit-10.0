@@ -75,10 +75,7 @@ export default function RegistrationForm() {
 
     <section id="register" className="py-24 relative overflow-hidden bg-cyber-black">
       {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-neon-cyan/20 rounded-full blur-[120px]" />
-      </div>
+      <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(circle_at_25%_25%,rgba(168,85,247,0.15),transparent_50%),radial-gradient(circle_at_75%_75%,rgba(0,240,255,0.15),transparent_50%)]" />
 
       
 

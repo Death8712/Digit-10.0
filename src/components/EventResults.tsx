@@ -1,10 +1,11 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, Filter, Trophy, Gamepad2, Clapperboard, MonitorPlay, Brush, ImageIcon, Lightbulb, ShoppingBag, Bug, Video, Bot, UserCheck, Award } from 'lucide-react';
+import { Search, Filter, Trophy, Gamepad2, Clapperboard, MonitorPlay, Brush, ImageIcon, Lightbulb, ShoppingBag, Bug, Video, Bot, UserCheck, Calendar, Clock, MapPin, Sparkles, AlertCircle, Shirt } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 // Data for Results & Preliminary Qualifiers
 const RESULTS_DATA = [
+  // --- INTRA-SCHOOL: PREPARATORY STAGE ---
   {
     id: 'digimagic-2026',
     eventName: 'DigiMagic',
@@ -20,9 +21,9 @@ const RESULTS_DATA = [
       { name: 'Vyom', grade: 'Class 3 A', status: 'Qualifier' },
     ],
     winners: [
-      { position: '1ST', name: 'Akshara Jha', grade: 'III C' },
-      { position: '2ND', name: 'Avyaan Jain', grade: 'III E' },
-      { position: '3RD', name: 'Vyom Aggarwal', grade: 'III A' },
+      { position: '1ST', name: 'Akshara Jha', grade: 'Class III-C' },
+      { position: '2ND', name: 'Avyaan Jain', grade: 'Class III-E' },
+      { position: '3RD', name: 'Vyom Aggarwal', grade: 'Class III-A' },
     ]
   },
   {
@@ -40,9 +41,9 @@ const RESULTS_DATA = [
       { name: 'Nayra Jha', grade: 'Class 4 B', status: 'Qualifier' },
     ],
     winners: [
-      { position: '1ST', name: 'Savneet Kaur', grade: 'IV D' },
-      { position: '2ND', name: 'Nayra Jha', grade: 'IV B' },
-      { position: '3RD', name: 'Atharva Sethi', grade: 'IV C' },
+      { position: '1ST', name: 'Savneet Kaur', grade: 'Class IV-D' },
+      { position: '2ND', name: 'Nayra Jha', grade: 'Class IV-B' },
+      { position: '3RD', name: 'Atharv Sethi', grade: 'Class IV-C' },
     ]
   },
   {
@@ -60,11 +61,13 @@ const RESULTS_DATA = [
       { name: 'Tiana Gupta', grade: 'Class 5 B', status: 'Qualifier' },
     ],
     winners: [
-      { position: '1ST', name: 'Shaurya Bansal', grade: 'V C' },
-      { position: '2ND', name: 'Aayra Kapoor', grade: 'V D' },
-      { position: '3RD', name: 'Anvika Caroli', grade: 'V A' },
+      { position: '1ST', name: 'Shaurya Bansal', grade: 'Class V-C' },
+      { position: '2ND', name: 'Aayra Kapoor', grade: 'Class V-D' },
+      { position: '3RD', name: 'Anvika Caroli', grade: 'Class V-A' },
     ]
   },
+
+  // --- INTRA-SCHOOL: MIDDLE STAGE ---
   {
     id: 'digitales-2026',
     eventName: 'DigiTales',
@@ -80,9 +83,9 @@ const RESULTS_DATA = [
       { name: 'Kavyaanshi', grade: 'Class 6 D', status: 'Qualifier' },
     ],
     winners: [
-      { position: '1ST', name: 'Purvanshi Arora', grade: 'VI-F' },
-      { position: '2ND', name: 'Prajesh Rastogi', grade: 'VI-D' },
-      { position: '3RD', name: 'Aashvi Singhal', grade: 'VI-E' },
+      { position: '1ST', name: 'Purvanshi Arora', grade: 'Class VI-F' },
+      { position: '2ND', name: 'Prajesh Rastogi', grade: 'Class VI-D' },
+      { position: '3RD', name: 'Aashvi Singhal', grade: 'Class VI-E' },
     ]
   },
   {
@@ -93,9 +96,9 @@ const RESULTS_DATA = [
     icon: Lightbulb,
     image: '/digi-quiz.png',
     winners: [
-      { position: '1ST', name: 'Aviana Jain', grade: 'VII-D' },
-      { position: '2ND', name: 'Aayra Jain', grade: 'VII-E' },
-      { position: '3RD', name: 'Akshat Sharma', grade: 'VII-D' },
+      { position: '1ST', name: 'Aviana Jain', grade: 'Class VII-D' },
+      { position: '2ND', name: 'Aayra Jain', grade: 'Class VII-E' },
+      { position: '3RD', name: 'Akshat Sharma', grade: 'Class VII-D' },
     ]
   },
   {
@@ -106,11 +109,13 @@ const RESULTS_DATA = [
     icon: Bot,
     image: '/digi-build.png',
     winners: [
-      { position: '1ST', name: 'Gurpertaap Singh and Mihit Jindal', grade: 'VIII-C' },
-      { position: '2ND', name: 'Naira Arora and Ishani Saini', grade: 'VIII-C' },
-      { position: '3RD', name: 'Dhairya Baheti and Rayyan Malik', grade: 'VIII-A' },
+      { position: '1ST', name: 'Gurpertaap Singh & Mihit Jindal', grade: 'Class VIII-C' },
+      { position: '2ND', name: 'Naira Arora & Ishani Saini', grade: 'Class VIII-C' },
+      { position: '3RD', name: 'Dhairya Baheti & Rayyan Malik', grade: 'Class VIII-A' },
     ]
   },
+
+  // --- INTRA-SCHOOL: SENIOR STAGE ---
   {
     id: 'digitote-2026',
     eventName: 'DigiTote',
@@ -119,65 +124,12 @@ const RESULTS_DATA = [
     icon: ShoppingBag,
     image: '/digi-tote.png',
     winners: [
-      { position: '1ST', name: 'Tote-ally Glitched', grade: 'Aggregate: 29' },
-      { position: '2ND', name: 'EcoBytes', grade: 'Aggregate: 28' },
-      { position: '3RD (TIE)', name: 'ToteDynamos', grade: 'Aggregate: 27' },
-      { position: '3RD (TIE)', name: 'E - Waste Avengers', grade: 'Aggregate: 27' },
+      { position: '1ST', name: 'Vanshika Anand & Siddhi Garg', grade: 'Class X-C' },
+      { position: '2ND', name: 'Sagrika Kashyap (X-E) & Kanishka Kashyap (XI-A)', grade: 'Class X-E & XI-A' },
+      { position: '3RD (TIE)', name: 'Anushka Jha & Priyanshi Ranot', grade: 'Class X-B' },
+      { position: '3RD (TIE)', name: 'Eeshvi Sudan & Himadri Singh', grade: 'Class IX-F' },
     ]
   },
-  {
-    id: 'digithon-2026',
-    eventName: 'DigiThon',
-    category: 'Inter School Events',
-    genre: 'Technical',
-    icon: Bot,
-    image: '/digi-thon.png',
-    winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
-    ]
-  },
-  {
-    id: 'digiai-2026',
-    eventName: 'DigiAI',
-    category: 'Inter School Events',
-    genre: 'Creative',
-    icon: Bot,
-    image: '/Digi-AI.png',
-    winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
-    ]
-  },
-  {
-    id: 'digiframes-2026',
-    eventName: 'DigiFrames',
-    category: 'Inter School Events',
-    genre: 'Creative',
-    icon: Video,
-    image: '/Digi-Frames.png',
-    winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
-    ]
-  },
-  {
-    id: 'digiscratch-2026',
-    eventName: 'DigiScratch',
-    category: 'Inter School Events',
-    genre: 'Creative',
-    icon: Bot,
-    image: '/Digi-Scratch.png',
-    winners: [
-      { position: '1ST', name: 'No Result', grade: 'TBD' },
-      { position: '2ND', name: 'No Result', grade: 'TBD' },
-      { position: '3RD', name: 'No Result', grade: 'TBD' },
-    ]
-  },
-
   {
     id: 'digibattles-2026',
     eventName: 'DigiBattles',
@@ -186,9 +138,22 @@ const RESULTS_DATA = [
     icon: Gamepad2,
     image: '/digi-battles.png',
     winners: [
-      { position: '1ST', name: 'RWBL', grade: '60 Points' },
-      { position: '2ND', name: 'Godlike', grade: '50 Points' },
-      { position: '3RD', name: 'Rule Breakers', grade: '37 Points' },
+      { position: '1ST', name: 'Adhiraaj Sharma (XII-E), Samaksh Jain (XII-E), Sahej Singh Sodhi (XII-E) & Savir Gupta (XII-E)', grade: 'Class XII-E' },
+      { position: '2ND', name: 'Tanmay Goswami (XI-F), Aanand Bhooshan (XI-A), Shayan Imam (XI-E) & Lakshay Mittal (XI-E)', grade: 'Class XI-F, XI-A & XI-E' },
+      { position: '3RD', name: 'Antrix Panwar (XII-D), Vihaan Pandey (XII-D), Vansh Arora (XII-E), Aarav Sharma (XII-E) & Syon Sharma (XII-D)', grade: 'Class XII-D & XII-E' },
+    ]
+  },
+  {
+    id: 'digicipher-2026',
+    eventName: 'DigiCipher',
+    category: 'Intra-School: Senior Stage',
+    genre: 'Cryptography',
+    icon: Bug,
+    image: '/digi-cipher.png',
+    winners: [
+      { position: '1ST', name: 'Aarav Modi', grade: 'Class X-F' },
+      { position: '2ND', name: 'Nysa Jaiswal', grade: 'Class IX-A' },
+      { position: '3RD', name: 'Arham Jain', grade: 'Class IX-B' },
     ]
   },
   {
@@ -210,28 +175,69 @@ const RESULTS_DATA = [
       { name: 'Rishabh Raina & Idhant Sharma', grade: 'Class 9-12', status: 'Qualifier' },
     ],
     winners: [
-      { position: '1ST', name: 'Anandi Singh & Yashaswi Sahay', grade: 'Class 9-12' },
-      { position: '2ND', name: 'Rishath Saini & Idhant Sharma', grade: 'Class 9-12' },
-      { position: '3RD', name: 'Tanmay & Medhansh', grade: 'Class 9-12' },
+      { position: '1ST', name: 'Anandi Singh (IX-C) & Yashaswi Sahay (IX-E)', grade: 'Class IX-C & IX-E' },
+      { position: '2ND', name: 'Rishabh Raina (XII-C) & Idhant Sharma (XII-F)', grade: 'Class XII-C & XII-F' },
+      { position: '3RD', name: 'Tanmay & Medhansh', grade: 'Class X-F' },
+    ]
+  },
+
+  // --- INTER-SCHOOL EVENTS ---
+  {
+    id: 'digiscratch-2026',
+    eventName: 'DigiScratch',
+    category: 'Inter School Events',
+    genre: 'Creative',
+    icon: Bot,
+    image: '/Digi-Scratch.png',
+    winners: [
+      { position: '1ST', name: 'Springdales Public School', grade: 'Inter-School Winner' },
+      { position: '2ND', name: 'Darbari Lal DAV Model School', grade: 'Inter-School 1st Runner-Up' },
+      { position: '3RD', name: 'Veda Vyasa DAV Public School', grade: 'Inter-School 2nd Runner-Up' },
     ]
   },
   {
-    id: 'digicipher-2026',
-    eventName: 'DigiCipher',
-    category: 'Intra-School: Senior Stage',
-    genre: 'Cryptography',
-    icon: Bug,
-    image: '/digi-cipher.png',
+    id: 'digiframes-2026',
+    eventName: 'DigiFrames',
+    category: 'Inter School Events',
+    genre: 'Creative',
+    icon: Video,
+    image: '/Digi-Frames.png',
     winners: [
-      { position: '1ST', name: 'Aarav Modi', grade: '10th F' },
-      { position: '2ND', name: 'Nysa Jaiswal', grade: '9th A' },
-      { position: '3RD', name: 'Arham Jain', grade: '9th B' },
+      { position: '1ST', name: 'East Point School', grade: 'Inter-School Winner' },
+      { position: '2ND', name: 'Carmel Convent School', grade: 'Inter-School 1st Runner-Up' },
+      { position: '3RD', name: 'Mayoor School', grade: 'Inter-School 2nd Runner-Up' },
     ]
-  }
+  },
+  {
+    id: 'digithon-2026',
+    eventName: 'DigiThon',
+    category: 'Inter School Events',
+    genre: 'Technical',
+    icon: Bot,
+    image: '/digi-thon.png',
+    winners: [
+      { position: '1ST', name: 'Ryan International School, Mayur Vihar', grade: 'Inter-School Winner' },
+      { position: '2ND', name: 'The Indian School', grade: 'Inter-School 1st Runner-Up' },
+      { position: '3RD', name: 'ASN Senior Secondary School, Mayur Vihar', grade: 'Inter-School 2nd Runner-Up' },
+    ]
+  },
+  {
+    id: 'digiai-2026',
+    eventName: 'DigiAI',
+    category: 'Inter School Events',
+    genre: 'Creative',
+    icon: Bot,
+    image: '/Digi-AI.png',
+    winners: [
+      { position: '1ST', name: 'DAV Public School, Gurugram', grade: 'Inter-School Winner' },
+      { position: '2ND', name: 'Ryan International School, Mayur Vihar', grade: 'Inter-School 1st Runner-Up' },
+      { position: '3RD', name: 'Lotus Valley International School, Noida', grade: 'Inter-School 2nd Runner-Up' },
+    ]
+  },
 ];
 
 const CATEGORIES = ['All', 'Intra-School: Preparatory Stage', 'Intra-School: Middle Stage', 'Intra-School: Senior Stage', 'Inter School Events'];
-const GENRES = ['All', 'Creative', 'Design', 'Tech', 'Coding', 'Gaming'];
+const GENRES = ['All', 'Creative', 'Design', 'Technical', 'Storytelling', 'Knowledge', 'Gaming', 'Cryptography', 'Meme', 'Presentation'];
 
 export default function EventResults() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -246,7 +252,7 @@ export default function EventResults() {
                             (item.preliminaryQualifiers && item.preliminaryQualifiers.some(q => q.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                                                                                                  q.grade.toLowerCase().includes(searchQuery.toLowerCase())));
       const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
-      const matchesGenre = selectedGenre === 'All' || item.genre === selectedGenre;
+      const matchesGenre = selectedGenre === 'All' || item.genre.toLowerCase() === selectedGenre.toLowerCase();
       
       return matchesSearch && matchesCategory && matchesGenre;
     });
@@ -272,26 +278,107 @@ export default function EventResults() {
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="text-neon-cyan font-black uppercase tracking-[0.3em] text-xs mb-4 block">Digital Archive</span>
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neon-cyan/40 bg-neon-cyan/10 text-neon-cyan font-mono font-bold text-xs uppercase tracking-[0.3em] mb-4 shadow-[0_0_15px_rgba(0,255,255,0.2)]">
+            <Sparkles size={14} className="text-neon-cyan animate-pulse" />
+            <span>Official Announcement</span>
+          </div>
           <h2 
             className="text-4xl md:text-6xl font-display font-black uppercase tracking-widest text-white mb-6"
             style={{ textShadow: '0 0 15px rgba(0, 255, 255, 0.7)' }}
           >
-            DIGIT 10.0 <span className="text-neon-cyan">RESULTS</span>
+            DIGIT 10.0 <span className="text-neon-cyan">WINNERS</span>
           </h2>
-          <p className="text-slate-400 font-sans max-w-2xl mx-auto">
-            The mission log. Explore preliminary round qualifiers and final round champions who conquered the digital frontier.
+          <p className="text-slate-300 font-sans max-w-2xl mx-auto text-base">
+            Heartiest congratulations to all champions and qualifiers! Your creativity, dedication, and competitive spirit have made DIGIT 10.0 truly remarkable.
           </p>
         </div>
 
+        {/* IMPORTANT INSTRUCTIONS BANNER FOR ALL WINNERS */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16 relative overflow-hidden rounded-2xl md:rounded-3xl border-2 border-amber-400/50 bg-gradient-to-br from-[#0c1a2e]/90 via-[#071322]/95 to-[#160c24]/90 p-6 md:p-8 shadow-[0_0_35px_rgba(251,191,36,0.18)]"
+        >
+          {/* Top accent light */}
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+          
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-amber-400/20">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-amber-400/15 border border-amber-400/40 flex items-center justify-center text-amber-400 shrink-0 shadow-[0_0_15px_rgba(251,191,36,0.3)]">
+                <AlertCircle className="w-6 h-6 md:w-8 md:h-8" />
+              </div>
+              <div>
+                <span className="text-amber-400 font-mono font-bold text-xs uppercase tracking-widest block mb-1">
+                  🚨 Mandatory Directive
+                </span>
+                <h3 className="font-display font-black text-xl md:text-2xl text-white tracking-wide">
+                  IMPORTANT INSTRUCTIONS FOR ALL WINNERS
+                </h3>
+                <p className="text-slate-300 text-sm md:text-base mt-1">
+                  All winners are requested to report to the <strong className="text-amber-300">School Auditorium on 2nd September at 8:00 AM</strong> in <strong className="text-amber-300">School Grey Uniform</strong>.
+                </p>
+              </div>
+            </div>
+
+            <div className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400/10 border border-amber-400/30 text-amber-400 font-mono font-bold text-xs uppercase tracking-widest">
+              <span>⚠️ REPORT ON TIME</span>
+            </div>
+          </div>
+
+          {/* Quick Detail Chips */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-cyber-black/60 border border-white/10 hover:border-amber-400/30 transition-colors">
+              <div className="w-9 h-9 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
+                <Calendar size={18} />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">Date</span>
+                <span className="text-xs font-bold font-sans text-white">2nd September 2026</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-cyber-black/60 border border-white/10 hover:border-amber-400/30 transition-colors">
+              <div className="w-9 h-9 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
+                <Clock size={18} />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">Reporting Time</span>
+                <span className="text-xs font-bold font-sans text-white">8:00 AM Sharp</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-cyber-black/60 border border-white/10 hover:border-amber-400/30 transition-colors">
+              <div className="w-9 h-9 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
+                <MapPin size={18} />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">Venue</span>
+                <span className="text-xs font-bold font-sans text-white">School Auditorium</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-cyber-black/60 border border-white/10 hover:border-amber-400/30 transition-colors">
+              <div className="w-9 h-9 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
+                <Shirt size={18} />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">Dress Code</span>
+                <span className="text-xs font-bold font-sans text-white">School Grey Uniform</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-16 justify-between items-center bg-[#0F172A] md:backdrop-blur-md p-4 rounded-2xl border border-neon-cyan/30 shadow-[0_0_15px_rgba(0,255,255,0.1)]">
+        <div className="flex flex-col md:flex-row gap-4 mb-12 justify-between items-center bg-[#0F172A] p-4 rounded-2xl border border-neon-cyan/30 shadow-[0_0_15px_rgba(0,255,255,0.1)]">
           <div className="relative w-full md:flex-grow md:max-w-md group">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neon-cyan/70 group-focus-within:text-neon-cyan transition-colors" />
             <input 
               type="text" 
-              placeholder="Search event, qualifier, or winner..." 
+              placeholder="Search event, school, or winner name..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-cyber-black/50 border border-neon-cyan/30 rounded-xl py-3 pl-12 pr-4 text-white font-sans focus:outline-none focus:border-neon-cyan focus:shadow-[0_0_10px_rgba(0,255,255,0.3)] transition-all"
@@ -299,13 +386,13 @@ export default function EventResults() {
           </div>
 
           <div className="flex flex-col sm:flex-row w-full md:w-auto gap-4">
-            <div className="relative w-full sm:w-56 flex items-center gap-3">
-              <Filter className="w-5 h-5 text-neon-cyan/70" />
+            <div className="relative w-full sm:w-64 flex items-center gap-3">
+              <Filter className="w-5 h-5 text-neon-cyan/70 shrink-0" />
               <div className="relative w-full">
                 <select 
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full appearance-none bg-cyber-black/50 border border-neon-cyan/30 rounded-xl py-3 px-4 text-white font-sans focus:outline-none focus:border-neon-cyan transition-all cursor-pointer"
+                  className="w-full appearance-none bg-cyber-black/50 border border-neon-cyan/30 rounded-xl py-3 px-4 text-white font-sans focus:outline-none focus:border-neon-cyan transition-all cursor-pointer text-xs md:text-sm"
                 >
                   {CATEGORIES.map(cat => (
                     <option key={cat} value={cat} className="bg-cyber-black text-white">{cat}</option>
@@ -332,7 +419,7 @@ export default function EventResults() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-white/[0.03] md:backdrop-blur-xl border border-neon-cyan/30 rounded-2xl p-6 group hover:border-neon-cyan hover:bg-white/[0.05] transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,255,0.5)] relative overflow-hidden flex flex-col justify-between"
+                  className="bg-white/[0.03] border border-neon-cyan/30 rounded-2xl p-6 group hover:border-neon-cyan hover:bg-white/[0.05] transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,255,0.4)] relative overflow-hidden flex flex-col justify-between"
                 >
                   {/* Glowing edge effect on hover */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-neon-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -359,7 +446,7 @@ export default function EventResults() {
                       </div>
                     </div>
 
-                    {/* SECTION 1: Preliminary Round Qualifiers */}
+                    {/* SECTION 1: Preliminary Round Qualifiers (if any) */}
                     {result.preliminaryQualifiers && result.preliminaryQualifiers.length > 0 && (
                       <div className="mb-6">
                         <div className="flex items-center justify-between mb-3 pb-2 border-b border-neon-cyan/20">
@@ -405,10 +492,10 @@ export default function EventResults() {
                       <div className="flex items-center justify-between mb-3 pb-2 border-b border-amber-400/20">
                         <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">
                           <Trophy size={14} className="text-amber-400 shrink-0" />
-                          <span>Final Round Winners</span>
+                          <span>Podium Champions</span>
                         </div>
                         <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/30 tracking-widest uppercase">
-                          Podium
+                          Official
                         </span>
                       </div>
 
@@ -417,20 +504,20 @@ export default function EventResults() {
                           const isFirst = winner.position.startsWith('1');
                           const isSecond = winner.position.startsWith('2');
                           return (
-                            <div key={index} className="flex flex-col relative p-3 rounded-xl bg-cyber-black/40 border border-[rgba(0,240,255,0.18)] group-hover:border-neon-cyan/20 transition-colors">
+                            <div key={index} className="flex flex-col relative p-3 rounded-xl bg-cyber-black/50 border border-[rgba(0,240,255,0.18)] group-hover:border-neon-cyan/30 transition-colors">
                               <div className="flex items-center justify-between mb-1">
                                 <span className={cn(
                                   "font-display font-black text-xs tracking-widest px-2 py-0.5 rounded",
-                                  isFirst ? "bg-amber-400/20 text-amber-400 border border-amber-400/30 shadow-[0_0_8px_rgba(251,191,36,0.5)]" :
-                                  isSecond ? "bg-slate-300/20 text-slate-300 border border-slate-300/30" :
-                                  "bg-orange-600/20 text-orange-500 border border-orange-600/30"
+                                  isFirst ? "bg-amber-400/20 text-amber-400 border border-amber-400/40 shadow-[0_0_10px_rgba(251,191,36,0.5)]" :
+                                  isSecond ? "bg-slate-300/20 text-slate-300 border border-slate-300/40" :
+                                  "bg-orange-600/20 text-orange-400 border border-orange-600/40"
                                 )}>
                                   {winner.position}
                                 </span>
-                                {isFirst && <Trophy size={14} className="text-amber-400 shrink-0" />}
+                                {isFirst && <Trophy size={14} className="text-amber-400 shrink-0 animate-pulse" />}
                               </div>
                               <h4 className="font-sans font-bold text-white text-sm break-words leading-snug">{winner.name}</h4>
-                              <p className="font-mono text-xs text-slate-400 mt-0.5">{winner.grade}</p>
+                              <p className="font-mono text-xs text-neon-cyan/70 mt-0.5">{winner.grade}</p>
                             </div>
                           );
                         })}
@@ -457,3 +544,4 @@ export default function EventResults() {
     </section>
   );
 }
+

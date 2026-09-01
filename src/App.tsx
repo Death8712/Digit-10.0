@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
-import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion, AnimatePresence } from 'motion/react';
 import { Calendar, MapPin, Users, ArrowRight, Mail, Phone, Globe, Trophy, Instagram, Youtube, X } from 'lucide-react';
 import Navbar from './components/Navbar';
 import { Suspense, lazy } from 'react';
 const Hero3D = lazy(() => import('./components/Hero3D'));
 const BentoGrid = lazy(() => import('./components/BentoGrid'));
-import Countdown from './components/Countdown';
-import CountdownHero from './components/CountdownHero';
 import CustomCursor from './components/CustomCursor';
 import Timeline from './components/Timeline';
 import EventModal from './components/EventModal';
@@ -20,43 +20,16 @@ const Gallery = lazy(() => import('./components/Gallery'));
 const ContactUs = lazy(() => import('./components/ContactUs'));
 import StarryBackground from './components/StarryBackground';
 
-const TypewriterText = ({ text, className = "", delay = 0 }: { text: string, className?: string, delay?: number }) => (
-  <motion.span
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-10px" }}
-    variants={{
-      hidden: { opacity: 0 },
-      visible: { 
-        opacity: 1,
-        transition: { delay, staggerChildren: 0.04 } 
-      }
-    }}
-    className={className}
-  >
-    {text.split('').map((char, index) => (
-      <motion.span
-        key={index}
-        variants={{
-          hidden: { opacity: 0, y: 10 },
-          visible: { opacity: 1, y: 0 }
-        }}
-        style={{ display: 'inline-block', whiteSpace: char === ' ' ? 'pre' : 'normal' }}
-      >
-        {char}
-      </motion.span>
-    ))}
-  </motion.span>
-);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   useEffect(() => {
-    // Skip Lenis smooth-scroll hijacking on touch/mobile devices for native 60fps scrolling
+    // Skip Lenis smooth-scroll on touch/mobile devices for native 60fps scrolling
     const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window || window.innerWidth < 768;
     if (isTouch) return;
 
     const lenis = new Lenis({
-      duration: 1.0,
+      duration: 0.9,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
@@ -64,30 +37,24 @@ export default function App() {
       wheelMultiplier: 1,
     });
 
-    let animationFrameId: number;
-    function raf(time: number) {
-      lenis.raf(time);
-      animationFrameId = requestAnimationFrame(raf);
-    }
+    // Synchronize Lenis with GSAP ScrollTrigger for hitch-free scrubbing
+    lenis.on('scroll', ScrollTrigger.update);
 
-    animationFrameId = requestAnimationFrame(raf);
+    const updateLenis = (time: number) => {
+      lenis.raf(time * 1000);
+    };
+
+    gsap.ticker.add(updateLenis);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      gsap.ticker.remove(updateLenis);
       lenis.destroy();
     };
   }, []);
 
   const heroRef = useRef<HTMLDivElement>(null);
   const [selectedTimelineEvent, setSelectedTimelineEvent] = useState<{event: EventItem, categoryAccent: string} | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
 
   return (
     <div className="relative min-h-screen bg-cyber-black bg-blobs selection:bg-neon-cyan/30">
@@ -177,15 +144,6 @@ export default function App() {
              <div className="w-12 h-[1px] bg-neon-cyan/30" />
              <div className="w-8 h-[1px] bg-neon-cyan/30" />
            </div>
-        </div>
-      </section>
-
-
-      {/* Countdown Section */}
-      <section className="py-20 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <motion.h2 initial={{opacity: 0, y: 30}} whileInView={{opacity: 1, y: 0}} transition={{duration: 0.8}} viewport={{once: true}} className="text-3xl md:text-5xl font-display font-black mb-12">T-MINUS to DIGIT</motion.h2>
-          <Countdown />
         </div>
       </section>
 
@@ -308,24 +266,18 @@ export default function App() {
           
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-[rgba(0,240,255,0.18)]">
             <div className="text-[10px] uppercase tracking-[0.3em] font-black text-ice-blue hover:text-neon-cyan transition-colors cursor-default hover:drop-shadow-[0_0_12px_rgba(0,255,255,0.5)]">
-              <TypewriterText text="© 2026 DIGIT 10.0. SIMULATION RUNNING." delay={0.2} />
+              © 2026 DIGIT 10.0. SIMULATION RUNNING.
             </div>
             <div className="flex flex-col items-center md:items-end gap-3">
               <div className="flex flex-wrap justify-center md:justify-end items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-black text-ice-blue cursor-default hover:text-white transition-colors duration-300">
-                <TypewriterText text="INITIALIZED WITH " delay={1.4} />
-                <motion.span 
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 2.2, type: "spring" }}
-                  className="text-neon-magenta animate-pulse drop-shadow-[0_0_10px_rgba(255,0,255,0.8)] mx-1 text-sm"
-                >
+                <span>INITIALIZED WITH</span>
+                <span className="text-neon-magenta animate-pulse drop-shadow-[0_0_10px_rgba(255,0,255,0.8)] mx-1 text-sm">
                   ⚡
-                </motion.span>
-                <TypewriterText text=" AND COFFEE BY DIGIT TEAM" delay={2.4} />
+                </span>
+                <span>AND COFFEE BY DIGIT TEAM</span>
               </div>
               <div className="text-[11px] uppercase tracking-[0.4em] font-black text-neon-cyan/80 cursor-default border border-neon-cyan/20 bg-neon-cyan/5 px-4 py-2 rounded-full hover:bg-neon-cyan/10 hover:border-neon-cyan/50 hover:shadow-[0_0_15px_rgba(0,255,255,0.3)] transition-all duration-300 group">
-                <TypewriterText text="DESIGNED BY RUDRANSH KANDPAL" delay={3.4} className="group-hover:text-white transition-colors duration-300" />
+                <span className="group-hover:text-white transition-colors duration-300">DESIGNED BY RUDRANSH KANDPAL</span>
               </div>
             </div>
           </div>

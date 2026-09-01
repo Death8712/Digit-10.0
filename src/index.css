@@ -50,7 +50,7 @@
   }
   
   .glass {
-    @apply bg-black/90 md:bg-white/5 md:backdrop-blur-md border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.2)];
+    @apply bg-[#070e1b]/90 border border-white/10 shadow-[0_8px_24px_rgba(0,0,0,0.4)];
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */

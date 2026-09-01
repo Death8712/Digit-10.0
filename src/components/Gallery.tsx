@@ -11,41 +11,62 @@ const ITEMS: Item[] = [
 
 function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
+  const rafRef = useRef<number | null>(null);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
     
-    // Normalize coordinates into a small range (e.g., -5% to +5%)
     const x = ((e.clientX - centerX) / (rect.width / 2)) * 5;
     const y = ((e.clientY - centerY) / (rect.height / 2)) * 5;
     
-    setCoords({ x, y });
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      if (containerRef.current) {
+        containerRef.current.style.setProperty('--card-x', `${x}%`);
+        containerRef.current.style.setProperty('--card-y', `${y}%`);
+        containerRef.current.style.setProperty('--card-neg-x', `${-x}%`);
+        containerRef.current.style.setProperty('--card-neg-y', `${-y}%`);
+      }
+    });
+  };
+
+  const handleMouseLeave = () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (containerRef.current) {
+      containerRef.current.style.setProperty('--card-x', '0%');
+      containerRef.current.style.setProperty('--card-y', '0%');
+      containerRef.current.style.setProperty('--card-neg-x', '0%');
+      containerRef.current.style.setProperty('--card-neg-y', '0%');
+    }
   };
 
   return (
     <div
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => { setIsHovered(false); setCoords({ x: 0, y: 0 }); }}
+      onMouseLeave={handleMouseLeave}
       className="relative w-[85vw] h-[65vh] md:w-[75vw] md:h-[80vh] mx-2 md:mx-4 shrink-0 overflow-hidden cursor-pointer group rounded-2xl md:rounded-3xl border border-[rgba(0,240,255,0.18)] shadow-2xl"
-      style={{ perspective: '1000px' }}
+      style={{
+        perspective: '1000px',
+        // @ts-expect-error CSS vars
+        '--card-x': '0%',
+        '--card-y': '0%',
+        '--card-neg-x': '0%',
+        '--card-neg-y': '0%'
+      }}
     >
       <div className="absolute inset-0 w-full h-full bg-cyber-black overflow-hidden group-hover:border-white/30 transition-colors duration-500">
         
         {/* Layer B: Background (Deep buffer view, softened) */}
         <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-200 ease-out will-change-transform"
+          className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-200 ease-out will-change-transform group-hover:scale-105"
           style={{
             ...(item.image ? { backgroundImage: `url(${item.image})` } : {}),
             filter: (item.video || item.youtubeId) ? 'brightness(0.5)' : 'blur(2px) brightness(0.7)',
-            // Move in opposite direction of cursor
-            transform: `scale(${isHovered ? 1.05 : 1.02}) translate(${isHovered ? -coords.x : 0}%, ${isHovered ? -coords.y : 0}%)`
+            transform: 'translate(var(--card-neg-x, 0%), var(--card-neg-y, 0%))'
           }}
         >
           {item.video && (
@@ -65,6 +86,7 @@ function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () =>
                 src={`https://www.youtube.com/embed/${item.youtubeId}?rel=0&iv_load_policy=3&modestbranding=1`}
                 allow="autoplay; encrypted-media"
                 allowFullScreen
+                loading="lazy"
               />
             </div>
           )}
@@ -73,23 +95,14 @@ function ParallaxCard({ item, onTrailerEnd }: { item: Item, onTrailerEnd?: () =>
 
         {/* Layer A: Foreground UI / Sharp elements */}
         <div 
-          className="absolute inset-0 w-full h-full p-8 flex flex-col justify-between transition-transform duration-200 ease-out will-change-transform z-10 pointer-events-none"
+          className="absolute inset-0 w-full h-full p-8 flex flex-col justify-between transition-transform duration-200 ease-out will-change-transform z-10 pointer-events-none group-hover:scale-[1.02]"
           style={{
-            // Move in direction of cursor
-            transform: `scale(${isHovered ? 1.02 : 1}) translate(${isHovered ? coords.x : 0}%, ${isHovered ? coords.y : 0}%)`
+            transform: 'translate(var(--card-x, 0%), var(--card-y, 0%))'
           }}
         >
           {/* Central Frame Element */}
           <div className="absolute inset-8 border border-[rgba(0,240,255,0.18)] pointer-events-none rounded-xl" />
         </div>
-
-        {/* Additional Lighting / Reflection */}
-        <div 
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-overlay"
-          style={{
-            background: `radial-gradient(circle at ${50 + coords.x * 10}% ${50 + coords.y * 10}%, rgba(255,255,255,0.2) 0%, transparent 60%)`
-          }}
-        />
       </div>
     </div>
   );
