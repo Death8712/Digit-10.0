@@ -49,39 +49,13 @@ class WebGLErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryStat
   }
 }
 
-// Hologram Fallback for non-WebGL environments
+// Ambient Background Glow for Hero Section
 function CyberTechFallbackVisual() {
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
       {/* Radial ambient glow */}
-      <div className="absolute right-12 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-neon-cyan/15 blur-[90px] animate-pulse" />
-      <div className="absolute right-28 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-neon-purple/15 blur-[70px]" />
-
-      {/* Cybernetic Hologram Core Rings */}
-      <div className="relative w-80 h-80 flex items-center justify-center opacity-80 scale-90 lg:scale-110 lg:translate-x-20">
-        {/* Outer dashed spinning ring */}
-        <div className="absolute inset-0 rounded-full border border-dashed border-neon-cyan/30 animate-[spin_25s_linear_infinite]" />
-        
-        {/* Middle counter-rotating ring */}
-        <div className="absolute inset-6 rounded-full border-2 border-neon-cyan/20 border-t-neon-cyan/80 border-b-neon-purple/80 animate-[spin_15s_linear_infinite_reverse]" />
-        
-        {/* Third geometric ring with tick accents */}
-        <div className="absolute inset-14 rounded-full border border-white/15 animate-[spin_35s_linear_infinite]">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-neon-cyan shadow-[0_0_8px_#00F0FF]" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-neon-purple shadow-[0_0_8px_#b026ff]" />
-        </div>
-
-        {/* Inner geometric core */}
-        <div className="absolute inset-24 rounded-2xl border border-neon-cyan/40 rotate-45 animate-[spin_10s_ease-in-out_infinite_alternate] bg-neon-cyan/5 backdrop-blur-xs flex items-center justify-center shadow-[0_0_25px_rgba(0,240,255,0.2)]">
-          <div className="w-8 h-8 rounded-lg bg-neon-cyan/20 border border-neon-cyan rotate-45 animate-pulse" />
-        </div>
-
-        {/* Floating crosshair nodes */}
-        <div className="absolute -top-3 right-10 flex items-center gap-1 font-mono text-[9px] text-neon-cyan/70 tracking-widest uppercase">
-          <span className="w-1.5 h-1.5 rounded-full bg-neon-cyan animate-ping" />
-          <span>SYS.RENDER: 2D_ACCEL</span>
-        </div>
-      </div>
+      <div className="absolute right-12 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-neon-cyan/15 blur-[120px] pointer-events-none" />
+      <div className="absolute right-28 top-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-neon-purple/15 blur-[90px] pointer-events-none" />
     </div>
   );
 }

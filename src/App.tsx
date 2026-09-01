@@ -72,15 +72,16 @@ export default function App() {
       <section id="home" ref={heroRef} className="relative min-h-[100dvh] flex items-center pt-32 pb-16 overflow-hidden bg-grid">
         <Suspense fallback={<div className="absolute inset-0 flex items-center justify-center text-ice-blue font-mono text-sm animate-pulse">Initializing 3D Environment...</div>}><Hero3D /></Suspense>
         
-        <div className="max-w-[1400px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-6 w-full relative z-10">
+          {/* Header Title Block */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col items-start lg:col-span-7 xl:col-span-8"
+            className="flex flex-col items-start mb-6"
           >
             {/* Date Tag */}
-            <div className="border border-neon-cyan px-5 py-2 mb-6 inline-flex items-center justify-center whitespace-nowrap">
+            <div className="border border-neon-cyan px-5 py-2 mb-5 inline-flex items-center justify-center whitespace-nowrap">
               <span className="text-sm md:text-base font-sans font-bold tracking-[0.2em] text-neon-cyan uppercase mt-0.5">
                 21ST AUGUST 2026
               </span>
@@ -92,49 +93,102 @@ export default function App() {
             </h1>
             
             {/* Subheading */}
-            <h2 className="text-xl md:text-2xl font-sans font-bold tracking-[0.6em] text-neon-cyan mb-4 uppercase">
+            <h2 className="text-xl md:text-2xl font-sans font-bold tracking-[0.6em] text-neon-cyan mb-2 uppercase">
               TECH EVENT
             </h2>
-            
-            {/* Description */}
-            <div className="max-w-xl pr-4 lg:pr-12 text-ice-blue text-sm md:text-base leading-relaxed mb-8 font-sans flex flex-col gap-3">
-              <p className="text-justify">
-                DIGIT began in 2012 with a simple vision: to provide every student with an equal opportunity to explore and participate in technology. Initially organised for Classes IX to XII, the event continued to grow over the years. During the COVID period, DIGIT expanded to include students from III to XII, making technology more accessible across the school. Now, as we celebrate the landmark 10th edition, DIGIT takes another major step by opening its platform to schools across the region. DIGIT 10.0 brings together young innovators to compete, collaborate, showcase their talent, gain knowledge, and connect through a shared passion for technology.
-              </p>
-            </div>
-            
-            {/* Stats Row */}
-            <div className="flex flex-wrap items-center gap-8 mb-8">
-              {[
-                { value: "100+", label: "PARTICIPANTS" },
-                { value: "10+", label: "EVENTS" },
-                { value: "12+ HR", label: "DURATION" }
-              ].map((stat, i) => (
-                <div key={i} className="flex flex-col border-l-2 border-neon-cyan/20 pl-4">
-                  <span className="text-3xl font-display font-black text-white">{stat.value}</span>
-                  <span className="text-xs font-sans font-bold tracking-[0.1em] text-ice-blue uppercase mt-1">{stat.label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Container */}
-            <div className="flex flex-wrap items-center gap-6 relative z-50">
-              <a 
-                href="#events"
-                className="px-10 py-4 bg-transparent border border-neon-cyan text-neon-cyan font-sans font-bold uppercase tracking-[0.2em] text-sm hover:bg-neon-cyan hover:text-cyber-black transition-all duration-300 shadow-[0_0_15px_rgba(0,255,255,0.4),inset_0_0_10px_rgba(0,255,255,0.2)] inline-flex items-center gap-2 group"
-              >
-                EXPLORE EVENTS
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
           </motion.div>
-          
-          {/* Right side is handled by Hero3D (absolute positioned container) */}
-          <div className="hidden lg:block relative h-[500px] pointer-events-none lg:col-span-5 xl:col-span-4">
-            {/* This space is visually filled by the absolute Hero3D component */}
-            <div className="absolute bottom-0 right-0 w-full h-full border-b border-r border-neon-cyan/20 pointer-events-none">
-               <div className="hud-corner -bottom-1 -right-1" />
-            </div>
+
+          {/* Main Content Grid: Description & Stats on Left, Emblem to the Right */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 w-full">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="flex flex-col items-start lg:col-span-7 xl:col-span-7"
+            >
+              {/* Description */}
+              <div className="text-ice-blue text-sm md:text-base leading-relaxed mb-8 font-sans max-w-2xl">
+                <p className="text-justify">
+                  DIGIT began in 2012 with a simple vision: to provide every student with an equal opportunity to explore and participate in technology. Initially organised for Classes IX to XII, the event continued to grow over the years. During the COVID period, DIGIT expanded to include students from III to XII, making technology more accessible across the school. Now, as we celebrate the landmark 10th edition, DIGIT takes another major step by opening its platform to schools across the region. DIGIT 10.0 brings together young innovators to compete, collaborate, showcase their talent, gain knowledge, and connect through a shared passion for technology.
+                </p>
+              </div>
+              
+              {/* Stats Row */}
+              <div className="flex flex-wrap items-center gap-8 mb-8">
+                {[
+                  { value: "100+", label: "PARTICIPANTS" },
+                  { value: "10+", label: "EVENTS" },
+                  { value: "12+ HR", label: "DURATION" }
+                ].map((stat, i) => (
+                  <div key={i} className="flex flex-col border-l-2 border-neon-cyan/20 pl-4">
+                    <span className="text-3xl font-display font-black text-white">{stat.value}</span>
+                    <span className="text-xs font-sans font-bold tracking-[0.1em] text-ice-blue uppercase mt-1">{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Container */}
+              <div className="flex flex-wrap items-center gap-6 relative z-50">
+                <a 
+                  href="#events"
+                  className="px-10 py-4 bg-transparent border border-neon-cyan text-neon-cyan font-sans font-bold uppercase tracking-[0.2em] text-sm hover:bg-neon-cyan hover:text-cyber-black transition-all duration-300 shadow-[0_0_15px_rgba(0,255,255,0.4),inset_0_0_10px_rgba(0,255,255,0.2)] inline-flex items-center gap-2 group"
+                >
+                  EXPLORE EVENTS
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </motion.div>
+            
+            {/* Right side Glowing DIGIT Logo Showcase */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, x: 20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 0.9, delay: 0.2 }}
+              className="flex items-center justify-center lg:col-span-5 xl:col-span-5 w-full relative"
+            >
+              {/* Holographic Glowing Frame Container */}
+              <div className="relative w-full max-w-[340px] sm:max-w-[380px] md:max-w-[420px] lg:max-w-[440px] xl:max-w-[480px] aspect-square flex items-center justify-center group">
+                
+                {/* Radial Ambient Backlight Aura */}
+                <div className="absolute inset-0 rounded-full bg-neon-cyan/25 blur-[90px] animate-pulse pointer-events-none" />
+                <div className="absolute inset-6 rounded-full bg-neon-purple/30 blur-[70px] pointer-events-none" />
+
+                {/* Cyber Orbital Rings */}
+                <div className="absolute inset-0 rounded-full border border-dashed border-neon-cyan/40 animate-[spin_30s_linear_infinite] pointer-events-none" />
+                <div className="absolute inset-6 rounded-full border-2 border-neon-cyan/25 border-t-neon-cyan/90 border-b-neon-purple/80 animate-[spin_18s_linear_infinite_reverse] pointer-events-none" />
+                <div className="absolute inset-14 rounded-full border border-white/15 animate-[spin_40s_linear_infinite] pointer-events-none">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-neon-cyan shadow-[0_0_15px_#00F0FF]" />
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-neon-purple shadow-[0_0_15px_#B026FF]" />
+                </div>
+
+                {/* High-Tech HUD Corner Brackets */}
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-neon-cyan pointer-events-none" />
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-neon-cyan pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-neon-cyan pointer-events-none" />
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-neon-cyan pointer-events-none" />
+
+                {/* Floating Glowing DIGIT Logo */}
+                <motion.div 
+                  animate={{ y: [-7, 7, -7] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative z-10 w-[82%] h-[82%] flex items-center justify-center p-2"
+                >
+                  <img 
+                    src="/digit-logo.png" 
+                    alt="DIGIT 10.0 Emblem" 
+                    className="w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(0,240,255,0.95)] drop-shadow-[0_0_50px_rgba(176,38,255,0.6)] group-hover:scale-105 transition-transform duration-500"
+                  />
+                </motion.div>
+
+                {/* HUD Status Badge */}
+                <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0B1222]/95 border border-neon-cyan/50 shadow-[0_0_20px_rgba(0,255,255,0.4)] backdrop-blur-md pointer-events-none whitespace-nowrap">
+                  <span className="w-2 h-2 rounded-full bg-neon-cyan animate-ping shrink-0" />
+                  <span className="font-mono text-[11px] sm:text-xs font-bold text-neon-cyan tracking-widest uppercase">
+                    DIGIT 10.0 // OFFICIAL EMBLEM
+                  </span>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
         
